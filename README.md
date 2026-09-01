@@ -23,3 +23,5 @@ The Game Details panel shows a median consensus across available US sportsbooks:
 - Last odds update time
 
 If sportsbooks have not posted a line for a game, the panel displays an unavailable message instead of a placeholder number.
+
+test
