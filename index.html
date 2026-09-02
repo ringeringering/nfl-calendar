@@ -238,6 +238,67 @@
   .h2h-v.win{color:#1c6b3a}
   .h2h-slot{font-size:7.5px;font-weight:950;color:#93a0b1;text-align:center;text-transform:uppercase;letter-spacing:.03em}
   .h2h-empty{font-size:9.5px;font-weight:800;color:#8290a3;line-height:1.4}
+  /* Fantasy roster drawer: hidden off-canvas at the left edge with a visible
+     tab. Sits above the calendar panels (z 30-32) but below the modal (60), so
+     the ESPN import and slot editor can still open over it. */
+  /* Slide the whole row, but keep the tab on screen: the body is 360px wide and
+     is pulled fully off-canvas by a negative left margin when closed, so the
+     tab -- which follows it in the flex row -- lands flush against the edge.
+     Translating the wrapper instead would carry the tab off with it. */
+  .fr-drawer{position:fixed;top:0;left:0;height:100vh;z-index:40;display:flex;align-items:flex-start;
+    pointer-events:none}
+  .fr-body{width:360px;height:100vh;box-sizing:border-box;background:#fff;border-right:1px solid var(--line);
+    box-shadow:6px 0 26px rgba(0,0,0,.13);padding:14px 14px 18px;overflow-y:auto;pointer-events:auto;
+    margin-left:-360px;transition:margin-left .24s cubic-bezier(.4,0,.2,1)}
+  .fr-drawer.open .fr-body{margin-left:0}
+  .fr-tab{align-self:center;pointer-events:auto;border:0;border-radius:0 11px 11px 0;background:#12233f;color:#fff;
+    padding:14px 7px;cursor:pointer;box-shadow:3px 0 14px rgba(0,0,0,.18);display:flex;flex-direction:column;
+    align-items:center;gap:7px}
+  .fr-tab:hover{background:#1b3253}
+  .fr-tab-txt{writing-mode:vertical-rl;text-orientation:mixed;font-size:10px;font-weight:950;
+    letter-spacing:.09em;text-transform:uppercase}
+  .fr-tab-badge{font-size:9px;font-weight:950;background:#2a78d6;border-radius:999px;padding:2px 5px;line-height:1.2}
+  .fr-tab-badge:empty{display:none}
+  .fr-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+  .fr-title{font-size:15px;font-weight:950;color:#12233f}
+  .fr-close{border:0;background:#eef2f7;color:#25405f;border-radius:8px;width:24px;height:24px;
+    font-size:14px;font-weight:900;cursor:pointer;line-height:1;flex:0 0 auto}
+  .fr-sub{font-size:9.5px;font-weight:800;color:#6b7889;margin-top:2px;line-height:1.4}
+  .fr-week{display:flex;align-items:center;gap:6px;margin-top:11px}
+  .fr-week label{font-size:8.5px;font-weight:950;color:#6b7889;text-transform:uppercase;letter-spacing:.05em}
+  .fr-week select{border:1px solid #dde4ee;border-radius:8px;padding:5px 7px;font:inherit;font-size:11px;
+    font-weight:850;color:#12233f;background:#fff}
+  .fr-actions{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:11px}
+  .fr-btn{border:1px solid #dde4ee;background:#fbfcfe;color:#25405f;border-radius:9px;padding:7px 8px;
+    font:inherit;font-size:10px;font-weight:950;cursor:pointer;text-transform:uppercase;letter-spacing:.03em}
+  .fr-btn:hover{border-color:#b9cbe2;background:#f5f9ff}
+  .fr-btn.primary{background:#2a78d6;border-color:#2a78d6;color:#fff}
+  .fr-btn.primary:hover{background:#2569bc}
+  .fr-empty{font-size:11px;font-weight:800;color:#6b7889;line-height:1.5;margin-top:12px}
+  .fr-sec{font-size:8px;font-weight:950;color:#8290a3;text-transform:uppercase;letter-spacing:.06em;
+    margin-top:14px;padding-top:9px;border-top:1px solid #e8ecf2}
+  /* Player rows inside the drawer */
+  .fr-row{display:grid;grid-template-columns:38px 1fr auto;gap:7px;align-items:center;
+    border:1px solid #e1e7ef;border-radius:9px;background:#fbfcfe;padding:6px 8px;margin-top:4px}
+  .fr-row.bye{opacity:.6}
+  .fr-slot{font-size:8.5px;font-weight:950;color:#5b6a80;background:#eef2f7;border-radius:6px;
+    padding:3px 0;text-align:center}
+  .fr-nm{font-size:11px;font-weight:900;color:#12233f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .fr-meta{font-size:8.5px;font-weight:850;color:#6b7889;margin-top:1px;display:flex;align-items:center;gap:4px}
+  .fr-pts{font-size:11px;font-weight:950;color:#4a5a72;font-variant-numeric:tabular-nums}
+  .fr-gm{font-size:8px;font-weight:900;color:#8290a3}
+  .fr-gm.fr-local{color:#1c6b3a}
+  .fr-gm.fr-ticket{color:#8a5a12}
+  .fr-total{display:flex;align-items:center;justify-content:space-between;margin-top:9px;padding-top:8px;
+    border-top:1px solid #e8ecf2;font-size:10px;font-weight:950;color:#33425b}
+  @media (max-width:560px){
+    /* Narrower body, so the closed offset must match its actual width. */
+    .fr-body{width:min(340px,88vw);margin-left:calc(-1 * min(340px,88vw))}
+    .fr-drawer.open .fr-body{margin-left:0}
+    .fr-drawer{z-index:59}
+    .fr-tab{padding:12px 6px}
+    .fr-tab-txt{font-size:9px}
+  }
   @media (max-width:980px){.fl-name{font-size:10px}.fl-grid{grid-template-columns:1fr 30px 1fr}}.fantasy-team-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}.fantasy-team-name{font-size:11px;font-weight:950;color:#1a2d49}.fantasy-team-side{font-size:8px;font-weight:900;color:#8290a3;text-transform:uppercase;letter-spacing:.07em}
   .fantasy-player{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;border:1px solid #e1e7ef;border-radius:11px;padding:8px 9px;background:#fbfcfe;margin-top:6px}.fantasy-player-main{min-width:0}.fantasy-player-name{font-size:11px;font-weight:950;color:#1b2d49;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.fantasy-player-meta{display:flex;align-items:center;gap:5px;margin-top:3px;font-size:8.5px;color:#748197}.fantasy-pos{font-weight:950;color:#536176}.fantasy-rank{font-weight:900;color:#46607f}.fantasy-injury{display:inline-flex;align-items:center;border-radius:999px;padding:2px 5px;background:#eef2f7;color:#59677a;font-size:7.5px;font-weight:950;text-transform:uppercase}.fantasy-injury.active{background:#fff1df;color:#925b00}.fantasy-points{text-align:right}.fantasy-points-value{font-size:15px;font-weight:950;color:#16345d}.fantasy-points-label{font-size:7px;font-weight:900;color:#8a96a6;text-transform:uppercase;letter-spacing:.06em}
   .fantasy-empty{border:1px dashed #d4dce7;border-radius:12px;padding:13px;background:#fafbfd;color:#6f7d91;font-size:10px;line-height:1.45}.fantasy-source{margin-top:10px;font-size:8.5px;color:#8a95a5;line-height:1.35}
@@ -721,6 +782,120 @@ function rosterBarMarkup(g){
   return `<div class="roster-bar"><button type="button" class="roster-open" id="rosterOpen">`
     +`${R.size?'Edit rosters':'Add my roster'}</button>${label}</div>`;
 }
+// ---- Fantasy roster drawer ----
+// Persistent left-edge panel. Shows the viewer's lineup for a chosen week with
+// each player's game, projection, and -- reusing the coverage work -- whether
+// that game is local or needs Sunday Ticket in their market.
+let frWeek=null;
+function frWeeks(){
+  const d=window.NFL_FANTASY_DATA;
+  return (d&&Array.isArray(d.weeks)&&d.weeks.length)?d.weeks:[...Array(18).keys()].map(i=>i+1);
+}
+function frDefaultWeek(){
+  // Default to the week of the month currently shown, so the drawer matches
+  // what the calendar is displaying.
+  const m=months[idx];
+  const inMonth=GAMES.filter(g=>{const dt=new Date(g.date+'T12:00:00');
+    return dt.getFullYear()===m.y&&dt.getMonth()===m.m;});
+  const weeks=frWeeks();
+  if(inMonth.length){
+    const w=Math.min(...inMonth.map(g=>g.week));
+    if(weeks.includes(w))return w;
+  }
+  return weeks[0];
+}
+function frGameFor(player,week){
+  return GAMES.find(g=>g.week===week&&(g.away===player.team||g.home===player.team))||null;
+}
+function toggleFantasyDrawer(force){
+  const d=document.getElementById('frDrawer'),t=document.getElementById('frTab');
+  if(!d)return;
+  const open=(force===undefined)?!d.classList.contains('open'):!!force;
+  d.classList.toggle('open',open);
+  d.setAttribute('aria-hidden',open?'false':'true');
+  if(t)t.setAttribute('aria-expanded',open?'true':'false');
+  if(open)renderFantasyDrawer();
+}
+function renderFantasyDrawer(){
+  const box=document.getElementById('frBody'); const R=MR(); if(!box||!R)return;
+  const weeks=frWeeks();
+  if(frWeek===null||!weeks.includes(frWeek))frWeek=frDefaultWeek();
+  const mineN=R.sizeFor('mine'), oppN=R.sizeFor('opp');
+  let html=`<div class="fr-head"><div><div class="fr-title">Fantasy roster</div>`
+    +`<div class="fr-sub">${mineN?`${R.nameFor('mine')||'My team'} &middot; ${mineN} player${mineN>1?'s':''}`:'No roster yet'}`
+    +`${oppN?` &middot; vs ${R.nameFor('opp')||'Opponent'}`:''}</div></div>`
+    +`<button type="button" class="fr-close" id="frClose" aria-label="Hide fantasy roster">&times;</button></div>`;
+  html+=`<div class="fr-week"><label for="frWeekSel">Week</label>`
+    +`<select id="frWeekSel">${weeks.map(w=>`<option value="${w}"${w===frWeek?' selected':''}>Week ${w}</option>`).join('')}</select></div>`;
+  html+=`<div class="fr-actions">`
+    +`<button type="button" class="fr-btn primary" id="frEdit">${mineN?'Edit rosters':'Add roster'}</button>`
+    +`<button type="button" class="fr-btn" id="frImport">Import from ESPN</button></div>`;
+
+  if(!mineN){
+    html+=`<div class="fr-empty">Add your fantasy roster to see your lineup for any week here, `
+      +`with each player's game, projection, and whether that game airs locally in your market.</div>`;
+  }else{
+    html+=frSideMarkup('mine',frWeek);
+    if(oppN){
+      const m=R.matchup(frWeek);
+      if(m){
+        const win=m.mineTotal>=m.oppTotal;
+        html+=`<div class="fr-sec">Head to head &middot; week ${frWeek}</div>`
+          +`<div class="h2h-score"><div class="h2h-pts${win?' win':''}">${m.mineTotal.toFixed(1)}</div>`
+          +`<div class="h2h-vs">vs</div>`
+          +`<div class="h2h-pts r${!win?' win':''}">${m.oppTotal.toFixed(1)}</div></div>`;
+      }
+      html+=frSideMarkup('opp',frWeek);
+    }
+  }
+  box.innerHTML=html;
+  document.getElementById('frClose').onclick=()=>toggleFantasyDrawer(false);
+  document.getElementById('frEdit').onclick=openRosterModal;
+  document.getElementById('frImport').onclick=openRosterEspn;
+  const sel=document.getElementById('frWeekSel');
+  if(sel)sel.onchange=()=>{frWeek=Number(sel.value);renderFantasyDrawer();};
+  updateFantasyTab();
+}
+function frSideMarkup(side,week){
+  const R=MR();
+  const label=side==='opp'?(R.nameFor('opp')||'Opponent'):(R.nameFor('mine')||'My team');
+  const slots=R.slotsFor(side);
+  let total=0, rows='';
+  for(const s of R.SLOTS){
+    const nm=slots[s.id]; if(!nm)continue;
+    const p=R.weekEntry(nm,week);
+    const base=R.resolve(nm);
+    const g=base?frGameFor(base,week):null;
+    const pts=p?Number(p.projected_points)||0:0;
+    if(s.pos)total+=pts;
+    // Reuse the coverage resolver so the drawer answers "can I even watch
+    // this player's game?" rather than only how many points he projects.
+    let gm='<span class="fr-gm">Bye</span>';
+    if(g){
+      const away=g.away===(base&&base.team);
+      let cls='',txt=`${away?'@ '+g.home:'vs '+g.away}`;
+      if(viewingMarket&&window.NFL_LOCAL_COVERAGE){
+        const c=window.NFL_LOCAL_COVERAGE.resolve(viewingMarket.dma_code,g,GAMES);
+        if(c){cls=c.isLocal?' fr-local':(c.band==='unlikely'?' fr-ticket':'');
+          txt+=c.isLocal?' &middot; local':(c.band==='unlikely'?' &middot; ticket':'');}
+      }
+      gm=`<span class="fr-gm${cls}">${txt}</span>`;
+    }
+    rows+=`<div class="fr-row${p?'':' bye'}"><div class="fr-slot">${s.label}</div>`
+      +`<div><div class="fr-nm">${nm}</div><div class="fr-meta">`
+      +`${base?base.position+' '+base.team:''}${gm?' &middot; ':''}${gm}</div></div>`
+      +`<div class="fr-pts">${p?pts.toFixed(1):'&mdash;'}</div></div>`;
+  }
+  if(!rows)return '';
+  return `<div class="fr-sec">${label}</div>${rows}`
+    +`<div class="fr-total"><span>Starters projected</span><span>${total.toFixed(1)} pts</span></div>`;
+}
+function updateFantasyTab(){
+  const b=document.getElementById('frTabBadge'); const R=MR();
+  if(!b||!R)return;
+  const n=R.sizeFor('mine');
+  b.textContent=n?String(n):'';
+}
 // Toolbar entry point: choose how to build the roster, then run that flow.
 function rosterShellOpen(){
   const modal=document.getElementById('covModal'),inner=document.getElementById('covModalInner');
@@ -1012,6 +1187,9 @@ function closeRosterModal(){
 // Re-render the views that show roster marks.
 function rosterRefresh(){
   updateRosterPick();
+  updateFantasyTab();
+  if(document.getElementById('frDrawer')&&document.getElementById('frDrawer').classList.contains('open'))
+    renderFantasyDrawer();
   if(selectedGame&&typeof openFantasyDetail==='function')openFantasyDetail(selectedGame);
   if(selectedSlateDate){const d=selectedSlateDate;closeSlate();openSlate(d,null);}
 }
@@ -1067,6 +1245,7 @@ function render(){closeSlate();closeGameDetail();renderHeader();const {y,m,label
  for(let i=0;i<cells;i++){const cell=document.createElement('div');cell.className='day';let d,cy=y,cm=m,out=false;if(i<start){d=prevDays-start+i+1;cm=m-1;if(cm<0){cm=11;cy--}out=true}else if(i>=start+days){d=i-(start+days)+1;cm=m+1;if(cm>11){cm=0;cy++}out=true}else d=i-start+1;if(out)cell.classList.add('out');const key=iso(cy,cm,d),games=(byDate[key]||[]).sort((a,b)=>a.time.localeCompare(b.time)),isBye=bye.dates.has(key);if(isBye)cell.classList.add('bye-day');if(games.length)cell.classList.add('game-day');const gameCount=allGameCounts[key]||0;const gameCountLabel=gameCount?`${gameCount} game${gameCount===1?'':'s'} scheduled`:'';cell.innerHTML=`<div class="day-head"><div class="date">${d}</div>${gameCount?`<button type="button" class="game-count" aria-label="Show ${gameCountLabel} on ${key}">${gameCountLabel}</button>`:''}</div>`;if(gameCount){const countBtn=cell.querySelector('.game-count');countBtn.onclick=(e)=>{e.stopPropagation();if(selectedSlateDate===key){closeSlate()}else{openSlate(key,countBtn)}}}if(games.length){const useCompact=viewMode==='division'&&games.length>1;const stack=document.createElement('div');stack.className='games-stack'+(useCompact?' division-compact':(games.length>1?' multi':''));games.forEach(g=>{const meta=SERVICE_META[g.service]||SERVICE_META['Streaming TBD'];const box=document.createElement('div');box.className='game';box.setAttribute('role','button');box.setAttribute('tabindex','0');box.setAttribute('aria-label',`View details for ${TEAM_NAMES[g.away]} at ${TEAM_NAMES[g.home]}`);if(useCompact){const cds=displayService(g);box.title=`${TEAM_NAMES[g.away]} at ${TEAM_NAMES[g.home]} · ${g.time} ET · ${cds.service}`;box.innerHTML=`<div class="watch"><span class="service-icon ${cds.meta.cls}" title="${cds.service}">${cds.meta.icon}</span><span class="compact-matchup">${g.away} @ ${g.home}</span></div>${coverageStripe(g)}`;}else{const ds=displayService(g);box.innerHTML=`<div class="matchup">${opponentLabel(g)}</div><div class="time">W${g.week} · ${g.time} ET</div><div class="watch"><span class="service-icon ${ds.meta.cls}">${ds.meta.icon}</span><span class="service-name">${ds.service}</span></div>${coverageBadge(g)}`;}const open=()=>openGameDetail(g,box);box.onclick=e=>{e.stopPropagation();open();};box.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};stack.appendChild(box)});cell.appendChild(stack)}else if(isBye){const tag=document.createElement('div');tag.className='bye-tag';tag.textContent=`Bye · W${bye.week}`;cell.appendChild(tag)}cal.appendChild(cell)}renderTabs();renderFlex();document.getElementById('prev').disabled=idx===0;document.getElementById('next').disabled=idx===months.length-1;}
 document.getElementById('prev').onclick=()=>{if(idx>0){idx--;render()}};document.getElementById('next').onclick=()=>{if(idx<months.length-1){idx++;render()}};document.getElementById('viewMode').addEventListener('change',e=>{viewMode=e.target.value;idx=0;populateSelection();render()});selectionSelect.addEventListener('change',e=>{if(viewMode==='team')team=e.target.value;else division=e.target.value;idx=0;render()});setViewingZip.onclick=()=>applyViewingZip(viewingZip.value);viewingZip.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();applyViewingZip(viewingZip.value)}});viewingZip.addEventListener('input',()=>{viewingZip.value=viewingZip.value.replace(/\D/g,'').slice(0,5)});// Delegated so the handler survives detail-panel re-renders.
 document.addEventListener('click',e=>{
+  if(e.target.id==='frTab'||(e.target.closest&&e.target.closest('#frTab'))){toggleFantasyDrawer();return;}
   if(e.target.id==='rosterPick'||(e.target.closest&&e.target.closest('#rosterPick'))){openRosterSetup();return;}
   if(e.target.id==='rosterOpen'||(e.target.closest&&e.target.closest('#rosterOpen'))){openRosterSetup();return;}
   const win=e.target.closest&&e.target.closest('[data-winmap-game]');
@@ -1085,7 +1264,8 @@ document.addEventListener('keydown',e=>{
   const m=e.target.closest('[data-map-game]');
   if(m){e.preventDefault();const g=GAMES[Number(m.dataset.mapGame)];if(g)openCoverageModal(g);}
 });
-populateSelection();renderLegend();render();updateCoverageCopy();updateRosterPick();initViewingLocation();
+populateSelection();renderLegend();render();updateCoverageCopy();updateRosterPick();updateFantasyTab();initViewingLocation();
 </script>
+<div class="fr-drawer" id="frDrawer" aria-hidden="true"><div class="fr-body" id="frBody" role="region" aria-label="Fantasy roster"></div><button type="button" class="fr-tab" id="frTab" aria-controls="frDrawer" aria-expanded="false"><span class="fr-tab-txt">Fantasy roster</span><span class="fr-tab-badge" id="frTabBadge"></span></button></div>
 <div class="cov-modal" id="covModal" role="dialog" aria-modal="true" aria-label="Coverage map"><div class="cov-modal-inner" id="covModalInner"></div></div>
 </body></html>
