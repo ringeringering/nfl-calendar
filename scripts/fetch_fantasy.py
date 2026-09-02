@@ -54,10 +54,9 @@ from typing import Any
 BASE = "https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons"
 UA = "nfl-streaming-calendar/1.0 (+fantasy projections)"
 
-# ESPN defaultPositionId -> label. Only fantasy-relevant offensive positions and
-# kickers are kept; D/ST (16) is excluded because the panel lists individual
-# players and a team defense would sort oddly beside them.
-POSITIONS = {1: "QB", 2: "RB", 3: "WR", 4: "TE", 5: "K"}
+# ESPN defaultPositionId -> label. D/ST (16) is included because the panel
+# renders a fixed starting-lineup grid with a DEF row.
+POSITIONS = {1: "QB", 2: "RB", 3: "WR", 4: "TE", 5: "K", 16: "DEF"}
 
 # ESPN abbreviation -> the code used by index.html's GAMES array. Team IDs are
 # read from ESPN at runtime; only genuine spelling differences live here.
@@ -79,12 +78,21 @@ INJURY_LABELS = {
 
 # How many players to ask ESPN for per week, ordered by ownership. Ranks are
 # computed from this pool, so it is deliberately wider than what ships.
-PLAYER_LIMIT = 400
+# 900 is needed to fill every lineup slot for every team: at 400 the tail was
+# truncated and 16% of team-weeks had fewer than 3 WRs, leaving empty slots.
+PLAYER_LIMIT = 900
 
-# The panel renders at most 6 players per team, so only the top few per team
-# per week are published. Ranks are still computed against the full pool above,
-# so a published "WR14" keeps its league-wide meaning.
-KEEP_PER_TEAM_PER_WEEK = 8
+# The panel renders 9 starting slots (QB RB RB WR WR WR TE K DEF) plus a bench
+# of whoever is left. ESPN projects a median of ~15 players per team per week
+# and no team has more than 17, so 16 captures essentially all real depth;
+# beyond that projections fall below 1 point and are noise.
+# Ranks are still computed against the full request pool above, so a published
+# "WR14" keeps its league-wide meaning.
+KEEP_PER_TEAM_PER_WEEK = 16
+
+# Minimum players to keep per position per team-week, so every lineup slot can
+# be filled. One extra RB/WR/TE beyond the starters feeds the FLEX row.
+MIN_DEPTH = {"QB": 2, "RB": 3, "WR": 4, "TE": 2, "K": 1, "DEF": 1}
 
 
 def log(msg: str) -> None:
@@ -223,17 +231,42 @@ def main() -> int:
     rows = [r for r in rows if r["projected_points"] > 0]
     byes = before - len(rows)
 
-    # Then trim to the players the panel can actually show.
+    # Then trim per team-week. A plain "top N by projection" cap can starve a
+    # slot -- a team could ship 12 receivers and no kicker -- so keep a minimum
+    # depth per position first, then fill the remainder by projection.
     kept: list[dict[str, Any]] = []
-    per: dict[tuple[int, str], int] = defaultdict(int)
-    for r in sorted(rows, key=lambda r: (r["week"], -r["projected_points"], r["name"])):
-        key = (r["week"], r["team"])
-        if per[key] >= KEEP_PER_TEAM_PER_WEEK:
+    grouped: dict[tuple[int, str], list[dict[str, Any]]] = defaultdict(list)
+    for r in rows:
+        grouped[(r["week"], r["team"])].append(r)
+
+    for _key, group in grouped.items():
+        # A team on bye keeps a nonzero D/ST projection even though every
+        # skill player zeroed out. Those team-weeks have no game to attach to,
+        # so drop them rather than ship a lone DEF row.
+        if not any(r["position"] != "DEF" for r in group):
             continue
-        per[key] += 1
-        kept.append(r)
+        group.sort(key=lambda r: (-r["projected_points"], r["name"]))
+        chosen: list[dict[str, Any]] = []
+        picked: set[int] = set()
+        taken: dict[str, int] = defaultdict(int)
+        # Reserve the depth the lineup grid needs at each position.
+        for r in group:
+            if taken[r["position"]] < MIN_DEPTH.get(r["position"], 0):
+                chosen.append(r)
+                picked.add(id(r))
+                taken[r["position"]] += 1
+        # Then top up with the best remaining, for FLEX and spare depth.
+        for r in group:
+            if len(chosen) >= KEEP_PER_TEAM_PER_WEEK:
+                break
+            if id(r) not in picked:
+                chosen.append(r)
+                picked.add(id(r))
+        kept.extend(chosen)
+
     log(f"kept {len(kept)} of {before} rows "
-        f"({byes} bye-week zeros dropped, top {KEEP_PER_TEAM_PER_WEEK}/team/week)")
+        f"({byes} bye-week zeros dropped, <={KEEP_PER_TEAM_PER_WEEK}/team/week "
+        f"with per-position minimums)")
     rows = kept
 
     payload = {

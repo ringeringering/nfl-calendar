@@ -96,12 +96,46 @@
   .calendar-stage.panel-left .daily-slate,.calendar-stage.panel-right .daily-slate{right:calc(100% + 14px);left:auto}
   .game-detail{display:none;position:absolute;z-index:31;left:calc(100% + 14px);right:auto;top:0;width:310px;max-height:min(670px,calc(100vh - 70px));background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:14px;overflow:hidden}
   .game-detail.open{display:flex;flex-direction:column}
-  .fantasy-detail{display:none;position:absolute;z-index:32;left:calc(100% + 338px);right:auto;top:0;width:350px;max-height:min(670px,calc(100vh - 70px));background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:14px;overflow:hidden}
+  .fantasy-detail{display:none;position:absolute;z-index:32;left:calc(100% + 338px);right:auto;top:0;width:430px;max-height:min(670px,calc(100vh - 70px));background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:14px;overflow:hidden}
   .fantasy-detail.open{display:flex;flex-direction:column}
   .fantasy-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding-bottom:11px;border-bottom:1px solid var(--line)}
   .fantasy-kicker{font-size:9px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:#7b8799}.fantasy-title{font-size:17px;font-weight:950;margin-top:3px;color:#152640;line-height:1.2}
   .fantasy-body{overflow-y:auto;overscroll-behavior:contain;min-height:0;padding-right:4px;margin-top:12px;scrollbar-gutter:stable}.fantasy-body::-webkit-scrollbar{width:8px}.fantasy-body::-webkit-scrollbar-thumb{background:#c7d0dd;border-radius:999px}.fantasy-body::-webkit-scrollbar-track{background:#f3f6fa;border-radius:999px}
-  .fantasy-team-block+.fantasy-team-block{margin-top:13px}.fantasy-team-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}.fantasy-team-name{font-size:11px;font-weight:950;color:#1a2d49}.fantasy-team-side{font-size:8px;font-weight:900;color:#8290a3;text-transform:uppercase;letter-spacing:.07em}
+  .fantasy-team-block+.fantasy-team-block{margin-top:13px}
+  /* Starting-lineup grid: away | slot | home, one row per lineup slot, so the
+     same slot can be compared straight across between the two teams. */
+  .fl-grid{display:grid;grid-template-columns:1fr 34px 1fr;gap:3px 5px;margin-top:10px;align-items:stretch}
+  .fl-head{font-size:8px;font-weight:950;color:#8290a3;text-transform:uppercase;letter-spacing:.06em;padding:0 2px 2px;display:flex;align-items:flex-end}
+  .fl-head.away{justify-content:flex-start}
+  .fl-head.home{justify-content:flex-end}
+  .fl-head.mid{justify-content:center}
+  .fl-slot{display:flex;align-items:center;justify-content:center;font-size:8.5px;font-weight:950;color:#5b6a80;background:#eef2f7;border-radius:6px;letter-spacing:.02em}
+  .fl-cell{border:1px solid #e1e7ef;border-radius:9px;background:#fbfcfe;padding:5px 7px;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:1px}
+  .fl-cell.home{align-items:flex-end;text-align:right}
+  .fl-cell.empty{background:#f6f8fa;border-style:dashed}
+  .fl-name{font-size:10.5px;font-weight:900;color:#12233f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;line-height:1.25}
+  .fl-meta{display:flex;align-items:center;gap:4px;font-size:8px;font-weight:850;color:#6b7889;min-width:0}
+  .fl-cell.home .fl-meta{justify-content:flex-end}
+  .fl-rank{color:#8290a3;font-variant-numeric:tabular-nums}
+  .fl-pts{font-size:11.5px;font-weight:950;color:#12233f;font-variant-numeric:tabular-nums;line-height:1.1}
+  /* Injury dot rather than a word: the grid has no room for a status chip. */
+  .fl-inj{width:5px;height:5px;border-radius:50%;flex:0 0 auto}
+  .fl-inj.q{background:#e0a132}
+  .fl-inj.out{background:#c8453f}
+  .fl-inj.none{display:none}
+  /* Highlight whichever side projects higher in that slot. */
+  .fl-cell.better .fl-pts{color:#1c6b3a}
+  .fl-cell.better{border-color:#c3e3cf;background:#f4fbf6}
+  .fl-total{font-size:9px;font-weight:950;color:#33425b;font-variant-numeric:tabular-nums}
+  /* Bench: same three-column rhythm, visually recessed so the starters read
+     as the primary block. */
+  .fl-sub{font-size:8px;font-weight:950;color:#8290a3;text-transform:uppercase;letter-spacing:.06em;margin-top:11px;padding-bottom:1px;border-top:1px solid #e8ecf2;padding-top:8px}
+  .fl-grid.bench{margin-top:4px;gap:2px 5px}
+  .fl-grid.bench .fl-cell{padding:4px 7px;background:#fdfefe}
+  .fl-grid.bench .fl-name{font-size:9.5px;font-weight:850;color:#3d4c63}
+  .fl-grid.bench .fl-pts{font-size:10px;font-weight:900;color:#4a5a72}
+  .fl-slot.bench{background:#f4f6f9;color:#93a0b1;font-size:8px}
+  @media (max-width:980px){.fl-name{font-size:10px}.fl-grid{grid-template-columns:1fr 30px 1fr}}.fantasy-team-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}.fantasy-team-name{font-size:11px;font-weight:950;color:#1a2d49}.fantasy-team-side{font-size:8px;font-weight:900;color:#8290a3;text-transform:uppercase;letter-spacing:.07em}
   .fantasy-player{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;border:1px solid #e1e7ef;border-radius:11px;padding:8px 9px;background:#fbfcfe;margin-top:6px}.fantasy-player-main{min-width:0}.fantasy-player-name{font-size:11px;font-weight:950;color:#1b2d49;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.fantasy-player-meta{display:flex;align-items:center;gap:5px;margin-top:3px;font-size:8.5px;color:#748197}.fantasy-pos{font-weight:950;color:#536176}.fantasy-rank{font-weight:900;color:#46607f}.fantasy-injury{display:inline-flex;align-items:center;border-radius:999px;padding:2px 5px;background:#eef2f7;color:#59677a;font-size:7.5px;font-weight:950;text-transform:uppercase}.fantasy-injury.active{background:#fff1df;color:#925b00}.fantasy-points{text-align:right}.fantasy-points-value{font-size:15px;font-weight:950;color:#16345d}.fantasy-points-label{font-size:7px;font-weight:900;color:#8a96a6;text-transform:uppercase;letter-spacing:.06em}
   .fantasy-empty{border:1px dashed #d4dce7;border-radius:12px;padding:13px;background:#fafbfd;color:#6f7d91;font-size:10px;line-height:1.45}.fantasy-source{margin-top:10px;font-size:8.5px;color:#8a95a5;line-height:1.35}
   .detail-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding-bottom:11px;border-bottom:1px solid var(--line)}
@@ -165,7 +199,7 @@
   .flex-card b{font-size:12px} .flex-card div{font-size:10px;color:#718096;margin-top:3px;line-height:1.35}
   .empty-flex{font-size:11px;color:#718096;line-height:1.4}
   .note{font-size:10px;color:#748197;line-height:1.45;margin-top:11px} .footer{text-align:center;color:#7d8898;font-size:10px;margin-top:18px}
-  @media (max-width:1500px) and (min-width:981px){.daily-slate{position:fixed;right:auto!important;left:18px!important;top:96px;width:290px;max-height:calc(100vh - 120px)}.game-detail{position:fixed;left:auto!important;right:380px!important;top:96px;width:300px;max-height:calc(100vh - 120px)}.fantasy-detail{position:fixed;left:auto!important;right:18px!important;top:96px;width:350px;max-height:calc(100vh - 120px)}}
+  @media (max-width:1500px) and (min-width:981px){.daily-slate{position:fixed;right:auto!important;left:18px!important;top:96px;width:290px;max-height:calc(100vh - 120px)}.game-detail{position:fixed;left:auto!important;right:380px!important;top:96px;width:300px;max-height:calc(100vh - 120px)}.fantasy-detail{position:fixed;left:auto!important;right:18px!important;top:96px;width:430px;max-height:calc(100vh - 120px)}}
   @media (max-width:980px){.daily-slate{position:fixed;left:12px!important;right:12px!important;top:auto;bottom:12px;width:auto;max-height:min(70vh,560px);border-radius:15px;z-index:60}.game-detail{position:fixed;left:12px!important;right:12px!important;top:auto;bottom:12px;width:auto;max-height:min(46vh,380px);border-radius:15px;z-index:61}.fantasy-detail{position:fixed;left:12px!important;right:12px!important;top:12px;bottom:auto;width:auto;max-height:min(46vh,380px);border-radius:15px;z-index:62}}
   @media (max-width:820px){.app{margin-top:18px;padding:0 10px 30px}.hero{padding:22px 20px;border-radius:18px}h1{font-size:27px}.grid{grid-auto-rows:126px}.day{padding:6px}.games-stack{margin-top:5px}.game{padding:6px}.date{width:25px;height:25px}.game-count{font-size:7px}.service-name{display:none}.below{grid-template-columns:1fr}.dow div{font-size:9px;padding:9px 2px}.matchup{font-size:10px;line-height:1.18}.time{font-size:9px;margin-top:2px}.watch{padding-top:4px}.toolbar{justify-content:center}.season-tabs{justify-content:center}}
   @media (max-width:560px){.grid{grid-auto-rows:118px}.day{padding:5px}.date{width:23px;height:23px;font-size:11px}.day-head{gap:4px}.game-count{font-size:6.5px;letter-spacing:-.01em}.games-stack{margin-top:4px}.game{padding:5px;border-radius:9px}.matchup{font-size:9.5px;line-height:1.15}.time{font-size:8.5px;line-height:1.1}.watch{padding-top:3px}.service-icon{min-width:25px;height:19px;padding:0 4px;font-size:8px}.hero .meta{display:none}.subtitle{font-size:13px}.team-picker{width:100%}.picker-field{flex:1 1 100%;justify-content:space-between}.picker-field+.picker-field{border-left:0;border-top:1px solid #e1e7ef;padding-left:4px;padding-top:3px}.team-picker select{flex:1;max-width:none;text-align:right}}
@@ -458,8 +492,100 @@ function oddsMarkup(g){const o=oddsForGame(g);if(!o)return `<div class="odds-sec
 const FANTASY_DATA=(window.NFL_FANTASY_DATA&&Array.isArray(window.NFL_FANTASY_DATA.players))?window.NFL_FANTASY_DATA:{fetched_at:null,scoring:'PPR',players:[]};
 function fantasyForGame(g){return FANTASY_DATA.players.filter(p=>p.week===g.week&&(p.team===g.away||p.team===g.home)).sort((a,b)=>(Number(b.projected_points)||0)-(Number(a.projected_points)||0));}
 function fantasyStatus(p){const raw=(p.injury_status||p.status||'').trim();return raw||'Healthy';}
-function fantasyPlayerMarkup(p){const status=fantasyStatus(p),active=status.toLowerCase()!=='healthy'&&status.toLowerCase()!=='none';const rank=p.position_rank||p.rank||'—';const pts=p.projected_points==null?'—':Number(p.projected_points).toFixed(1);return `<div class="fantasy-player"><div class="fantasy-player-main"><div class="fantasy-player-name">${p.name||'Unknown player'}</div><div class="fantasy-player-meta"><span class="fantasy-pos">${p.position||'—'}</span><span class="fantasy-rank">${rank}</span><span class="fantasy-injury ${active?'active':''}">${status}</span></div></div><div class="fantasy-points"><div class="fantasy-points-value">${pts}</div><div class="fantasy-points-label">Proj pts</div></div></div>`;}
-function fantasyMarkup(g){const players=fantasyForGame(g);const away=players.filter(p=>p.team===g.away).slice(0,6),home=players.filter(p=>p.team===g.home).slice(0,6);const scoring=FANTASY_DATA.scoring||'PPR';if(!players.length)return `<div class="fantasy-head"><div><div class="fantasy-kicker">Fantasy outlook</div><div class="fantasy-title">${g.away} vs ${g.home}</div></div></div><div class="fantasy-body"><div class="fantasy-empty">Fantasy projections are not loaded for this game yet. Once a fantasy-data feed is connected, this panel will show projected points, weekly positional rank, and injury status for the leading fantasy-relevant players on both teams.</div><div class="fantasy-source">Scoring format: ${scoring}. Data source will be shown here when connected.</div></div>`;const teamBlock=(code,list,side)=>`<div class="fantasy-team-block"><div class="fantasy-team-heading"><div class="fantasy-team-name">${TEAM_NAMES[code]}</div><div class="fantasy-team-side">${side}</div></div>${list.length?list.map(fantasyPlayerMarkup).join(''):'<div class="fantasy-empty">No fantasy-relevant player projections returned for this team.</div>'}</div>`;return `<div class="fantasy-head"><div><div class="fantasy-kicker">Fantasy outlook</div><div class="fantasy-title">${g.away} vs ${g.home}</div></div></div><div class="fantasy-body">${teamBlock(g.away,away,'Away')}${teamBlock(g.home,home,'Home')}<div class="fantasy-source">${scoring} projections${FANTASY_DATA.source?` · ${FANTASY_DATA.source}`:''}${FANTASY_DATA.fetched_at?` · Updated ${new Date(FANTASY_DATA.fetched_at).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}`:''}</div></div>`;}
+// Fantasy starting-lineup slots, in the order a standard roster lists them.
+// A FLEX row was tried and removed: because the pool is a single team rather
+// than a whole fantasy roster, the starters claim everyone good first, so FLEX
+// landed on a 3.4-point median and was lower than WR3 in 83% of lineups.
+// Remaining players appear in the bench section instead.
+const FANTASY_SLOTS=[
+  {label:'QB',pos:['QB']},
+  {label:'RB1',pos:['RB']},{label:'RB2',pos:['RB']},
+  {label:'WR1',pos:['WR']},{label:'WR2',pos:['WR']},{label:'WR3',pos:['WR']},
+  {label:'TE',pos:['TE']},
+  {label:'K',pos:['K']},
+  {label:'DEF',pos:['DEF']}
+];
+// Fill each slot greedily from the team's highest-projected unused player at an
+// eligible position, then return whoever is left as the bench, ordered by
+// projection. ESPN projects ~15 players per team per week, so the bench is
+// typically 6 deep.
+function fantasyLineup(players){
+  const pool=[...players].sort((a,b)=>(Number(b.projected_points)||0)-(Number(a.projected_points)||0));
+  const used=new Set();
+  const starters=FANTASY_SLOTS.map(slot=>{
+    const pick=pool.find(p=>!used.has(p)&&slot.pos.includes(p.position));
+    if(pick)used.add(pick);
+    return {slot:slot.label,player:pick||null};
+  });
+  return {starters,bench:pool.filter(p=>!used.has(p))};
+}
+function fantasyInjClass(p){
+  const s=(p.injury_status||p.status||'').toLowerCase();
+  if(!s||s==='healthy'||s==='none'||s==='active')return 'none';
+  if(s==='out'||s==='ir'||s==='suspended')return 'out';
+  return 'q';
+}
+function fantasyCell(p,side,better){
+  if(!p)return `<div class="fl-cell ${side} empty"><div class="fl-name" style="color:#a9b3c1">&mdash;</div></div>`;
+  const pts=p.projected_points==null?'&mdash;':Number(p.projected_points).toFixed(1);
+  const rank=p.position_rank||p.rank||'';
+  const status=(p.injury_status||p.status||'Healthy');
+  return `<div class="fl-cell ${side}${better?' better':''}">`
+    +`<div class="fl-name" title="${p.name} &middot; ${p.position} &middot; ${status}">${p.name}</div>`
+    +`<div class="fl-meta"><span class="fl-inj ${fantasyInjClass(p)}" title="${status}"></span>`
+    +`<span class="fl-rank">${rank}</span></div>`
+    +`<div class="fl-pts">${pts}</div></div>`;
+}
+// Bench rows pair the two teams' Nth-best remaining player. They are not the
+// same position, so the slot column shows the position instead of a slot name
+// and no better/worse highlight is applied.
+function fantasyBenchCell(p,side){
+  if(!p)return `<div class="fl-cell ${side} empty"><div class="fl-name" style="color:#a9b3c1">&mdash;</div></div>`;
+  const pts=Number(p.projected_points||0).toFixed(1);
+  const status=(p.injury_status||p.status||'Healthy');
+  return `<div class="fl-cell ${side} bench">`
+    +`<div class="fl-name" title="${p.name} &middot; ${p.position} &middot; ${status}">${p.name}</div>`
+    +`<div class="fl-meta"><span class="fl-inj ${fantasyInjClass(p)}" title="${status}"></span>`
+    +`<span class="fl-rank">${p.position} &middot; ${p.position_rank||p.rank||''}</span></div>`
+    +`<div class="fl-pts">${pts}</div></div>`;
+}
+function fantasyMarkup(g){
+  const players=fantasyForGame(g);
+  const scoring=FANTASY_DATA.scoring||'PPR';
+  const head=`<div class="fantasy-head"><div><div class="fantasy-kicker">Fantasy outlook</div><div class="fantasy-title">${g.away} vs ${g.home}</div></div></div>`;
+  if(!players.length)return head+`<div class="fantasy-body"><div class="fantasy-empty">Fantasy projections are not loaded for this game yet. Once a fantasy-data feed is connected, this panel will show projected points, weekly positional rank, and injury status for the leading fantasy-relevant players on both teams.</div><div class="fantasy-source">Scoring format: ${scoring}. Data source will be shown here when connected.</div></div>`;
+  const A=fantasyLineup(players.filter(p=>p.team===g.away));
+  const H=fantasyLineup(players.filter(p=>p.team===g.home));
+  const tot=l=>l.starters.reduce((t,r)=>t+(r.player?Number(r.player.projected_points)||0:0),0);
+  const aTot=tot(A),hTot=tot(H);
+
+  let rows='';
+  for(let i=0;i<FANTASY_SLOTS.length;i++){
+    const a=A.starters[i].player,hm=H.starters[i].player;
+    const av=a?Number(a.projected_points)||0:-1,hv=hm?Number(hm.projected_points)||0:-1;
+    rows+=fantasyCell(a,'away',av>hv)
+        +`<div class="fl-slot">${FANTASY_SLOTS[i].label}</div>`
+        +fantasyCell(hm,'home',hv>av);
+  }
+  const benchRows=Math.max(A.bench.length,H.bench.length);
+  let bench='';
+  if(benchRows){
+    bench=`<div class="fl-sub">Bench &middot; next best available</div><div class="fl-grid bench">`;
+    for(let i=0;i<benchRows;i++){
+      bench+=fantasyBenchCell(A.bench[i],'away')
+           +`<div class="fl-slot bench">${i+1}</div>`
+           +fantasyBenchCell(H.bench[i],'home');
+    }
+    bench+=`</div>`;
+  }
+  const grid=`<div class="fl-grid">`
+    +`<div class="fl-head away">${g.away} <span class="fl-total">&nbsp;${aTot.toFixed(1)}</span></div>`
+    +`<div class="fl-head mid">Slot</div>`
+    +`<div class="fl-head home"><span class="fl-total">${hTot.toFixed(1)}&nbsp;</span> ${g.home}</div>`
+    +rows+`</div>`;
+  const src=`<div class="fantasy-source">${scoring} projections${FANTASY_DATA.source?` &middot; ${FANTASY_DATA.source}`:''}${FANTASY_DATA.fetched_at?` &middot; Updated ${new Date(FANTASY_DATA.fetched_at).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}`:''}</div>`;
+  return head+`<div class="fantasy-body">${grid}${bench}${src}</div>`;
+}
 function openFantasyDetail(g){fantasyDetail.innerHTML=fantasyMarkup(g);fantasyDetail.classList.add('open');}
 function closeFantasyDetail(){fantasyDetail.classList.remove('open');fantasyDetail.innerHTML='';}
 function gameDateLabel(g){const d=new Date(g.date+'T12:00:00');return d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});}
