@@ -20,7 +20,7 @@
   .picker-field{display:flex;align-items:center;gap:7px;padding:0 4px}.picker-field+.picker-field{border-left:1px solid #e1e7ef;padding-left:10px}
   .team-picker label{color:#526078;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
   .team-picker select{border:0;outline:0;background:transparent;color:#10213a;font:inherit;font-size:13px;font-weight:900;padding:7px 28px 7px 4px;cursor:pointer;max-width:280px}
-  .zip-input{width:78px;border:0;outline:0;background:transparent;color:#10213a;font:inherit;font-size:13px;font-weight:900;padding:7px 3px;letter-spacing:.03em}.zip-input::placeholder{color:#9aa5b4;font-weight:700}.zip-set{box-shadow:none;border-radius:8px;padding:6px 8px;background:#edf2f8;color:#25405f;font-size:10px}.zip-set:disabled{opacity:.55}.market-status.resolving{opacity:.72}.market-status.error{background:rgba(255,220,220,.14);border-color:rgba(255,220,220,.22);color:#ffe4e4}.market-status.ready{background:rgba(213,240,224,.14);border-color:rgba(213,240,224,.24);color:#e4f8eb}
+  .zip-input{width:78px;border:0;outline:0;background:transparent;color:#10213a;font:inherit;font-size:13px;font-weight:900;padding:7px 3px;letter-spacing:.03em}.zip-input::placeholder{color:#9aa5b4;font-weight:700}.zip-set{box-shadow:none;border-radius:8px;padding:6px 8px;background:#edf2f8;color:#25405f;font-size:10px}.zip-set:disabled{opacity:.55}.roster-pick{box-shadow:none;border-radius:8px;padding:6px 9px;background:#edf2f8;color:#25405f;font-size:10px;font-weight:900;letter-spacing:.02em;white-space:nowrap}.roster-pick.has{background:#e3eefb;color:#1a4f8f}.roster-pick:disabled{opacity:.55}.market-status.resolving{opacity:.72}.market-status.error{background:rgba(255,220,220,.14);border-color:rgba(255,220,220,.22);color:#ffe4e4}.market-status.ready{background:rgba(213,240,224,.14);border-color:rgba(213,240,224,.24);color:#e4f8eb}
   /* Local CBS/FOX coverage badges. Green = local, grey = out of market,
      amber = the prediction is genuinely uncertain for this market. */
   /* Day cells are a fixed height with overflow hidden, so the badge must stay
@@ -169,6 +169,31 @@
   .roster-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px;padding-top:9px;border-top:1px solid #e8ecf2}
   .roster-clear{border:0;background:none;color:#b4443e;font-size:9.5px;font-weight:900;cursor:pointer;text-transform:uppercase;letter-spacing:.04em}
   .roster-note{font-size:9px;font-weight:800;color:#8290a3;line-height:1.35}
+  /* Roster setup: choose an import path, then the chosen flow */
+  .rs-choice{display:grid;gap:8px;margin-top:12px}
+  .rs-opt{display:flex;align-items:flex-start;gap:10px;border:1px solid #dde4ee;border-radius:12px;background:#fbfcfe;padding:11px 12px;cursor:pointer;text-align:left;font:inherit;width:100%}
+  .rs-opt:hover{border-color:#b9cbe2;background:#f5f9ff}
+  .rs-opt .ic{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:950;color:#fff;flex:0 0 auto;background:#2a78d6}
+  .rs-opt .ic.manual{background:#5b6a80}
+  .rs-opt .tx{min-width:0}
+  .rs-opt .tx{display:block}
+  .rs-opt .tt{display:block;font-size:12px;font-weight:950;color:#12233f}
+  .rs-opt .dd{display:block;font-size:10px;font-weight:800;color:#6b7889;margin-top:3px;line-height:1.4}
+  .rs-back{border:0;background:none;color:#6b7889;font-size:9.5px;font-weight:900;cursor:pointer;text-transform:uppercase;letter-spacing:.04em;padding:0;margin-top:2px}
+  .rs-back:hover{color:#25405f}
+  .rs-form{margin-top:12px;display:grid;gap:8px}
+  .rs-row{display:grid;grid-template-columns:1fr;gap:5px}
+  .rs-lab{font-size:9px;font-weight:950;color:#6b7889;text-transform:uppercase;letter-spacing:.05em}
+  .rs-in{border:1px solid #dde4ee;border-radius:9px;padding:8px 10px;font:inherit;font-size:12px;font-weight:800;color:#12233f;outline:0}
+  .rs-in:focus{border-color:#2a78d6}
+  .rs-hint{font-size:9.5px;font-weight:800;color:#8290a3;line-height:1.4}
+  .rs-go{border:0;background:#2a78d6;color:#fff;border-radius:9px;padding:9px 12px;font-size:11.5px;font-weight:950;cursor:pointer}
+  .rs-go:disabled{opacity:.55;cursor:default}
+  .rs-teams{display:grid;gap:5px;margin-top:4px;max-height:260px;overflow-y:auto}
+  .rs-team{display:flex;align-items:center;gap:8px;border:1px solid #e1e7ef;border-radius:9px;background:#fbfcfe;padding:8px 10px;cursor:pointer;font:inherit;text-align:left;width:100%}
+  .rs-team:hover{border-color:#b9cbe2;background:#f5f9ff}
+  .rs-team .tn{flex:1;min-width:0;font-size:11.5px;font-weight:900;color:#12233f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rs-team .tc{font-size:9px;font-weight:900;color:#6b7889}
   @media (max-width:560px){.roster-list{grid-template-columns:1fr}}
   @media (max-width:980px){.fl-name{font-size:10px}.fl-grid{grid-template-columns:1fr 30px 1fr}}.fantasy-team-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}.fantasy-team-name{font-size:11px;font-weight:950;color:#1a2d49}.fantasy-team-side{font-size:8px;font-weight:900;color:#8290a3;text-transform:uppercase;letter-spacing:.07em}
   .fantasy-player{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;border:1px solid #e1e7ef;border-radius:11px;padding:8px 9px;background:#fbfcfe;margin-top:6px}.fantasy-player-main{min-width:0}.fantasy-player-name{font-size:11px;font-weight:950;color:#1b2d49;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.fantasy-player-meta{display:flex;align-items:center;gap:5px;margin-top:3px;font-size:8.5px;color:#748197}.fantasy-pos{font-weight:950;color:#536176}.fantasy-rank{font-weight:900;color:#46607f}.fantasy-injury{display:inline-flex;align-items:center;border-radius:999px;padding:2px 5px;background:#eef2f7;color:#59677a;font-size:7.5px;font-weight:950;text-transform:uppercase}.fantasy-injury.active{background:#fff1df;color:#925b00}.fantasy-points{text-align:right}.fantasy-points-value{font-size:15px;font-weight:950;color:#16345d}.fantasy-points-label{font-size:7px;font-weight:900;color:#8a96a6;text-transform:uppercase;letter-spacing:.06em}
@@ -246,7 +271,7 @@
     <div class="eyebrow" id="eyebrow"></div>
     <h1 id="title"></h1>
     <p class="subtitle">A month-by-month view of every scheduled game and the service you need to watch it.</p>
-    <div class="team-picker"><div class="picker-field"><label for="viewMode">View</label><select id="viewMode"><option value="team" selected>Team</option><option value="division">Division</option></select></div><div class="picker-field"><label for="selectionSelect" id="selectionLabel">Team</label><select id="selectionSelect"></select></div><div class="picker-field viewing-field"><label for="viewingZip">Viewing ZIP</label><input class="zip-input" id="viewingZip" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="ZIP" aria-label="Viewing ZIP code"><button type="button" class="zip-set" id="setViewingZip">Set</button></div></div>
+    <div class="team-picker"><div class="picker-field"><label for="viewMode">View</label><select id="viewMode"><option value="team" selected>Team</option><option value="division">Division</option></select></div><div class="picker-field"><label for="selectionSelect" id="selectionLabel">Team</label><select id="selectionSelect"></select></div><div class="picker-field viewing-field"><label for="viewingZip">Viewing ZIP</label><input class="zip-input" id="viewingZip" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="ZIP" aria-label="Viewing ZIP code"><button type="button" class="zip-set" id="setViewingZip">Set</button></div><div class="picker-field roster-field"><label for="rosterPick">My roster</label><button type="button" class="roster-pick" id="rosterPick" aria-haspopup="dialog">Set up</button></div></div>
     <div class="meta"><span>Times shown in ET</span><span id="sundayWindowNote">Sunday 1:00 / 4:00 windows = NFL Sunday Ticket</span><span>Late flex assignments remain TBD</span><span class="market-status" id="marketStatus">Local market: not set</span></div>
   </section>
   <div class="toolbar">
@@ -640,6 +665,95 @@ function rosterBarMarkup(g){
   return `<div class="roster-bar"><button type="button" class="roster-open" id="rosterOpen">`
     +`${R.size?'Edit roster':'Add my roster'}</button>${label}</div>`;
 }
+// Toolbar entry point: choose how to build the roster, then run that flow.
+function rosterShellOpen(){
+  const modal=document.getElementById('covModal'),inner=document.getElementById('covModalInner');
+  if(!modal||!inner)return null;
+  inner.className='cov-modal-inner roster-modal-inner';
+  modal.classList.add('open');
+  return inner;
+}
+function openRosterSetup(){
+  const inner=rosterShellOpen(); const R=MR(); if(!inner||!R)return;
+  const has=R.size>0;
+  inner.innerHTML=`<button class="cov-modal-close" id="rosterClose" aria-label="Close">&times;</button>`
+    +`<div class="cov-modal-title">My fantasy roster</div>`
+    +`<div class="cov-modal-sub">${has?`${R.size} player${R.size>1?'s':''} saved${R.teamName?` &middot; ${R.teamName}`:''} &middot; stored in this browser only`:'Stored in this browser only &middot; never shared'}</div>`
+    +`<div class="rs-choice">`
+    +`<button type="button" class="rs-opt" id="rsEspn"><span class="ic">E</span><span class="tx">`
+    +`<span class="tt">Import from ESPN</span>`
+    +`<span class="dd">Enter your league ID and pick your team. Works for public leagues; ESPN keeps private leagues hidden.</span>`
+    +`</span></button>`
+    +`<button type="button" class="rs-opt" id="rsManual"><span class="ic manual">+</span><span class="tx">`
+    +`<span class="tt">${has?'Edit roster manually':'Build a roster manually'}</span>`
+    +`<span class="dd">Search and add players one at a time. Works with any league or platform.</span>`
+    +`</span></button></div>`
+    +(has?`<div class="roster-foot"><div class="roster-note">Clearing removes the saved roster from this browser.</div>`
+      +`<button class="roster-clear" id="rosterClear">Clear all</button></div>`:'');
+  document.getElementById('rosterClose').onclick=closeRosterModal;
+  document.getElementById('rsEspn').onclick=openRosterEspn;
+  document.getElementById('rsManual').onclick=openRosterModal;
+  const cl=document.getElementById('rosterClear');
+  if(cl)cl.onclick=()=>{if(confirm('Remove all players from your roster?')){MR().clear();rosterRefresh();closeRosterModal();}};
+}
+function openRosterEspn(){
+  const inner=rosterShellOpen(); const R=MR(); if(!inner||!R)return;
+  const yr=R.espnSeason();
+  inner.innerHTML=`<button class="cov-modal-close" id="rosterClose" aria-label="Close">&times;</button>`
+    +`<div class="cov-modal-title">Import from ESPN</div>`
+    +`<div class="cov-modal-sub">Public leagues only &middot; nothing is sent anywhere except ESPN</div>`
+    +`<button type="button" class="rs-back" id="rsBack">&larr; Back</button>`
+    +`<div class="rs-form">`
+    +`<div class="rs-row"><label class="rs-lab" for="rsLeague">League ID or URL</label>`
+    +`<input class="rs-in" id="rsLeague" type="text" inputmode="numeric" autocomplete="off"`
+    +` placeholder="e.g. 1234567 or paste your league URL"></div>`
+    +`<div class="rs-row"><label class="rs-lab" for="rsSeason">Season</label>`
+    +`<input class="rs-in" id="rsSeason" type="number" value="${yr}" min="2018" max="${yr+1}"></div>`
+    +`<div class="rs-hint">Find the ID in your ESPN league URL: <code>...?leagueId=<b>1234567</b></code>. `
+    +`If the league is private, your league manager can make it public in League Settings &rarr; Basic Settings.</div>`
+    +`<button class="rs-go" id="rsFetch">Find my teams</button></div>`
+    +`<div class="roster-msg" id="rosterMsg"></div><div id="rsTeams"></div>`;
+  document.getElementById('rosterClose').onclick=closeRosterModal;
+  document.getElementById('rsBack').onclick=openRosterSetup;
+  const go=document.getElementById('rsFetch'),inp=document.getElementById('rsLeague');
+  inp.focus();
+  inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();go.click();}});
+  go.onclick=async()=>{
+    const msg=document.getElementById('rosterMsg'),box=document.getElementById('rsTeams');
+    const season=Number(document.getElementById('rsSeason').value)||yr;
+    box.innerHTML=''; msg.className='roster-msg'; msg.textContent='Contacting ESPN…';
+    go.disabled=true;
+    try{
+      const teams=await MR().fetchLeagueTeams(inp.value,season);
+      msg.className='roster-msg ok';
+      msg.textContent=`Found ${teams.length} teams. Pick yours:`;
+      box.innerHTML=`<div class="rs-teams">`+teams.map(t=>
+        `<button type="button" class="rs-team" data-team="${t.id}" data-name="${String(t.name).replace(/"/g,'&quot;')}">`
+        +`<span class="tn">${t.name}</span><span class="tc">${t.abbrev||''}</span></button>`).join('')+`</div>`;
+      [...box.querySelectorAll('.rs-team')].forEach(b=>b.onclick=async()=>{
+        msg.className='roster-msg'; msg.textContent=`Importing ${b.dataset.name}…`;
+        try{
+          const res=await MR().importTeam(inp.value,b.dataset.team,season,b.dataset.name);
+          rosterRefresh(); updateRosterPick();
+          msg.className='roster-msg ok';
+          msg.textContent=`Imported ${res.added} players`
+            +(res.unmatched.length?`. ${res.unmatched.length} not in the projections feed: ${res.unmatched.slice(0,3).join(', ')}${res.unmatched.length>3?'…':''}`:'.');
+          setTimeout(openRosterModal,900);
+        }catch(err){msg.className='roster-msg err';msg.textContent=err.message;}
+      });
+    }catch(err){
+      msg.className='roster-msg err'; msg.textContent=err.message; box.innerHTML='';
+    }finally{go.disabled=false;}
+  };
+}
+// Keep the toolbar button in sync with saved state.
+function updateRosterPick(){
+  const b=document.getElementById('rosterPick'); const R=MR();
+  if(!b||!R)return;
+  b.textContent=R.size?`${R.size} player${R.size>1?'s':''}`:'Set up';
+  b.classList.toggle('has',R.size>0);
+  b.title=R.size?`${R.size} players saved${R.teamName?` (${R.teamName})`:''} — click to edit`:'Add your fantasy roster';
+}
 let rosterSugIndex=-1;
 function openRosterModal(){
   const modal=document.getElementById('covModal'),inner=document.getElementById('covModalInner');
@@ -648,6 +762,7 @@ function openRosterModal(){
   inner.innerHTML=`<button class="cov-modal-close" id="rosterClose" aria-label="Close roster editor">&times;</button>`
     +`<div class="cov-modal-title">My fantasy roster</div>`
     +`<div class="cov-modal-sub">Stored in this browser only &middot; not shared with anyone</div>`
+    +`<button type="button" class="rs-back" id="rsBackManual">&larr; Back</button>`
     +`<div class="roster-input-row"><input class="roster-input" id="rosterInput" type="text" autocomplete="off"`
     +` placeholder="Add a player, e.g. Gibbs or Saints D/ST" aria-label="Add a player">`
     +`<button class="roster-add" id="rosterAdd">Add</button><div id="rosterSug"></div></div>`
@@ -664,6 +779,8 @@ function openRosterModal(){
   input.addEventListener('keydown',rosterKeydown);
   document.getElementById('rosterAdd').onclick=()=>rosterCommit(input.value);
   document.getElementById('rosterClose').onclick=closeRosterModal;
+  const bk=document.getElementById('rsBackManual');
+  if(bk)bk.onclick=openRosterSetup;
   document.getElementById('rosterClear').onclick=()=>{
     if(MR().size&&confirm('Remove all players from your roster?')){MR().clear();renderRosterList();rosterRefresh();}
   };
@@ -740,6 +857,7 @@ function renderRosterList(){
 }
 // Re-render the views that show roster marks.
 function rosterRefresh(){
+  updateRosterPick();
   if(selectedGame&&typeof openFantasyDetail==='function')openFantasyDetail(selectedGame);
   if(selectedSlateDate){const d=selectedSlateDate;closeSlate();openSlate(d,null);}
 }
@@ -795,7 +913,8 @@ function render(){closeSlate();closeGameDetail();renderHeader();const {y,m,label
  for(let i=0;i<cells;i++){const cell=document.createElement('div');cell.className='day';let d,cy=y,cm=m,out=false;if(i<start){d=prevDays-start+i+1;cm=m-1;if(cm<0){cm=11;cy--}out=true}else if(i>=start+days){d=i-(start+days)+1;cm=m+1;if(cm>11){cm=0;cy++}out=true}else d=i-start+1;if(out)cell.classList.add('out');const key=iso(cy,cm,d),games=(byDate[key]||[]).sort((a,b)=>a.time.localeCompare(b.time)),isBye=bye.dates.has(key);if(isBye)cell.classList.add('bye-day');if(games.length)cell.classList.add('game-day');const gameCount=allGameCounts[key]||0;const gameCountLabel=gameCount?`${gameCount} game${gameCount===1?'':'s'} scheduled`:'';cell.innerHTML=`<div class="day-head"><div class="date">${d}</div>${gameCount?`<button type="button" class="game-count" aria-label="Show ${gameCountLabel} on ${key}">${gameCountLabel}</button>`:''}</div>`;if(gameCount){const countBtn=cell.querySelector('.game-count');countBtn.onclick=(e)=>{e.stopPropagation();if(selectedSlateDate===key){closeSlate()}else{openSlate(key,countBtn)}}}if(games.length){const useCompact=viewMode==='division'&&games.length>1;const stack=document.createElement('div');stack.className='games-stack'+(useCompact?' division-compact':(games.length>1?' multi':''));games.forEach(g=>{const meta=SERVICE_META[g.service]||SERVICE_META['Streaming TBD'];const box=document.createElement('div');box.className='game';box.setAttribute('role','button');box.setAttribute('tabindex','0');box.setAttribute('aria-label',`View details for ${TEAM_NAMES[g.away]} at ${TEAM_NAMES[g.home]}`);if(useCompact){const cds=displayService(g);box.title=`${TEAM_NAMES[g.away]} at ${TEAM_NAMES[g.home]} · ${g.time} ET · ${cds.service}`;box.innerHTML=`<div class="watch"><span class="service-icon ${cds.meta.cls}" title="${cds.service}">${cds.meta.icon}</span><span class="compact-matchup">${g.away} @ ${g.home}</span></div>${coverageStripe(g)}`;}else{const ds=displayService(g);box.innerHTML=`<div class="matchup">${opponentLabel(g)}</div><div class="time">W${g.week} · ${g.time} ET</div><div class="watch"><span class="service-icon ${ds.meta.cls}">${ds.meta.icon}</span><span class="service-name">${ds.service}</span></div>${coverageBadge(g)}`;}const open=()=>openGameDetail(g,box);box.onclick=e=>{e.stopPropagation();open();};box.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};stack.appendChild(box)});cell.appendChild(stack)}else if(isBye){const tag=document.createElement('div');tag.className='bye-tag';tag.textContent=`Bye · W${bye.week}`;cell.appendChild(tag)}cal.appendChild(cell)}renderTabs();renderFlex();document.getElementById('prev').disabled=idx===0;document.getElementById('next').disabled=idx===months.length-1;}
 document.getElementById('prev').onclick=()=>{if(idx>0){idx--;render()}};document.getElementById('next').onclick=()=>{if(idx<months.length-1){idx++;render()}};document.getElementById('viewMode').addEventListener('change',e=>{viewMode=e.target.value;idx=0;populateSelection();render()});selectionSelect.addEventListener('change',e=>{if(viewMode==='team')team=e.target.value;else division=e.target.value;idx=0;render()});setViewingZip.onclick=()=>applyViewingZip(viewingZip.value);viewingZip.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();applyViewingZip(viewingZip.value)}});viewingZip.addEventListener('input',()=>{viewingZip.value=viewingZip.value.replace(/\D/g,'').slice(0,5)});// Delegated so the handler survives detail-panel re-renders.
 document.addEventListener('click',e=>{
-  if(e.target.id==='rosterOpen'||(e.target.closest&&e.target.closest('#rosterOpen'))){openRosterModal();return;}
+  if(e.target.id==='rosterPick'||(e.target.closest&&e.target.closest('#rosterPick'))){openRosterSetup();return;}
+  if(e.target.id==='rosterOpen'||(e.target.closest&&e.target.closest('#rosterOpen'))){openRosterSetup();return;}
   const win=e.target.closest&&e.target.closest('[data-winmap-game]');
   if(win){const g=GAMES[Number(win.dataset.winmapGame)];if(g)openWinnerModal(g);return;}
   const map=e.target.closest&&e.target.closest('[data-map-game]');
@@ -812,7 +931,7 @@ document.addEventListener('keydown',e=>{
   const m=e.target.closest('[data-map-game]');
   if(m){e.preventDefault();const g=GAMES[Number(m.dataset.mapGame)];if(g)openCoverageModal(g);}
 });
-populateSelection();renderLegend();render();updateCoverageCopy();initViewingLocation();
+populateSelection();renderLegend();render();updateCoverageCopy();updateRosterPick();initViewingLocation();
 </script>
 <div class="cov-modal" id="covModal" role="dialog" aria-modal="true" aria-label="Coverage map"><div class="cov-modal-inner" id="covModalInner"></div></div>
 </body></html>
