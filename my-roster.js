@@ -45,10 +45,24 @@
     { id: 'BN6',  label: 'Bench', pos: null }
   ];
 
-  let roster = [];        // canonical names, derived from slots (for has())
-  let slots = {};         // { slotId: playerName } -- what the editor shows
-  let teamName = '';
+  /* Two rosters: the viewer's own team and an optional opponent, so a
+     head-to-head matchup can be shown. Both use the same slot layout and the
+     same storage shape; `side` selects which one an operation applies to.
+     Legacy single-roster keys are migrated into the 'mine' side on load. */
+  const SIDES = ['mine', 'opp'];
+  const store = {
+    mine: { roster: [], slots: {}, teamName: '' },
+    opp:  { roster: [], slots: {}, teamName: '' }
+  };
+  let activeSide = 'mine';   // which side the editor is currently editing
   const listeners = [];
+
+  function sideKeys(side) {
+    return side === 'opp'
+      ? { list: 'nflOppRoster', slots: 'nflOppRosterSlots', name: 'nflOppRosterName' }
+      : { list: KEY, slots: SLOT_KEY, name: NAME_KEY };
+  }
+  function S(side) { return store[side === 'opp' ? 'opp' : 'mine']; }
 
   /* Normalize for matching: lowercase, strip punctuation and suffixes. */
   function norm(s) {
@@ -101,7 +115,7 @@
     if (!k) return [];
     const starts = [], contains = [];
     for (const [key, p] of index()) {
-      if (rosterHas(p.name)) continue;
+      if (rosterHas(p.name, activeSide)) continue;
       if (key.startsWith(k)) starts.push(p);
       else if (key.includes(k)) contains.push(p);
     }
@@ -109,41 +123,41 @@
     return starts.sort(rank).concat(contains.sort(rank)).slice(0, limit || 6);
   }
 
-  function rosterHas(name) {
+  function rosterHas(name, side) {
     const k = norm(name);
-    return roster.some(n => norm(n) === k);
+    return S(side).roster.some(n => norm(n) === k);
   }
 
-  function load() {
+  function loadSide(side) {
+    const k = sideKeys(side), st = S(side);
     try {
-      const raw = localStorage.getItem(KEY);
-      roster = raw ? JSON.parse(raw) : [];
-      if (!Array.isArray(roster)) roster = [];
-      roster = roster.filter(n => typeof n === 'string').slice(0, MAX_PLAYERS);
-    } catch (e) {
-      roster = [];
-    }
+      const raw = localStorage.getItem(k.list);
+      st.roster = raw ? JSON.parse(raw) : [];
+      if (!Array.isArray(st.roster)) st.roster = [];
+      st.roster = st.roster.filter(n => typeof n === 'string').slice(0, MAX_PLAYERS);
+    } catch (e) { st.roster = []; }
     try {
-      const raw = localStorage.getItem(SLOT_KEY);
-      slots = raw ? JSON.parse(raw) : {};
-      if (!slots || typeof slots !== 'object' || Array.isArray(slots)) slots = {};
-    } catch (e) {
-      slots = {};
-    }
+      const raw = localStorage.getItem(k.slots);
+      st.slots = raw ? JSON.parse(raw) : {};
+      if (!st.slots || typeof st.slots !== 'object' || Array.isArray(st.slots)) st.slots = {};
+    } catch (e) { st.slots = {}; }
     // Rosters saved before slots existed, or imported from ESPN, arrive as a
     // flat list. Auto-assign them so the editor opens populated, not blank.
     let migrated = false;
-    if (roster.length && !Object.keys(slots).length) {
-      slots = autoAssign(roster);
+    if (st.roster.length && !Object.keys(st.slots).length) {
+      st.slots = autoAssign(st.roster);
       migrated = true;
     }
-    teamName = localStorage.getItem(NAME_KEY) || '';
-    // Persist the migration now, so a legacy roster is only auto-assigned
-    // once and later edits start from a stable slot layout.
+    st.teamName = localStorage.getItem(k.name) || '';
     if (migrated) {
-      try { localStorage.setItem(SLOT_KEY, JSON.stringify(slots)); } catch (e) {}
+      try { localStorage.setItem(k.slots, JSON.stringify(st.slots)); } catch (e) {}
     }
-    return roster;
+    return st.roster;
+  }
+
+  function load() {
+    SIDES.forEach(loadSide);
+    return S('mine').roster;
   }
 
   /* Place a flat list of names into slots, best projection first. Used for
@@ -172,26 +186,28 @@
 
   /* Keep the flat list derived from slot assignments so has() and the
      per-game marks can never drift from what the editor shows. */
-  function syncFromSlots() {
+  function syncFromSlots(side) {
+    const st = S(side);
     const seen = new Set();
     const out = [];
     for (const s of SLOTS) {
-      const n = slots[s.id];
+      const n = st.slots[s.id];
       if (!n) continue;
       const k = norm(n);
       if (seen.has(k)) continue;
       seen.add(k);
       out.push(n);
     }
-    roster = out.slice(0, MAX_PLAYERS);
+    st.roster = out.slice(0, MAX_PLAYERS);
   }
 
-  function save() {
+  function save(side) {
+    const k = sideKeys(side || activeSide), st = S(side || activeSide);
     try {
-      localStorage.setItem(KEY, JSON.stringify(roster));
-      localStorage.setItem(SLOT_KEY, JSON.stringify(slots));
-      if (teamName) localStorage.setItem(NAME_KEY, teamName);
-      else localStorage.removeItem(NAME_KEY);
+      localStorage.setItem(k.list, JSON.stringify(st.roster));
+      localStorage.setItem(k.slots, JSON.stringify(st.slots));
+      if (st.teamName) localStorage.setItem(k.name, st.teamName);
+      else localStorage.removeItem(k.name);
     } catch (e) {
       // Quota or private-mode failure: keep the in-memory roster working.
       console.warn('Could not persist roster', e);
@@ -202,12 +218,14 @@
   /* Assign a player to a slot; null clears it. If that player already sits in
      another slot the two swap, which is what moving a player into an occupied
      slot should do. */
-  function setSlot(slotId, input) {
+  function setSlot(slotId, input, side) {
+    side = side || activeSide;
+    const st = S(side);
     const slot = SLOTS.find(s => s.id === slotId);
     if (!slot) return { ok: false, reason: 'bad_slot' };
     if (input == null || input === '') {
-      delete slots[slotId];
-      syncFromSlots(); save();
+      delete st.slots[slotId];
+      syncFromSlots(side); save(side);
       return { ok: true, cleared: true };
     }
     const p = resolve(input);
@@ -215,24 +233,28 @@
     if (slot.pos && !slot.pos.includes(p.position)) {
       return { ok: false, reason: 'wrong_position', player: p, slot: slot };
     }
-    const prior = Object.keys(slots).find(id => norm(slots[id]) === norm(p.name));
+    const prior = Object.keys(st.slots).find(id => norm(st.slots[id]) === norm(p.name));
     if (prior && prior !== slotId) {
-      const displaced = slots[slotId];
-      if (displaced) slots[prior] = displaced; else delete slots[prior];
+      const displaced = st.slots[slotId];
+      if (displaced) st.slots[prior] = displaced; else delete st.slots[prior];
     }
-    slots[slotId] = p.name;
-    syncFromSlots(); save();
+    st.slots[slotId] = p.name;
+    syncFromSlots(side); save(side);
     return { ok: true, player: p, swapped: !!(prior && prior !== slotId) };
   }
 
   /* Players eligible for a slot, ranked by projection, excluding anyone
      already placed in a different slot. */
-  function candidatesFor(slotId, query, limit) {
+  function candidatesFor(slotId, query, limit, side) {
+    const st = S(side || activeSide);
     const slot = SLOTS.find(s => s.id === slotId);
     if (!slot) return [];
-    const placed = new Set(Object.keys(slots)
+    // Only this side's placed players are excluded. The same player may
+    // legitimately appear on both rosters -- leagues differ, and a viewer may
+    // be modelling a hypothetical matchup.
+    const placed = new Set(Object.keys(st.slots)
       .filter(id => id !== slotId)
-      .map(id => norm(slots[id])));
+      .map(id => norm(st.slots[id])));
     const k = norm(query || '');
     const hits = [];
     for (const p of allPlayers()) {
@@ -245,58 +267,113 @@
     return limit ? hits.slice(0, limit) : hits;
   }
 
-  function clearSlots() { slots = {}; roster = []; teamName = ''; save(); }
 
-  function add(input) {
+
+  function add(input, side) {
+    side = side || activeSide;
+    const st = S(side);
     const p = resolve(input);
     if (!p) return { ok: false, reason: 'not_found' };
-    if (rosterHas(p.name)) return { ok: false, reason: 'duplicate', player: p };
-    if (roster.length >= MAX_PLAYERS) return { ok: false, reason: 'full' };
-    roster.push(p.name);
-    save();
+    if (rosterHas(p.name, side)) return { ok: false, reason: 'duplicate', player: p };
+    if (st.roster.length >= MAX_PLAYERS) return { ok: false, reason: 'full' };
+    // Place into the first eligible empty slot so add() and the slot editor
+    // stay consistent; fall back to appending if the lineup is full.
+    const openSlot = SLOTS.find(s => !st.slots[s.id]
+      && (!s.pos || s.pos.includes(p.position)));
+    if (openSlot) {
+      st.slots[openSlot.id] = p.name;
+      syncFromSlots(side);
+    } else {
+      st.roster.push(p.name);
+    }
+    save(side);
     return { ok: true, player: p };
   }
 
-  function remove(name) {
+  function remove(name, side) {
+    side = side || activeSide;
+    const st = S(side);
     const k = norm(name);
-    const before = roster.length;
-    roster = roster.filter(n => norm(n) !== k);
-    if (roster.length !== before) save();
-    return roster.length !== before;
+    const before = st.roster.length;
+    for (const id of Object.keys(st.slots)) {
+      if (norm(st.slots[id]) === k) delete st.slots[id];
+    }
+    syncFromSlots(side);
+    if (st.roster.length === before) {
+      st.roster = st.roster.filter(n => norm(n) !== k);
+    }
+    if (st.roster.length !== before) save(side);
+    return st.roster.length !== before;
   }
 
-  function clear() {
-    roster = [];
-    slots = {};
-    teamName = '';
-    save();
+  function clear(side) {
+    side = side || activeSide;
+    const st = S(side);
+    st.roster = []; st.slots = {}; st.teamName = '';
+    save(side);
   }
 
-  function setTeamName(n) {
-    teamName = String(n || '').slice(0, 40);
-    save();
+  function setTeamName(n, side) {
+    S(side || activeSide).teamName = String(n || '').slice(0, 40);
+    save(side || activeSide);
   }
 
-  /* Is this player on my roster? Accepts a player object or a name. */
-  function has(player) {
-    return rosterHas(typeof player === 'string' ? player : (player && player.name));
+  /* Is this player on a roster? Accepts a player object or a name.
+     Defaults to the viewer's own team so existing callers are unchanged. */
+  function has(player, side) {
+    return rosterHas(typeof player === 'string' ? player : (player && player.name),
+                     side || 'mine');
   }
 
   /* My players appearing in a given week, with their current projection. */
-  function playersForWeek(week) {
+  function playersForWeek(week, side) {
     const data = window.NFL_FANTASY_DATA;
     if (!data || !Array.isArray(data.players)) return [];
-    const mine = new Set(roster.map(norm));
+    const want = new Set(S(side || 'mine').roster.map(norm));
     return data.players
-      .filter(p => p.week === week && mine.has(norm(p.name)))
+      .filter(p => p.week === week && want.has(norm(p.name)))
       .sort((a, b) => (Number(b.projected_points) || 0) - (Number(a.projected_points) || 0));
   }
 
   /* My players involved in one specific game. */
-  function playersForGame(game) {
+  function playersForGame(game, side) {
     if (!game) return [];
-    return playersForWeek(game.week)
+    return playersForWeek(game.week, side)
       .filter(p => p.team === game.away || p.team === game.home);
+  }
+
+  /* Head-to-head: projected starting totals for both rosters in one week,
+     slot by slot. Returns null unless both sides have at least one starter,
+     since a matchup against an empty roster is meaningless. */
+  function matchup(week) {
+    const rows = [];
+    let mineTotal = 0, oppTotal = 0, mineFilled = 0, oppFilled = 0;
+    for (const s of SLOTS) {
+      if (!s.pos) continue;   // starters only
+      const mn = S('mine').slots[s.id], on = S('opp').slots[s.id];
+      const mp = mn ? weekEntry(mn, week) : null;
+      const op = on ? weekEntry(on, week) : null;
+      const mv = mp ? Number(mp.projected_points) || 0 : 0;
+      const ov = op ? Number(op.projected_points) || 0 : 0;
+      if (mn) mineFilled++;
+      if (on) oppFilled++;
+      mineTotal += mv; oppTotal += ov;
+      rows.push({ slot: s.label, slotId: s.id, mine: mp, opp: op,
+                  mineName: mn || '', oppName: on || '',
+                  mineValue: mv, oppValue: ov });
+    }
+    if (!mineFilled || !oppFilled) return null;
+    return { week: week, rows: rows, mineTotal: mineTotal, oppTotal: oppTotal,
+             mineName: S('mine').teamName, oppName: S('opp').teamName };
+  }
+
+  /* A player's row for a specific week, or null if they have no projection
+     that week (bye, or not projected). */
+  function weekEntry(name, week) {
+    const data = window.NFL_FANTASY_DATA;
+    if (!data || !Array.isArray(data.players)) return null;
+    const k = norm(name);
+    return data.players.find(p => p.week === week && norm(p.name) === k) || null;
   }
 
   function onChange(fn) { if (typeof fn === 'function') listeners.push(fn); }
@@ -407,12 +484,14 @@
     if (!names.length) {
       throw new Error('None of that roster\'s players are in the projections feed.');
     }
-    roster = names.slice(0, MAX_PLAYERS);
-    slots = autoAssign(roster);
-    syncFromSlots();
-    teamName = String(label || '').slice(0, 40);
-    save();
-    return { added: roster.length, unmatched };
+    const side = arguments.length > 4 && arguments[4] ? arguments[4] : activeSide;
+    const st = S(side);
+    st.roster = names.slice(0, MAX_PLAYERS);
+    st.slots = autoAssign(st.roster);
+    syncFromSlots(side);
+    st.teamName = String(label || '').slice(0, 40);
+    save(side);
+    return { added: st.roster.length, unmatched };
   }
 
   load();
@@ -421,12 +500,20 @@
     load, save, add, remove, clear, has, resolve, suggest,
     playersForWeek, playersForGame, onChange,
     parseLeagueId, fetchLeagueTeams, importTeam, espnSeason,
-    SLOTS, setSlot, candidatesFor, autoAssign,
-    get slots() { return Object.assign({}, slots); },
-    get list() { return [...roster]; },
-    get teamName() { return teamName; },
+    SLOTS, SIDES, setSlot, candidatesFor, autoAssign, matchup, weekEntry,
+    // Which side the editor is working on.
+    get side() { return activeSide; },
+    setSide(s) { activeSide = (s === 'opp') ? 'opp' : 'mine'; return activeSide; },
+    slotsFor(side) { return Object.assign({}, S(side).slots); },
+    listFor(side) { return [...S(side).roster]; },
+    sizeFor(side) { return S(side).roster.length; },
+    nameFor(side) { return S(side).teamName; },
     setTeamName,
-    get size() { return roster.length; },
+    // Back-compatible accessors, always the viewer's own team.
+    get slots() { return Object.assign({}, S(activeSide).slots); },
+    get list() { return [...S('mine').roster]; },
+    get teamName() { return S('mine').teamName; },
+    get size() { return S('mine').roster.length; },
     MAX_PLAYERS
   };
 })();
