@@ -249,12 +249,32 @@
      Translating the wrapper instead would carry the tab off with it. */
   .fr-drawer{position:fixed;top:0;left:0;height:100vh;z-index:40;display:flex;align-items:flex-start;
     pointer-events:none}
-  /* 340px is the widest the drawer can be without overlapping the daily
-     slate, which opens at left:18px with a 300px body (so it ends at ~340). */
-  .fr-body{width:340px;height:100vh;box-sizing:border-box;background:#fff;border-right:1px solid var(--line);
-    box-shadow:6px 0 26px rgba(0,0,0,.13);padding:13px 12px 18px;overflow-y:auto;pointer-events:auto;
-    margin-left:-340px;transition:margin-left .24s cubic-bezier(.4,0,.2,1)}
+  /* Width is capped by whatever the daily slate needs, and that changes with
+     the viewport:
+       > 1500px  slate is absolute beside the calendar, so the left gutter is
+                 (viewport - calendar width)/2 and there is room to spare
+       981-1500  slate is pinned at left:18px with a 290px body -> ends ~308px
+       <= 980    slate becomes a bottom sheet, so the drawer is free
+     --fr-w carries the value so the closed offset always matches the width.  */
+  .fr-drawer{--fr-w:340px}
+  .fr-body{width:var(--fr-w);height:100vh;box-sizing:border-box;background:#fff;
+    border-right:1px solid var(--line);box-shadow:6px 0 26px rgba(0,0,0,.13);
+    padding:13px 12px 18px;overflow-y:auto;pointer-events:auto;
+    margin-left:calc(-1 * var(--fr-w));transition:margin-left .24s cubic-bezier(.4,0,.2,1)}
   .fr-drawer.open .fr-body{margin-left:0}
+  /* Wide screens: the slate sits beside the calendar (max 1180px content,
+     20px gutter), so the drawer may use the space left of it. */
+  @media (min-width:1501px){
+    .fr-drawer{--fr-w:min(560px, calc((100vw - 1180px) / 2 - 330px))}
+  }
+  /* Very wide: cap it so the panel does not become an unreadable expanse. */
+  @media (min-width:2200px){ .fr-drawer{--fr-w:560px} }
+  /* 981-1500px: the slate becomes a FIXED overlay at left:18px, so it and the
+     drawer claim the same space at any drawer width. Rather than shrink the
+     drawer pointlessly, the two take turns -- opening one closes the other
+     (see openSlate/toggleFantasyDrawer). Width here is generous since it has
+     the gutter to itself. */
+  @media (min-width:981px) and (max-width:1500px){ .fr-drawer{--fr-w:min(420px,42vw)} }
   .fr-tab{align-self:center;pointer-events:auto;border:0;border-radius:0 11px 11px 0;background:#12233f;color:#fff;
     padding:14px 7px;cursor:pointer;box-shadow:3px 0 14px rgba(0,0,0,.18);display:flex;flex-direction:column;
     align-items:center;gap:7px}
@@ -320,10 +340,8 @@
   .fr-vs-pt{font-size:10px;font-weight:950;color:#4a5a72;font-variant-numeric:tabular-nums;line-height:1.1}
   .fr-vs-pt.win{color:#1c6b3a}
   @media (max-width:560px){
-    /* Narrower body, so the closed offset must match its actual width. */
-    .fr-body{width:min(340px,88vw);margin-left:calc(-1 * min(340px,88vw))}
-    .fr-drawer.open .fr-body{margin-left:0}
-    .fr-drawer{z-index:59}
+    /* Slate becomes a bottom sheet here, so the only limit is the viewport. */
+    .fr-drawer{--fr-w:min(340px,88vw);z-index:59}
     .fr-tab{padding:12px 6px}
     .fr-tab-txt{font-size:9px}
   }
@@ -833,10 +851,16 @@ function frDefaultWeek(){
 function frGameFor(player,week){
   return GAMES.find(g=>g.week===week&&(g.away===player.team||g.home===player.team))||null;
 }
+// Between 981 and 1500px the daily slate is a fixed overlay in the same left
+// gutter as the drawer, so only one of them can be visible at a time.
+function frCompetesWithSlate(){
+  return window.matchMedia('(min-width:981px) and (max-width:1500px)').matches;
+}
 function toggleFantasyDrawer(force){
   const d=document.getElementById('frDrawer'),t=document.getElementById('frTab');
   if(!d)return;
   const open=(force===undefined)?!d.classList.contains('open'):!!force;
+  if(open&&frCompetesWithSlate()&&selectedSlateDate)closeSlate();
   d.classList.toggle('open',open);
   d.setAttribute('aria-hidden',open?'false':'true');
   if(t)t.setAttribute('aria-expanded',open?'true':'false');
@@ -1262,6 +1286,8 @@ function mascotName(code){return TEAM_NAMES[code].split(' ').slice(-1)[0];}
 function allMatchupLabel(g){const loc=g.neutral&&g.location?` (${g.location})`:'';return `${mascotName(g.away)} vs ${mascotName(g.home)}${loc}`;}
 function closeSlate(){selectedSlateDate=null;calendarStage.classList.remove('panel-left','panel-right');dailySlate.innerHTML='';document.querySelectorAll('.game-count.active').forEach(x=>x.classList.remove('active'));}
 function openSlate(dateKey,trigger){
+  // Same gutter conflict in reverse: opening the slate hides the drawer.
+  if(typeof frCompetesWithSlate==='function'&&frCompetesWithSlate())toggleFantasyDrawer(false);
   const games=GAMES.filter(g=>g.date===dateKey).sort((a,b)=>a.time.localeCompare(b.time));
   if(!games.length)return;
   selectedSlateDate=dateKey;
