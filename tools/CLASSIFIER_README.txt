@@ -1,3 +1,9 @@
+Note: this file documents the DMA coverage pipeline (tools/). The unrelated
+fantasy feed lives in scripts/fetch_fantasy.py and is documented in its own
+docstring; in short, it pulls weekly projections from ESPN's public fantasy
+endpoint (no API key) and writes fantasy-data.js, refreshed by
+.github/workflows/refresh-fantasy.yaml.
+
 NFL DMA polygon classifier
 ==========================
 
