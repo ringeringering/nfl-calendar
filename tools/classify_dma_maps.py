@@ -82,10 +82,27 @@ COLOR_PROTOTYPES: dict[str, tuple[int, int, int]] = {
     "yellow": (255, 255, 130),
     "orange": (255, 193, 131),
     "light_blue": (131, 255, 255),
-    "purple": (211, 158, 229),
+    "purple": (231, 193, 228),
+    "brown": (200, 161, 140),
     "pink": (255, 158, 211),
     "grey": (190, 190, 190),
 }
+
+# Fallback swatch-number -> color used only if the live swatch PNGs cannot be
+# fetched. Verified against https://506sports.com/nfl/swatches/<n>.png, whose
+# dominant fills are byte-identical to the map fills above.
+SWATCH_PALETTE_FALLBACK: dict[int, str] = {
+    1: "red",
+    2: "blue",
+    3: "green",
+    4: "yellow",
+    5: "orange",
+    6: "light_blue",
+    7: "purple",
+    8: "brown",
+}
+
+SWATCH_URL_TEMPLATE = "https://506sports.com/nfl/swatches/{n}.png"
 
 SWATCH_COLOR_CACHE: dict[str, str] = {}
 
@@ -131,6 +148,11 @@ def log(msg: str) -> None:
     print(msg, file=sys.stderr, flush=True)
 
 
+def _utc_now() -> str:
+    from datetime import datetime, timezone
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
 def mercator_y(lat_deg: float) -> float:
     lat = max(-85.0, min(85.0, lat_deg))
     phi = math.radians(lat)
@@ -167,6 +189,9 @@ def normalize_slot(image_url: str, context: str = "", manifest_slot: str = "") -
         window = "LATE"
     elif re.search(rf"(?:^|-)({network})-S(?:-|$|\d)", stem):
         window = "SINGLE"
+    elif re.search(rf"(?:^|-)({network})-T(?:-|$|\d)", stem):
+        # -T- is a rescheduled/special-day map (e.g. 2021 W15 "FOX TUESDAY").
+        window = "SPECIAL"
     elif network in stem:
         # Bare 01-FOX-V4.png / 03-CBS-V3.png denotes that network's single map.
         window = "SINGLE"
@@ -433,6 +458,18 @@ def classify_rgb(rgb: tuple[int, int, int], max_distance: float = 155.0) -> str 
     # 506 uses strongly separated hues. Hue classification is more robust than
     # raw RGB distance on the darker diagonal hatch pixels and anti-aliased edges.
     deg = (h * 360.0) % 360.0
+
+    # Brown (swatch 8) shares orange's hue band and is separable only by its
+    # lower value/saturation, so it must be tested before the hue buckets.
+    # Without this, a map using both orange and brown would silently merge two
+    # different games into one color.
+    # The saturation gate is what separates them: brown is ~0.30 saturated,
+    # while orange is ~0.49 even when hatch-darkened (darkening scales R/G/B
+    # together and so preserves saturation).
+    if 10.0 <= deg < 45.0 and s <= 0.40 and v <= 0.86:
+        if rgb_distance(rgb, COLOR_PROTOTYPES["brown"]) < rgb_distance(rgb, COLOR_PROTOTYPES["orange"]):
+            return "brown"
+
     if deg >= 345 or deg < 15:
         return "red"
     if deg < 50:
@@ -534,29 +571,137 @@ def sample_dma_polygon(
 
 # ---------- Legend extraction ----------
 
-def make_session() -> requests.Session:
+def make_session(insecure: bool = False) -> requests.Session:
+    """Build a session that works behind a TLS-inspecting corporate proxy.
+
+    Preference order:
+      1. An explicit REQUESTS_CA_BUNDLE / SSL_CERT_FILE (respected verbatim).
+      2. `truststore`, which validates against the OS trust store and therefore
+         sees corporate root CAs that certifi does not ship.
+      3. certifi defaults.
+    `insecure` (opt-in via --insecure-tls) is a last resort for research runs on
+    a network that intercepts TLS; it is recorded in the legend cache so any
+    data collected that way is auditable rather than silently trusted.
+    """
     s = requests.Session()
     s.headers.update({"User-Agent": UA, "Accept": "text/html,*/*"})
-    # Respect the corporate/system CA configuration that may already have been
-    # required by the acquisition step. Do not disable certificate verification.
+
     ca = os.environ.get("REQUESTS_CA_BUNDLE") or os.environ.get("SSL_CERT_FILE")
-    if ca:
+    if ca and Path(ca).exists():
         s.verify = ca
+        s.tls_mode = "env_ca_bundle"  # type: ignore[attr-defined]
+    elif insecure:
+        s.verify = False
+        s.tls_mode = "insecure_unverified"  # type: ignore[attr-defined]
+        try:
+            import urllib3
+            urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+        except Exception:
+            pass
+    else:
+        s.tls_mode = "certifi"  # type: ignore[attr-defined]
+        try:
+            import truststore
+            import ssl as _ssl
+            ctx = truststore.SSLContext(_ssl.PROTOCOL_TLS_CLIENT)
+            adapter = _TruststoreAdapter(ctx)
+            s.mount("https://", adapter)
+            s.tls_mode = "truststore_os_trust"  # type: ignore[attr-defined]
+        except ImportError:
+            pass
     return s
+
+
+class _TruststoreAdapter(requests.adapters.HTTPAdapter):
+    """HTTPAdapter that validates using the OS trust store via truststore."""
+
+    def __init__(self, ssl_context: Any, **kwargs: Any) -> None:
+        self._ssl_context = ssl_context
+        super().__init__(**kwargs)
+
+    def init_poolmanager(self, *args: Any, **kwargs: Any) -> Any:
+        kwargs["ssl_context"] = self._ssl_context
+        return super().init_poolmanager(*args, **kwargs)
+
+    def proxy_manager_for(self, *args: Any, **kwargs: Any) -> Any:
+        kwargs["ssl_context"] = self._ssl_context
+        return super().proxy_manager_for(*args, **kwargs)
 
 
 def canonical_color_name(raw: str) -> str:
     s = raw.lower().replace("gray", "grey")
     s = re.sub(r"\s+", "_", s.strip())
-    if s == "cyan":
+    if s in {"cyan", "lightblue", "light_blue"}:
         return "light_blue"
     return s
 
 
+def resolve_swatch_palette(
+    session: requests.Session | None, timeout: int, allow_network: bool
+) -> tuple[dict[int, str], str]:
+    """Resolve swatch number -> canonical color name once per run.
+
+    The swatch PNGs are static site-wide assets, so this is a handful of
+    requests rather than one per weekly page. Any number that cannot be
+    resolved live falls back to the verified table so a single network hiccup
+    does not block legend extraction.
+    """
+    palette: dict[int, str] = {}
+    if session and allow_network:
+        for n in range(1, 9):
+            color = swatch_color(session, SWATCH_URL_TEMPLATE.format(n=n), timeout)
+            if color:
+                palette[n] = color
+    if palette:
+        merged = dict(SWATCH_PALETTE_FALLBACK)
+        merged.update(palette)
+        mismatch = [
+            n for n, c in palette.items()
+            if SWATCH_PALETTE_FALLBACK.get(n) and SWATCH_PALETTE_FALLBACK[n] != c
+        ]
+        if mismatch:
+            log(f"Note: live swatch colors differ from the built-in table for {mismatch}; using live values.")
+        return merged, "live_swatches" if len(palette) >= 6 else "live_swatches_partial"
+    return dict(SWATCH_PALETTE_FALLBACK), "builtin_swatch_table"
+
+
 def clean_game_text(text: str) -> str:
     text = re.sub(r"\s+", " ", text).strip(" -–—:|\t\r\n")
-    text = re.sub(r"\s*\([^)]*(?:announc|late|early|blackout|subject)[^)]*\)\s*$", "", text, flags=re.I)
+    # A bare "(LATE)"/"(EARLY)" marker is meaningful: on a single-header map it
+    # is the only signal that a listed game airs in the other window, which
+    # directly affects local-vs-Sunday-Ticket. Keep it; drop only commentary
+    # like "(to be announced)" or "(subject to change)".
+    text = re.sub(
+        r"\s*\((?![^)]*\b(?:late|early)\b\s*\))[^)]*"
+        r"(?:announc|blackout|subject)[^)]*\)\s*$",
+        "", text, flags=re.I,
+    )
     return text[:180]
+
+
+def split_matchup(game: str) -> tuple[str, str]:
+    """Split "Pittsburgh @ NY Jets" into ("Pittsburgh", "NY Jets").
+
+    506 lists the away team first, including for neutral-site games. Returns
+    ("", "") when the text is not a recognizable matchup (e.g. "NO GAME") so
+    callers can leave the columns blank rather than store a guess.
+    """
+    m = GAME_RE.search(game)
+    if not m:
+        return "", ""
+    return m.group(1).strip(), m.group(2).strip()
+
+
+def split_window_marker(game: str) -> tuple[str, str]:
+    """Separate a trailing (LATE)/(EARLY) marker from the matchup text.
+
+    Returns (matchup_without_marker, window_override) where window_override is
+    "LATE", "EARLY" or "".
+    """
+    m = re.search(r"\s*\(\s*(late|early)\s*\)\s*$", game, re.I)
+    if not m:
+        return game, ""
+    return game[: m.start()].strip(), m.group(1).upper()
 
 
 def infer_slot_from_heading(text: str) -> str | None:
@@ -564,6 +709,12 @@ def infer_slot_from_heading(text: str) -> str | None:
     net = "CBS" if "CBS" in t else "FOX" if "FOX" in t else None
     if not net:
         return None
+    # Rescheduled-window headings ("FOX TUESDAY" in 2021 W15, when COVID
+    # outbreaks moved games off Sunday) get their own slot. These correspond to
+    # a distinct -T- map, so folding them into EARLY/LATE would collide two
+    # different games onto the same color.
+    if any(k in t for k in ["TUESDAY", "MONDAY", "SATURDAY", "WEDNESDAY"]):
+        return f"{net}_SPECIAL"
     if any(k in t for k in ["EARLY", "1:00", "1 PM", "1PM"]):
         return f"{net}_EARLY"
     if any(k in t for k in ["LATE", "4:05", "4:25", "4 PM", "4PM"]):
@@ -639,41 +790,228 @@ def swatch_color(session: requests.Session | None, url: str, timeout: int) -> st
     return color
 
 
-def extract_legends_from_html(html: str, session: requests.Session | None = None, base_url: str = "", timeout: int = 25) -> dict[str, dict[str, str]]:
+def parse_color_key_comment(html: str) -> dict[str, str]:
+    """Read the per-page color key 506 embeds as an HTML comment.
+
+    Observed on the weekly pages, e.g.:
+        <!--
+        red: #FF7F7F
+        blue: #7F7FFF
+        ...
+        -->
+    These hex values are the *authoring* palette and are lighter than the
+    rendered PNG fills, so they are used to confirm the palette ordering rather
+    than to match pixels directly. Returns {color_name: "#RRGGBB"}.
+    """
+    key: dict[str, str] = {}
+    for m in re.finditer(r"<!--(.*?)-->", html, re.S):
+        body = m.group(1)
+        if not re.search(r"\b(red|blue|green|yellow)\s*:\s*#", body, re.I):
+            continue
+        for name, hexval in re.findall(
+            r"\b([a-z][a-z ]*?)\s*:\s*(#[0-9a-fA-F]{6})\b", body, re.I
+        ):
+            key[canonical_color_name(name)] = hexval.upper()
+    return key
+
+
+def split_slot_sections(soup: BeautifulSoup) -> list[tuple[str, list[Tag]]]:
+    """Partition the page body into (slot, [game divs]) sections.
+
+    506 weekly pages are a flat document: a `<font size="5">CBS EARLY</font>`
+    style heading, then the map, then one `<div id='game'>` per matchup. Each
+    game div is attributed to the most recent preceding slot heading, which is
+    robust to the ads/`<hr>`/Patreon blocks that appear between sections.
+    """
+    sections: list[tuple[str, list[Tag]]] = []
+    current: str | None = None
+
+    for node in soup.find_all(["font", "b", "strong", "h1", "h2", "h3", "h4", "h5", "p", "div"]):
+        node_id = node.get("id") or ""
+
+        if node_id == "game":
+            if current:
+                if sections and sections[-1][0] == current:
+                    sections[-1][1].append(node)
+                else:
+                    sections.append((current, [node]))
+            continue
+
+        # Only short, heading-like text may switch the active slot. This stops a
+        # wrapping <div>/<p> that contains the whole week from resetting state.
+        txt = node.get_text(" ", strip=True)
+        if not txt or len(txt) > 40:
+            continue
+        slot = infer_slot_from_heading(txt)
+        if slot:
+            current = slot
+
+    return sections
+
+
+def swatch_number(img: Tag) -> int | None:
+    m = re.search(r"/swatches/(\d+)\.(?:png|gif|jpe?g|webp)", img.get("src") or "", re.I)
+    return int(m.group(1)) if m else None
+
+
+# 506's authoring hex palette (the values in each page's color-key comment)
+# mapped to the canonical map-fill color names. These hexes are lighter/darker
+# than the rendered PNG fills, so they identify the color by NAME only.
+AUTHORING_HEX_TO_COLOR: dict[str, str] = {
+    "#FF7F7F": "red",
+    "#7F7FFF": "blue",
+    "#6CC182": "green",
+    "#FFFFB3": "yellow",
+    "#E8B577": "orange",
+    "#66FFFF": "light_blue",
+    "#B475C2": "purple",
+    "#855C33": "brown",
+}
+
+
+def hex_to_rgb(value: str) -> tuple[int, int, int] | None:
+    m = re.fullmatch(r"#?([0-9a-fA-F]{6})", value.strip())
+    if not m:
+        return None
+    h = m.group(1)
+    return int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
+
+
+def color_name_from_hex(value: str, page_key: dict[str, str] | None = None) -> str:
+    """Resolve an authoring hex (e.g. '#FF7F7F') to a canonical color name.
+
+    Seasons before 2025 render the legend chip as a colored Unicode block,
+    `<font color='#FF7F7F'>*</font>`, rather than a swatch PNG. Resolution
+    order: the page's own color-key comment, then the known authoring palette,
+    then nearest-hue via classify_rgb.
+    """
+    value = value.strip().upper()
+    if not value:
+        return ""
+    if page_key:
+        # The page comment is authoritative for that page's revision.
+        for name, hexval in page_key.items():
+            if hexval.upper() == value:
+                return canonical_color_name(name)
+    if value in AUTHORING_HEX_TO_COLOR:
+        return AUTHORING_HEX_TO_COLOR[value]
+    rgb = hex_to_rgb(value)
+    if rgb:
+        # Authoring hexes are more saturated than map fills; classify by hue.
+        return classify_rgb(rgb) or ""
+    return ""
+
+
+def legend_chip_color(
+    square: Tag | None,
+    palette: dict[int, str],
+    page_key: dict[str, str] | None,
+    session: requests.Session | None,
+    base_url: str,
+    timeout: int,
+) -> str:
+    """Resolve the coverage color of one legend chip.
+
+    Handles both 506 markup generations:
+      2025+   <div id='square'><img src="nfl/swatches/1.png"></div>
+      2021-24 <div id='square'><font color='#FF7F7F'>*</font></div>
+    """
+    if square is None:
+        return ""
+
+    img = square.find("img", src=re.compile(r"/swatches/\d+\.", re.I))
+    if img is not None:
+        num = swatch_number(img)
+        if num is not None and num in palette:
+            return palette[num]
+        if session:
+            return swatch_color(session, urljoin(base_url, img.get("src") or ""), timeout)
+        return ""
+
+    # Colored-block generation: read the hex from font/span color or CSS.
+    for node in [square] + [n for n in square.find_all(True)]:
+        for attr in ("color", "bgcolor"):
+            val = node.get(attr)
+            if val:
+                name = color_name_from_hex(str(val), page_key)
+                if name:
+                    return name
+        style = node.get("style") or ""
+        m = re.search(r"(?:background(?:-color)?|color)\s*:\s*(#[0-9a-fA-F]{6})", style, re.I)
+        if m:
+            name = color_name_from_hex(m.group(1), page_key)
+            if name:
+                return name
+    return ""
+
+
+def extract_legends_from_html(
+    html: str,
+    session: requests.Session | None = None,
+    base_url: str = "",
+    timeout: int = 25,
+    swatch_palette: dict[int, str] | None = None,
+) -> dict[str, dict[str, str]]:
+    """Map coverage color -> matchup for each network/window slot on the page.
+
+    Uses the structural 506 markup, which has two generations:
+        2025+    <div id='game'>
+                   <div id='square'><img src="nfl/swatches/N.png"></div>
+                   <div id='matchup'>Pittsburgh @ NY Jets</div>
+                   <div id='anncrs'>...</div>
+                 </div>
+        2021-24  <div id='square'><font color='#FF7F7F'>*</font></div>
+    The swatch PNGs are static, site-wide files whose fill colors match the map
+    fills exactly, so swatch number -> color is resolved once per run (see
+    `resolve_swatch_palette`) instead of re-fetched per page. The older
+    colored-block form is resolved via the page's own color-key comment.
+
+    A FOX single-header slot can carry both windows on one map; matchups there
+    are suffixed "(LATE)". Those are recorded under FOX_SINGLE (the map that
+    actually exists) with the marker preserved in the game text.
+    """
     soup = BeautifulSoup(html, "html.parser")
     legends: dict[str, dict[str, str]] = defaultdict(dict)
+    palette = swatch_palette or {}
+    page_key = parse_color_key_comment(html)
 
-    # Pattern 1: explicit color words in text, e.g. "Red: Steelers at Jets".
-    current_slot: str | None = None
-    for element in soup.find_all(["h1", "h2", "h3", "h4", "h5", "p", "li", "div", "td", "b", "strong"]):
-        txt = clean_game_text(element.get_text(" ", strip=True))
-        maybe = infer_slot_from_heading(txt)
-        if maybe and len(txt) < 100:
-            current_slot = maybe
-        m = re.match(r"^\s*(red|blue|green|yellow|orange|purple|pink|gray|grey|light\s*blue|cyan)\s*[:\-]\s*(.+)$", txt, re.I)
-        if m and current_slot:
-            game = clean_game_text(m.group(2))
+    for slot, game_divs in split_slot_sections(soup):
+        for gd in game_divs:
+            color = legend_chip_color(
+                gd.find(id="square") or gd, palette, page_key, session, base_url, timeout
+            )
+            if not color:
+                continue
+
+            matchup_div = gd.find(id="matchup")
+            game = clean_game_text(
+                matchup_div.get_text(" ", strip=True) if matchup_div else ""
+            )
+            if not game:
+                continue
             if GAME_RE.search(game) or "NO GAME" in game.upper():
-                legends[current_slot][canonical_color_name(m.group(1))] = game
+                # Never silently overwrite a differing matchup for the same color.
+                if color in legends[slot] and legends[slot][color] != game:
+                    legends[slot][color] = f"AMBIGUOUS::{legends[slot][color]}||{game}"
+                else:
+                    legends[slot][color] = game
 
-    # Pattern 2: 506 swatch images plus adjacent game text. Swatch numbers are
-    # page-item identifiers, not reliable color identifiers, so inspect the
-    # swatch image itself instead of assuming 1=red, 2=blue, etc.
-    for img in soup.find_all("img"):
-        src = img.get("src") or ""
-        if not re.search(r"/swatches/\d+\.(?:png|gif|jpe?g|webp)", src, re.I):
-            continue
-        color = swatch_color(session, urljoin(base_url, src), timeout) if session else ""
-        if not color:
-            continue
-        slot = nearest_heading_slot(img)
-        if not slot:
-            continue
-        game = nearby_text_after_image(img)
-        game = re.sub(r"^(?:red|blue|green|yellow|orange|purple|pink|gray|grey|light\s*blue|cyan)\s*[:\-]?\s*", "", game, flags=re.I)
-        game = clean_game_text(game)
-        if GAME_RE.search(game) or "NO GAME" in game.upper():
-            legends[slot][color] = game
+    # Fallback for older page layouts: explicit "Red: Team at Team" text lines.
+    if not legends:
+        current_slot: str | None = None
+        for element in soup.find_all(["h1", "h2", "h3", "h4", "h5", "p", "li", "div", "td", "b", "strong"]):
+            txt = clean_game_text(element.get_text(" ", strip=True))
+            maybe = infer_slot_from_heading(txt)
+            if maybe and len(txt) < 100:
+                current_slot = maybe
+            m = re.match(
+                r"^\s*(red|blue|green|yellow|orange|purple|pink|gray|grey|light\s*blue|cyan|brown)\s*[:\-]\s*(.+)$",
+                txt, re.I,
+            )
+            if m and current_slot:
+                game = clean_game_text(m.group(2))
+                if GAME_RE.search(game) or "NO GAME" in game.upper():
+                    legends[current_slot][canonical_color_name(m.group(1))] = game
 
     return {k: dict(v) for k, v in legends.items()}
 
@@ -700,10 +1038,14 @@ def get_week_legends(
     cache: dict[str, Any],
     timeout: int,
     allow_network: bool,
+    swatch_palette: dict[int, str] | None = None,
 ) -> tuple[dict[str, dict[str, str]], str]:
     key = f"{season}-{week}"
-    if key in cache:
-        return cache[key].get("legends", {}), cache[key].get("source", "cache")
+    cached = cache.get(key)
+    # Only reuse a cache entry that actually resolved something; a previously
+    # failed attempt (e.g. a TLS misconfiguration) must be retried.
+    if cached and cached.get("legends"):
+        return cached["legends"], cached.get("source", "cache")
     if not allow_network:
         return {}, "network_disabled"
 
@@ -725,13 +1067,36 @@ def get_week_legends(
         try:
             resp = session.get(url, timeout=timeout, allow_redirects=True)
             resp.raise_for_status()
-            legends = extract_legends_from_html(resp.text, session=session, base_url=resp.url, timeout=timeout)
+            legends = extract_legends_from_html(
+                resp.text, session=session, base_url=resp.url,
+                timeout=timeout, swatch_palette=swatch_palette,
+            )
             if legends:
-                cache[key] = {"source": url, "legends": legends}
+                # Record which map filenames this page references so a
+                # legend/map revision mismatch is detectable after the fact.
+                page_maps = sorted(set(re.findall(
+                    r'src="((?:\d{4}/)?\d{2}-(?:CBS|FOX)[^"]*\.png)"', resp.text, re.I
+                )))
+                cache[key] = {
+                    "source": url,
+                    "legends": legends,
+                    "color_key": parse_color_key_comment(resp.text),
+                    "page_map_images": page_maps,
+                    "tls_mode": getattr(session, "tls_mode", "unknown"),
+                    "fetched_at": _utc_now(),
+                }
                 return legends, url
         except requests.RequestException as e:
-            errors.append(f"{url}: {e}")
-    cache[key] = {"source": "failed", "legends": {}, "errors": errors}
+            errors.append(f"{url}: {type(e).__name__}: {str(e)[:200]}")
+        except Exception as e:  # parsing problems should not abort the run
+            errors.append(f"{url}: parse {type(e).__name__}: {str(e)[:200]}")
+    cache[key] = {
+        "source": "failed",
+        "legends": {},
+        "errors": errors,
+        "tls_mode": getattr(session, "tls_mode", "unknown"),
+        "fetched_at": _utc_now(),
+    }
     return {}, "failed"
 
 
@@ -739,6 +1104,7 @@ def get_week_legends(
 ASSIGN_FIELDS = [
     "season", "week", "network", "window", "map_slot",
     "dma_code", "dma_name", "coverage_color", "game",
+    "away_team", "home_team", "effective_window",
     "confidence", "colored_sample_share", "valid_samples", "total_samples",
     "sample_counts", "classification_status", "review_flag",
     "map_source", "map_revision", "map_image_url", "map_local_path", "map_sha256",
@@ -748,12 +1114,15 @@ ASSIGN_FIELDS = [
 DIAG_FIELDS = [
     "season", "week", "network", "window", "map_slot", "selected_image_url",
     "selected_local_path", "page_source", "map_revision", "sha256", "width", "height",
-    "legend_source", "legend_colors", "dma_rows", "ok_rows", "review_rows", "notes",
+    "legend_source", "legend_status", "legend_color_count", "expected_color_count",
+    "unresolved_colors", "legend_colors",
+    "dma_rows", "ok_rows", "review_rows", "notes",
 ]
 
 LEGEND_REVIEW_FIELDS = [
     "season", "week", "network", "window", "map_slot", "coverage_color",
-    "dma_count", "selected_image_url", "legend_source", "reason",
+    "dma_count", "selected_image_url", "legend_source", "legend_page_images",
+    "revision_mismatch", "reason",
 ]
 
 
@@ -783,6 +1152,11 @@ def main() -> int:
     p.add_argument("--timeout", type=int, default=25)
     p.add_argument("--no-network-legends", action="store_true",
                    help="do not fetch 506 pages; output colors and rely on --legend-csv/cache")
+    p.add_argument("--insecure-tls", action="store_true",
+                   help="skip TLS verification (corporate TLS-inspection networks). "
+                        "Recorded in the legend cache as insecure_unverified.")
+    p.add_argument("--refresh-legends", action="store_true",
+                   help="ignore cached legend entries and re-fetch")
     p.add_argument("--season", type=int, default=None, help="optional single-season filter")
     p.add_argument("--week", type=int, default=None, help="optional single-week filter")
     args = p.parse_args()
@@ -808,12 +1182,21 @@ def main() -> int:
 
     manual_legends = load_legend_override(args.legend_csv)
     cache: dict[str, Any] = {}
-    if args.legend_cache.exists():
+    if args.legend_cache.exists() and not args.refresh_legends:
         try:
             cache = json.loads(args.legend_cache.read_text(encoding="utf-8"))
         except Exception as e:
             log(f"Warning: ignoring unreadable legend cache: {e}")
-    session = make_session()
+    session = make_session(insecure=args.insecure_tls)
+    log(f"TLS mode: {getattr(session, 'tls_mode', 'unknown')}")
+
+    allow_network = not args.no_network_legends
+    swatch_palette, swatch_source = resolve_swatch_palette(session, args.timeout, allow_network)
+    log(f"Swatch palette ({swatch_source}): "
+        + ", ".join(f"{n}={c}" for n, c in sorted(swatch_palette.items())))
+    if swatch_source == "builtin_swatch_table" and allow_network:
+        log("Warning: could not fetch swatch PNGs; using the built-in verified table. "
+            "If this is a TLS error, retry with --insecure-tls or set REQUESTS_CA_BUNDLE.")
 
     by_week: dict[tuple[int, int], list[MapRow]] = defaultdict(list)
     for r in selected:
@@ -825,9 +1208,11 @@ def main() -> int:
 
     for (season, week), week_maps in sorted(by_week.items()):
         auto_legends, legend_source = get_week_legends(
-            session, season, week, week_maps, cache, args.timeout, not args.no_network_legends
+            session, season, week, week_maps, cache, args.timeout, allow_network,
+            swatch_palette=swatch_palette,
         )
-        log(f"[{season} W{week:02d}] {len(week_maps)} final maps; legend source={legend_source}")
+        log(f"[{season} W{week:02d}] {len(week_maps)} final maps; legend source={legend_source}; "
+            f"slots={sorted(auto_legends)}")
 
         for mr in week_maps:
             path = resolve_map_path(mr, args.map_archive, args.manifest)
@@ -870,11 +1255,20 @@ def main() -> int:
                 color = result.get("color", "")
                 if color:
                     colors_seen[color] += 1
-                game = legend.get(color, "") if color else ""
-                legend_status = "resolved" if game else ("not_applicable" if not color else "unresolved")
+                raw_game = legend.get(color, "") if color else ""
+                ambiguous = raw_game.startswith("AMBIGUOUS::")
+                game, window_override = split_window_marker(raw_game)
+                away, home = split_matchup(game)
+                legend_status = (
+                    "ambiguous" if ambiguous
+                    else "resolved" if game
+                    else "not_applicable" if not color
+                    else "unresolved"
+                )
                 review = (
                     result.get("status") != "ok"
                     or (bool(color) and not game)
+                    or ambiguous
                     or float(result.get("confidence", 0.0)) < 0.70
                 )
                 map_rows.append({
@@ -887,6 +1281,9 @@ def main() -> int:
                     "dma_name": dma.dma_name,
                     "coverage_color": color,
                     "game": game,
+                    "away_team": away,
+                    "home_team": home,
+                    "effective_window": window_override or mr.window,
                     "confidence": f"{float(result.get('confidence', 0.0)):.4f}",
                     "colored_sample_share": f"{float(result.get('valid_share', 0.0)):.4f}",
                     "valid_samples": result.get("valid", 0),
@@ -904,17 +1301,43 @@ def main() -> int:
                 })
             assignment_rows.extend(map_rows)
 
+            # If the legend page references a different revision of THIS map than
+            # the one classified, an unresolved color is most likely a genuine
+            # revision difference rather than a parsing failure. Surfacing that
+            # distinction keeps the review queue actionable.
+            page_images = (cache.get(f"{season}-{week}") or {}).get("page_map_images") or []
+            classified_name = Path(urlparse(mr.image_url).path).name
+            same_slot_on_page = [
+                p for p in page_images
+                if normalize_slot(p)[0] == mr.normalized_slot
+            ]
+            mismatch = bool(same_slot_on_page) and all(
+                Path(p).name != classified_name for p in same_slot_on_page
+            )
+
             for color, count in sorted(colors_seen.items()):
                 if color not in legend:
+                    if color == "grey" and count <= 2:
+                        reason = ("grey/unfilled area in a small number of markets; "
+                                  "usually a no-game or sampling artifact, not a legend failure")
+                    elif mismatch:
+                        reason = ("legend page references a different revision of this map "
+                                  f"({', '.join(same_slot_on_page)}) than the classified file "
+                                  f"({classified_name}); color likely belongs to the other revision")
+                    else:
+                        reason = "coverage color found on map but no color->game legend was resolved"
                     legend_review_rows.append({
                         "season": season, "week": week, "network": mr.network, "window": mr.window,
                         "map_slot": mr.normalized_slot, "coverage_color": color, "dma_count": count,
                         "selected_image_url": mr.image_url, "legend_source": legend_source,
-                        "reason": "coverage color found on map but no color->game legend was resolved",
+                        "legend_page_images": ",".join(same_slot_on_page),
+                        "revision_mismatch": str(mismatch).lower(),
+                        "reason": reason,
                     })
 
             ok_rows = sum(1 for r in map_rows if r["classification_status"] == "ok" and r["legend_status"] == "resolved")
             review_rows = sum(1 for r in map_rows if r["review_flag"] == "true")
+            unresolved = sorted(c for c in colors_seen if c not in legend)
             diag_rows.append({
                 "season": season, "week": week, "network": mr.network, "window": mr.window,
                 "map_slot": mr.normalized_slot, "selected_image_url": mr.image_url,
@@ -922,6 +1345,14 @@ def main() -> int:
                 "map_revision": mr.revision, "sha256": mr.sha256,
                 "width": image.width, "height": image.height,
                 "legend_source": legend_source,
+                "legend_status": (
+                    "resolved" if legend and not unresolved
+                    else "partial" if legend
+                    else "failed"
+                ),
+                "legend_color_count": len(legend),
+                "expected_color_count": len(colors_seen),
+                "unresolved_colors": ",".join(unresolved),
                 "legend_colors": json.dumps(legend, sort_keys=True),
                 "dma_rows": len(map_rows), "ok_rows": ok_rows, "review_rows": review_rows,
                 "notes": "",

@@ -21,6 +21,66 @@
   .team-picker label{color:#526078;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
   .team-picker select{border:0;outline:0;background:transparent;color:#10213a;font:inherit;font-size:13px;font-weight:900;padding:7px 28px 7px 4px;cursor:pointer;max-width:280px}
   .zip-input{width:78px;border:0;outline:0;background:transparent;color:#10213a;font:inherit;font-size:13px;font-weight:900;padding:7px 3px;letter-spacing:.03em}.zip-input::placeholder{color:#9aa5b4;font-weight:700}.zip-set{box-shadow:none;border-radius:8px;padding:6px 8px;background:#edf2f8;color:#25405f;font-size:10px}.zip-set:disabled{opacity:.55}.market-status.resolving{opacity:.72}.market-status.error{background:rgba(255,220,220,.14);border-color:rgba(255,220,220,.22);color:#ffe4e4}.market-status.ready{background:rgba(213,240,224,.14);border-color:rgba(213,240,224,.24);color:#e4f8eb}
+  /* Local CBS/FOX coverage badges. Green = local, grey = out of market,
+     amber = the prediction is genuinely uncertain for this market. */
+  /* Day cells are a fixed height with overflow hidden, so the badge must stay
+     compact or it pushes the service row out of view. */
+  .cov{display:inline-flex;align-items:center;gap:3px;border-radius:999px;padding:1px 5px;font-size:8px;font-weight:950;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;margin-top:2px;flex:0 0 auto;max-width:100%;overflow:hidden}
+  .cov-local{background:#e3f6ea;color:#1c6b3a}
+  .cov-out{background:#eef1f5;color:#6b7889}
+  .cov-maybe{background:#fdf1dc;color:#8a5a12}
+  .cov-dot{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.75}
+  .games-stack.division-compact .cov{display:none}
+  /* Compact division tiles are too small for text, so likelihood shows as a
+     band across the bottom edge. Same three tones as the text badges. */
+  .game{position:relative}
+  .cov-stripe{display:block;position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:0 0 9px 9px}
+  .cov-stripe-local{background:#2f9e5f}
+  .cov-stripe-maybe{background:#e0a132}
+  .cov-stripe-out{background:#b3bdca}
+  .games-stack.division-compact .game{padding-bottom:8px}
+  .game:has(.cov){padding:5px 6px}
+  .game:has(.cov) .time{margin-top:1px}
+  .game:has(.cov) .watch{padding-top:2px;gap:4px;margin-top:auto}
+  .game:has(.cov) .cov{margin-top:2px;align-self:flex-start}
+  .game:has(.cov) .service-icon{height:19px;min-width:25px;font-size:8px;border-radius:6px}
+  .detail-cov{margin-top:4px;font-size:10px;font-weight:850;line-height:1.35}
+  .detail-cov .cov{margin-top:0}
+  .detail-cov-note{color:#6b7889;font-size:9px;font-weight:800;margin-top:3px;line-height:1.3}
+  /* Coverage map */
+  .cov-map{margin-top:6px}
+  .cov-map-svg{width:100%;height:auto;display:block;background:#fbfcfe;border:1px solid #e2e7ef;border-radius:9px}
+  .cov-map-svg path{transition:opacity .12s}
+  .cov-map-svg:hover path{opacity:.82}
+  .cov-map-svg path:hover{opacity:1;stroke:#22364f;stroke-width:1.1}
+  .cov-map-legend{display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin-top:5px;font-size:8px;font-weight:900;color:#6b7889;text-transform:uppercase;letter-spacing:.03em}
+  .cov-map-swatch{display:inline-block;width:11px;height:11px;border-radius:3px;border:1px solid rgba(0,0,0,.08);vertical-align:middle;margin-right:2px}
+  .cov-map-key{display:inline-flex;align-items:center}
+  .cov-map-caption{font-size:9px;font-weight:800;color:#6b7889;margin-top:4px;line-height:1.35}
+  /* The detail panel is a fixed ~300px column, too narrow to read individual
+     markets, so the map opens full-size in an overlay on click. */
+  .cov-map-svg{cursor:zoom-in}
+  .cov-map-hint{font-size:8px;font-weight:900;color:#8290a3;text-transform:uppercase;letter-spacing:.04em;margin-top:3px}
+  .cov-modal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;background:rgba(12,24,40,.55);padding:24px}
+  .cov-modal.open{display:flex}
+  .cov-modal-inner{background:#fff;border-radius:18px;box-shadow:var(--shadow);padding:16px;max-width:min(1000px,94vw);max-height:92vh;overflow:auto;position:relative}
+  .cov-modal-inner .cov-map-svg{cursor:default;max-height:none}
+  .cov-modal-title{font-size:15px;font-weight:950;color:#12233f;padding-right:34px}
+  .cov-modal-sub{font-size:10px;font-weight:800;color:#6b7889;margin-top:2px}
+  .cov-modal-close{position:absolute;top:12px;right:12px;border:0;background:#eef2f7;color:#25405f;border-radius:9px;width:26px;height:26px;font-size:15px;font-weight:900;cursor:pointer;line-height:1}
+  .cov-modal .cov-map-legend{font-size:10px;gap:9px}
+  .cov-modal .cov-map-swatch{width:14px;height:14px}
+  .cov-modal .cov-map-caption{font-size:11px}
+  /* Winner map legend: one row per competing game. Rows are the relief channel
+     for the sub-3:1 green fill, so they are always shown, never color-alone. */
+  .cov-win-legend{display:flex;flex-direction:column;gap:2px;margin-top:5px}
+  .cov-win-row{display:flex;align-items:center;gap:5px;font-size:9px;font-weight:850;color:#33425b;line-height:1.3}
+  .cov-win-row .cov-map-swatch{margin-right:0;flex:0 0 auto}
+  .cov-win-game{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cov-win-count{color:#6b7889;font-weight:800;font-variant-numeric:tabular-nums;flex:0 0 auto}
+  .cov-win-home{color:#1c6b3a;font-weight:950}
+  .cov-modal .cov-win-row{font-size:11px}
+  @media (max-width:820px){.cov{font-size:7px;padding:2px 5px}}
   .toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:22px 0 14px;flex-wrap:wrap}
   .month-nav{display:flex;align-items:center;gap:10px}
   button{border:0;background:#fff;color:var(--navy);box-shadow:0 5px 18px rgba(16,33,58,.08);border-radius:12px;padding:10px 13px;font-weight:800;cursor:pointer}
@@ -68,7 +128,7 @@
   .dow{display:grid;grid-template-columns:repeat(7,1fr);background:#f3f6fa;border-bottom:1px solid var(--line)}
   .dow div{padding:12px;text-align:center;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:900;color:#63718a}
   .grid{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:126px}
-  .day{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:9px 9px 10px;position:relative;min-width:0;background:#fff;box-sizing:border-box;overflow:hidden;display:flex;flex-direction:column}
+  .day{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:9px 9px 6px;position:relative;min-width:0;background:#fff;box-sizing:border-box;overflow:hidden;display:flex;flex-direction:column}
   .day:nth-child(7n){border-right:0} .day.out{background:#fafbfd;color:#a8b0be}
   .day-head{display:flex;align-items:center;gap:6px;width:100%;min-width:0;flex:0 0 auto}
   .date{font-size:12px;font-weight:900;width:27px;height:27px;display:flex;align-items:center;justify-content:center;border-radius:8px;flex:0 0 auto}
@@ -84,7 +144,7 @@
   .bye-tag{margin-top:auto;align-self:flex-start;background:#6f7782;color:#fff;border-radius:999px;padding:4px 7px;font-size:8px;font-weight:950;letter-spacing:.08em;line-height:1;text-transform:uppercase}
   .games-stack{margin-top:6px;display:flex;flex-direction:column;gap:4px;flex:1;min-height:0;overflow:hidden}
   .game{border-radius:12px;border:1px solid #d9e2ef;background:linear-gradient(180deg,#fff,#f9fbff);padding:7px;box-shadow:0 4px 12px rgba(21,44,77,.06);overflow:hidden;box-sizing:border-box;width:100%;max-width:100%;min-width:0;flex:1;min-height:0;display:flex;flex-direction:column}
-  .matchup{font-size:12px;font-weight:900;line-height:1.25;color:#12233f;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden} .time{font-size:10px;color:#66758c;font-weight:700;margin-top:3px}
+  .matchup{font-size:12px;font-weight:900;line-height:1.25;color:#12233f;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;min-height:15px;max-height:2.5em} .time{font-size:10px;color:#66758c;font-weight:700;margin-top:3px}
   .games-stack.multi{gap:3px}
   .games-stack.division-compact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:4px;align-items:stretch;justify-items:stretch}
   .games-stack.division-compact .game{width:100%;height:100%;min-height:0;padding:4px;border-radius:7px;box-shadow:none;display:flex;align-items:center;justify-content:center;background:#fbfcfe}
@@ -118,7 +178,7 @@
     <h1 id="title"></h1>
     <p class="subtitle">A month-by-month view of every scheduled game and the service you need to watch it.</p>
     <div class="team-picker"><div class="picker-field"><label for="viewMode">View</label><select id="viewMode"><option value="team" selected>Team</option><option value="division">Division</option></select></div><div class="picker-field"><label for="selectionSelect" id="selectionLabel">Team</label><select id="selectionSelect"></select></div><div class="picker-field viewing-field"><label for="viewingZip">Viewing ZIP</label><input class="zip-input" id="viewingZip" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="ZIP" aria-label="Viewing ZIP code"><button type="button" class="zip-set" id="setViewingZip">Set</button></div></div>
-    <div class="meta"><span>Times shown in ET</span><span>Sunday 1:00 / 4:00 windows = NFL Sunday Ticket</span><span>Late flex assignments remain TBD</span><span class="market-status" id="marketStatus">Local market: not set</span></div>
+    <div class="meta"><span>Times shown in ET</span><span id="sundayWindowNote">Sunday 1:00 / 4:00 windows = NFL Sunday Ticket</span><span>Late flex assignments remain TBD</span><span class="market-status" id="marketStatus">Local market: not set</span></div>
   </section>
   <div class="toolbar">
     <div class="month-nav"><button id="prev" aria-label="Previous month">←</button><div id="monthLabel"></div><button id="next" aria-label="Next month">→</button></div>
@@ -126,7 +186,7 @@
   </div>
   <div class="calendar-stage" id="calendarStage"><section class="calendar-shell"><div class="dow"><div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div></div><div class="grid" id="calendar"></div></section><aside class="daily-slate" id="dailySlate" aria-live="polite"></aside><aside class="game-detail" id="gameDetail" aria-live="polite"></aside><aside class="fantasy-detail" id="fantasyDetail" aria-live="polite"></aside></div>
   <div class="below">
-    <section class="panel"><h2>Watch-service legend</h2><div class="legend" id="legend"></div><div class="note">Sunday afternoon games in the 1 p.m. and 4 p.m. windows are intentionally labeled NFL Sunday Ticket rather than their underlying CBS/FOX assignment.</div></section>
+    <section class="panel"><h2>Watch-service legend</h2><div class="legend" id="legend"></div><div class="note"><span id="legendCoverageNote">Sunday afternoon games in the 1 p.m. and 4 p.m. windows are intentionally labeled NFL Sunday Ticket rather than their underlying CBS/FOX assignment.</span></div></section>
     <section class="panel"><h2 id="flexHeading">Flex / date TBD</h2><div class="flex-list" id="flexList"></div></section>
   </div>
   <div class="footer">2026 regular-season schedule. Network and streaming assignments remain subject to NFL flex changes.</div>
@@ -134,6 +194,11 @@
 <script src="odds-data.js"></script>
 <script src="fantasy-data.js"></script>
 <script src="local-market-data.js"></script>
+<script src="dma-assignments.js"></script>
+<script src="dma-model.js"></script>
+<script src="dma-geometry.js"></script>
+<script src="local-coverage.js"></script>
+<script src="coverage-map.js"></script>
 <script>
 const TEAM_NAMES={"ARI":"Arizona Cardinals","ATL":"Atlanta Falcons","BAL":"Baltimore Ravens","BUF":"Buffalo Bills","CAR":"Carolina Panthers","CHI":"Chicago Bears","CIN":"Cincinnati Bengals","CLE":"Cleveland Browns","DAL":"Dallas Cowboys","DEN":"Denver Broncos","DET":"Detroit Lions","GB":"Green Bay Packers","HOU":"Houston Texans","IND":"Indianapolis Colts","JAX":"Jacksonville Jaguars","KC":"Kansas City Chiefs","LV":"Las Vegas Raiders","LAC":"Los Angeles Chargers","LAR":"Los Angeles Rams","MIA":"Miami Dolphins","MIN":"Minnesota Vikings","NE":"New England Patriots","NO":"New Orleans Saints","NYG":"New York Giants","NYJ":"New York Jets","PHI":"Philadelphia Eagles","PIT":"Pittsburgh Steelers","SF":"San Francisco 49ers","SEA":"Seattle Seahawks","TB":"Tampa Bay Buccaneers","TEN":"Tennessee Titans","WAS":"Washington Commanders"};
 const TEAM_COLORS={"ARI":"#97233F","ATL":"#A71930","BAL":"#241773","BUF":"#00338D","CAR":"#0085CA","CHI":"#0B162A","CIN":"#FB4F14","CLE":"#311D00","DAL":"#003594","DEN":"#FB4F14","DET":"#0076B6","GB":"#203731","HOU":"#03202F","IND":"#002C5F","JAX":"#006778","KC":"#E31837","LV":"#000000","LAC":"#0080C6","LAR":"#003594","MIA":"#008E97","MIN":"#4F2683","NE":"#002244","NO":"#D3BC8D","NYG":"#0B2265","NYJ":"#125740","PHI":"#004C54","PIT":"#FFB612","SF":"#AA0000","SEA":"#002244","TB":"#D50A0A","TEN":"#0C2340","WAS":"#5A1414"};
@@ -147,7 +212,32 @@ let selectedSlateDate=null;
 let selectedGame=null;
 let viewingMarket=null;
 function setMarketStatus(text,state=''){marketStatus.textContent=text;marketStatus.className='market-status'+(state?' '+state:'');}
-function clearViewingLocation(){viewingMarket=null;localStorage.removeItem('nflViewingZip');viewingZip.value='';setMarketStatus('Local market: not set');}
+function clearViewingLocation(){viewingMarket=null;localStorage.removeItem('nflViewingZip');viewingZip.value='';setMarketStatus('Local market: not set');refreshCoverageViews();}
+// Coverage badges depend on the viewing market, so re-render after it changes.
+// Guarded because this runs before render() is defined during initial load.
+// The default copy tells viewers that Sunday afternoon games are labeled
+// Sunday Ticket. Once a ZIP resolves that is no longer true for their market,
+// so both notes are rewritten to describe what they are actually seeing.
+function updateCoverageCopy(){
+  const note=document.getElementById('sundayWindowNote');
+  const legend=document.getElementById('legendCoverageNote');
+  const hasModel=!!(window.NFL_LOCAL_COVERAGE&&window.NFL_DMA_MODEL);
+  if(note)note.textContent=viewingMarket
+    ?'Sunday 1:00 / 4:00 windows: local vs Sunday Ticket by market'
+    :'Sunday 1:00 / 4:00 windows = NFL Sunday Ticket';
+  if(legend)legend.textContent=viewingMarket
+    ?'Sunday afternoon CBS/FOX games are marked local or NFL Sunday Ticket for your market: likely 60%+, maybe 35-60%, possibly 15-35%. Percentages are projections from 2021-2025 coverage maps (about 73% accurate on a single pick); labels without a percentage are confirmed. National CBS/FOX/NBC/ABC games are local everywhere.'
+    :(hasModel
+      ?'Sunday afternoon games in the 1 p.m. and 4 p.m. windows are labeled NFL Sunday Ticket. Enter a viewing ZIP to see which are available locally on CBS/FOX.'
+      :'Sunday afternoon games in the 1 p.m. and 4 p.m. windows are intentionally labeled NFL Sunday Ticket rather than their underlying CBS/FOX assignment.');
+}
+function refreshCoverageViews(){
+  updateCoverageCopy();
+  if(typeof render!=='function')return;
+  render();
+  if(selectedGame)openGameDetail(selectedGame,null);
+  if(selectedSlateDate){const d=selectedSlateDate;closeSlate();openSlate(d,null);}
+}
 async function applyViewingZip(rawZip){
   const zip=String(rawZip||'').trim();
   if(!zip){clearViewingLocation();return;}
@@ -158,10 +248,207 @@ async function applyViewingZip(rawZip){
     const market=await window.NFL_LOCAL_MARKET.resolveZip(zip);viewingMarket=market;localStorage.setItem('nflViewingZip',zip);viewingZip.value=zip;
     const name=market.dma_name||`DMA ${market.dma_code}`;setMarketStatus(`Local market: ${name} · DMA ${market.dma_code}`,'ready');
     marketStatus.title=`ZIP ${zip} · ${market.method==='direct-table'?'Direct ZIP/DMA lookup':'ZIP-centroid/DMA-boundary fallback'}`;
-  }catch(err){viewingMarket=null;setMarketStatus(`Local market: ${err.message||'ZIP not resolved'}`,'error');}
+    refreshCoverageViews();
+  }catch(err){viewingMarket=null;setMarketStatus(`Local market: ${err.message||'ZIP not resolved'}`,'error');refreshCoverageViews();}
   finally{setViewingZip.disabled=false;}
 }
 function initViewingLocation(){const saved=localStorage.getItem('nflViewingZip');if(saved){viewingZip.value=saved;applyViewingZip(saved);}}
+// ---- Local CBS/FOX coverage ----
+// Resolves whether a Sunday-afternoon CBS/FOX game is the local broadcast for
+// the viewer's DMA. Returns null when there is no ZIP set, or when the game is
+// not a CBS/FOX afternoon game (its own service label already applies).
+function coverageFor(g){
+  if(!viewingMarket||!window.NFL_LOCAL_COVERAGE)return null;
+  try{return window.NFL_LOCAL_COVERAGE.resolve(viewingMarket.dma_code,g,GAMES);}
+  catch(err){console.warn('Local coverage lookup failed',err);return null;}
+}
+// When coverage resolves this game as the local broadcast, the base schedule's
+// generic "NFL Sunday Ticket" label is wrong for this viewer: they watch it on
+// the network. Returns the service label/meta to display for the current market.
+const NETWORK_SERVICE={CBS:'Paramount+',FOX:'FOX One'};
+function displayService(g){
+  const c=coverageFor(g);
+  // Only override on a CONFIRMED local broadcast. A mere projection keeps the
+  // conservative Sunday Ticket label so a ~73% guess never reads as fact.
+  // National broadcasts already carry a correct network-ish service label
+  // (Peacock for NBC, FOX One, Paramount+), so they are left alone.
+  if(c&&c.isLocal&&c.confident&&(c.source==='actual'||c.source==='certain')){
+    const svc=NETWORK_SERVICE[g.broadcast];
+    if(svc)return {service:`${g.broadcast} (local)`,meta:SERVICE_META[svc]};
+  }
+  return {service:g.service,meta:SERVICE_META[g.service]||SERVICE_META['Streaming TBD']};
+}
+// Maps a coverage result to the badge's CSS class, text and tooltip.
+// Bands are thresholds on THIS game's own probability (see local-coverage.js):
+// likely >=60%, maybe >=35%, possibly >=15%, below that Sunday Ticket.
+function coverageParts(c,g){
+  const own=Math.round((c.ownProbability!=null?c.ownProbability:0)*100);
+  const lead=Math.round((c.confidence||0)*100);
+  if(c.source==='national')
+    return {cls:'cov-local',text:'Local',
+      title:`National ${g.broadcast} broadcast — carried by your local ${g.broadcast} affiliate everywhere.`};
+  if(c.source==='certain')
+    return {cls:'cov-local',text:'Local',
+      title:`Only ${g.broadcast} game in this window, so every ${g.broadcast} market carries it.`};
+  if(c.source==='actual')
+    return c.isLocal
+      ? {cls:c.band==='maybe'?'cov-maybe':'cov-local',text:c.band==='maybe'?`Local (boundary ${lead}%)`:'Local',
+         title:c.band==='maybe'
+           ?`Published 506 map places this market on a coverage boundary (${lead}% of sampled area).`
+           :'Confirmed from the published 506 coverage map.'}
+      : {cls:'cov-out',text:'Sunday Ticket',
+         title:`Published 506 map: this market receives ${c.localGame}.`};
+  // Projected.
+  if(c.band==='likely')
+    return {cls:'cov-local',text:`Likely local ${own}%`,
+      title:`Projected local broadcast (${own}%). Not yet confirmed — the weekly coverage map is unpublished.`};
+  if(c.band==='maybe')
+    return {cls:'cov-maybe',text:`Maybe local ${own}%`,
+      title:`Could go either way (${own}%). Most likely local game for this market: ${c.localGame} (${lead}%).`};
+  if(c.band==='possibly')
+    return {cls:'cov-maybe',text:`Possibly local ${own}%`,
+      title:`Outside chance (${own}%). Projected local game: ${c.localGame} (${lead}%).`};
+  return {cls:'cov-out',text:'Sunday Ticket',
+    title:`Projected local ${g.broadcast} game: ${c.localGame} (${lead}%). This game would need NFL Sunday Ticket${own>=5?` — only a ${own}% chance locally`:''}.`};
+}
+function coverageBadge(g){
+  const c=coverageFor(g);
+  if(!c)return '';
+  const p=coverageParts(c,g);
+  return `<span class="cov ${p.cls}" title="${p.title.replace(/"/g,'&quot;')}"><span class="cov-dot"></span>${p.text}</span>`;
+}
+// Division mode hides text badges (tiles are tiny), so likelihood is conveyed
+// as a colored band along the bottom of the tile instead.
+function coverageStripe(g){
+  const c=coverageFor(g);
+  if(!c)return '';
+  const p=coverageParts(c,g);
+  const tone=p.cls==='cov-local'?'local':p.cls==='cov-maybe'?'maybe':'out';
+  return `<span class="cov-stripe cov-stripe-${tone}" title="${p.title.replace(/"/g,'&quot;')}"></span>`;
+}
+function coverageDetail(g){
+  const c=coverageFor(g);
+  if(!c)return '';
+  const p=coverageParts(c,g);
+  const own=Math.round((c.ownProbability!=null?c.ownProbability:0)*100);
+  const lead=Math.round((c.confidence||0)*100);
+  const market=viewingMarket.dma_name||('DMA '+viewingMarket.dma_code);
+  const heading=c.source==='national'?'Local availability · nationwide':`Local availability · ${market}`;
+  const body=`<span class="cov ${p.cls}"><span class="cov-dot"></span>${
+    c.source==='national'||c.source==='certain'?`Local on ${g.broadcast}`:p.text}</span>`;
+  let note;
+  if(c.source==='national')
+    note=`Single national ${g.broadcast} broadcast — every market's ${g.broadcast} affiliate carries it, so no NFL Sunday Ticket is needed.`;
+  else if(c.source==='certain')
+    note=`Only ${g.broadcast} game in this window, so every ${g.broadcast} market carries it.`;
+  else if(c.source==='actual')
+    note=c.isLocal
+      ?`Confirmed from the published 506 coverage map for ${market}.`
+       +(c.band==='maybe'?` This market straddles a coverage boundary (${lead}% of sampled area).`:'')
+      :`Published 506 map: ${market} receives ${c.localGame} in this window, so this game requires NFL Sunday Ticket.`;
+  else{
+    note=c.isLocal
+      ?`Projected for ${market} at ${own}%. Not yet confirmed — the weekly coverage map has not been published.`
+      :`${market} is projected to receive ${c.localGame} (${lead}%). This game's own chance here is ${own}%.`;
+    if(c.alternatives.length&&c.band!=='likely')
+      note+=` Closest alternative: ${c.alternatives[0].game}.`;
+    note+=' Projections are about 73% accurate on a single pick.';
+  }
+  return `<div class="detail-field wide"><div class="detail-label">${heading}</div><div class="detail-value detail-cov">${body}<div class="detail-cov-note">${note}</div></div></div>`;
+}
+// Nationwide coverage map for a network game. Independent of the viewing ZIP:
+// it shows every market at once, so it renders even with no ZIP set.
+function coverageMapMarkup(g){
+  if(!window.NFL_COVERAGE_MAP)return '';
+  let r;
+  try{r=window.NFL_COVERAGE_MAP.render(g,GAMES,{width:560});}
+  catch(err){console.warn('Coverage map failed',err);return '';}
+  if(!r||!r.svg)return '';
+  const F=window.NFL_COVERAGE_MAP.fillFor;
+  const key=(color,text)=>`<span class="cov-map-key"><span class="cov-map-swatch" style="background:${color}"></span>${text}</span>`;
+  const legend=r.confirmed
+    ?key(F(1,true),'Local')+key(F(0,true),'Sunday Ticket')
+    :key(F(.9),'85%+')+key(F(.7),'60-85%')+key(F(.45),'35-60%')+key(F(.2),'15-35%')+key(F(0),'Under 15%');
+  const pct=Math.round(100*r.marketsLocal/r.marketsTotal);
+  const caption=r.confirmed
+    ?`Published 506 coverage: this game aired in ${r.marketsLocal} of ${r.marketsTotal} markets (${pct}%).`
+    :`Projected local coverage. Leading in ${r.marketsLocal} of ${r.marketsTotal} markets (${pct}%). Hover a market for its probability. Alaska and Hawaii are not shown.`;
+  const gi=GAMES.indexOf(g);
+  return `<div class="detail-field wide"><div class="detail-label">Coverage map · ${g.broadcast}</div>`
+    +`<div class="cov-map" data-map-game="${gi}" role="button" tabindex="0" title="Click to enlarge">`
+    +`${r.svg}<div class="cov-map-legend">${legend}</div>`
+    +`<div class="cov-map-caption">${caption}</div>`
+    +`<div class="cov-map-hint">Click to enlarge</div></div></div>`;
+}
+// Second map: which of the competing games leads in each market. Only shown
+// when 2+ games share the network/window, since otherwise there is nothing to
+// compare. Hovering a market lists every game's probability there.
+// bare=true returns just the map + legend + caption, for the enlarged modal.
+function winnerMapMarkup(g,width,bare){
+  if(!window.NFL_COVERAGE_MAP||!window.NFL_COVERAGE_MAP.renderWinners)return '';
+  let r;
+  try{r=window.NFL_COVERAGE_MAP.renderWinners(g,GAMES,
+      {width:width||560,homeDma:viewingMarket?viewingMarket.dma_code:null,
+       teamColors:TEAM_COLORS});}
+  catch(err){console.warn('Winner map failed',err);return '';}
+  if(!r||!r.svg)return '';
+  const rows=r.legend.map(l=>
+    `<div class="cov-win-row"><span class="cov-map-swatch" style="background:${l.color}"></span>`
+    +`<span class="cov-win-game">${l.game}${l.isHome?' <span class="cov-win-home">· your market</span>':''}</span>`
+    +`<span class="cov-win-count">${l.markets}</span></div>`).join('');
+  const tossNote=r.tossupCount
+    ? ` <b>Striped</b> markets are too close to call — the stripes are the two games' colors.`
+    : '';
+  const note=r.confirmed
+    ?'Published 506 coverage. Colors are each game\'s home-team color; counts are markets that aired each game.'
+    :`Most likely local game per market, from ${r.fieldSize} competing ${g.broadcast} games, colored by home team. Counts are markets each game leads. Hover a market for every game's probability.`+tossNote;
+  const core=`${r.svg}<div class="cov-win-legend">${rows}</div>`
+    +`<div class="cov-map-caption">${note}</div>`;
+  if(bare)return `<div class="cov-map">${core}</div>`;
+  return `<div class="detail-field wide"><div class="detail-label">Most likely game by market</div>`
+    +`<div class="cov-map" data-winmap-game="${GAMES.indexOf(g)}" role="button" tabindex="0" title="Click to enlarge">`
+    +core+`<div class="cov-map-hint">Click to enlarge</div></div></div>`;
+}
+// Enlarged coverage map. Rendered at a bigger width so market outlines and the
+// hover tooltips are actually usable.
+function openWinnerModal(g){
+  const modal=document.getElementById('covModal'),inner=document.getElementById('covModalInner');
+  if(!modal||!inner)return;
+  const inner_html=winnerMapMarkup(g,940,true);
+  if(!inner_html)return;
+  inner.innerHTML=`<button class="cov-modal-close" id="covModalClose" aria-label="Close coverage map">×</button>`
+    +`<div class="cov-modal-title">Most likely local game · Week ${g.week} ${g.broadcast}</div>`
+    +`<div class="cov-modal-sub">${TEAM_NAMES[g.away]} ${g.neutral?'vs':'at'} ${TEAM_NAMES[g.home]} and competing games · ${g.time} ET</div>`
+    +inner_html;
+  modal.classList.add('open');
+  document.getElementById('covModalClose').onclick=closeCoverageModal;
+}
+function openCoverageModal(g){
+  const modal=document.getElementById('covModal'),inner=document.getElementById('covModalInner');
+  if(!modal||!inner||!window.NFL_COVERAGE_MAP)return;
+  let r; try{r=window.NFL_COVERAGE_MAP.render(g,GAMES,{width:940});}catch(err){return;}
+  if(!r||!r.svg)return;
+  const F=window.NFL_COVERAGE_MAP.fillFor;
+  const key=(c,t)=>`<span class="cov-map-key"><span class="cov-map-swatch" style="background:${c}"></span>${t}</span>`;
+  const legend=r.confirmed
+    ?key(F(1,true),'Local')+key(F(0,true),'Sunday Ticket')
+    :key(F(.9),'85%+')+key(F(.7),'60-85%')+key(F(.45),'35-60%')+key(F(.2),'15-35%')+key(F(0),'Under 15%');
+  const pct=Math.round(100*r.marketsLocal/r.marketsTotal);
+  const caption=r.confirmed
+    ?`Published 506 coverage: aired in ${r.marketsLocal} of ${r.marketsTotal} markets (${pct}%).`
+    :`Projected local coverage, leading in ${r.marketsLocal} of ${r.marketsTotal} markets (${pct}%). Hover any market for its probability. Projections are about 73% accurate on a single pick; Alaska and Hawaii are not shown.`;
+  inner.innerHTML=`<button class="cov-modal-close" id="covModalClose" aria-label="Close coverage map">×</button>`
+    +`<div class="cov-modal-title">${TEAM_NAMES[g.away]} ${g.neutral?'vs':'at'} ${TEAM_NAMES[g.home]}</div>`
+    +`<div class="cov-modal-sub">Week ${g.week} · ${g.broadcast} · ${g.time} ET</div>`
+    +`<div class="cov-map">${r.svg}<div class="cov-map-legend">${legend}</div>`
+    +`<div class="cov-map-caption">${caption}</div></div>`;
+  modal.classList.add('open');
+  document.getElementById('covModalClose').onclick=closeCoverageModal;
+}
+function closeCoverageModal(){
+  const modal=document.getElementById('covModal');
+  if(modal){modal.classList.remove('open');document.getElementById('covModalInner').innerHTML='';}
+}
 const ODDS_DATA=(window.NFL_ODDS_DATA&&Array.isArray(window.NFL_ODDS_DATA.games))?window.NFL_ODDS_DATA:{fetched_at:null,games:[]};
 function formatAmerican(v){if(v===null||v===undefined||v==='')return '—';const n=Number(v);if(Number.isNaN(n))return String(v);return n>0?`+${n}`:`${n}`;}
 function formatPoint(v){if(v===null||v===undefined||v==='')return '—';const n=Number(v);if(Number.isNaN(n))return String(v);return n>0?`+${n}`:`${n}`;}
@@ -177,7 +464,7 @@ function openFantasyDetail(g){fantasyDetail.innerHTML=fantasyMarkup(g);fantasyDe
 function closeFantasyDetail(){fantasyDetail.classList.remove('open');fantasyDetail.innerHTML='';}
 function gameDateLabel(g){const d=new Date(g.date+'T12:00:00');return d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});}
 function closeGameDetail(){selectedGame=null;gameDetail.classList.remove('open');gameDetail.innerHTML='';closeFantasyDetail();document.querySelectorAll('.game.detail-active').forEach(x=>x.classList.remove('detail-active'));}
-function openGameDetail(g,trigger){selectedGame=g;document.querySelectorAll('.game.detail-active').forEach(x=>x.classList.remove('detail-active'));if(trigger)trigger.classList.add('detail-active');const meta=SERVICE_META[g.service]||SERVICE_META['Streaming TBD'];const locationText=g.neutral?(g.location||'Neutral site'):'Not separately listed';const status=g.flex?'Flex / assignment TBD':'Scheduled';gameDetail.innerHTML=`<div class="detail-head"><div><div class="detail-kicker">Game details</div><div class="detail-title">${mascotName(g.away)} ${g.neutral?'vs':'at'} ${mascotName(g.home)}</div></div><button class="detail-close" id="detailClose" aria-label="Close game details">×</button></div><div class="detail-body"><div class="detail-matchup"><div class="detail-team"><div class="detail-team-code">${g.away}</div><div class="detail-team-name">${TEAM_NAMES[g.away]}</div></div><div class="detail-at">${g.neutral?'vs':'at'}</div><div class="detail-team"><div class="detail-team-code">${g.home}</div><div class="detail-team-name">${TEAM_NAMES[g.home]}</div></div></div><div class="detail-grid"><div class="detail-field"><div class="detail-label">Week</div><div class="detail-value">Week ${g.week}</div></div><div class="detail-field"><div class="detail-label">Status</div><div class="detail-value"><span class="detail-status">${status}</span></div></div><div class="detail-field wide"><div class="detail-label">Date</div><div class="detail-value">${gameDateLabel(g)}</div></div><div class="detail-field"><div class="detail-label">Kickoff</div><div class="detail-value">${g.time}${g.time==='TBD'?'':' ET'}</div></div><div class="detail-field"><div class="detail-label">Location</div><div class="detail-value">${locationText}</div></div><div class="detail-field wide"><div class="detail-label">Watch service</div><div class="detail-value detail-watch"><span class="service-icon ${meta.cls}">${meta.icon}</span><span>${g.service}</span></div></div><div class="detail-field wide"><div class="detail-label">Broadcast / network</div><div class="detail-value">${g.broadcast}</div></div></div>${oddsMarkup(g)}</div>`;gameDetail.classList.add('open');openFantasyDetail(g);document.getElementById('detailClose').onclick=closeGameDetail;}
+function openGameDetail(g,trigger){selectedGame=g;document.querySelectorAll('.game.detail-active').forEach(x=>x.classList.remove('detail-active'));if(trigger)trigger.classList.add('detail-active');const meta=SERVICE_META[g.service]||SERVICE_META['Streaming TBD'];const detailService=displayService(g);const locationText=g.neutral?(g.location||'Neutral site'):'Not separately listed';const status=g.flex?'Flex / assignment TBD':'Scheduled';gameDetail.innerHTML=`<div class="detail-head"><div><div class="detail-kicker">Game details</div><div class="detail-title">${mascotName(g.away)} ${g.neutral?'vs':'at'} ${mascotName(g.home)}</div></div><button class="detail-close" id="detailClose" aria-label="Close game details">×</button></div><div class="detail-body"><div class="detail-matchup"><div class="detail-team"><div class="detail-team-code">${g.away}</div><div class="detail-team-name">${TEAM_NAMES[g.away]}</div></div><div class="detail-at">${g.neutral?'vs':'at'}</div><div class="detail-team"><div class="detail-team-code">${g.home}</div><div class="detail-team-name">${TEAM_NAMES[g.home]}</div></div></div><div class="detail-grid"><div class="detail-field"><div class="detail-label">Week</div><div class="detail-value">Week ${g.week}</div></div><div class="detail-field"><div class="detail-label">Status</div><div class="detail-value"><span class="detail-status">${status}</span></div></div><div class="detail-field wide"><div class="detail-label">Date</div><div class="detail-value">${gameDateLabel(g)}</div></div><div class="detail-field"><div class="detail-label">Kickoff</div><div class="detail-value">${g.time}${g.time==='TBD'?'':' ET'}</div></div><div class="detail-field"><div class="detail-label">Location</div><div class="detail-value">${locationText}</div></div><div class="detail-field wide"><div class="detail-label">Watch service</div><div class="detail-value detail-watch"><span class="service-icon ${detailService.meta.cls}">${detailService.meta.icon}</span><span>${detailService.service}</span></div></div><div class="detail-field wide"><div class="detail-label">Broadcast / network</div><div class="detail-value">${g.broadcast}</div></div>${coverageDetail(g)}${coverageMapMarkup(g)}${winnerMapMarkup(g)}</div>${oddsMarkup(g)}</div>`;gameDetail.classList.add('open');openFantasyDetail(g);document.getElementById('detailClose').onclick=closeGameDetail;}
 function iso(y,m,d){return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`}
 function selectedTeams(){return viewMode==='team'?[team]:DIVISIONS[division]}
 function selectionGames(){const teams=new Set(selectedTeams());return GAMES.filter(g=>teams.has(g.away)||teams.has(g.home))}
@@ -212,7 +499,7 @@ function openSlate(dateKey,trigger){
   calendarStage.classList.remove('panel-right');calendarStage.classList.add('panel-left');
   document.querySelectorAll('.game-count.active').forEach(x=>x.classList.remove('active'));if(trigger)trigger.classList.add('active');
   const dateText=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
-  dailySlate.innerHTML=`<div class="slate-head"><div><div class="slate-kicker">NFL daily slate</div><div class="slate-title">${dateText}</div></div><button class="slate-close" id="slateClose" aria-label="Close game list">×</button></div><div class="slate-list">${games.map(g=>{const meta=SERVICE_META[g.service]||SERVICE_META['Streaming TBD'];const gi=GAMES.indexOf(g);return `<div class="slate-game" data-game-index="${gi}" role="button" tabindex="0" title="View game details"><div class="slate-game-top"><span class="slate-time">${g.time}${g.time==='TBD'?'':' ET'}</span><span class="slate-week">Week ${g.week}</span></div><div class="slate-matchup">${allMatchupLabel(g)}</div><div class="slate-watch"><span class="service-icon ${meta.cls}">${meta.icon}</span><span class="service-name">${g.service}</span></div></div>`}).join('')}</div>`;
+  dailySlate.innerHTML=`<div class="slate-head"><div><div class="slate-kicker">NFL daily slate</div><div class="slate-title">${dateText}</div></div><button class="slate-close" id="slateClose" aria-label="Close game list">×</button></div><div class="slate-list">${games.map(g=>{const ds=displayService(g);const gi=GAMES.indexOf(g);return `<div class="slate-game" data-game-index="${gi}" role="button" tabindex="0" title="View game details"><div class="slate-game-top"><span class="slate-time">${g.time}${g.time==='TBD'?'':' ET'}</span><span class="slate-week">Week ${g.week}</span></div><div class="slate-matchup">${allMatchupLabel(g)}</div><div class="slate-watch"><span class="service-icon ${ds.meta.cls}">${ds.meta.icon}</span><span class="service-name">${ds.service}</span></div>${coverageBadge(g)}</div>`}).join('')}</div>`;
   document.getElementById('slateClose').onclick=closeSlate;dailySlate.querySelectorAll('.slate-game').forEach(el=>{const open=()=>openGameDetail(GAMES[Number(el.dataset.gameIndex)],null);el.onclick=open;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}}});
 }
 function opponentLabel(g){if(viewMode==='division'){const loc=g.neutral&&g.location?` (${g.location})`:'';return g.neutral?`${mascotName(g.away)} vs ${mascotName(g.home)}${loc}`:`${mascotName(g.away)} @ ${mascotName(g.home)}`;}const neutral=g.neutral;if(neutral){const other=g.away===team?g.home:g.away;const loc=g.location?` (${g.location})`:'';return `vs ${mascotName(other)}${loc}`;}if(g.home===team)return `vs ${mascotName(g.away)}`;return `at ${mascotName(g.home)}`;}
@@ -222,7 +509,26 @@ function renderHeader(){if(viewMode==='team'){const full=TEAM_NAMES[team];const 
 function populateSelection(){selectionSelect.innerHTML='';if(viewMode==='team'){selectionLabel.textContent='Team';Object.entries(TEAM_NAMES).forEach(([code,name])=>{const o=document.createElement('option');o.value=code;o.textContent=name;o.selected=code===team;selectionSelect.appendChild(o)});}else{selectionLabel.textContent='Division';Object.keys(DIVISIONS).forEach(name=>{const o=document.createElement('option');o.value=name;o.textContent=name;o.selected=name===division;selectionSelect.appendChild(o)});}}
 function renderFlex(){const list=document.getElementById('flexList');const flex=selectionGames().filter(g=>g.flex);const scope=viewMode==='team'?TEAM_NAMES[team]:division;document.getElementById('flexHeading').textContent=`Flex / date TBD · ${scope}`;if(!flex.length){list.innerHTML='<div class="empty-flex">No currently designated date/TBD games for this selection.</div>';return}list.innerHTML=flex.map(g=>`<div class="flex-card"><b>Week ${g.week} · ${opponentLabel(g)}</b><div>Date/time or streaming assignment has not yet been finalized. Current placeholder: ${g.date} · ${g.time} · ${g.service}.</div></div>`).join('')}
 function render(){closeSlate();closeGameDetail();renderHeader();const {y,m,label:lbl}=months[idx];label.textContent=lbl;cal.innerHTML='';const first=new Date(y,m,1),start=first.getDay(),days=new Date(y,m+1,0).getDate(),prevDays=new Date(y,m,0).getDate();const cells=Math.ceil((start+days)/7)*7;const byDate={};selectionGames().filter(g=>!g.flex).forEach(g=>{(byDate[g.date]||(byDate[g.date]=[])).push(g)});const allGameCounts={};GAMES.forEach(g=>{allGameCounts[g.date]=(allGameCounts[g.date]||0)+1});const bye=byeInfo();
- for(let i=0;i<cells;i++){const cell=document.createElement('div');cell.className='day';let d,cy=y,cm=m,out=false;if(i<start){d=prevDays-start+i+1;cm=m-1;if(cm<0){cm=11;cy--}out=true}else if(i>=start+days){d=i-(start+days)+1;cm=m+1;if(cm>11){cm=0;cy++}out=true}else d=i-start+1;if(out)cell.classList.add('out');const key=iso(cy,cm,d),games=(byDate[key]||[]).sort((a,b)=>a.time.localeCompare(b.time)),isBye=bye.dates.has(key);if(isBye)cell.classList.add('bye-day');if(games.length)cell.classList.add('game-day');const gameCount=allGameCounts[key]||0;const gameCountLabel=gameCount?`${gameCount} game${gameCount===1?'':'s'} scheduled`:'';cell.innerHTML=`<div class="day-head"><div class="date">${d}</div>${gameCount?`<button type="button" class="game-count" aria-label="Show ${gameCountLabel} on ${key}">${gameCountLabel}</button>`:''}</div>`;if(gameCount){const countBtn=cell.querySelector('.game-count');countBtn.onclick=(e)=>{e.stopPropagation();if(selectedSlateDate===key){closeSlate()}else{openSlate(key,countBtn)}}}if(games.length){const useCompact=viewMode==='division'&&games.length>1;const stack=document.createElement('div');stack.className='games-stack'+(useCompact?' division-compact':(games.length>1?' multi':''));games.forEach(g=>{const meta=SERVICE_META[g.service]||SERVICE_META['Streaming TBD'];const box=document.createElement('div');box.className='game';box.setAttribute('role','button');box.setAttribute('tabindex','0');box.setAttribute('aria-label',`View details for ${TEAM_NAMES[g.away]} at ${TEAM_NAMES[g.home]}`);if(useCompact){box.title=`${TEAM_NAMES[g.away]} at ${TEAM_NAMES[g.home]} · ${g.time} ET · ${g.service}`;box.innerHTML=`<div class="watch"><span class="service-icon ${meta.cls}" title="${g.service}">${meta.icon}</span><span class="compact-matchup">${g.away} @ ${g.home}</span></div>`;}else{box.innerHTML=`<div class="matchup">${opponentLabel(g)}</div><div class="time">W${g.week} · ${g.time} ET</div><div class="watch"><span class="service-icon ${meta.cls}">${meta.icon}</span><span class="service-name">${g.service}</span></div>`;}const open=()=>openGameDetail(g,box);box.onclick=e=>{e.stopPropagation();open();};box.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};stack.appendChild(box)});cell.appendChild(stack)}else if(isBye){const tag=document.createElement('div');tag.className='bye-tag';tag.textContent=`Bye · W${bye.week}`;cell.appendChild(tag)}cal.appendChild(cell)}renderTabs();renderFlex();document.getElementById('prev').disabled=idx===0;document.getElementById('next').disabled=idx===months.length-1;}
-document.getElementById('prev').onclick=()=>{if(idx>0){idx--;render()}};document.getElementById('next').onclick=()=>{if(idx<months.length-1){idx++;render()}};document.getElementById('viewMode').addEventListener('change',e=>{viewMode=e.target.value;idx=0;populateSelection();render()});selectionSelect.addEventListener('change',e=>{if(viewMode==='team')team=e.target.value;else division=e.target.value;idx=0;render()});setViewingZip.onclick=()=>applyViewingZip(viewingZip.value);viewingZip.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();applyViewingZip(viewingZip.value)}});viewingZip.addEventListener('input',()=>{viewingZip.value=viewingZip.value.replace(/\D/g,'').slice(0,5)});populateSelection();renderLegend();render();initViewingLocation();
+ for(let i=0;i<cells;i++){const cell=document.createElement('div');cell.className='day';let d,cy=y,cm=m,out=false;if(i<start){d=prevDays-start+i+1;cm=m-1;if(cm<0){cm=11;cy--}out=true}else if(i>=start+days){d=i-(start+days)+1;cm=m+1;if(cm>11){cm=0;cy++}out=true}else d=i-start+1;if(out)cell.classList.add('out');const key=iso(cy,cm,d),games=(byDate[key]||[]).sort((a,b)=>a.time.localeCompare(b.time)),isBye=bye.dates.has(key);if(isBye)cell.classList.add('bye-day');if(games.length)cell.classList.add('game-day');const gameCount=allGameCounts[key]||0;const gameCountLabel=gameCount?`${gameCount} game${gameCount===1?'':'s'} scheduled`:'';cell.innerHTML=`<div class="day-head"><div class="date">${d}</div>${gameCount?`<button type="button" class="game-count" aria-label="Show ${gameCountLabel} on ${key}">${gameCountLabel}</button>`:''}</div>`;if(gameCount){const countBtn=cell.querySelector('.game-count');countBtn.onclick=(e)=>{e.stopPropagation();if(selectedSlateDate===key){closeSlate()}else{openSlate(key,countBtn)}}}if(games.length){const useCompact=viewMode==='division'&&games.length>1;const stack=document.createElement('div');stack.className='games-stack'+(useCompact?' division-compact':(games.length>1?' multi':''));games.forEach(g=>{const meta=SERVICE_META[g.service]||SERVICE_META['Streaming TBD'];const box=document.createElement('div');box.className='game';box.setAttribute('role','button');box.setAttribute('tabindex','0');box.setAttribute('aria-label',`View details for ${TEAM_NAMES[g.away]} at ${TEAM_NAMES[g.home]}`);if(useCompact){const cds=displayService(g);box.title=`${TEAM_NAMES[g.away]} at ${TEAM_NAMES[g.home]} · ${g.time} ET · ${cds.service}`;box.innerHTML=`<div class="watch"><span class="service-icon ${cds.meta.cls}" title="${cds.service}">${cds.meta.icon}</span><span class="compact-matchup">${g.away} @ ${g.home}</span></div>${coverageStripe(g)}`;}else{const ds=displayService(g);box.innerHTML=`<div class="matchup">${opponentLabel(g)}</div><div class="time">W${g.week} · ${g.time} ET</div><div class="watch"><span class="service-icon ${ds.meta.cls}">${ds.meta.icon}</span><span class="service-name">${ds.service}</span></div>${coverageBadge(g)}`;}const open=()=>openGameDetail(g,box);box.onclick=e=>{e.stopPropagation();open();};box.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};stack.appendChild(box)});cell.appendChild(stack)}else if(isBye){const tag=document.createElement('div');tag.className='bye-tag';tag.textContent=`Bye · W${bye.week}`;cell.appendChild(tag)}cal.appendChild(cell)}renderTabs();renderFlex();document.getElementById('prev').disabled=idx===0;document.getElementById('next').disabled=idx===months.length-1;}
+document.getElementById('prev').onclick=()=>{if(idx>0){idx--;render()}};document.getElementById('next').onclick=()=>{if(idx<months.length-1){idx++;render()}};document.getElementById('viewMode').addEventListener('change',e=>{viewMode=e.target.value;idx=0;populateSelection();render()});selectionSelect.addEventListener('change',e=>{if(viewMode==='team')team=e.target.value;else division=e.target.value;idx=0;render()});setViewingZip.onclick=()=>applyViewingZip(viewingZip.value);viewingZip.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();applyViewingZip(viewingZip.value)}});viewingZip.addEventListener('input',()=>{viewingZip.value=viewingZip.value.replace(/\D/g,'').slice(0,5)});// Delegated so the handler survives detail-panel re-renders.
+document.addEventListener('click',e=>{
+  const win=e.target.closest&&e.target.closest('[data-winmap-game]');
+  if(win){const g=GAMES[Number(win.dataset.winmapGame)];if(g)openWinnerModal(g);return;}
+  const map=e.target.closest&&e.target.closest('[data-map-game]');
+  if(map){const g=GAMES[Number(map.dataset.mapGame)];if(g)openCoverageModal(g);return;}
+  const modal=document.getElementById('covModal');
+  if(modal&&modal.classList.contains('open')&&e.target===modal)closeCoverageModal();
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeCoverageModal();return;}
+  if(e.key!=='Enter'&&e.key!==' ')return;
+  if(!e.target.closest)return;
+  const w=e.target.closest('[data-winmap-game]');
+  if(w){e.preventDefault();const g=GAMES[Number(w.dataset.winmapGame)];if(g)openWinnerModal(g);return;}
+  const m=e.target.closest('[data-map-game]');
+  if(m){e.preventDefault();const g=GAMES[Number(m.dataset.mapGame)];if(g)openCoverageModal(g);}
+});
+populateSelection();renderLegend();render();updateCoverageCopy();initViewingLocation();
 </script>
+<div class="cov-modal" id="covModal" role="dialog" aria-modal="true" aria-label="Coverage map"><div class="cov-modal-inner" id="covModalInner"></div></div>
 </body></html>

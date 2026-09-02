@@ -1,0 +1,15 @@
+{
+  "selected_maps": 270,
+  "dma_polygons": 206,
+  "assignment_rows": 55620,
+  "resolved_games": 55594,
+  "review_rows": 1050,
+  "legend_review_maps_colors": 7,
+  "maps_missing_from_disk": 0,
+  "outputs": {
+    "assignments": "data\\historical_dma_assignments.csv",
+    "diagnostics": "map_diagnostics.csv",
+    "legend_review": "legend_review.csv",
+    "legend_cache": "legend_cache.json"
+  }
+}

@@ -1,0 +1,26 @@
+# Local map archive (not for GitHub)
+map_archive/
+
+# Python
+__pycache__/
+*.pyc
+
+# Full research output with all diagnostic columns (~22 MB). Regenerate with
+# tools/classify_dma_maps.py; publish only a compact derived file to Pages.
+data/historical_dma_assignments.csv
+
+# Local UI verification screenshots and browser-automation output
+*.png
+.playwright-mcp/
+
+# Nielsen-derived DMA boundary source. Kept local pending a licensing review;
+# the site only needs the derived dma-geometry.js. Re-download from
+# simzou/nielsen-dma to rebuild (see tools/CLASSIFIER_README.txt).
+tools/nielsentopo.json
+
+# The build tools emit each dataset twice: a .json and a window.*= .js wrapper.
+# index.html loads only the .js form via <script>, so the .json copies are
+# build intermediates. Regenerate with the tools in tools/.
+data/dma-assignments.json
+data/dma-model.json
+data/dma-geometry.json
