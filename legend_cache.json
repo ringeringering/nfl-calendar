@@ -1,0 +1,3572 @@
+{
+  "2021-1": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:55:32Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Jacksonville @ Houston",
+        "green": "NY Jets @ Carolina",
+        "orange": "Arizona @ Tennessee",
+        "red": "Pittsburgh @ Buffalo",
+        "yellow": "LA Chargers @ Washington"
+      },
+      "CBS_LATE": {
+        "blue": "Miami @ New England",
+        "red": "Cleveland @ Kansas City"
+      },
+      "FOX_EARLY": {
+        "blue": "Seattle @ Indianapolis",
+        "green": "San Francisco @ Detroit",
+        "red": "Philadelphia @ Atlanta",
+        "yellow": "Minnesota @ Cincinnati"
+      },
+      "FOX_LATE": {
+        "blue": "Denver @ NY Giants",
+        "red": "Green Bay @ New Orleans (in Jacksonville)"
+      }
+    },
+    "page_map_images": [
+      "2021/01-CBS-E.png",
+      "2021/01-CBS-L.png",
+      "2021/01-FOX-E.png",
+      "2021/01-FOX-L-V3.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2021&wk=1",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2021-10": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:56:30Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "New Orleans @ Tennessee",
+        "green": "Buffalo @ NY Jets",
+        "red": "Cleveland @ New England",
+        "yellow": "Jacksonville @ Indianapolis"
+      },
+      "CBS_LATE": {
+        "blue": "Philadelphia @ Denver",
+        "red": "Seattle @ Green Bay"
+      },
+      "FOX_SINGLE": {
+        "blue": "Minnesota @ LA Chargers (LATE)",
+        "green": "Tampa Bay @ Washington",
+        "orange": "Carolina @ Arizona (LATE)",
+        "red": "Atlanta @ Dallas",
+        "yellow": "Detroit @ Pittsburgh"
+      }
+    },
+    "page_map_images": [
+      "2021/10-CBS-E.png",
+      "2021/10-CBS-L-V2.png",
+      "2021/10-FOX.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2021&wk=10",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2021-11": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:56:35Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Cincinnati @ Las Vegas (LATE)",
+        "green": "Indianapolis @ Buffalo",
+        "orange": "Houston @ Tennessee",
+        "red": "Baltimore @ Chicago",
+        "yellow": "Miami @ NY Jets"
+      },
+      "FOX_EARLY": {
+        "blue": "New Orleans @ Philadelphia",
+        "green": "Washington @ Carolina",
+        "orange": "San Francisco @ Jacksonville",
+        "red": "Green Bay @ Minnesota",
+        "yellow": "Detroit @ Cleveland"
+      },
+      "FOX_LATE": {
+        "blue": "Arizona @ Seattle",
+        "red": "Dallas @ Kansas City"
+      }
+    },
+    "page_map_images": [
+      "2021/11-CBS-V2.png",
+      "2021/11-FOX-E-V3.png",
+      "2021/11-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2021&wk=11",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2021-12": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:56:41Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Pittsburgh @ Cincinnati",
+        "green": "LA Chargers @ Denver (LATE)",
+        "red": "Tennessee @ New England",
+        "yellow": "NY Jets @ Houston"
+      },
+      "FOX_EARLY": {
+        "blue": "Philadelphia @ NY Giants",
+        "green": "Carolina @ Miami",
+        "red": "Tampa Bay @ Indianapolis",
+        "yellow": "Atlanta @ Jacksonville"
+      },
+      "FOX_LATE": {
+        "blue": "Minnesota @ San Francisco",
+        "red": "LA Rams @ Green Bay"
+      }
+    },
+    "page_map_images": [
+      "2021/12-CBS-V2.png",
+      "2021/12-FOX-E.png",
+      "2021/12-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2021&wk=12",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2021-13": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:56:46Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Indianapolis @ Houston",
+        "green": "Philadelphia @ NY Jets",
+        "red": "LA Chargers @ Cincinnati",
+        "yellow": "Minnesota @ Detroit"
+      },
+      "CBS_LATE": {
+        "blue": "San Francisco @ Seattle",
+        "red": "Baltimore @ Pittsburgh"
+      },
+      "FOX_SINGLE": {
+        "blue": "Washington @ Las Vegas (LATE)",
+        "green": "Arizona @ Chicago",
+        "orange": "Jacksonville @ LA Rams (LATE)",
+        "red": "Tampa Bay @ Atlanta",
+        "yellow": "NY Giants @ Miami"
+      }
+    },
+    "page_map_images": [
+      "2021/13-CBS-E.png",
+      "2021/13-CBS-L-V2.png",
+      "2021/13-FOX-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2021&wk=13",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2021-14": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:56:52Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Baltimore @ Cleveland",
+        "green": "New Orleans @ NY Jets",
+        "red": "Las Vegas @ Kansas City",
+        "yellow": "Jacksonville @ Tennessee"
+      },
+      "CBS_LATE": {
+        "blue": "San Francisco @ Cincinnati",
+        "red": "Buffalo @ Tampa Bay"
+      },
+      "FOX_SINGLE": {
+        "blue": "NY Giants @ LA Chargers (LATE)",
+        "green": "Atlanta @ Carolina",
+        "orange": "Seattle @ Houston",
+        "red": "Dallas @ Washington",
+        "yellow": "Detroit @ Denver (LATE)"
+      }
+    },
+    "page_map_images": [
+      "2021/14-CBS-E-V2.png",
+      "2021/14-CBS-L.png",
+      "2021/14-FOX.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2021&wk=14",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2021-15": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:56:57Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Cincinnati @ Denver (LATE)",
+        "green": "Atlanta @ San Francisco (LATE)",
+        "orange": "Houston @ Jacksonville",
+        "red": "Tennessee @ Pittsburgh",
+        "yellow": "NY Jets @ Miami"
+      },
+      "FOX_EARLY": {
+        "green": "Carolina @ Buffalo",
+        "red": "Dallas @ NY Giants",
+        "yellow": "Arizona @ Detroit"
+      },
+      "FOX_LATE": {
+        "red": "Green Bay @ Baltimore"
+      },
+      "FOX_SPECIAL": {
+        "blue": "Seattle @ LA Rams",
+        "red": "Washington @ Philadelphia"
+      }
+    },
+    "page_map_images": [
+      "2021/15-CBS-V3.png",
+      "2021/15-FOX-E-V2.png",
+      "2021/15-FOX-L-V2.png",
+      "2021/15-FOX-T-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2021&wk=15",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2021-16": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:57:04Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Baltimore @ Cincinnati",
+        "green": "Jacksonville @ NY Jets",
+        "red": "Buffalo @ New England",
+        "yellow": "LA Chargers @ Houston"
+      },
+      "CBS_LATE": {
+        "blue": "Denver @ Las Vegas",
+        "red": "Pittsburgh @ Kansas City"
+      },
+      "FOX_SINGLE": {
+        "blue": "NY Giants @ Philadelphia",
+        "green": "Chicago @ Seattle (LATE)",
+        "orange": "Detroit @ Atlanta",
+        "red": "LA Rams @ Minnesota",
+        "yellow": "Tampa Bay @ Carolina"
+      }
+    },
+    "page_map_images": [
+      "2021/16-CBS-E.png",
+      "2021/16-CBS-L-V2.png",
+      "2021/16-FOX-V3.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2021&wk=16",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2021-17": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:57:10Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "NY Giants @ Chicago",
+        "green": "Denver @ LA Chargers (LATE)",
+        "light_blue": "Houston @ San Francisco (LATE)",
+        "orange": "Jacksonville @ New England",
+        "red": "Kansas City @ Cincinnati",
+        "yellow": "Miami @ Tennessee"
+      },
+      "FOX_EARLY": {
+        "blue": "Philadelphia @ Washington",
+        "green": "Las Vegas @ Indianapolis",
+        "orange": "Tampa Bay @ NY Jets",
+        "red": "LA Rams @ Baltimore",
+        "yellow": "Atlanta @ Buffalo"
+      },
+      "FOX_LATE": {
+        "blue": "Detroit @ Seattle",
+        "green": "Carolina @ New Orleans",
+        "red": "Arizona @ Dallas"
+      }
+    },
+    "page_map_images": [
+      "2021/17-CBS.png",
+      "2021/17-FOX-E-V4.png",
+      "2021/17-FOX-L-V3.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2021&wk=17",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2021-18": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:57:15Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Indianapolis @ Jacksonville",
+        "green": "Tennessee @ Houston",
+        "red": "Pittsburgh @ Baltimore"
+      },
+      "CBS_LATE": {
+        "blue": "NY Jets @ Buffalo",
+        "green": "New England @ Miami",
+        "red": "Carolina @ Tampa Bay"
+      },
+      "FOX_EARLY": {
+        "blue": "Cincinnati @ Cleveland",
+        "green": "Washington @ NY Giants",
+        "red": "Green Bay @ Detroit",
+        "yellow": "Chicago @ Minnesota"
+      },
+      "FOX_LATE": {
+        "blue": "Seattle @ Arizona",
+        "green": "New Orleans @ Atlanta",
+        "red": "San Francisco @ LA Rams"
+      }
+    },
+    "page_map_images": [
+      "2021/18-CBS-E-V4.png",
+      "2021/18-CBS-L-V4.png",
+      "2021/18-FOX-E-V4.png",
+      "2021/18-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2021&wk=18",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2021-2": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:55:40Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "New England @ NY Jets",
+        "green": "Houston @ Cleveland",
+        "red": "Las Vegas @ Pittsburgh",
+        "yellow": "Denver @ Jacksonville"
+      },
+      "CBS_LATE": {
+        "blue": "Tennessee @ Seattle",
+        "red": "Dallas @ LA Chargers"
+      },
+      "FOX_SINGLE": {
+        "blue": "San Francisco @ Philadelphia",
+        "green": "LA Rams @ Indianapolis",
+        "light_blue": "Buffalo @ Miami",
+        "orange": "New Orleans @ Carolina",
+        "purple": "Minnesota @ Arizona (LATE)",
+        "red": "Atlanta @ Tampa Bay (LATE)",
+        "yellow": "Cincinnati @ Chicago"
+      }
+    },
+    "page_map_images": [
+      "2021/02-CBS-E-V2.png",
+      "2021/02-CBS-L-V3.png",
+      "2021/02-FOX-V4.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2021&wk=2",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2021-3": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:55:46Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Miami @ Las Vegas (LATE)",
+        "green": "Cincinnati @ Pittsburgh",
+        "light_blue": "NY Jets @ Denver (LATE)",
+        "orange": "Indianapolis @ Tennessee",
+        "red": "LA Chargers @ Kansas City",
+        "yellow": "Baltimore @ Detroit"
+      },
+      "FOX_EARLY": {
+        "blue": "Atlanta @ NY Giants",
+        "green": "New Orleans @ New England",
+        "orange": "Arizona @ Jacksonville",
+        "red": "Chicago @ Cleveland",
+        "yellow": "Washington @ Buffalo"
+      },
+      "FOX_LATE": {
+        "blue": "Seattle @ Minnesota",
+        "red": "Tampa Bay @ LA Rams"
+      }
+    },
+    "page_map_images": [
+      "2021/03-CBS-V3.png",
+      "2021/03-FOX-E-V4.png",
+      "2021/03-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2021&wk=3",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2021-4": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:55:54Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Cleveland @ Minnesota",
+        "green": "Tennessee @ NY Jets",
+        "orange": "Houston @ Buffalo",
+        "red": "Kansas City @ Philadelphia",
+        "yellow": "Indianapolis @ Miami"
+      },
+      "CBS_LATE": {
+        "blue": "Baltimore @ Denver",
+        "red": "Pittsburgh @ Green Bay"
+      },
+      "FOX_SINGLE": {
+        "blue": "NY Giants @ New Orleans",
+        "green": "Seattle @ San Francisco (LATE)",
+        "light_blue": "Detroit @ Chicago",
+        "orange": "Washington @ Atlanta",
+        "red": "Carolina @ Dallas",
+        "yellow": "Arizona @ LA Rams (LATE)"
+      }
+    },
+    "page_map_images": [
+      "2021/04-CBS-E-V2.png",
+      "2021/04-CBS-L-V3.png",
+      "2021/04-FOX-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2021&wk=4",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2021-5": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:56:01Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Chicago @ Las Vegas (LATE)",
+        "green": "Cleveland @ LA Chargers (LATE)",
+        "light_blue": "Tennessee @ Jacksonville",
+        "orange": "New England @ Houston",
+        "red": "Miami @ Tampa Bay",
+        "yellow": "New Orleans @ Washington"
+      },
+      "FOX_EARLY": {
+        "blue": "Philadelphia @ Carolina",
+        "green": "Denver @ Pittsburgh",
+        "red": "Green Bay @ Cincinnati",
+        "yellow": "Detroit @ Minnesota"
+      },
+      "FOX_LATE": {
+        "blue": "San Francisco @ Arizona",
+        "red": "NY Giants @ Dallas"
+      }
+    },
+    "page_map_images": [
+      "2021/05-CBS.png",
+      "2021/05-FOX-E-V5.png",
+      "2021/05-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2021&wk=5",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2021-6": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:56:06Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "LA Chargers @ Baltimore",
+        "green": "Houston @ Indianapolis",
+        "red": "Kansas City @ Washington"
+      },
+      "CBS_LATE": {
+        "blue": "Las Vegas @ Denver",
+        "red": "Dallas @ New England"
+      },
+      "FOX_SINGLE": {
+        "blue": "LA Rams @ NY Giants",
+        "green": "Arizona @ Cleveland (LATE)",
+        "orange": "Cincinnati @ Detroit",
+        "red": "Green Bay @ Chicago",
+        "yellow": "Minnesota @ Carolina"
+      }
+    },
+    "page_map_images": [
+      "2021/06-CBS-E-V4.png",
+      "2021/06-CBS-L-V2.png",
+      "2021/06-FOX-V4.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2021&wk=6",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2021-7": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:56:12Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Cincinnati @ Baltimore",
+        "green": "NY Jets @ New England",
+        "red": "Kansas City @ Tennessee"
+      },
+      "CBS_LATE": {
+        "blue": "Houston @ Arizona",
+        "red": "Chicago @ Tampa Bay"
+      },
+      "FOX_SINGLE": {
+        "blue": "Philadelphia @ Las Vegas (LATE)",
+        "green": "Carolina @ NY Giants",
+        "orange": "Atlanta @ Miami",
+        "red": "Washington @ Green Bay",
+        "yellow": "Detroit @ LA Rams (LATE)"
+      }
+    },
+    "page_map_images": [
+      "2021/07-CBS-E-V2.png",
+      "2021/07-CBS-L.png",
+      "2021/07-FOX-V3.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2021&wk=7",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2021-8": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:56:18Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "New England @ LA Chargers (LATE)",
+        "green": "Cincinnati @ NY Jets",
+        "light_blue": "Tennessee @ Indianapolis",
+        "orange": "Miami @ Buffalo",
+        "red": "Pittsburgh @ Cleveland",
+        "yellow": "Jacksonville @ Seattle (LATE)"
+      },
+      "FOX_EARLY": {
+        "blue": "Philadelphia @ Detroit",
+        "green": "Carolina @ Atlanta",
+        "red": "San Francisco @ Chicago",
+        "yellow": "LA Rams @ Houston"
+      },
+      "FOX_LATE": {
+        "blue": "Washington @ Denver",
+        "red": "Tampa Bay @ New Orleans"
+      }
+    },
+    "page_map_images": [
+      "2021/08-CBS-V3.png",
+      "2021/08-FOX-E.png",
+      "2021/08-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2021&wk=8",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2021-9": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:56:24Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "LA Chargers @ Philadelphia (LATE)",
+        "green": "Las Vegas @ NY Giants",
+        "orange": "Buffalo @ Jacksonville",
+        "red": "Cleveland @ Cincinnati",
+        "yellow": "New England @ Carolina"
+      },
+      "FOX_EARLY": {
+        "blue": "Minnesota @ Baltimore",
+        "green": "Atlanta @ New Orleans",
+        "red": "Denver @ Dallas",
+        "yellow": "Houston @ Miami"
+      },
+      "FOX_LATE": {
+        "blue": "Arizona @ San Francisco",
+        "red": "Green Bay @ Kansas City"
+      }
+    },
+    "page_map_images": [
+      "2021/09-CBS-V2.png",
+      "2021/09-FOX-E.png",
+      "2021/09-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2021&wk=9",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2022-1": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:57:23Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "New England @ Miami",
+        "green": "Baltimore @ NY Jets",
+        "orange": "Indianapolis @ Houston",
+        "red": "Pittsburgh @ Cincinnati",
+        "yellow": "Cleveland @ Carolina"
+      },
+      "CBS_LATE": {
+        "blue": "Las Vegas @ LA Chargers",
+        "red": "Kansas City @ Arizona"
+      },
+      "FOX_EARLY": {
+        "blue": "Philadelphia @ Detroit",
+        "green": "New Orleans @ Atlanta",
+        "red": "San Francisco @ Chicago",
+        "yellow": "Jacksonville @ Washington"
+      },
+      "FOX_LATE": {
+        "blue": "NY Giants @ Tennessee",
+        "red": "Green Bay @ Minnesota"
+      }
+    },
+    "page_map_images": [
+      "2022/01-CBS-E.png",
+      "2022/01-CBS-L.png",
+      "2022/01-FOX-E-V2.png",
+      "2022/01-FOX-L-V3.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2022&wk=1",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2022-10": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:58:20Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Houston @ NY Giants",
+        "green": "Indianapolis @ Las Vegas (LATE)",
+        "orange": "Denver @ Tennessee",
+        "red": "Jacksonville @ Kansas City",
+        "yellow": "Cleveland @ Miami"
+      },
+      "FOX_EARLY": {
+        "blue": "Detroit @ Chicago",
+        "green": "New Orleans @ Pittsburgh",
+        "red": "Minnesota @ Buffalo"
+      },
+      "FOX_LATE": {
+        "blue": "Arizona @ LA Rams",
+        "red": "Dallas @ Green Bay"
+      }
+    },
+    "page_map_images": [
+      "2022/10-CBS-V3.png",
+      "2022/10-FOX-E.png",
+      "2022/10-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2022&wk=10",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2022-11": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:58:27Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "NY Jets @ New England",
+        "green": "Cleveland vs Buffalo (in Detroit)",
+        "red": "Philadelphia @ Indianapolis"
+      },
+      "CBS_LATE": {
+        "blue": "Cincinnati @ Pittsburgh",
+        "red": "Dallas @ Minnesota"
+      },
+      "FOX_SINGLE": {
+        "blue": "Chicago @ Atlanta",
+        "green": "LA Rams @ New Orleans",
+        "light_blue": "Carolina @ Baltimore",
+        "orange": "Washington @ Houston",
+        "red": "Detroit @ NY Giants",
+        "yellow": "Las Vegas @ Denver (LATE)"
+      }
+    },
+    "page_map_images": [
+      "2022/11-CBS-E-V5.png",
+      "2022/11-CBS-L-V2.png",
+      "2022/11-FOX-V3.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2022&wk=11",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2022-12": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:58:34Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "LA Chargers @ Arizona (LATE)",
+        "green": "Las Vegas @ Seattle (LATE)",
+        "orange": "Houston @ Miami",
+        "red": "Cincinnati @ Tennessee",
+        "yellow": "Baltimore @ Jacksonville"
+      },
+      "FOX_EARLY": {
+        "blue": "Chicago @ NY Jets",
+        "green": "Atlanta @ Washington",
+        "red": "Tampa Bay @ Cleveland",
+        "yellow": "Denver @ Carolina"
+      },
+      "FOX_LATE": {
+        "blue": "New Orleans @ San Francisco",
+        "red": "LA Rams @ Kansas City"
+      }
+    },
+    "page_map_images": [
+      "2022/12-CBS.png",
+      "2022/12-FOX-E.png",
+      "2022/12-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2022&wk=12",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2022-13": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:58:40Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Denver @ Baltimore",
+        "green": "Pittsburgh @ Atlanta",
+        "red": "NY Jets @ Minnesota",
+        "yellow": "Cleveland @ Houston"
+      },
+      "CBS_LATE": {
+        "blue": "LA Chargers @ Las Vegas",
+        "red": "Kansas City @ Cincinnati"
+      },
+      "FOX_SINGLE": {
+        "blue": "Tennessee @ Philadelphia",
+        "green": "Green Bay @ Chicago",
+        "light_blue": "Jacksonville @ Detroit",
+        "orange": "Miami @ San Francisco (LATE)",
+        "red": "Washington @ NY Giants",
+        "yellow": "Seattle @ LA Rams (LATE)"
+      }
+    },
+    "page_map_images": [
+      "2022/13-CBS-E-V3.png",
+      "2022/13-CBS-L-V2.png",
+      "2022/13-FOX-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2022&wk=13",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2022-14": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:58:47Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Kansas City @ Denver (LATE)",
+        "green": "Baltimore @ Pittsburgh",
+        "orange": "Jacksonville @ Tennessee",
+        "red": "NY Jets @ Buffalo",
+        "yellow": "Cleveland @ Cincinnati"
+      },
+      "FOX_EARLY": {
+        "blue": "Houston @ Dallas",
+        "green": "Minnesota @ Detroit",
+        "red": "Philadelphia @ NY Giants"
+      },
+      "FOX_LATE": {
+        "blue": "Carolina @ Seattle",
+        "red": "Tampa Bay @ San Francisco"
+      }
+    },
+    "page_map_images": [
+      "2022/14-CBS-V3.png",
+      "2022/14-FOX-E-V2.png",
+      "2022/14-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2022&wk=14",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2022-15": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:58:53Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Kansas City @ Houston",
+        "green": "Pittsburgh @ Carolina",
+        "red": "Detroit @ NY Jets"
+      },
+      "CBS_LATE": {
+        "blue": "Tennessee @ LA Chargers",
+        "red": "Cincinnati @ Tampa Bay"
+      },
+      "FOX_SINGLE": {
+        "blue": "Philadelphia @ Chicago",
+        "green": "New England @ Las Vegas (LATE)",
+        "orange": "Arizona @ Denver (LATE)",
+        "red": "Dallas @ Jacksonville",
+        "yellow": "Atlanta @ New Orleans"
+      }
+    },
+    "page_map_images": [
+      "2022/15-CBS-E-V3.png",
+      "2022/15-CBS-L.png",
+      "2022/15-FOX-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2022&wk=15",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2022-16": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:58:59Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Washington @ San Francisco (LATE)",
+        "green": "Buffalo @ Chicago",
+        "orange": "New Orleans @ Cleveland",
+        "red": "Cincinnati @ New England",
+        "yellow": "Houston @ Tennessee"
+      },
+      "FOX_EARLY": {
+        "blue": "NY Giants @ Minnesota",
+        "green": "Atlanta @ Baltimore",
+        "red": "Seattle @ Kansas City",
+        "yellow": "Detroit @ Carolina"
+      },
+      "FOX_LATE": {
+        "red": "Philadelphia @ Dallas"
+      }
+    },
+    "page_map_images": [
+      "2022/16-CBS-V2.png",
+      "2022/16-FOX-E-V3.png",
+      "2022/16-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2022&wk=16",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2022-17": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#E6CCFF",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:59:04Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Indianapolis @ NY Giants",
+        "green": "Denver @ Kansas City",
+        "red": "Miami @ New England",
+        "yellow": "Jacksonville @ Houston"
+      },
+      "CBS_LATE": {
+        "blue": "LA Rams @ LA Chargers",
+        "red": "Minnesota @ Green Bay"
+      },
+      "FOX_SINGLE": {
+        "blue": "New Orleans @ Philadelphia",
+        "green": "Chicago @ Detroit",
+        "light_blue": "NY Jets @ Seattle (LATE)",
+        "orange": "Cleveland @ Washington",
+        "purple": "Arizona @ Atlanta",
+        "red": "Carolina @ Tampa Bay",
+        "yellow": "San Francisco @ Las Vegas (LATE)"
+      }
+    },
+    "page_map_images": [
+      "2022/17-CBS-E-V5.png",
+      "2022/17-CBS-L-V2.png",
+      "2022/17-FOX-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2022&wk=17",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2022-18": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:59:10Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Baltimore @ Cincinnati",
+        "green": "Cleveland @ Pittsburgh",
+        "red": "New England @ Buffalo",
+        "yellow": "Houston @ Indianapolis"
+      },
+      "CBS_LATE": {
+        "blue": "LA Chargers @ Denver",
+        "red": "NY Giants @ Philadelphia"
+      },
+      "FOX_EARLY": {
+        "blue": "Minnesota @ Chicago",
+        "green": "Tampa Bay @ Atlanta",
+        "red": "NY Jets @ Miami",
+        "yellow": "Carolina @ New Orleans"
+      },
+      "FOX_LATE": {
+        "blue": "LA Rams @ Seattle",
+        "green": "Arizona @ San Francisco",
+        "red": "Dallas @ Washington"
+      }
+    },
+    "page_map_images": [
+      "2022/18-CBS-E-V4.png",
+      "2022/18-CBS-L-V3.png",
+      "2022/18-FOX-E-V2.png",
+      "2022/18-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2022&wk=18",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2022-2": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:57:32Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Miami @ Baltimore",
+        "green": "NY Jets @ Cleveland",
+        "red": "New England @ Pittsburgh",
+        "yellow": "Indianapolis @ Jacksonville"
+      },
+      "CBS_LATE": {
+        "blue": "Arizona @ Las Vegas",
+        "green": "Houston @ Denver",
+        "red": "Cincinnati @ Dallas"
+      },
+      "FOX_SINGLE": {
+        "blue": "Carolina @ NY Giants",
+        "green": "Atlanta @ LA Rams (LATE)",
+        "orange": "Washington @ Detroit",
+        "red": "Tampa Bay @ New Orleans",
+        "yellow": "Seattle @ San Francisco (LATE)"
+      }
+    },
+    "page_map_images": [
+      "2022/02-CBS-E-V3.png",
+      "2022/02-CBS-L-V4.png",
+      "2022/02-FOX-V3.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2022&wk=2",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2022-3": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:57:39Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Cincinnati @ NY Jets",
+        "green": "Buffalo @ Miami",
+        "orange": "Houston @ Chicago",
+        "red": "Kansas City @ Indianapolis",
+        "yellow": "Jacksonville @ LA Chargers (LATE)"
+      },
+      "FOX_EARLY": {
+        "blue": "Philadelphia @ Washington",
+        "green": "Las Vegas @ Tennessee",
+        "orange": "New Orleans @ Carolina",
+        "red": "Baltimore @ New England",
+        "yellow": "Detroit @ Minnesota"
+      },
+      "FOX_LATE": {
+        "blue": "LA Rams @ Arizona",
+        "green": "Atlanta @ Seattle",
+        "red": "Green Bay @ Tampa Bay"
+      }
+    },
+    "page_map_images": [
+      "2022/03-CBS-V4.png",
+      "2022/03-FOX-E-V2.png",
+      "2022/03-FOX-L-V3.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2022&wk=3",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2022-4": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:57:45Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "NY Jets @ Pittsburgh",
+        "green": "LA Chargers @ Houston",
+        "orange": "Cleveland @ Atlanta",
+        "red": "Buffalo @ Baltimore",
+        "yellow": "Jacksonville @ Philadelphia"
+      },
+      "CBS_LATE": {
+        "blue": "Denver @ Las Vegas",
+        "red": "New England @ Green Bay"
+      },
+      "FOX_SINGLE": {
+        "blue": "Chicago @ NY Giants",
+        "green": "Arizona @ Carolina (LATE)",
+        "orange": "Tennessee @ Indianapolis",
+        "red": "Washington @ Dallas",
+        "yellow": "Seattle @ Detroit"
+      }
+    },
+    "page_map_images": [
+      "2022/04-CBS-E-V2.png",
+      "2022/04-CBS-L.png",
+      "2022/04-FOX.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2022&wk=4",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2022-5": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:57:51Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "San Francisco @ Carolina (LATE)",
+        "green": "Miami @ NY Jets",
+        "light_blue": "Houston @ Jacksonville",
+        "orange": "Tennessee @ Washington",
+        "red": "Pittsburgh @ Buffalo",
+        "yellow": "LA Chargers @ Cleveland"
+      },
+      "FOX_EARLY": {
+        "blue": "Chicago @ Minnesota",
+        "green": "Detroit @ New England",
+        "red": "Atlanta @ Tampa Bay",
+        "yellow": "Seattle @ New Orleans"
+      },
+      "FOX_LATE": {
+        "blue": "Philadelphia @ Arizona",
+        "red": "Dallas @ LA Rams"
+      }
+    },
+    "page_map_images": [
+      "2022/05-CBS-V2.png",
+      "2022/05-FOX-E-V2.png",
+      "2022/05-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2022&wk=5",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2022-6": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:57:57Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "New England @ Cleveland",
+        "green": "Cincinnati @ New Orleans",
+        "red": "Baltimore @ NY Giants",
+        "yellow": "Jacksonville @ Indianapolis"
+      },
+      "CBS_LATE": {
+        "red": "Buffalo @ Kansas City"
+      },
+      "FOX_SINGLE": {
+        "blue": "NY Jets @ Green Bay",
+        "green": "Carolina @ LA Rams (LATE)",
+        "light_blue": "Arizona @ Seattle (LATE)",
+        "orange": "Minnesota @ Miami",
+        "red": "Tampa Bay @ Pittsburgh",
+        "yellow": "San Francisco @ Atlanta"
+      }
+    },
+    "page_map_images": [
+      "2022/06-CBS-E.png",
+      "2022/06-CBS-L.png",
+      "2022/06-FOX-V3.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2022&wk=6",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2022-7": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:58:02Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "NY Jets @ Denver (LATE)",
+        "green": "Cleveland @ Baltimore",
+        "orange": "Indianapolis @ Tennessee",
+        "red": "Detroit @ Dallas",
+        "yellow": "Houston @ Las Vegas (LATE)"
+      },
+      "FOX_EARLY": {
+        "blue": "NY Giants @ Jacksonville",
+        "green": "Tampa Bay @ Carolina",
+        "red": "Green Bay @ Washington",
+        "yellow": "Atlanta @ Cincinnati"
+      },
+      "FOX_LATE": {
+        "blue": "Seattle @ LA Chargers",
+        "red": "Kansas City @ San Francisco"
+      }
+    },
+    "page_map_images": [
+      "2022/07-CBS-V2.png",
+      "2022/07-FOX-E-V2.png",
+      "2022/07-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2022&wk=7",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2022-8": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:58:08Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "New England @ NY Jets",
+        "green": "Las Vegas @ New Orleans",
+        "orange": "Miami @ Detroit",
+        "red": "Pittsburgh @ Philadelphia",
+        "yellow": "Tennessee @ Houston (LATE)"
+      },
+      "FOX_EARLY": {
+        "blue": "Carolina @ Atlanta",
+        "green": "Arizona @ Minnesota",
+        "red": "Chicago @ Dallas"
+      },
+      "FOX_LATE": {
+        "blue": "NY Giants @ Seattle",
+        "green": "Washington @ Indianapolis",
+        "red": "San Francisco @ LA Rams"
+      }
+    },
+    "page_map_images": [
+      "2022/08-CBS.png",
+      "2022/08-FOX-E.png",
+      "2022/08-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2022&wk=8",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2022-9": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:58:15Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Miami @ Chicago",
+        "green": "Indianapolis @ New England",
+        "red": "Buffalo @ NY Jets",
+        "yellow": "Las Vegas @ Jacksonville"
+      },
+      "CBS_LATE": {
+        "red": "LA Rams @ Tampa Bay"
+      },
+      "FOX_SINGLE": {
+        "blue": "Seattle @ Arizona (LATE)",
+        "green": "LA Chargers @ Atlanta",
+        "orange": "Carolina @ Cincinnati",
+        "red": "Green Bay @ Detroit",
+        "yellow": "Minnesota @ Washington"
+      }
+    },
+    "page_map_images": [
+      "2022/09-CBS-E-V3.png",
+      "2022/09-CBS-L.png",
+      "2022/09-FOX-V3.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2022&wk=9",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2023-1": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:59:18Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Tampa Bay @ Minnesota",
+        "green": "Houston @ Baltimore",
+        "red": "Cincinnati @ Cleveland",
+        "yellow": "Tennessee @ New Orleans"
+      },
+      "CBS_LATE": {
+        "blue": "Miami @ LA Chargers",
+        "green": "Las Vegas @ Denver",
+        "red": "Philadelphia @ New England"
+      },
+      "FOX_EARLY": {
+        "blue": "Arizona @ Washington",
+        "green": "Jacksonville @ Indianapolis",
+        "red": "San Francisco @ Pittsburgh",
+        "yellow": "Carolina @ Atlanta"
+      },
+      "FOX_LATE": {
+        "blue": "LA Rams @ Seattle",
+        "red": "Green Bay @ Chicago"
+      }
+    },
+    "page_map_images": [
+      "2023/01-CBS-E.png",
+      "2023/01-CBS-L-V2.png",
+      "2023/01-FOX-E-V3.png",
+      "2023/01-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2023&wk=1",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2023-10": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:00:20Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Green Bay @ Pittsburgh",
+        "green": "Houston @ Cincinnati",
+        "orange": "Atlanta @ Arizona (LATE)",
+        "red": "Detroit @ LA Chargers (LATE)",
+        "yellow": "Tennessee @ Tampa Bay"
+      },
+      "FOX_EARLY": {
+        "blue": "New Orleans @ Minnesota",
+        "green": "Cleveland @ Baltimore",
+        "red": "San Francisco @ Jacksonville"
+      },
+      "FOX_LATE": {
+        "blue": "Washington @ Seattle",
+        "red": "NY Giants @ Dallas"
+      }
+    },
+    "page_map_images": [
+      "2023/10-CBS.png",
+      "2023/10-FOX-E.png",
+      "2023/10-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2023&wk=10",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2023-11": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:00:27Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Las Vegas @ Miami",
+        "green": "Tennessee @ Jacksonville",
+        "red": "Pittsburgh @ Cleveland",
+        "yellow": "Arizona @ Houston"
+      },
+      "CBS_LATE": {
+        "blue": "Seattle @ LA Rams",
+        "red": "NY Jets @ Buffalo"
+      },
+      "FOX_SINGLE": {
+        "blue": "Tampa Bay @ San Francisco (LATE)",
+        "green": "LA Chargers @ Green Bay",
+        "orange": "NY Giants @ Washington",
+        "red": "Dallas @ Carolina",
+        "yellow": "Chicago @ Detroit"
+      }
+    },
+    "page_map_images": [
+      "2023/11-CBS-E-V2.png",
+      "2023/11-CBS-L-V2.png",
+      "2023/11-FOX-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2023&wk=11",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2023-12": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:00:33Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Jacksonville @ Houston",
+        "green": "Tampa Bay @ Indianapolis",
+        "red": "Pittsburgh @ Cincinnati"
+      },
+      "CBS_LATE": {
+        "blue": "Kansas City @ Las Vegas",
+        "grey": "NO GAME",
+        "red": "Buffalo @ Philadelphia"
+      },
+      "FOX_SINGLE": {
+        "blue": "Cleveland @ Denver (LATE)",
+        "green": "New England @ NY Giants",
+        "orange": "Carolina @ Tennessee",
+        "red": "New Orleans @ Atlanta",
+        "yellow": "LA Rams @ Arizona (LATE)"
+      }
+    },
+    "page_map_images": [
+      "2023/12-CBS-E-V2.png",
+      "2023/12-CBS-L.png",
+      "2023/12-FOX-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2023&wk=12",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2023-13": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:00:39Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Arizona @ Pittsburgh",
+        "green": "Indianapolis @ Tennessee",
+        "orange": "Carolina @ Tampa Bay (LATE)",
+        "red": "Denver @ Houston",
+        "yellow": "LA Chargers @ New England"
+      },
+      "FOX_EARLY": {
+        "blue": "Miami @ Washington",
+        "green": "Atlanta @ NY Jets",
+        "red": "Detroit @ New Orleans"
+      },
+      "FOX_LATE": {
+        "blue": "Cleveland @ LA Rams",
+        "grey": "NO GAME",
+        "red": "San Francisco @ Philadelphia"
+      }
+    },
+    "page_map_images": [
+      "2023/13-CBS.png",
+      "2023/13-FOX-E.png",
+      "2023/13-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2023&wk=13",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2023-14": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:00:46Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Houston @ NY Jets",
+        "green": "Tampa Bay @ Atlanta",
+        "red": "Jacksonville @ Cleveland",
+        "yellow": "Indianapolis @ Cincinnati"
+      },
+      "CBS_LATE": {
+        "blue": "Denver @ LA Chargers",
+        "red": "Buffalo @ Kansas City"
+      },
+      "FOX_SINGLE": {
+        "blue": "LA Rams @ Baltimore",
+        "green": "Detroit @ Chicago",
+        "orange": "Minnesota @ Las Vegas (LATE)",
+        "red": "Seattle @ San Francisco (LATE)",
+        "yellow": "Carolina @ New Orleans"
+      }
+    },
+    "page_map_images": [
+      "2023/14-CBS-E-V3.png",
+      "2023/14-CBS-L-V2.png",
+      "2023/14-FOX.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2023&wk=14",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2023-15": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:00:53Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "San Francisco @ Arizona (LATE)",
+        "green": "Tampa Bay @ Green Bay",
+        "orange": "Washington @ LA Rams (LATE)",
+        "red": "NY Jets @ Miami",
+        "yellow": "Houston @ Tennessee"
+      },
+      "FOX_EARLY": {
+        "blue": "NY Giants @ New Orleans",
+        "green": "Chicago @ Cleveland",
+        "red": "Kansas City @ New England",
+        "yellow": "Atlanta @ Carolina"
+      },
+      "FOX_LATE": {
+        "red": "Dallas @ Buffalo"
+      }
+    },
+    "page_map_images": [
+      "2023/15-CBS-V2.png",
+      "2023/15-FOX-E-V3.png",
+      "2023/15-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2023&wk=15",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2023-16": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:00:57Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Jacksonville @ Tampa Bay (LATE)",
+        "green": "Seattle @ Tennessee",
+        "red": "Cleveland @ Houston",
+        "yellow": "Washington @ NY Jets"
+      },
+      "FOX_EARLY": {
+        "blue": "Indianapolis @ Atlanta",
+        "green": "Green Bay @ Carolina",
+        "grey": "NO GAME",
+        "red": "Detroit @ Minnesota"
+      },
+      "FOX_LATE": {
+        "blue": "Arizona @ Chicago",
+        "red": "Dallas @ Miami"
+      }
+    },
+    "page_map_images": [
+      "2023/16-CBS.png",
+      "2023/16-FOX-E-V2.png",
+      "2023/16-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2023&wk=16",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2023-17": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:01:03Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "New England @ Buffalo",
+        "green": "Las Vegas @ Indianapolis",
+        "grey": "NO GAME",
+        "orange": "Atlanta @ Chicago",
+        "red": "Miami @ Baltimore",
+        "yellow": "Carolina @ Jacksonville"
+      },
+      "CBS_LATE": {
+        "blue": "LA Chargers @ Denver",
+        "red": "Cincinnati @ Kansas City"
+      },
+      "FOX_SINGLE": {
+        "blue": "Arizona @ Philadelphia",
+        "green": "LA Rams @ NY Giants",
+        "light_blue": "Tennessee @ Houston",
+        "orange": "New Orleans @ Tampa Bay",
+        "red": "Pittsburgh @ Seattle (LATE)",
+        "yellow": "San Francisco @ Washington"
+      }
+    },
+    "page_map_images": [
+      "2023/17-CBS-E-V4.png",
+      "2023/17-CBS-L-V3.png",
+      "2023/17-FOX-V6.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2023&wk=17",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2023-18": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:01:09Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Atlanta @ New Orleans",
+        "green": "Cleveland @ Cincinnati",
+        "red": "Jacksonville @ Tennessee"
+      },
+      "CBS_LATE": {
+        "blue": "Philadelphia @ NY Giants",
+        "green": "Kansas City @ LA Chargers",
+        "red": "Chicago @ Green Bay"
+      },
+      "FOX_EARLY": {
+        "blue": "Tampa Bay @ Carolina",
+        "green": "NY Jets @ New England",
+        "red": "Minnesota @ Detroit"
+      },
+      "FOX_LATE": {
+        "blue": "LA Rams @ San Francisco",
+        "green": "Seattle @ Arizona",
+        "red": "Dallas @ Washington",
+        "yellow": "Denver @ Las Vegas"
+      }
+    },
+    "page_map_images": [
+      "2023/18-CBS-E-V6.png",
+      "2023/18-CBS-L-V6.png",
+      "2023/18-FOX-E-V2.png",
+      "2023/18-FOX-L-V3.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2023&wk=18",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2023-2": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:59:28Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Las Vegas @ Buffalo",
+        "green": "Baltimore @ Cincinnati",
+        "red": "Kansas City @ Jacksonville",
+        "yellow": "LA Chargers @ Tennessee"
+      },
+      "CBS_LATE": {
+        "blue": "Washington @ Denver",
+        "red": "NY Jets @ Dallas"
+      },
+      "FOX_SINGLE": {
+        "blue": "Chicago @ Tampa Bay",
+        "green": "NY Giants @ Arizona (LATE)",
+        "light_blue": "Indianapolis @ Houston",
+        "orange": "San Francisco @ LA Rams (LATE)",
+        "red": "Seattle @ Detroit",
+        "yellow": "Green Bay @ Atlanta"
+      }
+    },
+    "page_map_images": [
+      "2023/02-CBS-E-V2.png",
+      "2023/02-CBS-L.png",
+      "2023/02-FOX.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2023&wk=2",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2023-3": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:59:34Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Carolina @ Seattle (LATE)",
+        "green": "Denver @ Miami",
+        "light_blue": "Indianapolis @ Baltimore",
+        "orange": "Tennessee @ Cleveland",
+        "red": "New England @ NY Jets",
+        "yellow": "Buffalo @ Washington"
+      },
+      "FOX_EARLY": {
+        "blue": "New Orleans @ Green Bay",
+        "green": "LA Chargers @ Minnesota",
+        "red": "Atlanta @ Detroit",
+        "yellow": "Houston @ Jacksonville"
+      },
+      "FOX_LATE": {
+        "blue": "Dallas @ Arizona",
+        "red": "Chicago @ Kansas City"
+      }
+    },
+    "page_map_images": [
+      "2023/03-CBS.png",
+      "2023/03-FOX-E.png",
+      "2023/03-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2023&wk=3",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2023-4": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:59:41Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Baltimore @ Cleveland",
+        "green": "Las Vegas @ LA Chargers (LATE)",
+        "orange": "Pittsburgh @ Houston",
+        "red": "Miami @ Buffalo",
+        "yellow": "Denver @ Chicago"
+      },
+      "FOX_EARLY": {
+        "blue": "Cincinnati @ Tennessee",
+        "green": "LA Rams @ Indianapolis",
+        "orange": "Minnesota @ Carolina",
+        "red": "Washington @ Philadelphia",
+        "yellow": "Tampa Bay @ New Orleans"
+      },
+      "FOX_LATE": {
+        "blue": "Arizona @ San Francisco",
+        "red": "New England @ Dallas"
+      }
+    },
+    "page_map_images": [
+      "2023/04-CBS-V4.png",
+      "2023/04-FOX-E-V4.png",
+      "2023/04-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2023&wk=4",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2023-5": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:59:47Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "New Orleans @ New England",
+        "green": "Tennessee @ Indianapolis",
+        "red": "Baltimore @ Pittsburgh"
+      },
+      "CBS_LATE": {
+        "blue": "NY Jets @ Denver",
+        "red": "Kansas City @ Minnesota"
+      },
+      "FOX_SINGLE": {
+        "blue": "NY Giants @ Miami",
+        "green": "Carolina @ Detroit",
+        "orange": "Cincinnati @ Arizona (LATE)",
+        "red": "Philadelphia @ LA Rams (LATE)",
+        "yellow": "Houston @ Atlanta"
+      }
+    },
+    "page_map_images": [
+      "2023/05-CBS-E-V3.png",
+      "2023/05-CBS-L.png",
+      "2023/05-FOX-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2023&wk=5",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2023-6": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T13:59:54Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Seattle @ Cincinnati",
+        "green": "Carolina @ Miami",
+        "orange": "Indianapolis @ Jacksonville",
+        "red": "New England @ Las Vegas (LATE)",
+        "yellow": "Washington @ Atlanta"
+      },
+      "FOX_EARLY": {
+        "blue": "Minnesota @ Chicago",
+        "green": "New Orleans @ Houston",
+        "red": "San Francisco @ Cleveland"
+      },
+      "FOX_LATE": {
+        "blue": "Detroit @ Tampa Bay",
+        "green": "Arizona @ LA Rams",
+        "red": "Philadelphia @ NY Jets"
+      }
+    },
+    "page_map_images": [
+      "2023/06-CBS-V3.png",
+      "2023/06-FOX-E.png",
+      "2023/06-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2023&wk=6",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2023-7": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:00:00Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Washington @ NY Giants",
+        "green": "Cleveland @ Indianapolis",
+        "red": "Buffalo @ New England"
+      },
+      "CBS_LATE": {
+        "blue": "Green Bay @ Denver",
+        "red": "LA Chargers @ Kansas City"
+      },
+      "FOX_SINGLE": {
+        "blue": "Pittsburgh @ LA Rams (LATE)",
+        "green": "Las Vegas @ Chicago",
+        "orange": "Arizona @ Seattle (LATE)",
+        "red": "Detroit @ Baltimore",
+        "yellow": "Atlanta @ Tampa Bay"
+      }
+    },
+    "page_map_images": [
+      "2023/07-CBS-E-V3.png",
+      "2023/07-CBS-L.png",
+      "2023/07-FOX-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2023&wk=7",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2023-8": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:00:07Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "NY Jets @ NY Giants",
+        "green": "New England @ Miami",
+        "red": "Jacksonville @ Pittsburgh",
+        "yellow": "Atlanta @ Tennessee"
+      },
+      "CBS_LATE": {
+        "blue": "Kansas City @ Denver",
+        "green": "Baltimore @ Arizona",
+        "red": "Cincinnati @ San Francisco"
+      },
+      "FOX_SINGLE": {
+        "blue": "Cleveland @ Seattle (LATE)",
+        "green": "Philadelphia @ Washington",
+        "light_blue": "Houston @ Carolina",
+        "orange": "New Orleans @ Indianapolis",
+        "red": "LA Rams @ Dallas",
+        "yellow": "Minnesota @ Green Bay"
+      }
+    },
+    "page_map_images": [
+      "2023/08-CBS-E.png",
+      "2023/08-CBS-L-V2.png",
+      "2023/08-FOX-V4.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2023&wk=8",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2023-9": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:00:13Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Tampa Bay @ Houston",
+        "green": "Indianapolis @ Carolina (LATE)",
+        "orange": "Arizona @ Cleveland",
+        "red": "Seattle @ Baltimore",
+        "yellow": "Chicago @ New Orleans"
+      },
+      "FOX_EARLY": {
+        "blue": "Washington @ New England",
+        "green": "Minnesota @ Atlanta",
+        "red": "LA Rams @ Green Bay"
+      },
+      "FOX_LATE": {
+        "blue": "NY Giants @ Las Vegas",
+        "red": "Dallas @ Philadelphia"
+      }
+    },
+    "page_map_images": [
+      "2023/09-CBS-V2.png",
+      "2023/09-FOX-E-V3.png",
+      "2023/09-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2023&wk=9",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2024-1": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:01:18Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "New England @ Cincinnati",
+        "green": "Jacksonville @ Miami",
+        "light_blue": "Arizona @ Buffalo",
+        "orange": "Denver @ Seattle (LATE)",
+        "red": "Las Vegas @ LA Chargers (LATE)",
+        "yellow": "Houston @ Indianapolis"
+      },
+      "FOX_EARLY": {
+        "blue": "Minnesota @ NY Giants",
+        "green": "Tennessee @ Chicago",
+        "red": "Pittsburgh @ Atlanta",
+        "yellow": "Carolina @ New Orleans"
+      },
+      "FOX_LATE": {
+        "blue": "Washington @ Tampa Bay",
+        "red": "Dallas @ Cleveland"
+      }
+    },
+    "page_map_images": [
+      "2024/01-CBS-V2.png",
+      "2024/01-FOX-E-V4.png",
+      "2024/01-FOX-L-V4.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2024&wk=1",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2024-10": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:02:14Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Denver @ Kansas City",
+        "green": "Buffalo @ Indianapolis",
+        "red": "Pittsburgh @ Washington"
+      },
+      "CBS_LATE": {
+        "blue": "NY Jets @ Arizona",
+        "red": "Philadelphia @ Dallas"
+      },
+      "FOX_SINGLE": {
+        "blue": "Atlanta @ New Orleans",
+        "green": "Tennessee @ LA Chargers (LATE)",
+        "orange": "New England @ Chicago",
+        "red": "San Francisco @ Tampa Bay",
+        "yellow": "Minnesota @ Jacksonville"
+      }
+    },
+    "page_map_images": [
+      "2024/10-CBS-E.png",
+      "2024/10-CBS-L-V2.png",
+      "2024/10-FOX-V4.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2024&wk=10",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2024-11": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:02:20Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Jacksonville @ Detroit",
+        "green": "Indianapolis @ NY Jets",
+        "orange": "Las Vegas @ Miami",
+        "red": "Baltimore @ Pittsburgh",
+        "yellow": "Minnesota @ Tennessee"
+      },
+      "CBS_LATE": {
+        "red": "Kansas City @ Buffalo"
+      },
+      "FOX_SINGLE": {
+        "blue": "Seattle @ San Francisco (LATE)",
+        "green": "Atlanta @ Denver (LATE)",
+        "orange": "Cleveland @ New Orleans",
+        "red": "Green Bay @ Chicago",
+        "yellow": "LA Rams @ New England"
+      }
+    },
+    "page_map_images": [
+      "2024/11-CBS-E-V3.png",
+      "2024/11-CBS-L.png",
+      "2024/11-FOX-V3.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2024&wk=11",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2024-12": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:02:25Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Denver @ Las Vegas (LATE)",
+        "green": "Tampa Bay @ NY Giants",
+        "orange": "Tennessee @ Houston",
+        "red": "Kansas City @ Carolina",
+        "yellow": "New England @ Miami"
+      },
+      "FOX_EARLY": {
+        "blue": "Minnesota @ Chicago",
+        "green": "Detroit @ Indianapolis",
+        "red": "Dallas @ Washington"
+      },
+      "FOX_LATE": {
+        "blue": "Arizona @ Seattle",
+        "red": "San Francisco @ Green Bay"
+      }
+    },
+    "page_map_images": [
+      "2024/12-CBS-V3.png",
+      "2024/12-FOX-E-V3.png",
+      "2024/12-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2024&wk=12",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2024-13": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:02:32Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "LA Chargers @ Atlanta",
+        "green": "Tennessee @ Washington",
+        "red": "Pittsburgh @ Cincinnati",
+        "yellow": "Indianapolis @ New England"
+      },
+      "CBS_LATE": {
+        "red": "Philadelphia @ Baltimore"
+      },
+      "FOX_SINGLE": {
+        "blue": "LA Rams @ New Orleans (LATE)",
+        "green": "Seattle @ NY Jets",
+        "orange": "Houston @ Jacksonville",
+        "red": "Arizona @ Minnesota",
+        "yellow": "Tampa Bay @ Carolina (LATE)"
+      }
+    },
+    "page_map_images": [
+      "2024/13-CBS-E-V2.png",
+      "2024/13-CBS-L.png",
+      "2024/13-FOX-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2024&wk=13",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2024-14": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:02:36Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Seattle @ Arizona (LATE)",
+        "green": "NY Jets @ Miami",
+        "orange": "Las Vegas @ Tampa Bay",
+        "red": "Cleveland @ Pittsburgh",
+        "yellow": "Jacksonville @ Tennessee"
+      },
+      "FOX_EARLY": {
+        "blue": "Carolina @ Philadelphia",
+        "green": "New Orleans @ NY Giants",
+        "red": "Atlanta @ Minnesota"
+      },
+      "FOX_LATE": {
+        "blue": "Chicago @ San Francisco",
+        "red": "Buffalo @ LA Rams"
+      }
+    },
+    "page_map_images": [
+      "2024/14-CBS-V2.png",
+      "2024/14-FOX-E-V3.png",
+      "2024/14-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2024&wk=14",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2024-15": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:02:42Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Miami @ Houston",
+        "green": "Baltimore @ NY Giants",
+        "red": "Kansas City @ Cleveland"
+      },
+      "CBS_LATE": {
+        "blue": "Indianapolis @ Denver",
+        "green": "New England @ Arizona",
+        "red": "Buffalo @ Detroit"
+      },
+      "FOX_EARLY": {
+        "blue": "Dallas @ Carolina",
+        "green": "Cincinnati @ Tennessee",
+        "red": "Washington @ New Orleans",
+        "yellow": "NY Jets @ Jacksonville"
+      },
+      "FOX_LATE": {
+        "blue": "Tampa Bay @ LA Chargers",
+        "red": "Pittsburgh @ Philadelphia"
+      }
+    },
+    "page_map_images": [
+      "2024/15-CBS-E.png",
+      "2024/15-CBS-L-V2.png",
+      "2024/15-FOX-E-V2.png",
+      "2024/15-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2024&wk=15",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2024-16": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:02:50Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Cleveland @ Cincinnati",
+        "green": "Tennessee @ Indianapolis",
+        "red": "LA Rams @ NY Jets"
+      },
+      "CBS_LATE": {
+        "blue": "New England @ Buffalo",
+        "green": "Jacksonville @ Las Vegas",
+        "red": "San Francisco @ Miami"
+      },
+      "FOX_SINGLE": {
+        "blue": "Detroit @ Chicago",
+        "green": "Minnesota @ Seattle (LATE)",
+        "orange": "Arizona @ Carolina",
+        "red": "Philadelphia @ Washington",
+        "yellow": "NY Giants @ Atlanta"
+      }
+    },
+    "page_map_images": [
+      "2024/16-CBS-E-V3.png",
+      "2024/16-CBS-L-V4.png",
+      "2024/16-FOX-V5.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2024&wk=16",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2024-17": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:02:57Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Carolina @ Tampa Bay",
+        "green": "Miami @ Cleveland (LATE)",
+        "red": "NY Jets @ Buffalo",
+        "yellow": "Tennessee @ Jacksonville"
+      },
+      "FOX_EARLY": {
+        "blue": "Indianapolis @ NY Giants",
+        "green": "Las Vegas @ New Orleans",
+        "red": "Dallas @ Philadelphia"
+      },
+      "FOX_LATE": {
+        "red": "Green Bay @ Minnesota"
+      }
+    },
+    "page_map_images": [
+      "2024/17-CBS.png",
+      "2024/17-FOX-E-V2.png",
+      "2024/17-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2024&wk=17",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2024-18": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:03:01Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "NY Giants @ Philadelphia",
+        "green": "Buffalo @ New England",
+        "red": "Carolina @ Atlanta",
+        "yellow": "Houston @ Tennessee"
+      },
+      "CBS_LATE": {
+        "blue": "LA Chargers @ Las Vegas",
+        "red": "Kansas City @ Denver"
+      },
+      "FOX_EARLY": {
+        "blue": "Washington @ Dallas",
+        "green": "Chicago @ Green Bay",
+        "red": "New Orleans @ Tampa Bay",
+        "yellow": "Jacksonville @ Indianapolis"
+      },
+      "FOX_LATE": {
+        "blue": "Seattle @ LA Rams",
+        "green": "San Francisco @ Arizona",
+        "red": "Miami @ NY Jets"
+      }
+    },
+    "page_map_images": [
+      "2024/18-CBS-E-V4.png",
+      "2024/18-CBS-L.png",
+      "2024/18-FOX-E-V3.png",
+      "2024/18-FOX-L-V3.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2024&wk=18",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2024-2": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:01:25Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "San Francisco @ Minnesota",
+        "green": "Las Vegas @ Baltimore",
+        "orange": "Cleveland @ Jacksonville",
+        "red": "NY Jets @ Tennessee",
+        "yellow": "LA Chargers @ Carolina"
+      },
+      "CBS_LATE": {
+        "blue": "Pittsburgh @ Denver",
+        "red": "Cincinnati @ Kansas City"
+      },
+      "FOX_SINGLE": {
+        "blue": "Indianapolis @ Green Bay",
+        "green": "Seattle @ New England",
+        "light_blue": "NY Giants @ Washington",
+        "orange": "Tampa Bay @ Detroit",
+        "red": "New Orleans @ Dallas",
+        "yellow": "LA Rams @ Arizona (LATE)"
+      }
+    },
+    "page_map_images": [
+      "2024/02-CBS-E-V3.png",
+      "2024/02-CBS-L.png",
+      "2024/02-FOX-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2024&wk=2",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2024-3": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:01:32Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Houston @ Minnesota",
+        "green": "Miami @ Seattle (LATE)",
+        "orange": "Carolina @ Las Vegas (LATE)",
+        "red": "LA Chargers @ Pittsburgh",
+        "yellow": "Chicago @ Indianapolis"
+      },
+      "FOX_EARLY": {
+        "blue": "NY Giants @ Cleveland",
+        "green": "Green Bay @ Tennessee",
+        "red": "Philadelphia @ New Orleans",
+        "yellow": "Denver @ Tampa Bay"
+      },
+      "FOX_LATE": {
+        "blue": "San Francisco @ LA Rams",
+        "green": "Detroit @ Arizona",
+        "red": "Baltimore @ Dallas"
+      }
+    },
+    "page_map_images": [
+      "2024/03-CBS-V2a.png",
+      "2024/03-FOX-E-V2.png",
+      "2024/03-FOX-L-V3.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2024&wk=3",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2024-4": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:01:38Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Minnesota @ Green Bay",
+        "green": "Jacksonville @ Houston",
+        "red": "Denver @ NY Jets",
+        "yellow": "Pittsburgh @ Indianapolis"
+      },
+      "CBS_LATE": {
+        "blue": "Cleveland @ Las Vegas",
+        "red": "Kansas City @ LA Chargers"
+      },
+      "FOX_SINGLE": {
+        "blue": "New England @ San Francisco (LATE)",
+        "green": "New Orleans @ Atlanta",
+        "light_blue": "Cincinnati @ Carolina",
+        "orange": "Washington @ Arizona (LATE)",
+        "red": "Philadelphia @ Tampa Bay",
+        "yellow": "LA Rams @ Chicago"
+      }
+    },
+    "page_map_images": [
+      "2024/04-CBS-E-V3.png",
+      "2024/04-CBS-L.png",
+      "2024/04-FOX-V3.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2024&wk=4",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2024-5": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:01:44Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Baltimore @ Cincinnati",
+        "green": "Indianapolis @ Jacksonville",
+        "red": "Buffalo @ Houston"
+      },
+      "CBS_LATE": {
+        "blue": "NY Giants @ Seattle",
+        "red": "Green Bay @ LA Rams"
+      },
+      "FOX_SINGLE": {
+        "blue": "Cleveland @ Washington",
+        "green": "Carolina @ Chicago",
+        "orange": "Las Vegas @ Denver (LATE)",
+        "red": "Arizona @ San Francisco (LATE)",
+        "yellow": "Miami @ New England"
+      }
+    },
+    "page_map_images": [
+      "2024/05-CBS-E-V2.png",
+      "2024/05-CBS-L.png",
+      "2024/05-FOX-V4a.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2024&wk=5",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2024-6": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:01:51Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Pittsburgh @ Las Vegas (LATE)",
+        "green": "Houston @ New England",
+        "orange": "Indianapolis @ Tennessee",
+        "red": "Washington @ Baltimore",
+        "yellow": "LA Chargers @ Denver (LATE)"
+      },
+      "FOX_EARLY": {
+        "blue": "Cleveland @ Philadelphia",
+        "green": "Tampa Bay @ New Orleans",
+        "red": "Arizona @ Green Bay"
+      },
+      "FOX_LATE": {
+        "blue": "Atlanta @ Carolina",
+        "red": "Detroit @ Dallas"
+      }
+    },
+    "page_map_images": [
+      "2024/06-CBS-V2.png",
+      "2024/06-FOX-E-V2.png",
+      "2024/06-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2024&wk=6",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2024-7": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:01:57Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Carolina @ Washington (LATE)",
+        "green": "Las Vegas @ LA Rams (LATE)",
+        "orange": "Cincinnati @ Cleveland",
+        "red": "Houston @ Green Bay",
+        "yellow": "Tennessee @ Buffalo"
+      },
+      "FOX_EARLY": {
+        "blue": "Philadelphia @ NY Giants",
+        "green": "Seattle @ Atlanta",
+        "red": "Detroit @ Minnesota",
+        "yellow": "Miami @ Indianapolis"
+      },
+      "FOX_LATE": {
+        "red": "Kansas City @ San Francisco"
+      }
+    },
+    "page_map_images": [
+      "2024/07-CBS-V2.png",
+      "2024/07-FOX-E-V2.png",
+      "2024/07-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2024&wk=7",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2024-8": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:02:01Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Indianapolis @ Houston",
+        "green": "NY Jets @ New England",
+        "red": "Philadelphia @ Cincinnati",
+        "yellow": "Baltimore @ Cleveland"
+      },
+      "CBS_LATE": {
+        "blue": "Kansas City @ Las Vegas",
+        "green": "Carolina @ Denver",
+        "red": "Chicago @ Washington"
+      },
+      "FOX_SINGLE": {
+        "blue": "Green Bay @ Jacksonville",
+        "green": "New Orleans @ LA Chargers (LATE)",
+        "light_blue": "Arizona @ Miami",
+        "orange": "Tennessee @ Detroit",
+        "red": "Buffalo @ Seattle (LATE)",
+        "yellow": "Atlanta @ Tampa Bay"
+      }
+    },
+    "page_map_images": [
+      "2024/08-CBS-E-V2a.png",
+      "2024/08-CBS-L-V2.png",
+      "2024/08-FOX-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2024&wk=8",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2024-9": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:02:08Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Chicago @ Arizona (LATE)",
+        "green": "Miami @ Buffalo",
+        "light_blue": "New Orleans @ Carolina",
+        "orange": "LA Chargers @ Cleveland",
+        "red": "Denver @ Baltimore",
+        "yellow": "Jacksonville @ Philadelphia (LATE)"
+      },
+      "FOX_EARLY": {
+        "blue": "Washington @ NY Giants",
+        "green": "New England @ Tennessee",
+        "red": "Dallas @ Atlanta",
+        "yellow": "Las Vegas @ Cincinnati"
+      },
+      "FOX_LATE": {
+        "blue": "LA Rams @ Seattle",
+        "red": "Detroit @ Green Bay"
+      }
+    },
+    "page_map_images": [
+      "2024/09-CBS-V2.png",
+      "2024/09-FOX-E.png",
+      "2024/09-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2024&wk=9",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2025-1": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:03:09Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Miami @ Indianapolis",
+        "green": "Las Vegas @ New England",
+        "red": "Pittsburgh @ NY Jets",
+        "yellow": "Arizona @ New Orleans"
+      },
+      "CBS_LATE": {
+        "blue": "Houston @ LA Rams",
+        "red": "Detroit @ Green Bay"
+      },
+      "FOX_SINGLE": {
+        "blue": "San Francisco @ Seattle (LATE)",
+        "green": "Tampa Bay @ Atlanta",
+        "light_blue": "Carolina @ Jacksonville",
+        "orange": "Cincinnati @ Cleveland",
+        "red": "NY Giants @ Washington",
+        "yellow": "Tennessee @ Denver (LATE)"
+      }
+    },
+    "page_map_images": [
+      "2025/01-CBS-E-V2.png",
+      "2025/01-CBS-L-V2.png",
+      "2025/01-FOX-V4.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2025&wk=1",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2025-10": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:04:01Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Jacksonville @ Houston",
+        "green": "Arizona @ Seattle (LATE)",
+        "orange": "Cleveland @ NY Jets",
+        "red": "New England @ Tampa Bay",
+        "yellow": "Buffalo @ Miami"
+      },
+      "FOX_EARLY": {
+        "blue": "Baltimore @ Minnesota",
+        "green": "New Orleans @ Carolina",
+        "red": "NY Giants @ Chicago"
+      },
+      "FOX_LATE": {
+        "blue": "Detroit @ Washington",
+        "red": "LA Rams @ San Francisco"
+      }
+    },
+    "page_map_images": [
+      "2025/10-CBS-V2.png",
+      "2025/10-FOX-E-V3.png",
+      "2025/10-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2025&wk=10",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2025-11": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:04:07Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Cincinnati @ Pittsburgh",
+        "green": "LA Chargers @ Jacksonville",
+        "red": "Tampa Bay @ Buffalo"
+      },
+      "CBS_LATE": {
+        "blue": "Baltimore @ Cleveland",
+        "red": "Kansas City @ Denver"
+      },
+      "FOX_SINGLE": {
+        "blue": "Seattle @ LA Rams (LATE)",
+        "green": "Green Bay @ NY Giants",
+        "light_blue": "Houston @ Tennessee",
+        "orange": "San Francisco @ Arizona (LATE)",
+        "red": "Chicago @ Minnesota",
+        "yellow": "Carolina @ Atlanta"
+      }
+    },
+    "page_map_images": [
+      "2025/11-CBS-E-V2.png",
+      "2025/11-CBS-L-V2.png",
+      "2025/11-FOX-V4.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2025&wk=11",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2025-12": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:04:13Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Pittsburgh @ Chicago",
+        "green": "New England @ Cincinnati",
+        "light_blue": "Cleveland @ Las Vegas (LATE)",
+        "orange": "Jacksonville @ Arizona (LATE)",
+        "red": "Indianapolis @ Kansas City",
+        "yellow": "NY Jets @ Baltimore"
+      },
+      "FOX_EARLY": {
+        "blue": "NY Giants @ Detroit",
+        "green": "Seattle @ Tennessee",
+        "red": "Minnesota @ Green Bay"
+      },
+      "FOX_LATE": {
+        "blue": "Atlanta @ New Orleans",
+        "red": "Philadelphia @ Dallas"
+      }
+    },
+    "page_map_images": [
+      "2025/12-CBS-V3.png",
+      "2025/12-FOX-E-V2.png",
+      "2025/12-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2025&wk=12",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2025-13": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:04:20Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "San Francisco @ Cleveland",
+        "green": "Jacksonville @ Tennessee",
+        "red": "Houston @ Indianapolis"
+      },
+      "CBS_LATE": {
+        "blue": "Las Vegas @ LA Chargers",
+        "red": "Buffalo @ Pittsburgh"
+      },
+      "FOX_SINGLE": {
+        "blue": "Minnesota @ Seattle (LATE)",
+        "green": "Atlanta @ NY Jets",
+        "orange": "New Orleans @ Miami",
+        "red": "LA Rams @ Carolina",
+        "yellow": "Arizona @ Tampa Bay"
+      }
+    },
+    "page_map_images": [
+      "2025/13-CBS-E.png",
+      "2025/13-CBS-L.png",
+      "2025/13-FOX-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2025&wk=13",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2025-14": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:04:26Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Indianapolis @ Jacksonville",
+        "green": "New Orleans @ Tampa Bay",
+        "orange": "Miami @ NY Jets",
+        "red": "Pittsburgh @ Baltimore",
+        "yellow": "Denver @ Las Vegas (LATE)"
+      },
+      "FOX_EARLY": {
+        "blue": "Washington @ Minnesota",
+        "green": "Seattle @ Atlanta",
+        "red": "Cincinnati @ Buffalo",
+        "yellow": "Tennessee @ Cleveland"
+      },
+      "FOX_LATE": {
+        "blue": "LA Rams @ Arizona",
+        "red": "Chicago @ Green Bay"
+      }
+    },
+    "page_map_images": [
+      "2025/14-CBS-V3.png",
+      "2025/14-FOX-E-V3.png",
+      "2025/14-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2025&wk=14",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2025-15": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:04:33Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "LA Chargers @ Kansas City",
+        "green": "Baltimore @ Cincinnati",
+        "red": "Buffalo @ New England",
+        "yellow": "NY Jets @ Jacksonville"
+      },
+      "CBS_LATE": {
+        "blue": "Indianapolis @ Seattle",
+        "red": "Green Bay @ Denver"
+      },
+      "FOX_EARLY": {
+        "blue": "Cleveland @ Chicago",
+        "green": "Washington @ NY Giants",
+        "red": "Las Vegas @ Philadelphia",
+        "yellow": "Arizona @ Houston"
+      },
+      "FOX_LATE": {
+        "blue": "Tennessee @ San Francisco",
+        "green": "Carolina @ New Orleans",
+        "red": "Detroit @ LA Rams"
+      }
+    },
+    "page_map_images": [
+      "2025/15-CBS-E.png",
+      "2025/15-CBS-L.png",
+      "2025/15-FOX-E.png",
+      "2025/15-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2025&wk=15",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2025-16": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:04:41Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Kansas City @ Tennessee",
+        "green": "Cincinnati @ Miami",
+        "red": "Buffalo @ Cleveland",
+        "yellow": "NY Jets @ New Orleans"
+      },
+      "CBS_LATE": {
+        "blue": "Las Vegas @ Houston",
+        "red": "Pittsburgh @ Detroit"
+      },
+      "FOX_SINGLE": {
+        "blue": "Jacksonville @ Denver (LATE)",
+        "green": "Minnesota @ NY Giants",
+        "orange": "Atlanta @ Arizona (LATE)",
+        "red": "LA Chargers @ Dallas",
+        "yellow": "Tampa Bay @ Carolina"
+      }
+    },
+    "page_map_images": [
+      "2025/16-CBS-E.png",
+      "2025/16-CBS-L-V2.png",
+      "2025/16-FOX-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2025&wk=16",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2025-17": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:04:47Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Seattle @ Carolina",
+        "green": "NY Giants @ Las Vegas (LATE)",
+        "red": "Pittsburgh @ Cleveland",
+        "yellow": "New Orleans @ Tennessee"
+      },
+      "FOX_EARLY": {
+        "blue": "New England @ NY Jets",
+        "green": "Tampa Bay @ Miami",
+        "red": "Jacksonville @ Indianapolis",
+        "yellow": "Arizona @ Cincinnati"
+      },
+      "FOX_LATE": {
+        "red": "Philadelphia @ Buffalo"
+      }
+    },
+    "page_map_images": [
+      "2025/17-CBS.png",
+      "2025/17-FOX-E-V2.png",
+      "2025/17-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2025&wk=17",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2025-18": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:04:51Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Green Bay @ Minnesota",
+        "green": "Cleveland @ Cincinnati",
+        "red": "Indianapolis @ Houston"
+      },
+      "CBS_LATE": {
+        "blue": "Washington @ Philadelphia",
+        "green": "NY Jets @ Buffalo",
+        "red": "LA Chargers @ Denver",
+        "yellow": "Kansas City @ Las Vegas"
+      },
+      "FOX_EARLY": {
+        "blue": "Tennessee @ Jacksonville",
+        "green": "New Orleans @ Atlanta",
+        "red": "Dallas @ NY Giants"
+      },
+      "FOX_LATE": {
+        "blue": "Miami @ New England",
+        "green": "Arizona @ LA Rams",
+        "red": "Detroit @ Chicago"
+      }
+    },
+    "page_map_images": [
+      "2025/18-CBS-E-V2.png",
+      "2025/18-CBS-L-V3.png",
+      "2025/18-FOX-E-V4.png",
+      "2025/18-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2025&wk=18",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2025-2": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:03:15Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "LA Rams @ Tennessee",
+        "green": "Denver @ Indianapolis (LATE)",
+        "light_blue": "Cleveland @ Baltimore",
+        "orange": "Carolina @ Arizona (LATE)",
+        "purple": "Jacksonville @ Cincinnati",
+        "red": "Buffalo @ NY Jets",
+        "yellow": "New England @ Miami"
+      },
+      "FOX_EARLY": {
+        "blue": "Chicago @ Detroit",
+        "green": "Seattle @ Pittsburgh",
+        "red": "NY Giants @ Dallas",
+        "yellow": "San Francisco @ New Orleans"
+      },
+      "FOX_LATE": {
+        "red": "Philadelphia @ Kansas City"
+      }
+    },
+    "page_map_images": [
+      "2025/02-CBS.png",
+      "2025/02-FOX-E.png",
+      "2025/02-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2025&wk=2",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2025-3": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:03:19Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Pittsburgh @ New England",
+        "green": "Denver @ LA Chargers (LATE)",
+        "light_blue": "Indianapolis @ Tennessee",
+        "orange": "Houston @ Jacksonville",
+        "red": "Cincinnati @ Minnesota",
+        "yellow": "New Orleans @ Seattle (LATE)"
+      },
+      "FOX_EARLY": {
+        "blue": "NY Jets @ Tampa Bay",
+        "green": "Green Bay @ Cleveland",
+        "orange": "Atlanta @ Carolina",
+        "red": "LA Rams @ Philadelphia",
+        "yellow": "Las Vegas @ Washington"
+      },
+      "FOX_LATE": {
+        "blue": "Arizona @ San Francisco",
+        "red": "Dallas @ Chicago"
+      }
+    },
+    "page_map_images": [
+      "2025/03-CBS-V2.png",
+      "2025/03-FOX-E.png",
+      "2025/03-FOX-L.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2025&wk=3",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2025-4": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:03:26Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "LA Chargers @ NY Giants",
+        "green": "New Orleans @ Buffalo",
+        "red": "Washington @ Atlanta",
+        "yellow": "Tennessee @ Houston"
+      },
+      "CBS_LATE": {
+        "blue": "Chicago @ Las Vegas",
+        "red": "Baltimore @ Kansas City"
+      },
+      "FOX_SINGLE": {
+        "blue": "Indianapolis @ LA Rams (LATE)",
+        "green": "Cleveland @ Detroit",
+        "orange": "Carolina @ New England",
+        "red": "Philadelphia @ Tampa Bay",
+        "yellow": "Jacksonville @ San Francisco (LATE)"
+      }
+    },
+    "page_map_images": [
+      "2025/04-CBS-E.png",
+      "2025/04-CBS-L-V2.png",
+      "2025/04-FOX-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2025&wk=4",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2025-5": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:03:32Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Houston @ Baltimore",
+        "green": "Tampa Bay @ Seattle (LATE)",
+        "orange": "Tennessee @ Arizona (LATE)",
+        "red": "Denver @ Philadelphia",
+        "yellow": "NY Giants @ New Orleans"
+      },
+      "FOX_EARLY": {
+        "blue": "Las Vegas @ Indianapolis",
+        "green": "Miami @ Carolina",
+        "red": "Dallas @ NY Jets"
+      },
+      "FOX_LATE": {
+        "blue": "Detroit @ Cincinnati",
+        "red": "Washington @ LA Chargers"
+      }
+    },
+    "page_map_images": [
+      "2025/05-CBS.png",
+      "2025/05-FOX-E-V2.png",
+      "2025/05-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2025&wk=5",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2025-6": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:03:38Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "LA Chargers @ Miami",
+        "green": "New England @ New Orleans",
+        "red": "Cleveland @ Pittsburgh"
+      },
+      "CBS_LATE": {
+        "blue": "Cincinnati @ Green Bay",
+        "red": "San Francisco @ Tampa Bay"
+      },
+      "FOX_SINGLE": {
+        "blue": "Dallas @ Carolina",
+        "green": "Tennessee @ Las Vegas (LATE)",
+        "orange": "Arizona @ Indianapolis",
+        "red": "LA Rams @ Baltimore",
+        "yellow": "Seattle @ Jacksonville"
+      }
+    },
+    "page_map_images": [
+      "2025/06-CBS-E-V2.png",
+      "2025/06-CBS-L-V4.png",
+      "2025/06-FOX-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2025&wk=6",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2025-7": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:03:44Z",
+    "legends": {
+      "CBS_SINGLE": {
+        "blue": "Indianapolis @ LA Chargers (LATE)",
+        "green": "NY Giants @ Denver (LATE)",
+        "orange": "Miami @ Cleveland",
+        "red": "Las Vegas @ Kansas City",
+        "yellow": "New England @ Tennessee"
+      },
+      "FOX_EARLY": {
+        "blue": "New Orleans @ Chicago",
+        "green": "Carolina @ NY Jets",
+        "red": "Philadelphia @ Minnesota"
+      },
+      "FOX_LATE": {
+        "blue": "Green Bay @ Arizona",
+        "red": "Washington @ Dallas"
+      }
+    },
+    "page_map_images": [
+      "2025/07-CBS-V2.png",
+      "2025/07-FOX-E-V2.png",
+      "2025/07-FOX-L-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2025&wk=7",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2025-8": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:03:51Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "Miami @ Atlanta",
+        "green": "NY Jets @ Cincinnati",
+        "red": "Chicago @ Baltimore"
+      },
+      "CBS_LATE": {
+        "blue": "Tennessee @ Indianapolis",
+        "red": "Dallas @ Denver"
+      },
+      "FOX_SINGLE": {
+        "blue": "San Francisco @ Houston",
+        "green": "Tampa Bay @ New Orleans (LATE)",
+        "orange": "Buffalo @ Carolina",
+        "red": "NY Giants @ Philadelphia",
+        "yellow": "Cleveland @ New England"
+      }
+    },
+    "page_map_images": [
+      "2025/08-CBS-E-V2.png",
+      "2025/08-CBS-L.png",
+      "2025/08-FOX-V2.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2025&wk=8",
+    "tls_mode": "truststore_os_trust"
+  },
+  "2025-9": {
+    "color_key": {
+      "blue": "#7F7FFF",
+      "brown": "#855C33",
+      "green": "#6CC182",
+      "light_blue": "#66FFFF",
+      "orange": "#E8B577",
+      "purple": "#B475C2",
+      "red": "#FF7F7F",
+      "yellow": "#FFFFB3"
+    },
+    "fetched_at": "2026-09-02T14:03:57Z",
+    "legends": {
+      "CBS_EARLY": {
+        "blue": "San Francisco @ NY Giants",
+        "green": "Atlanta @ New England",
+        "orange": "LA Chargers @ Tennessee",
+        "red": "Indianapolis @ Pittsburgh",
+        "yellow": "Chicago @ Cincinnati"
+      },
+      "CBS_LATE": {
+        "red": "Kansas City @ Buffalo"
+      },
+      "FOX_SINGLE": {
+        "blue": "Denver @ Houston",
+        "green": "Carolina @ Green Bay",
+        "orange": "Jacksonville @ Las Vegas (LATE)",
+        "red": "Minnesota @ Detroit",
+        "yellow": "New Orleans @ LA Rams (LATE)"
+      }
+    },
+    "page_map_images": [
+      "2025/09-CBS-E-V4.png",
+      "2025/09-CBS-L.png",
+      "2025/09-FOX-V3.png"
+    ],
+    "source": "https://506sports.com/nfl.php?yr=2025&wk=9",
+    "tls_mode": "truststore_os_trust"
+  }
+}
