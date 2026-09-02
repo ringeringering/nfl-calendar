@@ -146,26 +146,9 @@
   .roster-summary{font-size:9px;font-weight:850;color:#6b7889}
   /* Editor modal reuses the coverage-modal shell */
   .roster-modal-inner{max-width:min(520px,94vw)}
-  .roster-input-row{display:flex;gap:6px;margin-top:10px;position:relative}
-  .roster-input{flex:1;min-width:0;border:1px solid #dde4ee;border-radius:9px;padding:8px 10px;font:inherit;font-size:12px;font-weight:800;color:#12233f;outline:0}
-  .roster-input:focus{border-color:#2a78d6}
-  .roster-add{border:0;background:#2a78d6;color:#fff;border-radius:9px;padding:8px 12px;font-size:11px;font-weight:950;cursor:pointer}
-  .roster-add:disabled{opacity:.5;cursor:default}
-  .roster-sug{position:absolute;top:calc(100% + 3px);left:0;right:62px;background:#fff;border:1px solid #dde4ee;border-radius:9px;box-shadow:var(--shadow);z-index:5;overflow:hidden;max-height:210px;overflow-y:auto}
-  .roster-sug button{display:flex;width:100%;align-items:center;gap:7px;border:0;background:none;padding:7px 9px;font:inherit;font-size:11px;font-weight:850;color:#23344f;cursor:pointer;text-align:left}
-  .roster-sug button:hover,.roster-sug button.active{background:#f2f6fb}
-  .roster-sug .pos{font-size:8.5px;font-weight:950;color:#6b7889;min-width:44px}
-  .roster-sug .pts{margin-left:auto;font-size:10px;font-weight:900;color:#4a5a72;font-variant-numeric:tabular-nums}
   .roster-msg{font-size:10px;font-weight:850;margin-top:7px;min-height:13px}
   .roster-msg.err{color:#b4443e}
   .roster-msg.ok{color:#1c6b3a}
-  .roster-list{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:11px}
-  .roster-chip{display:flex;align-items:center;gap:6px;border:1px solid #e1e7ef;border-radius:9px;background:#fbfcfe;padding:6px 8px;min-width:0}
-  .roster-chip .nm{flex:1;min-width:0;font-size:11px;font-weight:900;color:#12233f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .roster-chip .mt{font-size:8.5px;font-weight:900;color:#8290a3;flex:0 0 auto}
-  .roster-chip .x{border:0;background:none;color:#a9b3c1;font-size:14px;font-weight:900;cursor:pointer;line-height:1;padding:0 1px;flex:0 0 auto}
-  .roster-chip .x:hover{color:#c8453f}
-  .roster-empty{font-size:11px;font-weight:800;color:#6b7889;line-height:1.45;margin-top:11px}
   .roster-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px;padding-top:9px;border-top:1px solid #e8ecf2}
   .roster-clear{border:0;background:none;color:#b4443e;font-size:9.5px;font-weight:900;cursor:pointer;text-transform:uppercase;letter-spacing:.04em}
   .roster-note{font-size:9px;font-weight:800;color:#8290a3;line-height:1.35}
@@ -194,7 +177,35 @@
   .rs-team:hover{border-color:#b9cbe2;background:#f5f9ff}
   .rs-team .tn{flex:1;min-width:0;font-size:11.5px;font-weight:900;color:#12233f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .rs-team .tc{font-size:9px;font-weight:900;color:#6b7889}
-  @media (max-width:560px){.roster-list{grid-template-columns:1fr}}
+  /* Slot-based roster editor: a lineup card whose rows open a picker */
+  .rq{display:grid;gap:3px;margin-top:11px}
+  .rq-sec{font-size:8px;font-weight:950;color:#8290a3;text-transform:uppercase;letter-spacing:.06em;margin-top:9px}
+  .rq-sec:first-child{margin-top:0}
+  .rq-row{display:grid;grid-template-columns:46px 1fr auto;gap:8px;align-items:center;border:1px solid #e1e7ef;border-radius:10px;background:#fbfcfe;padding:7px 9px;cursor:pointer;font:inherit;text-align:left;width:100%}
+  .rq-row:hover{border-color:#b9cbe2;background:#f5f9ff}
+  .rq-row.filled{background:#fff}
+  .rq-row.open{border-color:#2a78d6;background:#f5f9ff}
+  .rq-slot{font-size:9px;font-weight:950;color:#5b6a80;background:#eef2f7;border-radius:6px;padding:4px 0;text-align:center}
+  .rq-row.filled .rq-slot{background:#e3eefb;color:#1a4f8f}
+  .rq-body{min-width:0}
+  .rq-name{font-size:11.5px;font-weight:900;color:#12233f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rq-name.empty{color:#a9b3c1;font-weight:800}
+  .rq-sub{font-size:8.5px;font-weight:850;color:#6b7889;margin-top:1px;display:flex;align-items:center;gap:4px}
+  .rq-pts{font-size:11px;font-weight:950;color:#4a5a72;font-variant-numeric:tabular-nums}
+  .rq-x{border:0;background:none;color:#a9b3c1;font-size:15px;font-weight:900;cursor:pointer;line-height:1;padding:0 2px}
+  .rq-x:hover{color:#c8453f}
+  /* Picker panel that opens under the clicked slot */
+  .rq-pick{border:1px solid #2a78d6;border-radius:10px;background:#fff;padding:8px;margin-top:-1px}
+  .rq-search{width:100%;border:1px solid #dde4ee;border-radius:8px;padding:7px 9px;font:inherit;font-size:11.5px;font-weight:800;color:#12233f;outline:0;box-sizing:border-box}
+  .rq-search:focus{border-color:#2a78d6}
+  .rq-opts{margin-top:6px;max-height:210px;overflow-y:auto;display:grid;gap:2px}
+  .rq-opt{display:grid;grid-template-columns:auto 1fr auto;gap:7px;align-items:center;border:0;background:none;border-radius:7px;padding:6px 7px;font:inherit;cursor:pointer;text-align:left;width:100%}
+  .rq-opt:hover,.rq-opt.active{background:#f2f6fb}
+  .rq-opt .op{font-size:8.5px;font-weight:950;color:#6b7889;min-width:42px}
+  .rq-opt .on{font-size:11px;font-weight:850;color:#23344f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  .rq-opt .ov{font-size:10px;font-weight:900;color:#4a5a72;font-variant-numeric:tabular-nums}
+  .rq-none{font-size:10px;font-weight:800;color:#8290a3;padding:7px}
+  .rq-total{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;padding-top:8px;border-top:1px solid #e8ecf2;font-size:9.5px;font-weight:900;color:#33425b}
   @media (max-width:980px){.fl-name{font-size:10px}.fl-grid{grid-template-columns:1fr 30px 1fr}}.fantasy-team-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}.fantasy-team-name{font-size:11px;font-weight:950;color:#1a2d49}.fantasy-team-side{font-size:8px;font-weight:900;color:#8290a3;text-transform:uppercase;letter-spacing:.07em}
   .fantasy-player{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;border:1px solid #e1e7ef;border-radius:11px;padding:8px 9px;background:#fbfcfe;margin-top:6px}.fantasy-player-main{min-width:0}.fantasy-player-name{font-size:11px;font-weight:950;color:#1b2d49;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.fantasy-player-meta{display:flex;align-items:center;gap:5px;margin-top:3px;font-size:8.5px;color:#748197}.fantasy-pos{font-weight:950;color:#536176}.fantasy-rank{font-weight:900;color:#46607f}.fantasy-injury{display:inline-flex;align-items:center;border-radius:999px;padding:2px 5px;background:#eef2f7;color:#59677a;font-size:7.5px;font-weight:950;text-transform:uppercase}.fantasy-injury.active{background:#fff1df;color:#925b00}.fantasy-points{text-align:right}.fantasy-points-value{font-size:15px;font-weight:950;color:#16345d}.fantasy-points-label{font-size:7px;font-weight:900;color:#8a96a6;text-transform:uppercase;letter-spacing:.06em}
   .fantasy-empty{border:1px dashed #d4dce7;border-radius:12px;padding:13px;background:#fafbfd;color:#6f7d91;font-size:10px;line-height:1.45}.fantasy-source{margin-top:10px;font-size:8.5px;color:#8a95a5;line-height:1.35}
@@ -754,106 +765,144 @@ function updateRosterPick(){
   b.classList.toggle('has',R.size>0);
   b.title=R.size?`${R.size} players saved${R.teamName?` (${R.teamName})`:''} — click to edit`:'Add your fantasy roster';
 }
-let rosterSugIndex=-1;
+// Slot-based roster editor. Rows are lineup slots; clicking one opens a
+// picker filtered to that slot's eligible positions, ranked by projection.
+let rqOpenSlot=null, rqActive=-1;
 function openRosterModal(){
-  const modal=document.getElementById('covModal'),inner=document.getElementById('covModalInner');
-  const R=MR(); if(!modal||!inner||!R)return;
-  inner.className='cov-modal-inner roster-modal-inner';
+  const inner=rosterShellOpen(); const R=MR(); if(!inner||!R)return;
+  rqOpenSlot=null; rqActive=-1;
   inner.innerHTML=`<button class="cov-modal-close" id="rosterClose" aria-label="Close roster editor">&times;</button>`
     +`<div class="cov-modal-title">My fantasy roster</div>`
-    +`<div class="cov-modal-sub">Stored in this browser only &middot; not shared with anyone</div>`
+    +`<div class="cov-modal-sub">Click a slot to choose a player &middot; stored in this browser only</div>`
     +`<button type="button" class="rs-back" id="rsBackManual">&larr; Back</button>`
-    +`<div class="roster-input-row"><input class="roster-input" id="rosterInput" type="text" autocomplete="off"`
-    +` placeholder="Add a player, e.g. Gibbs or Saints D/ST" aria-label="Add a player">`
-    +`<button class="roster-add" id="rosterAdd">Add</button><div id="rosterSug"></div></div>`
     +`<div class="roster-msg" id="rosterMsg"></div>`
-    +`<div id="rosterList"></div>`
-    +`<div class="roster-foot"><div class="roster-note">Matched against ${(window.NFL_FANTASY_DATA&&window.NFL_FANTASY_DATA.players?'projected':'known')} players. `
-    +`Names, abbreviations and partial names all work.</div>`
+    +`<div id="rqGrid"></div>`
+    +`<div class="roster-foot"><div class="roster-note">Only players with a projection this season are listed.</div>`
     +`<button class="roster-clear" id="rosterClear">Clear all</button></div>`;
-  modal.classList.add('open');
-  renderRosterList();
-  const input=document.getElementById('rosterInput');
-  input.focus();
-  input.addEventListener('input',renderRosterSug);
-  input.addEventListener('keydown',rosterKeydown);
-  document.getElementById('rosterAdd').onclick=()=>rosterCommit(input.value);
   document.getElementById('rosterClose').onclick=closeRosterModal;
-  const bk=document.getElementById('rsBackManual');
-  if(bk)bk.onclick=openRosterSetup;
+  document.getElementById('rsBackManual').onclick=openRosterSetup;
   document.getElementById('rosterClear').onclick=()=>{
-    if(MR().size&&confirm('Remove all players from your roster?')){MR().clear();renderRosterList();rosterRefresh();}
+    if(MR().size&&confirm('Remove all players from your roster?')){
+      MR().clear(); rqOpenSlot=null; renderRosterQuick(); rosterRefresh();
+    }
   };
+  renderRosterQuick();
+}
+function renderRosterQuick(){
+  const box=document.getElementById('rqGrid'); const R=MR(); if(!box||!R)return;
+  const slots=R.slots;
+  // Sum only the starting slots, matching how fantasy scoring works.
+  const total=R.SLOTS.filter(s=>s.pos).reduce((t,s)=>{
+    const p=slots[s.id]?R.resolve(slots[s.id]):null;
+    return t+(p?Number(p.projected_points)||0:0);
+  },0);
+  let html='<div class="rq">';
+  let lastSec=null;
+  for(const s of R.SLOTS){
+    const sec=s.pos?'Starters':'Bench';
+    if(sec!==lastSec){html+=`<div class="rq-sec">${sec}</div>`;lastSec=sec;}
+    const nm=slots[s.id];
+    const p=nm?R.resolve(nm):null;
+    const filled=!!nm;
+    const isOpen=rqOpenSlot===s.id;
+    html+=`<button type="button" class="rq-row${filled?' filled':''}${isOpen?' open':''}" data-slot="${s.id}">`
+      +`<span class="rq-slot">${s.label}</span>`
+      +`<span class="rq-body">`
+      +`<span class="rq-name${filled?'':' empty'}">${filled?nm:'Choose a player'}</span>`
+      +(p?`<span class="rq-sub">${p.position} ${p.team}${p.position_rank?' &middot; '+p.position_rank:''}`
+          +`${p.injury_status&&p.injury_status!=='Healthy'?' &middot; '+p.injury_status:''}</span>`:'')
+      +`</span>`
+      +(p?`<span class="rq-pts">${Number(p.projected_points||0).toFixed(1)}</span>`:'<span></span>')
+      +`</button>`;
+    if(isOpen)html+=rqPickerMarkup(s);
+  }
+  html+='</div>';
+  html+=`<div class="rq-total"><span>Starters projected</span><span>${total.toFixed(1)} pts</span></div>`;
+  box.innerHTML=html;
+  [...box.querySelectorAll('.rq-row')].forEach(b=>b.onclick=()=>{
+    rqOpenSlot=(rqOpenSlot===b.dataset.slot)?null:b.dataset.slot;
+    rqActive=-1;
+    renderRosterQuick();
+    const s=document.getElementById('rqSearch');
+    if(s)s.focus();
+  });
+  wireRqPicker();
+}
+function rqPickerMarkup(slot){
+  const R=MR();
+  const q=(document.getElementById('rqSearch')||{}).value||'';
+  const opts=R.candidatesFor(slot.id,q,40);
+  const filled=!!R.slots[slot.id];
+  return `<div class="rq-pick">`
+    +`<input class="rq-search" id="rqSearch" type="text" autocomplete="off"`
+    +` placeholder="Search ${slot.pos?slot.pos.join('/'):'any position'}" value="${q.replace(/"/g,'&quot;')}"`
+    +` aria-label="Search players for ${slot.label}">`
+    +(filled?`<button type="button" class="rq-opt" data-clear="1"><span class="op">&mdash;</span>`
+      +`<span class="on">Clear this slot</span><span class="ov"></span></button>`:'')
+    +`<div class="rq-opts">`
+    +(opts.length?opts.map((p,i)=>`<button type="button" class="rq-opt${i===rqActive?' active':''}" data-pick="${p.name.replace(/"/g,'&quot;')}">`
+        +`<span class="op">${p.position} ${p.team}</span>`
+        +`<span class="on">${p.name}</span>`
+        +`<span class="ov">${Number(p.projected_points||0).toFixed(1)}</span></button>`).join('')
+      :`<div class="rq-none">No matching players for this slot.</div>`)
+    +`</div></div>`;
+}
+function wireRqPicker(){
+  const pick=document.querySelector('.rq-pick'); if(!pick)return;
+  const search=document.getElementById('rqSearch');
+  const msg=document.getElementById('rosterMsg');
+  const commit=name=>{
+    const res=MR().setSlot(rqOpenSlot,name);
+    if(res.ok){
+      msg.className='roster-msg ok';
+      msg.textContent=res.cleared?'Slot cleared.'
+        :`${res.player.name} placed${res.swapped?' (swapped with the slot it came from)':''}.`;
+      rqOpenSlot=null; rqActive=-1;
+      renderRosterQuick(); rosterRefresh();
+    }else{
+      msg.className='roster-msg err';
+      msg.textContent=res.reason==='wrong_position'
+        ?`${res.player.name} is a ${res.player.position} and cannot fill ${res.slot.label}.`
+        :'Could not place that player.';
+    }
+  };
+  [...pick.querySelectorAll('[data-pick]')].forEach(b=>b.onclick=e=>{e.stopPropagation();commit(b.dataset.pick);});
+  const cl=pick.querySelector('[data-clear]');
+  if(cl)cl.onclick=e=>{e.stopPropagation();commit(null);};
+  if(search){
+    search.onclick=e=>e.stopPropagation();
+    search.oninput=()=>{
+      const val=search.value, pos=search.selectionStart;
+      rqActive=-1;
+      const holder=document.querySelector('.rq-pick');
+      holder.outerHTML=rqPickerMarkup(MR().SLOTS.find(s=>s.id===rqOpenSlot));
+      const s2=document.getElementById('rqSearch');
+      if(s2){s2.value=val;s2.focus();s2.setSelectionRange(pos,pos);}
+      wireRqPicker();
+    };
+    search.onkeydown=e=>{
+      const btns=[...document.querySelectorAll('.rq-opts [data-pick]')];
+      if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+        if(!btns.length)return; e.preventDefault();
+        rqActive=(rqActive+(e.key==='ArrowDown'?1:-1)+btns.length)%btns.length;
+        btns.forEach((b,i)=>b.classList.toggle('active',i===rqActive));
+        btns[rqActive].scrollIntoView({block:'nearest'});
+      }else if(e.key==='Enter'){
+        e.preventDefault();
+        if(rqActive>=0&&btns[rqActive])commit(btns[rqActive].dataset.pick);
+        else if(btns.length===1)commit(btns[0].dataset.pick);
+      }else if(e.key==='Escape'){
+        e.preventDefault(); e.stopPropagation();
+        rqOpenSlot=null; renderRosterQuick();
+      }
+    };
+  }
 }
 function closeRosterModal(){
   const modal=document.getElementById('covModal'),inner=document.getElementById('covModalInner');
   if(!modal)return;
   modal.classList.remove('open');
   if(inner){inner.className='cov-modal-inner';inner.innerHTML='';}
-}
-function renderRosterSug(){
-  const input=document.getElementById('rosterInput'),box=document.getElementById('rosterSug');
-  if(!input||!box)return;
-  const hits=MR().suggest(input.value,6);
-  rosterSugIndex=-1;
-  if(!hits.length){box.innerHTML='';box.className='';return;}
-  box.className='roster-sug';
-  box.innerHTML=hits.map((p,i)=>`<button type="button" data-name="${p.name.replace(/"/g,'&quot;')}">`
-    +`<span class="pos">${p.position} ${p.team}</span><span>${p.name}</span>`
-    +`<span class="pts">${Number(p.projected_points||0).toFixed(1)}</span></button>`).join('');
-  [...box.querySelectorAll('button')].forEach(b=>b.onclick=()=>rosterCommit(b.dataset.name));
-}
-function rosterKeydown(e){
-  const box=document.getElementById('rosterSug');
-  const btns=box?[...box.querySelectorAll('button')]:[];
-  if(e.key==='ArrowDown'||e.key==='ArrowUp'){
-    if(!btns.length)return;
-    e.preventDefault();
-    rosterSugIndex=(rosterSugIndex+(e.key==='ArrowDown'?1:-1)+btns.length)%btns.length;
-    btns.forEach((b,i)=>b.classList.toggle('active',i===rosterSugIndex));
-    return;
-  }
-  if(e.key==='Enter'){
-    e.preventDefault();
-    if(rosterSugIndex>=0&&btns[rosterSugIndex])rosterCommit(btns[rosterSugIndex].dataset.name);
-    else rosterCommit(e.target.value);
-  }
-}
-function rosterCommit(value){
-  const msg=document.getElementById('rosterMsg'),input=document.getElementById('rosterInput');
-  const res=MR().add(value);
-  if(res.ok){
-    msg.className='roster-msg ok';
-    msg.textContent=`Added ${res.player.name} (${res.player.position} ${res.player.team}).`;
-    input.value='';
-    document.getElementById('rosterSug').innerHTML='';
-    document.getElementById('rosterSug').className='';
-    renderRosterList(); rosterRefresh();
-  }else{
-    msg.className='roster-msg err';
-    msg.textContent=res.reason==='duplicate'?`${res.player.name} is already on your roster.`
-      :res.reason==='full'?`Roster is full (${MR().MAX_PLAYERS} players).`
-      :`No player matched "${value}". Try a last name, or pick from the list.`;
-  }
-  input.focus();
-}
-function renderRosterList(){
-  const box=document.getElementById('rosterList'); if(!box)return;
-  const R=MR(), names=R.list;
-  if(!names.length){
-    box.innerHTML=`<div class="roster-empty">No players yet. Add the players on your fantasy team and they'll be marked in every game's lineup, with a count of how many of yours are playing.</div>`;
-    return;
-  }
-  const rows=names.map(n=>{
-    const p=R.resolve(n);
-    return `<div class="roster-chip"><span class="nm" title="${n}">${n}</span>`
-      +`<span class="mt">${p?p.position+' '+p.team:''}</span>`
-      +`<button type="button" class="x" data-remove="${n.replace(/"/g,'&quot;')}" aria-label="Remove ${n}">&times;</button></div>`;
-  }).join('');
-  box.innerHTML=`<div class="roster-list">${rows}</div>`;
-  [...box.querySelectorAll('[data-remove]')].forEach(b=>b.onclick=()=>{
-    MR().remove(b.dataset.remove); renderRosterList(); rosterRefresh();
-  });
 }
 // Re-render the views that show roster marks.
 function rosterRefresh(){

@@ -19,10 +19,34 @@
   'use strict';
 
   const KEY = 'nflMyRoster';
+  const SLOT_KEY = 'nflMyRosterSlots';
   const NAME_KEY = 'nflMyRosterName';
   const MAX_PLAYERS = 40;
 
-  let roster = [];        // array of canonical player names
+  /* A standard ESPN-style starting lineup plus a bench. `pos` lists the
+     positions eligible for the slot; FLEX takes RB/WR/TE, and bench slots
+     (pos null) accept anything. Ids are stable so saved assignments survive
+     changes here as long as the id is unchanged. */
+  const SLOTS = [
+    { id: 'QB',   label: 'QB',    pos: ['QB'] },
+    { id: 'RB1',  label: 'RB',    pos: ['RB'] },
+    { id: 'RB2',  label: 'RB',    pos: ['RB'] },
+    { id: 'WR1',  label: 'WR',    pos: ['WR'] },
+    { id: 'WR2',  label: 'WR',    pos: ['WR'] },
+    { id: 'TE',   label: 'TE',    pos: ['TE'] },
+    { id: 'FLEX', label: 'FLEX',  pos: ['RB', 'WR', 'TE'] },
+    { id: 'K',    label: 'K',     pos: ['K'] },
+    { id: 'DEF',  label: 'D/ST',  pos: ['DEF'] },
+    { id: 'BN1',  label: 'Bench', pos: null },
+    { id: 'BN2',  label: 'Bench', pos: null },
+    { id: 'BN3',  label: 'Bench', pos: null },
+    { id: 'BN4',  label: 'Bench', pos: null },
+    { id: 'BN5',  label: 'Bench', pos: null },
+    { id: 'BN6',  label: 'Bench', pos: null }
+  ];
+
+  let roster = [];        // canonical names, derived from slots (for has())
+  let slots = {};         // { slotId: playerName } -- what the editor shows
   let teamName = '';
   const listeners = [];
 
@@ -99,13 +123,73 @@
     } catch (e) {
       roster = [];
     }
+    try {
+      const raw = localStorage.getItem(SLOT_KEY);
+      slots = raw ? JSON.parse(raw) : {};
+      if (!slots || typeof slots !== 'object' || Array.isArray(slots)) slots = {};
+    } catch (e) {
+      slots = {};
+    }
+    // Rosters saved before slots existed, or imported from ESPN, arrive as a
+    // flat list. Auto-assign them so the editor opens populated, not blank.
+    let migrated = false;
+    if (roster.length && !Object.keys(slots).length) {
+      slots = autoAssign(roster);
+      migrated = true;
+    }
     teamName = localStorage.getItem(NAME_KEY) || '';
+    // Persist the migration now, so a legacy roster is only auto-assigned
+    // once and later edits start from a stable slot layout.
+    if (migrated) {
+      try { localStorage.setItem(SLOT_KEY, JSON.stringify(slots)); } catch (e) {}
+    }
     return roster;
+  }
+
+  /* Place a flat list of names into slots, best projection first. Used for
+     legacy rosters and after an ESPN import. */
+  function autoAssign(names) {
+    const out = {};
+    const pool = (names || [])
+      .map(n => resolve(n))
+      .filter(Boolean)
+      .sort((a, b) => (Number(b.projected_points) || 0) - (Number(a.projected_points) || 0));
+    const used = new Set();
+    for (const s of SLOTS) {
+      if (!s.pos) continue;
+      const pick = pool.find(x => !used.has(x) && s.pos.includes(x.position));
+      if (pick) { out[s.id] = pick.name; used.add(pick); }
+    }
+    const bench = SLOTS.filter(s => !s.pos);
+    let bi = 0;
+    for (const x of pool) {
+      if (used.has(x) || bi >= bench.length) continue;
+      out[bench[bi++].id] = x.name;
+      used.add(x);
+    }
+    return out;
+  }
+
+  /* Keep the flat list derived from slot assignments so has() and the
+     per-game marks can never drift from what the editor shows. */
+  function syncFromSlots() {
+    const seen = new Set();
+    const out = [];
+    for (const s of SLOTS) {
+      const n = slots[s.id];
+      if (!n) continue;
+      const k = norm(n);
+      if (seen.has(k)) continue;
+      seen.add(k);
+      out.push(n);
+    }
+    roster = out.slice(0, MAX_PLAYERS);
   }
 
   function save() {
     try {
       localStorage.setItem(KEY, JSON.stringify(roster));
+      localStorage.setItem(SLOT_KEY, JSON.stringify(slots));
       if (teamName) localStorage.setItem(NAME_KEY, teamName);
       else localStorage.removeItem(NAME_KEY);
     } catch (e) {
@@ -114,6 +198,54 @@
     }
     listeners.forEach(fn => { try { fn(); } catch (e) {} });
   }
+
+  /* Assign a player to a slot; null clears it. If that player already sits in
+     another slot the two swap, which is what moving a player into an occupied
+     slot should do. */
+  function setSlot(slotId, input) {
+    const slot = SLOTS.find(s => s.id === slotId);
+    if (!slot) return { ok: false, reason: 'bad_slot' };
+    if (input == null || input === '') {
+      delete slots[slotId];
+      syncFromSlots(); save();
+      return { ok: true, cleared: true };
+    }
+    const p = resolve(input);
+    if (!p) return { ok: false, reason: 'not_found' };
+    if (slot.pos && !slot.pos.includes(p.position)) {
+      return { ok: false, reason: 'wrong_position', player: p, slot: slot };
+    }
+    const prior = Object.keys(slots).find(id => norm(slots[id]) === norm(p.name));
+    if (prior && prior !== slotId) {
+      const displaced = slots[slotId];
+      if (displaced) slots[prior] = displaced; else delete slots[prior];
+    }
+    slots[slotId] = p.name;
+    syncFromSlots(); save();
+    return { ok: true, player: p, swapped: !!(prior && prior !== slotId) };
+  }
+
+  /* Players eligible for a slot, ranked by projection, excluding anyone
+     already placed in a different slot. */
+  function candidatesFor(slotId, query, limit) {
+    const slot = SLOTS.find(s => s.id === slotId);
+    if (!slot) return [];
+    const placed = new Set(Object.keys(slots)
+      .filter(id => id !== slotId)
+      .map(id => norm(slots[id])));
+    const k = norm(query || '');
+    const hits = [];
+    for (const p of allPlayers()) {
+      if (slot.pos && !slot.pos.includes(p.position)) continue;
+      if (placed.has(norm(p.name))) continue;
+      if (k && !norm(p.name).includes(k)) continue;
+      hits.push(p);
+    }
+    hits.sort((a, b) => (Number(b.projected_points) || 0) - (Number(a.projected_points) || 0));
+    return limit ? hits.slice(0, limit) : hits;
+  }
+
+  function clearSlots() { slots = {}; roster = []; teamName = ''; save(); }
 
   function add(input) {
     const p = resolve(input);
@@ -135,6 +267,7 @@
 
   function clear() {
     roster = [];
+    slots = {};
     teamName = '';
     save();
   }
@@ -275,8 +408,9 @@
       throw new Error('None of that roster\'s players are in the projections feed.');
     }
     roster = names.slice(0, MAX_PLAYERS);
+    slots = autoAssign(roster);
+    syncFromSlots();
     teamName = String(label || '').slice(0, 40);
-    indexCache = null;
     save();
     return { added: roster.length, unmatched };
   }
@@ -287,6 +421,8 @@
     load, save, add, remove, clear, has, resolve, suggest,
     playersForWeek, playersForGame, onChange,
     parseLeagueId, fetchLeagueTeams, importTeam, espnSeason,
+    SLOTS, setSlot, candidatesFor, autoAssign,
+    get slots() { return Object.assign({}, slots); },
     get list() { return [...roster]; },
     get teamName() { return teamName; },
     setTeamName,
