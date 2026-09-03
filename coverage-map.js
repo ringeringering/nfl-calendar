@@ -106,17 +106,43 @@
     return d;
   }
 
-  // Probability -> fill. Sequential green ramp for "local", grey for unlikely,
-  // so the eye reads intensity as likelihood rather than hue as category.
+  /* Theme-aware neutrals. The green ramp and the team fills stay exactly as
+     measured -- they carry the dE-15 separation guarantee and brand accuracy --
+     but "no projection" and "out of market" have to follow the surface or the
+     map glows white on a dark page. Read from CSS so there is one source of
+     truth for the palette. */
+  function themeVar(name, fallback) {
+    if (typeof getComputedStyle !== 'function') return fallback;
+    const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    return v || fallback;
+  }
+  function neutralNoData() { return themeVar('--map-nodata', '#f0f4f8'); }
+  function neutralOut() { return themeVar('--map-out', '#c9d1dd'); }
+  function hairline() { return themeVar('--map-surface', '#ffffff'); }
+
+  /* Sequential green ramp: intensity reads as likelihood rather than hue as
+     category. Dark mode gets its OWN steps rather than reusing the light ones --
+     a ramp tuned for a white surface inverts perceptually on a dark one (its
+     lightest step, the LOWEST probability, becomes the most prominent thing on
+     the map). Both ramps are validated for monotonic OKLab lightness and >=8 dE
+     between adjacent steps, and the faintest step is checked against its own
+     surface and against the two neutrals it borders. */
+  const RAMP_LIGHT = ['#1d7f45', '#3fa268', '#86c79b', '#c9e3d2'];
+  const RAMP_DARK  = ['#7fe0a5', '#4cbd78', '#2f8a55', '#1d5a3a'];
+  function ramp() {
+    const dark = themeVar('--map-ramp-dark', '0') === '1';
+    return dark ? RAMP_DARK : RAMP_LIGHT;
+  }
   function fillFor(p, isConfirmed) {
-    if (p == null) return '#f1f4f8';
-    if (isConfirmed) return p > 0 ? '#1d7f45' : '#e6eaf0';
-    if (p >= 0.85) return '#1d7f45';
-    if (p >= 0.60) return '#3fa268';
-    if (p >= 0.35) return '#86c79b';
-    if (p >= 0.15) return '#c9e3d2';
-    if (p >= 0.05) return '#eef2f6';
-    return '#e6eaf0';
+    const R = ramp();
+    if (p == null) return neutralNoData();
+    if (isConfirmed) return p > 0 ? R[0] : neutralOut();
+    if (p >= 0.85) return R[0];
+    if (p >= 0.60) return R[1];
+    if (p >= 0.35) return R[2];
+    if (p >= 0.15) return R[3];
+    if (p >= 0.05) return neutralNoData();
+    return neutralOut();
   }
 
   /* Render the map for one game.
@@ -159,7 +185,7 @@
         : Math.round(p * 100) + '%';
       parts.push(
         `<path d="${toPathData(shape.rings, sx, sy)}" fill="${fillFor(p, confirmed)}" ` +
-        `stroke="#fff" stroke-width="0.4" ` +
+        `stroke="${hairline()}" stroke-width="0.4" ` +
         `><title>${name} — ${pctLabel}</title></path>`
       );
     }
@@ -195,7 +221,8 @@
   const FILL_LIGHTNESS_STEPS = [0.62, 0.50, 0.74, 0.42, 0.82];
   const FILL_CHROMA_BOOST = 1.15;
   const MIN_FILL_SEPARATION = 15;   // OKLab ΔE ×100, the normal-vision floor
-  const WINNER_NONE = '#eef2f6';
+  // "No projection" is resolved per render via neutralNoData() so a theme
+  // switch is picked up.
 
   /* Fill source overrides. A team's listed primary is used unless it cannot
      work as a large fill, in which case the team's own secondary is used so the
@@ -383,7 +410,7 @@
     built.shapes.forEach((shape, i) => {
       const probs = rows[i];
       const name = built.names[shape.code] || ('DMA ' + shape.code);
-      let fill = WINNER_NONE, tip = name + ' — no projection';
+      let fill = neutralNoData(), tip = name + ' — no projection';
       if (probs && probs.length) {
         const top = probs[0];
         const base = colorOf.get(top.game) || '#7a8798';
@@ -405,7 +432,7 @@
       }
       parts.push(
         `<path d="${toPathData(shape.rings, sx, sy)}" fill="${fill}" ` +
-        `stroke="#fff" stroke-width="0.4"><title>${tip.replace(/[<&]/g, '')}</title></path>`
+        `stroke="${hairline()}" stroke-width="0.4"><title>${tip.replace(/[<&]/g, '')}</title></path>`
       );
     });
 
