@@ -83,18 +83,19 @@
   *{box-sizing:border-box}
   body{margin:0;background:linear-gradient(135deg,var(--surface-3) 0%,var(--surface-2) 55%,var(--surface-3) 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);min-height:100vh}
   .app{max-width:1180px;margin:36px auto;padding:0 20px 46px}
-  .hero{background:linear-gradient(135deg,var(--hero-from) 0%,var(--hero-to) 66%,var(--accent) 100%);border-radius:24px;padding:26px 30px;color:var(--hero-ink);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .hero{background:linear-gradient(135deg,var(--hero-from) 0%,var(--hero-to) 66%,var(--accent) 100%);border-radius:24px;padding:26px 30px;color:var(--hero-ink);box-shadow:var(--shadow);position:relative;overflow:hidden}.hero-logos{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}.hero-logos.single{display:block}.hero-logos.single .hero-logo{position:absolute;right:-2%;top:50%;transform:translateY(-50%);height:190%;width:auto;opacity:.13}.hero-logos.quad{display:flex;align-items:center;justify-content:flex-end;gap:1%;position:absolute;top:0;bottom:0;right:1.5%;left:auto;width:min(52%,470px);padding:6px 0}.hero-logos.quad .hero-logo{height:82%;width:auto;max-width:24%;object-fit:contain;opacity:.16}.hero-logo{filter:saturate(1.1)}@media (max-width:820px){.hero-logos.single .hero-logo{height:150%;opacity:.10}.hero-logos.quad{width:min(58%,320px)}.hero-logos.quad .hero-logo{opacity:.13}}@media (max-width:560px){.hero-logos.single .hero-logo{height:130%;opacity:.09}.hero-logos.quad{width:66%}.hero-logos.quad .hero-logo{opacity:.11;height:64%}}
   .hero:after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-95px;top:-190px;border:48px solid rgba(255,255,255,.08)}
+  .hero .eyebrow,.hero h1,.hero .subtitle{position:relative;z-index:2}
   .eyebrow{font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--line-accent);margin-bottom:7px}
   h1{font-size:34px;line-height:1.08;margin:0 0 9px;max-width:760px}
   .subtitle{margin:0;color:var(--hero-ink-2);font-size:15px;max-width:780px}
   .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
   .meta span{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:7px 11px;font-size:14px;font-weight:700}
   .team-picker{position:relative;z-index:2;margin-top:20px;display:inline-flex;align-items:center;gap:8px;background:var(--surface);border-radius:13px;padding:6px 8px;box-shadow:0 6px 22px rgba(0,0,0,.16);flex-wrap:wrap}
-  .picker-field{display:flex;align-items:center;gap:7px;padding:0 4px}.picker-field+.picker-field{border-left:1px solid var(--line);padding-left:10px}
+  .picker-field{display:flex;align-items:center;gap:7px;padding:0 4px}.market-field{padding-left:10px}.picker-field+.picker-field{border-left:1px solid var(--line);padding-left:10px}
   .team-picker label{color:var(--ink-3);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
-  .team-picker select{border:0;outline:0;background:transparent;color:var(--ink);font:inherit;font-size:13px;font-weight:900;padding:7px 28px 7px 4px;cursor:pointer;max-width:280px}
-  .zip-input{width:78px;border:0;outline:0;background:transparent;color:var(--ink);font:inherit;font-size:13px;font-weight:900;padding:7px 3px;letter-spacing:.03em}.zip-input::placeholder{color:var(--muted-2);font-weight:700}.zip-set{box-shadow:none;border-radius:8px;padding:6px 8px;background:var(--surface-3);color:var(--ink-2);font-size:12px}.zip-set:disabled{opacity:.55}.theme-toggle{box-shadow:none;border-radius:8px;padding:6px 9px;background:var(--surface-3);color:var(--ink-2);font-size:11px;font-weight:900;letter-spacing:.02em;white-space:nowrap;display:inline-flex;align-items:center;gap:5px;min-height:24px}.theme-toggle:hover{background:var(--line-soft)}.theme-ic{width:12px;height:12px;border-radius:50%;flex:0 0 auto;background:linear-gradient(135deg,var(--brand) 50%,var(--ink) 50%)}:root[data-theme="dark"] .theme-ic{background:linear-gradient(135deg,var(--ink) 50%,var(--brand) 50%)}.roster-pick{box-shadow:none;border-radius:8px;padding:6px 9px;background:var(--surface-3);color:var(--ink-2);font-size:12px;font-weight:900;letter-spacing:.02em;white-space:nowrap}.roster-pick.has{background:var(--line-soft);color:var(--brand-ink)}.roster-pick:disabled{opacity:.55}.market-status.resolving{opacity:.72}.market-status.error{background:rgba(255,220,220,.16);border-color:rgba(255,220,220,.28);color:#ffe4e4}.market-status.ready{background:rgba(213,240,224,.16);border-color:rgba(213,240,224,.28);color:#dcf6e6}
+  .team-picker select{border:0;outline:0;background:var(--surface);color:var(--ink);font:inherit;font-size:13px;font-weight:900;padding:7px 28px 7px 4px;cursor:pointer;max-width:280px;border-radius:7px}.team-picker select option{background:var(--surface);color:var(--ink);font-weight:700}
+  .zip-input{width:78px;border:0;outline:0;background:transparent;color:var(--ink);font:inherit;font-size:13px;font-weight:900;padding:7px 3px;letter-spacing:.03em}.zip-input::placeholder{color:var(--muted-2);font-weight:700}.zip-set{box-shadow:none;border-radius:8px;padding:6px 8px;background:var(--surface-3);color:var(--ink-2);font-size:12px}.zip-set:disabled{opacity:.55}.theme-fab{position:fixed;right:18px;bottom:18px;z-index:40;display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border-radius:999px;background:var(--surface);color:var(--ink-2);border:1px solid var(--line-strong);box-shadow:0 6px 20px rgba(0,0,0,.18);font-size:12px;font-weight:900;letter-spacing:.01em;white-space:nowrap;cursor:pointer;min-height:38px}.theme-fab:hover{background:var(--surface-3);border-color:var(--brand)}.theme-fab:focus-visible{outline:2px solid var(--brand);outline-offset:2px}@media (max-width:560px){.theme-fab{right:12px;bottom:12px;padding:8px 11px;font-size:11px}}@media (max-width:980px){.calendar-stage.panel-left~.theme-fab,.calendar-stage.panel-right~.theme-fab,body:has(.game-detail.open) .theme-fab{opacity:0;pointer-events:none}}.theme-ic{width:12px;height:12px;border-radius:50%;flex:0 0 auto;background:linear-gradient(135deg,var(--brand) 50%,var(--ink) 50%)}:root[data-theme="dark"] .theme-ic{background:linear-gradient(135deg,var(--ink) 50%,var(--brand) 50%)}.roster-pick{box-shadow:none;border-radius:8px;padding:6px 9px;background:var(--surface-3);color:var(--ink-2);font-size:12px;font-weight:900;letter-spacing:.02em;white-space:nowrap}.roster-pick.has{background:var(--line-soft);color:var(--brand-ink)}.roster-pick:disabled{opacity:.55}.market-status{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-size:11px;font-weight:900;letter-spacing:.01em;color:var(--ink-3);background:var(--surface-3);border:1px solid var(--line);border-radius:999px;padding:5px 10px;max-width:260px;overflow:hidden;text-overflow:ellipsis}.market-status::before{content:'';width:6px;height:6px;border-radius:50%;flex:0 0 auto;background:var(--muted-2)}.market-status.ready{background:var(--good-bg);border-color:var(--good-line);color:var(--good-ink)}.market-status.ready::before{background:var(--good-solid)}.market-status.error{background:var(--warn-bg);border-color:var(--warn-line);color:var(--warn-ink)}.market-status.error::before{background:var(--bad)}.market-status.resolving{opacity:.75}.market-status.resolving::before{background:var(--brand)}
   /* Local CBS/FOX coverage badges. Green = local, grey = out of market,
      amber = the prediction is genuinely uncertain for this market. */
   /* Day cells are a fixed height with overflow hidden, so the badge must stay
@@ -162,13 +163,13 @@
   .cov-modal .cov-win-row{font-size:12px}
   @media (max-width:820px){.cov{font-size:11px;padding:2px 5px}}
   .toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:22px 0 14px;flex-wrap:wrap}
-  .month-nav{display:flex;align-items:center;gap:10px}
-  button{border:0;background:var(--surface);color:var(--navy);box-shadow:0 5px 18px rgba(16,33,58,.08);border-radius:12px;padding:10px 13px;font-weight:700;cursor:pointer}
+  .month-nav{display:flex;align-items:center;gap:10px}.month-nav button{border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);width:38px;height:38px;padding:0;display:inline-flex;align-items:center;justify-content:center;font-size:17px;line-height:1;box-shadow:none}.month-nav button:hover:not(:disabled){border-color:var(--brand);color:var(--brand-ink);background:var(--surface-3)}.month-nav button:focus-visible{outline:2px solid var(--brand);outline-offset:2px}.month-nav button:disabled{opacity:1;color:var(--muted-2);border-color:var(--line);background:var(--surface-2);cursor:default}
+  button{border:0;background:var(--surface);color:var(--ink);box-shadow:0 5px 18px rgba(16,33,58,.08);border-radius:12px;padding:10px 13px;font-weight:700;cursor:pointer}
   button:hover:not(:disabled){transform:translateY(-1px)} button:disabled{opacity:.35;cursor:default}
   #monthLabel{font-size:22px;font-weight:900;min-width:190px;text-align:center}
   .season-tabs{display:flex;gap:7px;flex-wrap:wrap}
-  .season-tabs button{font-size:14px;padding:8px 11px;box-shadow:none;border:1px solid var(--line)}
-  .season-tabs button.active{background:var(--navy);color:var(--surface);border-color:var(--navy)}
+  .season-tabs button{font-size:14px;padding:8px 11px;box-shadow:none;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink)}.season-tabs button:hover{border-color:var(--brand);color:var(--brand-ink)}
+  .season-tabs button.active{background:var(--brand-ink);color:#ffffff;border-color:var(--brand-ink)}:root[data-theme="dark"] .season-tabs button.active{color:#0d1521}@media (prefers-color-scheme:dark){:root:not([data-theme]) .season-tabs button.active{color:#0d1521}}
   .calendar-stage{position:relative;display:block;min-width:0}
   .calendar-shell{background:var(--card);border:1px solid rgba(213,221,233,.8);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);min-width:0}
   .daily-slate{display:none;position:absolute;z-index:30;right:calc(100% + 14px);left:auto;top:0;width:300px;max-height:min(670px,calc(100vh - 70px));background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:14px;overflow:hidden}
@@ -505,7 +506,7 @@
   .watch{display:flex;align-items:center;gap:6px;margin-top:auto;padding-top:5px;min-width:0}
   .service-icon{flex:0 0 auto;min-width:30px;height:24px;padding:0 6px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:11px;letter-spacing:-.02em;color:var(--surface)}
   .service-name{font-size:11px;font-weight:700;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.01em}
-  .netflix{background:#e50914} .espn{background:#d71920} .peacock{background:#111} .ticket{background:#1261a8} .prime{background:#0064ff} .fox{background:#173d8f} .paramount{background:#0064ff} .tbd{background:var(--muted)}
+  .netflix{background:#e50914} .espn{background:#d71920} .peacock{background:#111;color:#ffffff} .ticket{background:#1261a8} .prime{background:#0064ff} .fox{background:#173d8f} .paramount{background:#0064ff} .tbd{background:var(--muted)}
   .below{display:grid;grid-template-columns:1.3fr .9fr;gap:18px;margin-top:18px}
   .panel{background:var(--surface);border:1px solid var(--line);border-radius:17px;padding:17px 18px;box-shadow:0 9px 26px rgba(16,33,58,.07)}
   .panel h2{font-size:14px;margin:0 0 12px} .legend{display:flex;gap:10px 14px;flex-wrap:wrap}
@@ -523,11 +524,13 @@
 <body>
 <div class="app">
   <section class="hero">
+    <!-- Background logo watermark. Populated by renderHeader: one logo in team
+         view, four in division view. Empty until logo files exist. -->
+    <div class="hero-logos" id="heroLogos" aria-hidden="true"></div>
     <div class="eyebrow" id="eyebrow"></div>
     <h1 id="title"></h1>
     <p class="subtitle">A month-by-month view of every scheduled game and the service you need to watch it.</p>
-    <div class="team-picker"><div class="picker-field"><label for="viewMode">View</label><select id="viewMode"><option value="team" selected>Team</option><option value="division">Division</option></select></div><div class="picker-field"><label for="selectionSelect" id="selectionLabel">Team</label><select id="selectionSelect"></select></div><div class="picker-field theme-field"><label for="themeToggle">Theme</label><button type="button" class="theme-toggle" id="themeToggle" aria-live="polite"><span class="theme-ic" id="themeIc" aria-hidden="true"></span><span id="themeLabel">Auto</span></button></div><div class="picker-field viewing-field"><label for="viewingZip">Viewing ZIP</label><input class="zip-input" id="viewingZip" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="ZIP" aria-label="Viewing ZIP code"><button type="button" class="zip-set" id="setViewingZip">Set</button></div></div>
-    <div class="meta"><span id="timezoneNote">Times shown in ET</span><span id="sundayWindowNote">Sunday 1:00 / 4:00 windows = NFL Sunday Ticket</span><span>Late flex assignments remain TBD</span><span class="market-status" id="marketStatus">Local market: not set</span></div>
+    <div class="team-picker"><div class="picker-field"><label for="viewMode">View</label><select id="viewMode"><option value="team" selected>Team</option><option value="division">Division</option></select></div><div class="picker-field"><label for="selectionSelect" id="selectionLabel">Team</label><select id="selectionSelect"></select></div><div class="picker-field viewing-field"><label for="viewingZip">Viewing ZIP</label><input class="zip-input" id="viewingZip" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="ZIP" aria-label="Viewing ZIP code"><button type="button" class="zip-set" id="setViewingZip">Set</button></div><div class="picker-field market-field"><span class="market-status" id="marketStatus">Local market: not set</span></div></div>
   </section>
   <div class="toolbar">
     <div class="month-nav"><button id="prev" aria-label="Previous month">←</button><div id="monthLabel"></div><button id="next" aria-label="Next month">→</button></div>
@@ -540,17 +543,18 @@
   </div>
   <div class="footer">2026 regular-season schedule. Network and streaming assignments remain subject to NFL flex changes.</div>
 </div>
-<script src="odds-data.js?v=15"></script>
-<script src="fantasy-data.js?v=15"></script>
-<script src="local-market-data.js?v=15"></script>
-<script src="zip-timezones.js?v=15"></script>
-<script src="local-time.js?v=15"></script>
-<script src="my-roster.js?v=15"></script>
-<script src="dma-assignments.js?v=15"></script>
-<script src="dma-model.js?v=15"></script>
-<script src="dma-geometry.js?v=15"></script>
-<script src="local-coverage.js?v=15"></script>
-<script src="coverage-map.js?v=15"></script>
+<button type="button" class="theme-fab" id="themeToggle" aria-live="polite" title="Theme"><span class="theme-ic" id="themeIc" aria-hidden="true"></span><span id="themeLabel">Auto</span></button>
+<script src="odds-data.js?v=21"></script>
+<script src="fantasy-data.js?v=21"></script>
+<script src="local-market-data.js?v=21"></script>
+<script src="zip-timezones.js?v=21"></script>
+<script src="local-time.js?v=21"></script>
+<script src="my-roster.js?v=21"></script>
+<script src="dma-assignments.js?v=21"></script>
+<script src="dma-model.js?v=21"></script>
+<script src="dma-geometry.js?v=21"></script>
+<script src="local-coverage.js?v=21"></script>
+<script src="coverage-map.js?v=21"></script>
 <script>
 const TEAM_NAMES={"ARI":"Arizona Cardinals","ATL":"Atlanta Falcons","BAL":"Baltimore Ravens","BUF":"Buffalo Bills","CAR":"Carolina Panthers","CHI":"Chicago Bears","CIN":"Cincinnati Bengals","CLE":"Cleveland Browns","DAL":"Dallas Cowboys","DEN":"Denver Broncos","DET":"Detroit Lions","GB":"Green Bay Packers","HOU":"Houston Texans","IND":"Indianapolis Colts","JAX":"Jacksonville Jaguars","KC":"Kansas City Chiefs","LV":"Las Vegas Raiders","LAC":"Los Angeles Chargers","LAR":"Los Angeles Rams","MIA":"Miami Dolphins","MIN":"Minnesota Vikings","NE":"New England Patriots","NO":"New Orleans Saints","NYG":"New York Giants","NYJ":"New York Jets","PHI":"Philadelphia Eagles","PIT":"Pittsburgh Steelers","SF":"San Francisco 49ers","SEA":"Seattle Seahawks","TB":"Tampa Bay Buccaneers","TEN":"Tennessee Titans","WAS":"Washington Commanders"};
 const TEAM_COLORS={"ARI":"#97233F","ATL":"#A71930","BAL":"#241773","BUF":"#00338D","CAR":"#0085CA","CHI":"#0B162A","CIN":"#FB4F14","CLE":"#311D00","DAL":"#003594","DEN":"#FB4F14","DET":"#0076B6","GB":"#203731","HOU":"#03202F","IND":"#002C5F","JAX":"#006778","KC":"#E31837","LV":"#000000","LAC":"#0080C6","LAR":"#003594","MIA":"#008E97","MIN":"#4F2683","NE":"#002244","NO":"#D3BC8D","NYG":"#0B2265","NYJ":"#125740","PHI":"#004C54","PIT":"#FFB612","SF":"#AA0000","SEA":"#002244","TB":"#D50A0A","TEN":"#0C2340","WAS":"#5A1414"};
@@ -595,23 +599,15 @@ function viewingZoneAbbr(){
   if(!probe)return 'ET';
   return window.NFL_LOCAL_TIME.forGame(probe,viewingZone).zone||'ET';
 }
-/* Tell the viewer which zone the numbers on screen are in. Without a ZIP the
-   app shows the schedule's published ET; with one it shows their own zone, and
-   the note has to say which so a time is never ambiguous. */
+/* The standalone "Times shown in ..." note is gone from the header. The zone is
+   still worth stating, so it rides along in the market chip's tooltip -- see
+   setMarketStatus, which appends it. Kept as a no-op-safe function because the
+   ZIP flow calls it. */
 function updateTimezoneNote(){
-  const el=document.getElementById('timezoneNote');
-  if(!el)return;
-  if(!viewingZone){
-    el.textContent='Times shown in ET';
-    el.title='Enter a viewing ZIP to see kickoff times in your own time zone.';
-    return;
-  }
-  // The season straddles a DST change, so the summary uses the generic form
-  // ("Pacific time") rather than an abbreviation that would be right for
-  // September and wrong for January. Each game label carries its own exact
-  // abbreviation (PDT or PST).
-  el.textContent=`Times shown in ${zoneGenericName(viewingZone)}`;
-  el.title=`Kickoffs converted to ${viewingZone} for ZIP ${viewingZip.value||''} · currently ${viewingZoneAbbr()}`.trim();
+  // Nothing to render on its own any more; refresh the market chip so its
+  // tooltip picks up the current zone.
+  if(marketStatus&&marketStatus.dataset.text)
+    setMarketStatus(marketStatus.dataset.text,marketStatus.dataset.state||'');
 }
 /* A season-neutral, human name for a zone.
 
@@ -646,20 +642,30 @@ function compareKickoff(a,b){
   if(ib)return 1;
   return 0;                 // both TBD: keep source order
 }
-function setMarketStatus(text,state=''){marketStatus.textContent=text;marketStatus.className='market-status'+(state?' '+state:'');}
-function clearViewingLocation(){viewingMarket=null;viewingZone=null;localStorage.removeItem('nflViewingZip');viewingZip.value='';setMarketStatus('Local market: not set');updateTimezoneNote();refreshCoverageViews();}
+/* The market chip is now the only place the viewer's location is reported, so
+   it also carries the time zone the calendar is using -- in the tooltip, to
+   keep the chip itself short enough for the picker row. Remembers its own text
+   and state so updateTimezoneNote can re-render it without re-deriving them. */
+function setMarketStatus(text,state=''){
+  marketStatus.textContent=text;
+  marketStatus.className='market-status'+(state?' '+state:'');
+  marketStatus.dataset.text=text;
+  marketStatus.dataset.state=state;
+  const zoneBit=viewingZone
+    ?`Kickoffs shown in ${zoneGenericName(viewingZone)} (${viewingZoneAbbr()})`
+    :'Kickoffs shown in ET · set a ZIP for your own time zone';
+  marketStatus.title=(marketStatus.dataset.detail?marketStatus.dataset.detail+' · ':'')+zoneBit;
+}
+function clearViewingLocation(){viewingMarket=null;viewingZone=null;localStorage.removeItem('nflViewingZip');viewingZip.value='';delete marketStatus.dataset.detail;setMarketStatus('Local market: not set');refreshCoverageViews();}
 // Coverage badges depend on the viewing market, so re-render after it changes.
 // Guarded because this runs before render() is defined during initial load.
-// The default copy tells viewers that Sunday afternoon games are labeled
-// Sunday Ticket. Once a ZIP resolves that is no longer true for their market,
-// so both notes are rewritten to describe what they are actually seeing.
+// The legend explains that Sunday afternoon games are labeled Sunday Ticket.
+// Once a ZIP resolves that is no longer true for their market, so the copy is
+// rewritten to describe what the viewer is actually seeing. (The header note
+// that used to carry a short version of this was removed.)
 function updateCoverageCopy(){
-  const note=document.getElementById('sundayWindowNote');
   const legend=document.getElementById('legendCoverageNote');
   const hasModel=!!(window.NFL_LOCAL_COVERAGE&&window.NFL_DMA_MODEL);
-  if(note)note.textContent=viewingMarket
-    ?'Sunday 1:00 / 4:00 windows: local vs Sunday Ticket by market'
-    :'Sunday 1:00 / 4:00 windows = NFL Sunday Ticket';
   if(legend)legend.textContent=viewingMarket
     ?'Sunday afternoon CBS/FOX games are marked local or NFL Sunday Ticket for your market: likely 60%+, maybe 35-60%, possibly 15-35%. '+'In division view the coloured band along the bottom of each tile carries the same meaning — green likely local, amber a close call, grey Sunday Ticket. '+'In the fantasy roster drawer, LOCAL and ST tokens mark each player’s game the same way. '+'Percentages are projections from 2021-2025 coverage maps (about 73% accurate on a single pick); labels without a percentage are confirmed. National CBS/FOX/NBC/ABC games are local everywhere.'
     :(hasModel
@@ -685,8 +691,10 @@ async function applyViewingZip(rawZip){
   setViewingZip.disabled=true;setMarketStatus(`Local market: resolving ${zip}…`,'resolving');
   try{
     const market=await window.NFL_LOCAL_MARKET.resolveZip(zip);viewingMarket=market;localStorage.setItem('nflViewingZip',zip);viewingZip.value=zip;
-    const name=market.dma_name||`DMA ${market.dma_code}`;setMarketStatus(`Local market: ${name}`,'ready');
-    marketStatus.title=`ZIP ${zip} · DMA ${market.dma_code} · ${market.method==='direct-table'?'Direct ZIP/DMA lookup':'ZIP-centroid/DMA-boundary fallback'}`;
+    const name=market.dma_name||`DMA ${market.dma_code}`;
+    // Set the detail first: setMarketStatus composes the tooltip from it.
+    marketStatus.dataset.detail=`ZIP ${zip} · DMA ${market.dma_code} · ${market.method==='direct-table'?'Direct ZIP/DMA lookup':'ZIP-centroid/DMA-boundary fallback'}`;
+    setMarketStatus(`Local market: ${name}`,'ready');
     refreshCoverageViews();
   }catch(err){
     viewingMarket=null;setMarketStatus(`Local market: ${err.message||'ZIP not resolved'}`,'error');
@@ -1597,8 +1605,59 @@ function opponentLabel(g){if(viewMode==='division'){const loc=g.neutral&&g.locat
   return g.neutral?`${mascotName(g.away)} vs ${mascotName(g.home)}${loc}`:`${mascotName(g.away)} @ ${mascotName(g.home)}`;}const neutral=g.neutral;if(neutral){const other=g.away===team?g.home:g.away;const loc=g.location?` (${g.location})`:'';return `vs ${mascotName(other)}${loc}`;}if(g.home===team)return `vs ${mascotName(g.away)}`;return `at ${mascotName(g.home)}`;}
 function renderTabs(){tabs.innerHTML='';months.forEach((x,i)=>{const b=document.createElement('button');b.textContent=x.label.split(' ')[0];b.className=i===idx?'active':'';b.onclick=()=>{idx=i;render()};tabs.appendChild(b)})}
 function renderLegend(){const order=['NFL Sunday Ticket','Peacock','Prime Video','ESPN Unlimited','Netflix','Paramount+','FOX One','Streaming TBD'];document.getElementById('legend').innerHTML=order.map(s=>{const x=SERVICE_META[s];return `<div class="legend-item"><span class="service-icon ${x.cls}">${x.icon}</span>${s}</div>`}).join('')}
-function renderHeader(){if(viewMode==='team'){const full=TEAM_NAMES[team];const nickname=full.split(' ').slice(-1)[0];document.documentElement.style.setProperty('--accent',TEAM_COLORS[team]);document.getElementById('eyebrow').textContent=`${full} · 2026 Regular Season`;document.getElementById('title').textContent=`${nickname} Streaming Calendar`;document.title=`2026 ${full} Streaming Calendar`;}else{document.documentElement.style.setProperty('--accent','#1f4f83');document.getElementById('eyebrow').textContent=`${division} · 4 teams · 2026 Regular Season`;document.getElementById('title').textContent=`${division} Streaming Calendar`;document.title=`2026 ${division} Streaming Calendar`;}}
-function populateSelection(){selectionSelect.innerHTML='';if(viewMode==='team'){selectionLabel.textContent='Team';Object.entries(TEAM_NAMES).forEach(([code,name])=>{const o=document.createElement('option');o.value=code;o.textContent=name;o.selected=code===team;selectionSelect.appendChild(o)});}else{selectionLabel.textContent='Division';Object.keys(DIVISIONS).forEach(name=>{const o=document.createElement('option');o.value=name;o.textContent=name;o.selected=name===division;selectionSelect.appendChild(o)});}}
+/* Where a team's logo file lives. Drop files in as logos/<code>.svg using the
+   lowercase team code (logos/lar.svg, logos/kc.svg, ...). Any format the
+   browser can render works -- change LOGO_EXT to 'png' if that is what you
+   have. Missing files are safe: see probeLogo, which checks once per team and
+   simply omits any logo that is not there. */
+const LOGO_DIR='logos';
+const LOGO_EXT='svg';
+function teamLogoSrc(code){return `${LOGO_DIR}/${String(code).toLowerCase()}.${LOGO_EXT}`;}
+/* Which logo files actually exist. Probed once per team via Image() and cached,
+   so a team with no file is never requested again -- otherwise every render
+   would emit a fresh 404 into the console (four at a time in division view).
+   Values: true = present, false = absent, undefined = not yet probed. */
+const logoPresence=Object.create(null);
+function probeLogo(code){
+  if(code in logoPresence)return Promise.resolve(logoPresence[code]);
+  return new Promise(resolve=>{
+    const img=new Image();
+    img.onload=()=>{logoPresence[code]=true;resolve(true);};
+    img.onerror=()=>{logoPresence[code]=false;resolve(false);};
+    img.src=teamLogoSrc(code);
+  });
+}
+/* Render the hero watermark: one logo in team view, the division's four in
+   division view. Only files confirmed to exist are inserted, so the banner
+   degrades to exactly its previous appearance until logos are supplied. */
+function renderHeroLogos(){
+  const host=document.getElementById('heroLogos');
+  if(!host)return;
+  const codes=viewMode==='team'?[team]:(DIVISIONS[division]||[]);
+  host.className='hero-logos'+(codes.length>1?' quad':' single');
+  // Paint immediately from what is already known, then fill in after probing
+  // so the first render of a team is not blocked on a network round trip.
+  const draw=()=>{
+    const have=codes.filter(c=>logoPresence[c]);
+    host.innerHTML=have.map(code=>
+      `<img class="hero-logo" src="${teamLogoSrc(code)}" alt="">`).join('');
+  };
+  draw();
+  const unknown=codes.filter(c=>!(c in logoPresence));
+  if(unknown.length)Promise.all(unknown.map(probeLogo)).then(()=>{
+    // Guard against a view change while the probes were in flight.
+    const current=viewMode==='team'?[team]:(DIVISIONS[division]||[]);
+    if(current.join()===codes.join())draw();
+  });
+}
+function renderHeader(){if(viewMode==='team'){const full=TEAM_NAMES[team];const nickname=full.split(' ').slice(-1)[0];document.documentElement.style.setProperty('--accent',TEAM_COLORS[team]);document.getElementById('eyebrow').textContent=`${full} · 2026 Regular Season`;document.getElementById('title').textContent=`${nickname} Streaming Calendar`;document.title=`2026 ${full} Streaming Calendar`;}else{document.documentElement.style.setProperty('--accent','#1f4f83');document.getElementById('eyebrow').textContent=`${division} · 4 teams · 2026 Regular Season`;document.getElementById('title').textContent=`${division} Streaming Calendar`;document.title=`2026 ${division} Streaming Calendar`;}renderHeroLogos();}
+function populateSelection(){
+  // Keep the View select in step with viewMode. The change handler already
+  // sets it when a user picks, but anything that sets viewMode in code would
+  // otherwise leave the control showing the wrong mode.
+  const vm=document.getElementById('viewMode');
+  if(vm&&vm.value!==viewMode)vm.value=viewMode;
+  selectionSelect.innerHTML='';if(viewMode==='team'){selectionLabel.textContent='Team';Object.entries(TEAM_NAMES).forEach(([code,name])=>{const o=document.createElement('option');o.value=code;o.textContent=name;o.selected=code===team;selectionSelect.appendChild(o)});}else{selectionLabel.textContent='Division';Object.keys(DIVISIONS).forEach(name=>{const o=document.createElement('option');o.value=name;o.textContent=name;o.selected=name===division;selectionSelect.appendChild(o)});}}
 function renderFlex(){const list=document.getElementById('flexList');const flex=selectionGames().filter(g=>g.flex);const scope=viewMode==='team'?TEAM_NAMES[team]:division;document.getElementById('flexHeading').textContent=`Flex / date TBD · ${scope}`;if(!flex.length){list.innerHTML='<div class="empty-flex">No currently designated date/TBD games for this selection.</div>';return}list.innerHTML=flex.map(g=>`<div class="flex-card"><b>Week ${g.week} · ${opponentLabel(g)}</b><div>Date/time or streaming assignment has not yet been finalized. Current placeholder: ${g.date} · ${gameTimeLabel(g)} · ${g.service}.</div></div>`).join('')}
 function render(){closeSlate();closeGameDetail();renderHeader();const {y,m,label:lbl}=months[idx];label.textContent=lbl;cal.innerHTML='';const first=new Date(y,m,1),start=first.getDay(),days=new Date(y,m+1,0).getDate(),prevDays=new Date(y,m,0).getDate();const cells=Math.ceil((start+days)/7)*7;const byDate={};selectionGames().filter(g=>!g.flex).forEach(g=>{const k=gameLocalDate(g);(byDate[k]||(byDate[k]=[])).push(g)});const allGameCounts={};GAMES.forEach(g=>{const k=gameLocalDate(g);allGameCounts[k]=(allGameCounts[k]||0)+1});const bye=byeInfo();
  for(let i=0;i<cells;i++){const cell=document.createElement('div');cell.className='day';let d,cy=y,cm=m,out=false;if(i<start){d=prevDays-start+i+1;cm=m-1;if(cm<0){cm=11;cy--}out=true}else if(i>=start+days){d=i-(start+days)+1;cm=m+1;if(cm>11){cm=0;cy++}out=true}else d=i-start+1;if(out)cell.classList.add('out');const key=iso(cy,cm,d),games=(byDate[key]||[]).sort(compareKickoff),isBye=bye.dates.has(key);if(isBye)cell.classList.add('bye-day');if(games.length)cell.classList.add('game-day');const gameCount=allGameCounts[key]||0;const gameCountLabel=gameCount?`${gameCount} game${gameCount===1?'':'s'}`:'';cell.innerHTML=`<div class="day-head"><div class="date">${d}</div>${gameCount?`<button type="button" class="game-count" aria-label="Show ${gameCount} game${gameCount===1?'':'s'} scheduled on ${key}">${gameCountLabel}</button>`:''}</div>`;if(gameCount){const countBtn=cell.querySelector('.game-count');countBtn.onclick=(e)=>{e.stopPropagation();if(selectedSlateDate===key){closeSlate()}else{openSlate(key,countBtn)}}}if(games.length){const useCompact=viewMode==='division'&&games.length>1;const stack=document.createElement('div');stack.className='games-stack'+(useCompact?' division-compact':(games.length>1?' multi':''));games.forEach(g=>{const meta=SERVICE_META[g.service]||SERVICE_META['Streaming TBD'];const box=document.createElement('div');box.className='game';box.setAttribute('role','button');box.setAttribute('tabindex','0');box.setAttribute('aria-label',`View details for ${TEAM_NAMES[g.away]} at ${TEAM_NAMES[g.home]}`);if(useCompact){const cds=displayService(g);if(gameHasMyStarter(g))box.classList.add('has-mine');box.title=`${TEAM_NAMES[g.away]} at ${TEAM_NAMES[g.home]} · ${gameTimeLabel(g)} · ${cds.service}`;box.innerHTML=`<div class="watch"><span class="service-icon ${cds.meta.cls}" title="${cds.service}">${cds.meta.icon}</span><span class="compact-matchup">${g.away} @ ${g.home}</span></div>${coverageStripe(g)}`;}else{const ds=displayService(g);if(gameHasMyStarter(g))box.classList.add('has-mine');box.innerHTML=`<div class="matchup">${opponentLabel(g)}</div><div class="time">W${g.week} · ${gameTimeLabel(g)}</div><div class="watch"><span class="service-icon ${ds.meta.cls}">${ds.meta.icon}</span><span class="service-name" title="${ds.service}">${ds.service}</span></div>${coverageBadge(g)}`;}const open=()=>openGameDetail(g,box);box.onclick=e=>{e.stopPropagation();open();};box.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};stack.appendChild(box)});cell.appendChild(stack)}else if(isBye){const tag=document.createElement('div');tag.className='bye-tag';tag.textContent=`Bye · W${bye.week}`;cell.appendChild(tag)}cal.appendChild(cell)}renderTabs();renderFlex();document.getElementById('prev').disabled=idx===0;document.getElementById('next').disabled=idx===months.length-1;}
