@@ -544,17 +544,17 @@
   <div class="footer">2026 regular-season schedule. Network and streaming assignments remain subject to NFL flex changes.</div>
 </div>
 <button type="button" class="theme-fab" id="themeToggle" aria-live="polite" title="Theme"><span class="theme-ic" id="themeIc" aria-hidden="true"></span><span id="themeLabel">Auto</span></button>
-<script src="odds-data.js?v=22"></script>
-<script src="fantasy-data.js?v=22"></script>
-<script src="local-market-data.js?v=22"></script>
-<script src="zip-timezones.js?v=22"></script>
-<script src="local-time.js?v=22"></script>
-<script src="my-roster.js?v=22"></script>
-<script src="dma-assignments.js?v=22"></script>
-<script src="dma-model.js?v=22"></script>
-<script src="dma-geometry.js?v=22"></script>
-<script src="local-coverage.js?v=22"></script>
-<script src="coverage-map.js?v=22"></script>
+<script src="odds-data.js?v=23"></script>
+<script src="fantasy-data.js?v=23"></script>
+<script src="local-market-data.js?v=23"></script>
+<script src="zip-timezones.js?v=23"></script>
+<script src="local-time.js?v=23"></script>
+<script src="my-roster.js?v=23"></script>
+<script src="dma-assignments.js?v=23"></script>
+<script src="dma-model.js?v=23"></script>
+<script src="dma-geometry.js?v=23"></script>
+<script src="local-coverage.js?v=23"></script>
+<script src="coverage-map.js?v=23"></script>
 <script>
 const TEAM_NAMES={"ARI":"Arizona Cardinals","ATL":"Atlanta Falcons","BAL":"Baltimore Ravens","BUF":"Buffalo Bills","CAR":"Carolina Panthers","CHI":"Chicago Bears","CIN":"Cincinnati Bengals","CLE":"Cleveland Browns","DAL":"Dallas Cowboys","DEN":"Denver Broncos","DET":"Detroit Lions","GB":"Green Bay Packers","HOU":"Houston Texans","IND":"Indianapolis Colts","JAX":"Jacksonville Jaguars","KC":"Kansas City Chiefs","LV":"Las Vegas Raiders","LAC":"Los Angeles Chargers","LAR":"Los Angeles Rams","MIA":"Miami Dolphins","MIN":"Minnesota Vikings","NE":"New England Patriots","NO":"New Orleans Saints","NYG":"New York Giants","NYJ":"New York Jets","PHI":"Philadelphia Eagles","PIT":"Pittsburgh Steelers","SF":"San Francisco 49ers","SEA":"Seattle Seahawks","TB":"Tampa Bay Buccaneers","TEN":"Tennessee Titans","WAS":"Washington Commanders"};
 const TEAM_COLORS={"ARI":"#97233F","ATL":"#A71930","BAL":"#241773","BUF":"#00338D","CAR":"#0085CA","CHI":"#0B162A","CIN":"#FB4F14","CLE":"#311D00","DAL":"#003594","DEN":"#FB4F14","DET":"#0076B6","GB":"#203731","HOU":"#03202F","IND":"#002C5F","JAX":"#006778","KC":"#E31837","LV":"#000000","LAC":"#0080C6","LAR":"#003594","MIA":"#008E97","MIN":"#4F2683","NE":"#002244","NO":"#D3BC8D","NYG":"#0B2265","NYJ":"#125740","PHI":"#004C54","PIT":"#FFB612","SF":"#AA0000","SEA":"#002244","TB":"#D50A0A","TEN":"#0C2340","WAS":"#5A1414"};
@@ -1611,7 +1611,7 @@ function renderLegend(){const order=['NFL Sunday Ticket','Peacock','Prime Video'
    have. Missing files are safe: see probeLogo, which checks once per team and
    simply omits any logo that is not there. */
 const LOGO_DIR='logos';
-const LOGO_EXT='svg';
+const LOGO_EXT='png';
 function teamLogoSrc(code){return `${LOGO_DIR}/${String(code).toLowerCase()}.${LOGO_EXT}`;}
 /* Which logo files actually exist. Probed once per team via Image() and cached,
    so a team with no file is never requested again -- otherwise every render

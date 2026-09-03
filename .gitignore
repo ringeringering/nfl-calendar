@@ -13,6 +13,10 @@ data/historical_dma_assignments.csv
 *.png
 .playwright-mcp/
 
+# Team logos are an intentional exception to the *.png rule above.
+# Fetch or refresh them with tools/fetch_team_logos.py --dark
+!logos/*.png
+
 # Nielsen-derived DMA boundary source. Kept local pending a licensing review;
 # the site only needs the derived dma-geometry.js. Re-download from
 # simzou/nielsen-dma to rebuild (see tools/CLASSIFIER_README.txt).
