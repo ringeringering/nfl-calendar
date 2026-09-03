@@ -162,6 +162,10 @@
   .rs-choice{display:grid;gap:8px;margin-top:12px}
   .rs-opt{display:flex;align-items:flex-start;gap:10px;border:1px solid #dde4ee;border-radius:12px;background:#fbfcfe;padding:11px 12px;cursor:pointer;text-align:left;font:inherit;width:100%}
   .rs-opt:hover{border-color:#b9cbe2;background:#f5f9ff}
+  /* The ESPN import is one step; the manual path is fifteen slots. Emphasis
+     follows effort. */
+  .rs-opt-primary{border-color:#2a78d6;background:#f2f8ff}
+  .rs-opt-primary:hover{border-color:#2569bc;background:#e9f3ff}
   .rs-opt .ic{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#fff;flex:0 0 auto;background:#2a78d6}
   .rs-opt .ic.manual{background:#5b6a80}
   .rs-opt .tx{min-width:0}
@@ -484,7 +488,7 @@ function updateCoverageCopy(){
     ?'Sunday 1:00 / 4:00 windows: local vs Sunday Ticket by market'
     :'Sunday 1:00 / 4:00 windows = NFL Sunday Ticket';
   if(legend)legend.textContent=viewingMarket
-    ?'Sunday afternoon CBS/FOX games are marked local or NFL Sunday Ticket for your market: likely 60%+, maybe 35-60%, possibly 15-35%. Percentages are projections from 2021-2025 coverage maps (about 73% accurate on a single pick); labels without a percentage are confirmed. National CBS/FOX/NBC/ABC games are local everywhere.'
+    ?'Sunday afternoon CBS/FOX games are marked local or NFL Sunday Ticket for your market: likely 60%+, maybe 35-60%, possibly 15-35%. '+'In division view the coloured band along the bottom of each tile carries the same meaning — green likely local, amber a close call, grey Sunday Ticket. '+'In the fantasy roster drawer, LOCAL and ST tokens mark each player’s game the same way. '+'Percentages are projections from 2021-2025 coverage maps (about 73% accurate on a single pick); labels without a percentage are confirmed. National CBS/FOX/NBC/ABC games are local everywhere.'
     :(hasModel
       ?'Sunday afternoon games in the 1 p.m. and 4 p.m. windows are labeled NFL Sunday Ticket. Enter a viewing ZIP to see which are available locally on CBS/FOX.'
       :'Sunday afternoon games in the 1 p.m. and 4 p.m. windows are intentionally labeled NFL Sunday Ticket rather than their underlying CBS/FOX assignment.');
@@ -504,8 +508,8 @@ async function applyViewingZip(rawZip){
   setViewingZip.disabled=true;setMarketStatus(`Local market: resolving ${zip}…`,'resolving');
   try{
     const market=await window.NFL_LOCAL_MARKET.resolveZip(zip);viewingMarket=market;localStorage.setItem('nflViewingZip',zip);viewingZip.value=zip;
-    const name=market.dma_name||`DMA ${market.dma_code}`;setMarketStatus(`Local market: ${name} · DMA ${market.dma_code}`,'ready');
-    marketStatus.title=`ZIP ${zip} · ${market.method==='direct-table'?'Direct ZIP/DMA lookup':'ZIP-centroid/DMA-boundary fallback'}`;
+    const name=market.dma_name||`DMA ${market.dma_code}`;setMarketStatus(`Local market: ${name}`,'ready');
+    marketStatus.title=`ZIP ${zip} · DMA ${market.dma_code} · ${market.method==='direct-table'?'Direct ZIP/DMA lookup':'ZIP-centroid/DMA-boundary fallback'}`;
     refreshCoverageViews();
   }catch(err){viewingMarket=null;setMarketStatus(`Local market: ${err.message||'ZIP not resolved'}`,'error');refreshCoverageViews();}
   finally{setViewingZip.disabled=false;}
@@ -1005,7 +1009,7 @@ function openRosterSetup(){
     +`<div class="cov-modal-sub">${has?`${R.size} player${R.size>1?'s':''} on your team`:'No roster yet'}`
     +`${oppN?` &middot; ${oppN} on the opponent`:''} &middot; stored in this browser only</div>`
     +`<div class="rs-choice">`
-    +`<button type="button" class="rs-opt" id="rsEspn"><span class="ic">E</span><span class="tx">`
+    +`<button type="button" class="rs-opt rs-opt-primary" id="rsEspn"><span class="ic">E</span><span class="tx">`
     +`<span class="tt">Import from ESPN</span>`
     +`<span class="dd">Enter your league ID and pick your team. Works for public leagues; ESPN keeps private leagues hidden.</span>`
     +`</span></button>`
@@ -1290,7 +1294,7 @@ function openFantasyDetail(g){if(selectedGame)openGameDetail(selectedGame,null);
 function closeFantasyDetail(){}
 function gameDateLabel(g){const d=new Date(g.date+'T12:00:00');return d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});}
 function closeGameDetail(){selectedGame=null;gameDetail.classList.remove('open');gameDetail.innerHTML='';closeFantasyDetail();document.querySelectorAll('.game.detail-active').forEach(x=>x.classList.remove('detail-active'));}
-function openGameDetail(g,trigger){selectedGame=g;document.querySelectorAll('.game.detail-active').forEach(x=>x.classList.remove('detail-active'));if(trigger)trigger.classList.add('detail-active');const meta=SERVICE_META[g.service]||SERVICE_META['Streaming TBD'];const detailService=displayService(g);const locationText=g.neutral?(g.location||'Neutral site'):'Not separately listed';const status=g.flex?'Flex / assignment TBD':'Scheduled';gameDetail.innerHTML=`<div class="detail-head"><div><div class="detail-kicker">Game details</div><div class="detail-title">${mascotName(g.away)} ${g.neutral?'vs':'at'} ${mascotName(g.home)}</div></div><button class="detail-close" id="detailClose" aria-label="Close game details">×</button></div><div class="detail-body"><div class="detail-matchup"><div class="detail-team"><div class="detail-team-code">${g.away}</div><div class="detail-team-name">${TEAM_NAMES[g.away]}</div></div><div class="detail-at">${g.neutral?'vs':'at'}</div><div class="detail-team"><div class="detail-team-code">${g.home}</div><div class="detail-team-name">${TEAM_NAMES[g.home]}</div></div></div><div class="detail-grid"><div class="detail-field"><div class="detail-label">Week</div><div class="detail-value">Week ${g.week}</div></div><div class="detail-field"><div class="detail-label">Status</div><div class="detail-value"><span class="detail-status">${status}</span></div></div><div class="detail-field wide"><div class="detail-label">Date</div><div class="detail-value">${gameDateLabel(g)}</div></div><div class="detail-field"><div class="detail-label">Kickoff</div><div class="detail-value">${g.time}${g.time==='TBD'?'':' ET'}</div></div><div class="detail-field"><div class="detail-label">Location</div><div class="detail-value">${locationText}</div></div><div class="detail-field wide"><div class="detail-label">Watch service</div><div class="detail-value detail-watch"><span class="service-icon ${detailService.meta.cls}">${detailService.meta.icon}</span><span>${detailService.service}</span></div></div><div class="detail-field wide"><div class="detail-label">Broadcast / network</div><div class="detail-value">${g.broadcast}</div></div>${coverageDetail(g)}${coverageMapMarkup(g)}${winnerMapMarkup(g)}</div>${oddsMarkup(g)}${fantasyMarkup(g)}</div>`;gameDetail.classList.add('open');
+function openGameDetail(g,trigger){selectedGame=g;document.querySelectorAll('.game.detail-active').forEach(x=>x.classList.remove('detail-active'));if(trigger)trigger.classList.add('detail-active');const meta=SERVICE_META[g.service]||SERVICE_META['Streaming TBD'];const detailService=displayService(g);const locationText=g.neutral?(g.location||'Neutral site'):`${TEAM_NAMES[g.home]} home game`;const status=g.flex?'Flex / assignment TBD':'Scheduled';gameDetail.innerHTML=`<div class="detail-head"><div><div class="detail-kicker">Game details</div><div class="detail-title">${mascotName(g.away)} ${g.neutral?'vs':'at'} ${mascotName(g.home)}</div></div><button class="detail-close" id="detailClose" aria-label="Close game details">×</button></div><div class="detail-body"><div class="detail-matchup"><div class="detail-team"><div class="detail-team-code">${g.away}</div><div class="detail-team-name">${TEAM_NAMES[g.away]}</div></div><div class="detail-at">${g.neutral?'vs':'at'}</div><div class="detail-team"><div class="detail-team-code">${g.home}</div><div class="detail-team-name">${TEAM_NAMES[g.home]}</div></div></div><div class="detail-grid"><div class="detail-field"><div class="detail-label">Week</div><div class="detail-value">Week ${g.week}</div></div><div class="detail-field"><div class="detail-label">Status</div><div class="detail-value"><span class="detail-status">${status}</span></div></div><div class="detail-field wide"><div class="detail-label">Date</div><div class="detail-value">${gameDateLabel(g)}</div></div><div class="detail-field"><div class="detail-label">Kickoff</div><div class="detail-value">${g.time}${g.time==='TBD'?'':' ET'}</div></div><div class="detail-field"><div class="detail-label">Location</div><div class="detail-value">${locationText}</div></div><div class="detail-field wide"><div class="detail-label">Watch service</div><div class="detail-value detail-watch"><span class="service-icon ${detailService.meta.cls}">${detailService.meta.icon}</span><span>${detailService.service}</span></div></div><div class="detail-field wide"><div class="detail-label">Broadcast / network</div><div class="detail-value">${g.broadcast}</div></div>${coverageDetail(g)}${coverageMapMarkup(g)}${winnerMapMarkup(g)}</div>${oddsMarkup(g)}${fantasyMarkup(g)}</div>`;gameDetail.classList.add('open');
   // Move focus into the panel so keyboard and screen-reader users are told it
   // opened; aria-live alone does not move the caret.
   const _t=gameDetail.querySelector('.detail-title');
