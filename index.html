@@ -488,8 +488,12 @@
   .game{border-radius:12px;border:1px solid var(--line);background:linear-gradient(180deg,var(--surface),var(--surface-2));padding:7px;box-shadow:0 4px 12px rgba(21,44,77,.06);overflow:hidden;box-sizing:border-box;width:100%;max-width:100%;min-width:0;flex:1;min-height:0;display:flex;flex-direction:column}
   /* flex-shrink:0 is load-bearing: .game is a flex column, so without it the
      matchup gets shrunk below its own 2-line clamp in short calendar rows and
-     the second line is cut mid-glyph rather than clamped. */
-  .matchup{font-size:14px;font-weight:900;line-height:1.3;color:var(--ink);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;flex:0 0 auto;min-height:1.3em;max-height:2.9em} .time{font-size:12px;color:var(--muted);font-weight:700;margin-top:3px}
+     the second line is cut mid-glyph rather than clamped.
+     overflow-wrap:break-word handles the other axis: a phone-width cell has a
+     ~50px text column, narrower than "Commanders", so a word that cannot fit a
+     line breaks (with a hyphen) instead of being sliced mid-glyph. Division
+     view swaps to team codes at that width -- see opponentLabel. */
+  .matchup{font-size:14px;font-weight:900;line-height:1.3;color:var(--ink);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;flex:0 0 auto;min-height:1.3em;max-height:2.9em;overflow-wrap:break-word;hyphens:auto} .time{font-size:12px;color:var(--muted);font-weight:700;margin-top:3px}
   .games-stack.multi{gap:3px}
   .games-stack.division-compact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:4px;align-items:stretch;justify-items:stretch}
   .games-stack.division-compact .game{width:100%;height:100%;min-height:0;padding:4px;border-radius:7px;box-shadow:none;display:flex;align-items:center;justify-content:center;background:var(--surface-2)}
@@ -512,8 +516,8 @@
   .note{font-size:12px;color:var(--ink-3);line-height:1.45;margin-top:11px} .footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:18px}
   @media (max-width:1850px) and (min-width:981px){.daily-slate{position:fixed;right:auto!important;left:18px!important;top:96px;width:290px;max-height:calc(100vh - 120px)}.game-detail{position:fixed;left:auto!important;right:18px!important;top:96px;width:430px;max-height:calc(100vh - 120px)}}
   @media (max-width:980px){.daily-slate{position:fixed;left:12px!important;right:12px!important;top:auto;bottom:12px;width:auto;max-height:min(70vh,560px);border-radius:15px;z-index:60}.game-detail{position:fixed;left:12px!important;right:12px!important;top:auto;bottom:12px;width:auto;max-height:min(46vh,380px);border-radius:15px;z-index:61}}
-  @media (max-width:820px){.app{margin-top:18px;padding:0 10px 30px}.hero{padding:22px 20px;border-radius:18px}h1{font-size:27px}.grid{grid-auto-rows:126px}.day{padding:6px}.games-stack{margin-top:5px}.game{padding:6px}.date{width:25px;height:25px}.game-count{font-size:11px}.service-name{display:none}.below{grid-template-columns:1fr}.dow div{font-size:11px;padding:9px 2px}.matchup{font-size:12px;line-height:1.3;min-height:1.3em;max-height:2.9em}.time{font-size:11px;margin-top:2px}.watch{padding-top:4px}.toolbar{justify-content:center}.season-tabs{justify-content:center}}
-  @media (max-width:560px){.grid{grid-auto-rows:138px}.day{padding:5px}.date{width:23px;height:23px;font-size:12px}.day-head{gap:4px}.game-count{font-size:11px;letter-spacing:-.01em}.games-stack{margin-top:4px}.game{padding:5px;border-radius:9px}.matchup{font-size:12px;line-height:1.3;min-height:1.3em;max-height:2.9em}.time{font-size:11px;line-height:1.1}.watch{padding-top:3px}.service-icon{min-width:25px;height:19px;padding:0 4px;font-size:11px}.hero .meta{display:none}.subtitle{font-size:13px}.team-picker{width:100%}.picker-field{flex:1 1 100%;justify-content:space-between}.picker-field+.picker-field{border-left:0;border-top:1px solid var(--line);padding-left:4px;padding-top:3px}.team-picker select{flex:1;max-width:none;text-align:right}}
+  @media (max-width:820px){.app{margin-top:18px;padding:0 10px 30px}.hero{padding:22px 20px;border-radius:18px}h1{font-size:27px}.grid{grid-auto-rows:126px}.day{padding:6px}.games-stack{margin-top:5px}.game{padding:6px}.date{width:25px;height:25px}.game-count{font-size:11px}.service-name{display:none}.below{grid-template-columns:1fr}.dow div{font-size:11px;padding:9px 2px}.matchup{font-size:12px;line-height:1.3;min-height:1.3em;max-height:4.2em;-webkit-line-clamp:3}.time{font-size:11px;margin-top:2px}.watch{padding-top:4px}.toolbar{justify-content:center}.season-tabs{justify-content:center}}
+  @media (max-width:560px){.grid{grid-auto-rows:150px}.day{padding:5px}.date{width:23px;height:23px;font-size:12px}.day-head{gap:4px}.game-count{font-size:11px;letter-spacing:-.01em}.games-stack{margin-top:4px}.game{padding:5px;border-radius:9px}.matchup{font-size:12px;line-height:1.3;min-height:1.3em;max-height:4.2em;-webkit-line-clamp:3}.time{font-size:11px;line-height:1.1}.watch{padding-top:3px}.service-icon{min-width:25px;height:19px;padding:0 4px;font-size:11px}.hero .meta{display:none}.subtitle{font-size:13px}.team-picker{width:100%}.picker-field{flex:1 1 100%;justify-content:space-between}.picker-field+.picker-field{border-left:0;border-top:1px solid var(--line);padding-left:4px;padding-top:3px}.team-picker select{flex:1;max-width:none;text-align:right}}
 </style>
 </head>
 <body>
@@ -523,7 +527,7 @@
     <h1 id="title"></h1>
     <p class="subtitle">A month-by-month view of every scheduled game and the service you need to watch it.</p>
     <div class="team-picker"><div class="picker-field"><label for="viewMode">View</label><select id="viewMode"><option value="team" selected>Team</option><option value="division">Division</option></select></div><div class="picker-field"><label for="selectionSelect" id="selectionLabel">Team</label><select id="selectionSelect"></select></div><div class="picker-field theme-field"><label for="themeToggle">Theme</label><button type="button" class="theme-toggle" id="themeToggle" aria-live="polite"><span class="theme-ic" id="themeIc" aria-hidden="true"></span><span id="themeLabel">Auto</span></button></div><div class="picker-field viewing-field"><label for="viewingZip">Viewing ZIP</label><input class="zip-input" id="viewingZip" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="ZIP" aria-label="Viewing ZIP code"><button type="button" class="zip-set" id="setViewingZip">Set</button></div></div>
-    <div class="meta"><span>Times shown in ET</span><span id="sundayWindowNote">Sunday 1:00 / 4:00 windows = NFL Sunday Ticket</span><span>Late flex assignments remain TBD</span><span class="market-status" id="marketStatus">Local market: not set</span></div>
+    <div class="meta"><span id="timezoneNote">Times shown in ET</span><span id="sundayWindowNote">Sunday 1:00 / 4:00 windows = NFL Sunday Ticket</span><span>Late flex assignments remain TBD</span><span class="market-status" id="marketStatus">Local market: not set</span></div>
   </section>
   <div class="toolbar">
     <div class="month-nav"><button id="prev" aria-label="Previous month">←</button><div id="monthLabel"></div><button id="next" aria-label="Next month">→</button></div>
@@ -536,15 +540,17 @@
   </div>
   <div class="footer">2026 regular-season schedule. Network and streaming assignments remain subject to NFL flex changes.</div>
 </div>
-<script src="odds-data.js?v=7"></script>
-<script src="fantasy-data.js?v=7"></script>
-<script src="local-market-data.js?v=7"></script>
-<script src="my-roster.js?v=7"></script>
-<script src="dma-assignments.js?v=7"></script>
-<script src="dma-model.js?v=7"></script>
-<script src="dma-geometry.js?v=7"></script>
-<script src="local-coverage.js?v=7"></script>
-<script src="coverage-map.js?v=7"></script>
+<script src="odds-data.js?v=15"></script>
+<script src="fantasy-data.js?v=15"></script>
+<script src="local-market-data.js?v=15"></script>
+<script src="zip-timezones.js?v=15"></script>
+<script src="local-time.js?v=15"></script>
+<script src="my-roster.js?v=15"></script>
+<script src="dma-assignments.js?v=15"></script>
+<script src="dma-model.js?v=15"></script>
+<script src="dma-geometry.js?v=15"></script>
+<script src="local-coverage.js?v=15"></script>
+<script src="coverage-map.js?v=15"></script>
 <script>
 const TEAM_NAMES={"ARI":"Arizona Cardinals","ATL":"Atlanta Falcons","BAL":"Baltimore Ravens","BUF":"Buffalo Bills","CAR":"Carolina Panthers","CHI":"Chicago Bears","CIN":"Cincinnati Bengals","CLE":"Cleveland Browns","DAL":"Dallas Cowboys","DEN":"Denver Broncos","DET":"Detroit Lions","GB":"Green Bay Packers","HOU":"Houston Texans","IND":"Indianapolis Colts","JAX":"Jacksonville Jaguars","KC":"Kansas City Chiefs","LV":"Las Vegas Raiders","LAC":"Los Angeles Chargers","LAR":"Los Angeles Rams","MIA":"Miami Dolphins","MIN":"Minnesota Vikings","NE":"New England Patriots","NO":"New Orleans Saints","NYG":"New York Giants","NYJ":"New York Jets","PHI":"Philadelphia Eagles","PIT":"Pittsburgh Steelers","SF":"San Francisco 49ers","SEA":"Seattle Seahawks","TB":"Tampa Bay Buccaneers","TEN":"Tennessee Titans","WAS":"Washington Commanders"};
 const TEAM_COLORS={"ARI":"#97233F","ATL":"#A71930","BAL":"#241773","BUF":"#00338D","CAR":"#0085CA","CHI":"#0B162A","CIN":"#FB4F14","CLE":"#311D00","DAL":"#003594","DEN":"#FB4F14","DET":"#0076B6","GB":"#203731","HOU":"#03202F","IND":"#002C5F","JAX":"#006778","KC":"#E31837","LV":"#000000","LAC":"#0080C6","LAR":"#003594","MIA":"#008E97","MIN":"#4F2683","NE":"#002244","NO":"#D3BC8D","NYG":"#0B2265","NYJ":"#125740","PHI":"#004C54","PIT":"#FFB612","SF":"#AA0000","SEA":"#002244","TB":"#D50A0A","TEN":"#0C2340","WAS":"#5A1414"};
@@ -557,8 +563,91 @@ const cal=document.getElementById('calendar'),label=document.getElementById('mon
 let selectedSlateDate=null;
 let selectedGame=null;
 let viewingMarket=null;
+// IANA zone for the viewing ZIP. Null means "no ZIP set", in which case every
+// time renders in ET exactly as the schedule publishes it.
+let viewingZone=null;
+/* Single source of truth for how a kickoff is written.
+
+   Every call site used to hardcode `${g.time} ET`. They all go through this
+   instead, so a game's time is localised in one place and the zone label can
+   never disagree with the number beside it. */
+function gameTimeLabel(g){
+  if(g.time==='TBD')return 'TBD';
+  if(!window.NFL_LOCAL_TIME||!viewingZone)return g.time+' ET';
+  const t=window.NFL_LOCAL_TIME.forGame(g,viewingZone);
+  return t.label;
+}
+// The local calendar date a game falls on for this viewer. Games are placed in
+// the grid by this, not by the stored ET date.
+function gameLocalDate(g){
+  if(!window.NFL_LOCAL_TIME)return g.date;
+  return window.NFL_LOCAL_TIME.forGame(g,viewingZone).date;
+}
+/* Zone abbreviation for the current viewer, e.g. "PDT".
+
+   Derived from a real game rather than "now", because the abbreviation is
+   season-dependent: the same zone is PDT in September and PST in January. The
+   probe is the first scheduled kickoff, so the note matches what most of the
+   calendar shows. */
+function viewingZoneAbbr(){
+  if(!window.NFL_LOCAL_TIME||!viewingZone)return 'ET';
+  const probe=GAMES.find(g=>g.time&&g.time!=='TBD');
+  if(!probe)return 'ET';
+  return window.NFL_LOCAL_TIME.forGame(probe,viewingZone).zone||'ET';
+}
+/* Tell the viewer which zone the numbers on screen are in. Without a ZIP the
+   app shows the schedule's published ET; with one it shows their own zone, and
+   the note has to say which so a time is never ambiguous. */
+function updateTimezoneNote(){
+  const el=document.getElementById('timezoneNote');
+  if(!el)return;
+  if(!viewingZone){
+    el.textContent='Times shown in ET';
+    el.title='Enter a viewing ZIP to see kickoff times in your own time zone.';
+    return;
+  }
+  // The season straddles a DST change, so the summary uses the generic form
+  // ("Pacific time") rather than an abbreviation that would be right for
+  // September and wrong for January. Each game label carries its own exact
+  // abbreviation (PDT or PST).
+  el.textContent=`Times shown in ${zoneGenericName(viewingZone)}`;
+  el.title=`Kickoffs converted to ${viewingZone} for ZIP ${viewingZip.value||''} · currently ${viewingZoneAbbr()}`.trim();
+}
+/* A season-neutral, human name for a zone.
+
+   Intl's longGeneric style yields exactly this ("Pacific Time"), which is what
+   a summary label needs; we lowercase "time" to sit in the sentence. Falls back
+   to the abbreviation if a platform lacks longGeneric. */
+function zoneGenericName(tz){
+  try{
+    const parts=new Intl.DateTimeFormat('en-US',{timeZone:tz,timeZoneName:'longGeneric'})
+      .formatToParts(new Date());
+    let name=(parts.find(p=>p.type==='timeZoneName')||{}).value;
+    if(name&&!/^GMT/i.test(name)){
+      // Zones that never shift report their standard name ("Mountain Standard
+      // Time"); "shown in Mountain Standard time" reads badly, so drop the
+      // redundant "Standard" and keep the region.
+      name=name.replace(/\s*Standard\s*/i,' ').replace(/\s+/g,' ').trim();
+      return name.replace(/\bTime\b/,'time');
+    }
+  }catch(err){/* fall through to the abbreviation */}
+  return viewingZoneAbbr();
+}
+/* Order games by their true kickoff instant.
+
+   The stored strings cannot be compared directly -- "1:00 PM" sorts before
+   "9:30 AM" lexically -- and TBD has no instant at all, so it sorts last. */
+function compareKickoff(a,b){
+  const T=window.NFL_LOCAL_TIME;
+  const ia=T?T.etInstant(a.date,a.time):null;
+  const ib=T?T.etInstant(b.date,b.time):null;
+  if(ia&&ib)return ia-ib;
+  if(ia)return -1;          // a has a time, b is TBD
+  if(ib)return 1;
+  return 0;                 // both TBD: keep source order
+}
 function setMarketStatus(text,state=''){marketStatus.textContent=text;marketStatus.className='market-status'+(state?' '+state:'');}
-function clearViewingLocation(){viewingMarket=null;localStorage.removeItem('nflViewingZip');viewingZip.value='';setMarketStatus('Local market: not set');refreshCoverageViews();}
+function clearViewingLocation(){viewingMarket=null;viewingZone=null;localStorage.removeItem('nflViewingZip');viewingZip.value='';setMarketStatus('Local market: not set');updateTimezoneNote();refreshCoverageViews();}
 // Coverage badges depend on the viewing market, so re-render after it changes.
 // Guarded because this runs before render() is defined during initial load.
 // The default copy tells viewers that Sunday afternoon games are labeled
@@ -588,14 +677,24 @@ async function applyViewingZip(rawZip){
   const zip=String(rawZip||'').trim();
   if(!zip){clearViewingLocation();return;}
   if(!/^\d{5}$/.test(zip)){setMarketStatus('Local market: enter a 5-digit ZIP','error');return;}
-  if(!window.NFL_LOCAL_MARKET||typeof window.NFL_LOCAL_MARKET.resolveZip!=='function'){setMarketStatus('Local market lookup unavailable','error');return;}
+  // Timezone comes from a local table, so resolve it before the network call:
+  // times should localise even when the DMA lookup is unavailable or fails.
+  viewingZone=window.NFL_LOCAL_TIME?window.NFL_LOCAL_TIME.zoneForZip(zip):null;
+  updateTimezoneNote();
+  if(!window.NFL_LOCAL_MARKET||typeof window.NFL_LOCAL_MARKET.resolveZip!=='function'){setMarketStatus('Local market lookup unavailable','error');refreshCoverageViews();return;}
   setViewingZip.disabled=true;setMarketStatus(`Local market: resolving ${zip}…`,'resolving');
   try{
     const market=await window.NFL_LOCAL_MARKET.resolveZip(zip);viewingMarket=market;localStorage.setItem('nflViewingZip',zip);viewingZip.value=zip;
     const name=market.dma_name||`DMA ${market.dma_code}`;setMarketStatus(`Local market: ${name}`,'ready');
     marketStatus.title=`ZIP ${zip} · DMA ${market.dma_code} · ${market.method==='direct-table'?'Direct ZIP/DMA lookup':'ZIP-centroid/DMA-boundary fallback'}`;
     refreshCoverageViews();
-  }catch(err){viewingMarket=null;setMarketStatus(`Local market: ${err.message||'ZIP not resolved'}`,'error');refreshCoverageViews();}
+  }catch(err){
+    viewingMarket=null;setMarketStatus(`Local market: ${err.message||'ZIP not resolved'}`,'error');
+    // Keep the ZIP so the localised times survive a reload even though the DMA
+    // half failed; coverage falls back to its no-market wording on its own.
+    localStorage.setItem('nflViewingZip',zip);
+    refreshCoverageViews();
+  }
   finally{setViewingZip.disabled=false;}
 }
 function initViewingLocation(){const saved=localStorage.getItem('nflViewingZip');if(saved){viewingZip.value=saved;applyViewingZip(saved);}}
@@ -822,7 +921,7 @@ function openWinnerModal(g){
   if(!inner_html)return;
   inner.innerHTML=`<button class="cov-modal-close" id="covModalClose" aria-label="Close coverage map">×</button>`
     +`<div class="cov-modal-title">Most likely local game · Week ${g.week} ${g.broadcast}</div>`
-    +`<div class="cov-modal-sub">${TEAM_NAMES[g.away]} ${g.neutral?'vs':'at'} ${TEAM_NAMES[g.home]} and competing games · ${g.time} ET</div>`
+    +`<div class="cov-modal-sub">${TEAM_NAMES[g.away]} ${g.neutral?'vs':'at'} ${TEAM_NAMES[g.home]} and competing games · ${gameTimeLabel(g)}</div>`
     +inner_html;
   modal.classList.add('open');
   document.getElementById('covModalClose').onclick=closeCoverageModal;
@@ -843,7 +942,7 @@ function openCoverageModal(g){
     :`Projected local coverage, airing in ${r.marketsLocal} of ${r.marketsTotal} markets at 50% or better (${pct}%). Hover any market for its probability. Projections are about 73% accurate on a single pick; Alaska and Hawaii are not shown.`;
   inner.innerHTML=`<button class="cov-modal-close" id="covModalClose" aria-label="Close coverage map">×</button>`
     +`<div class="cov-modal-title">${TEAM_NAMES[g.away]} ${g.neutral?'vs':'at'} ${TEAM_NAMES[g.home]}</div>`
-    +`<div class="cov-modal-sub">Week ${g.week} · ${g.broadcast} · ${g.time} ET</div>`
+    +`<div class="cov-modal-sub">Week ${g.week} · ${g.broadcast} · ${gameTimeLabel(g)}</div>`
     +`<div class="cov-map">${r.svg}<div class="cov-map-legend">${legend}</div>`
     +`<div class="cov-map-caption">${caption}</div></div>`;
   modal.classList.add('open');
@@ -1426,9 +1525,12 @@ function rosterRefresh(){
 // 1400px. These shims remain so the existing call sites stay simple.
 function openFantasyDetail(g){if(selectedGame)openGameDetail(selectedGame,null);}
 function closeFantasyDetail(){}
-function gameDateLabel(g){const d=new Date(g.date+'T12:00:00');return d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});}
+// Uses the viewer's local date so the date shown never disagrees with the
+// localised kickoff time printed beside it. Noon avoids any DST edge in the
+// display-only Date construction.
+function gameDateLabel(g){const d=new Date(gameLocalDate(g)+'T12:00:00');return d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});}
 function closeGameDetail(){selectedGame=null;gameDetail.classList.remove('open');gameDetail.innerHTML='';closeFantasyDetail();document.querySelectorAll('.game.detail-active').forEach(x=>x.classList.remove('detail-active'));}
-function openGameDetail(g,trigger){selectedGame=g;document.querySelectorAll('.game.detail-active').forEach(x=>x.classList.remove('detail-active'));if(trigger)trigger.classList.add('detail-active');const meta=SERVICE_META[g.service]||SERVICE_META['Streaming TBD'];const detailService=displayService(g);const locationText=g.neutral?(g.location||'Neutral site'):`${TEAM_NAMES[g.home]} home game`;const status=g.flex?'Flex / assignment TBD':'Scheduled';gameDetail.innerHTML=`<div class="detail-head"><div><div class="detail-kicker">Game details</div><div class="detail-title">${mascotName(g.away)} ${g.neutral?'vs':'at'} ${mascotName(g.home)}</div></div><button class="detail-close" id="detailClose" aria-label="Close game details">×</button></div><div class="detail-body"><div class="detail-matchup"><div class="detail-team"><div class="detail-team-code">${g.away}</div><div class="detail-team-name">${TEAM_NAMES[g.away]}</div></div><div class="detail-at">${g.neutral?'vs':'at'}</div><div class="detail-team"><div class="detail-team-code">${g.home}</div><div class="detail-team-name">${TEAM_NAMES[g.home]}</div></div></div><div class="detail-grid"><div class="detail-field"><div class="detail-label">Week</div><div class="detail-value">Week ${g.week}</div></div><div class="detail-field"><div class="detail-label">Status</div><div class="detail-value"><span class="detail-status">${status}</span></div></div><div class="detail-field wide"><div class="detail-label">Date</div><div class="detail-value">${gameDateLabel(g)}</div></div><div class="detail-field"><div class="detail-label">Kickoff</div><div class="detail-value">${g.time}${g.time==='TBD'?'':' ET'}</div></div><div class="detail-field"><div class="detail-label">Location</div><div class="detail-value">${locationText}</div></div><div class="detail-field wide"><div class="detail-label">Watch service</div><div class="detail-value detail-watch"><span class="service-icon ${detailService.meta.cls}">${detailService.meta.icon}</span><span>${detailService.service}</span></div></div><div class="detail-field wide"><div class="detail-label">Broadcast / network</div><div class="detail-value">${g.broadcast}</div></div>${coverageDetail(g)}${coverageMapMarkup(g)}${winnerMapMarkup(g)}</div>${oddsMarkup(g)}${fantasyMarkup(g)}</div>`;gameDetail.classList.add('open');
+function openGameDetail(g,trigger){selectedGame=g;document.querySelectorAll('.game.detail-active').forEach(x=>x.classList.remove('detail-active'));if(trigger)trigger.classList.add('detail-active');const meta=SERVICE_META[g.service]||SERVICE_META['Streaming TBD'];const detailService=displayService(g);const locationText=g.neutral?(g.location||'Neutral site'):`${TEAM_NAMES[g.home]} home game`;const status=g.flex?'Flex / assignment TBD':'Scheduled';gameDetail.innerHTML=`<div class="detail-head"><div><div class="detail-kicker">Game details</div><div class="detail-title">${mascotName(g.away)} ${g.neutral?'vs':'at'} ${mascotName(g.home)}</div></div><button class="detail-close" id="detailClose" aria-label="Close game details">×</button></div><div class="detail-body"><div class="detail-matchup"><div class="detail-team"><div class="detail-team-code">${g.away}</div><div class="detail-team-name">${TEAM_NAMES[g.away]}</div></div><div class="detail-at">${g.neutral?'vs':'at'}</div><div class="detail-team"><div class="detail-team-code">${g.home}</div><div class="detail-team-name">${TEAM_NAMES[g.home]}</div></div></div><div class="detail-grid"><div class="detail-field"><div class="detail-label">Week</div><div class="detail-value">Week ${g.week}</div></div><div class="detail-field"><div class="detail-label">Status</div><div class="detail-value"><span class="detail-status">${status}</span></div></div><div class="detail-field wide"><div class="detail-label">Date</div><div class="detail-value">${gameDateLabel(g)}</div></div><div class="detail-field"><div class="detail-label">Kickoff</div><div class="detail-value">${gameTimeLabel(g)}</div></div><div class="detail-field"><div class="detail-label">Location</div><div class="detail-value">${locationText}</div></div><div class="detail-field wide"><div class="detail-label">Watch service</div><div class="detail-value detail-watch"><span class="service-icon ${detailService.meta.cls}">${detailService.meta.icon}</span><span>${detailService.service}</span></div></div><div class="detail-field wide"><div class="detail-label">Broadcast / network</div><div class="detail-value">${g.broadcast}</div></div>${coverageDetail(g)}${coverageMapMarkup(g)}${winnerMapMarkup(g)}</div>${oddsMarkup(g)}${fantasyMarkup(g)}</div>`;gameDetail.classList.add('open');
   // Move focus into the panel so keyboard and screen-reader users are told it
   // opened; aria-live alone does not move the caret.
   // Focus the panel itself rather than the heading text. Focusing the heading
@@ -1476,24 +1578,30 @@ function closeSlate(){selectedSlateDate=null;calendarStage.classList.remove('pan
 function openSlate(dateKey,trigger){
   // Same gutter conflict in reverse: opening the slate hides the drawer.
   if(typeof frCompetesWithSlate==='function'&&frCompetesWithSlate())toggleFantasyDrawer(false);
-  const games=GAMES.filter(g=>g.date===dateKey).sort((a,b)=>a.time.localeCompare(b.time));
+  const games=GAMES.filter(g=>gameLocalDate(g)===dateKey).sort(compareKickoff);
   if(!games.length)return;
   selectedSlateDate=dateKey;
   const d=new Date(dateKey+'T12:00:00');
   calendarStage.classList.remove('panel-right');calendarStage.classList.add('panel-left');
   document.querySelectorAll('.game-count.active').forEach(x=>x.classList.remove('active'));if(trigger)trigger.classList.add('active');
   const dateText=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
-  dailySlate.innerHTML=`<div class="slate-head"><div><div class="slate-kicker">NFL daily slate</div><div class="slate-title">${dateText}</div></div><button class="slate-close" id="slateClose" aria-label="Close game list">×</button></div><div class="slate-list">${games.map(g=>{const ds=displayService(g);const gi=GAMES.indexOf(g);return `<div class="slate-game${gameHasMyStarter(g)?' has-mine':''}" data-game-index="${gi}" role="button" tabindex="0" title="View game details"><div class="slate-game-top"><span class="slate-time">${g.time}${g.time==='TBD'?'':' ET'}</span><span class="slate-week">Week ${g.week}</span></div><div class="slate-matchup">${allMatchupLabel(g)}</div><div class="slate-watch"><span class="service-icon ${ds.meta.cls}">${ds.meta.icon}</span><span class="service-name" title="${ds.service}">${ds.service}</span></div>${coverageBadge(g)}</div>`}).join('')}</div>`;
+  dailySlate.innerHTML=`<div class="slate-head"><div><div class="slate-kicker">NFL daily slate</div><div class="slate-title">${dateText}</div></div><button class="slate-close" id="slateClose" aria-label="Close game list">×</button></div><div class="slate-list">${games.map(g=>{const ds=displayService(g);const gi=GAMES.indexOf(g);return `<div class="slate-game${gameHasMyStarter(g)?' has-mine':''}" data-game-index="${gi}" role="button" tabindex="0" title="View game details"><div class="slate-game-top"><span class="slate-time">${gameTimeLabel(g)}</span><span class="slate-week">Week ${g.week}</span></div><div class="slate-matchup">${allMatchupLabel(g)}</div><div class="slate-watch"><span class="service-icon ${ds.meta.cls}">${ds.meta.icon}</span><span class="service-name" title="${ds.service}">${ds.service}</span></div>${coverageBadge(g)}</div>`}).join('')}</div>`;
   document.getElementById('slateClose').onclick=closeSlate;dailySlate.querySelectorAll('.slate-game').forEach(el=>{const open=()=>openGameDetail(GAMES[Number(el.dataset.gameIndex)],null);el.onclick=open;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}}});
 }
-function opponentLabel(g){if(viewMode==='division'){const loc=g.neutral&&g.location?` (${g.location})`:'';return g.neutral?`${mascotName(g.away)} vs ${mascotName(g.home)}${loc}`:`${mascotName(g.away)} @ ${mascotName(g.home)}`;}const neutral=g.neutral;if(neutral){const other=g.away===team?g.home:g.away;const loc=g.location?` (${g.location})`:'';return `vs ${mascotName(other)}${loc}`;}if(g.home===team)return `vs ${mascotName(g.away)}`;return `at ${mascotName(g.home)}`;}
+// Phone widths give a division-view cell roughly 50px of text column, which is
+// narrower than "Seahawks". Full mascot names there can only be broken
+// mid-word, so use the team codes the compact tiles already use.
+function narrowCells(){return window.matchMedia&&window.matchMedia('(max-width:560px)').matches;}
+function opponentLabel(g){if(viewMode==='division'){const loc=g.neutral&&g.location?` (${g.location})`:'';
+  if(narrowCells())return g.neutral?`${g.away} vs ${g.home}`:`${g.away} @ ${g.home}`;
+  return g.neutral?`${mascotName(g.away)} vs ${mascotName(g.home)}${loc}`:`${mascotName(g.away)} @ ${mascotName(g.home)}`;}const neutral=g.neutral;if(neutral){const other=g.away===team?g.home:g.away;const loc=g.location?` (${g.location})`:'';return `vs ${mascotName(other)}${loc}`;}if(g.home===team)return `vs ${mascotName(g.away)}`;return `at ${mascotName(g.home)}`;}
 function renderTabs(){tabs.innerHTML='';months.forEach((x,i)=>{const b=document.createElement('button');b.textContent=x.label.split(' ')[0];b.className=i===idx?'active':'';b.onclick=()=>{idx=i;render()};tabs.appendChild(b)})}
 function renderLegend(){const order=['NFL Sunday Ticket','Peacock','Prime Video','ESPN Unlimited','Netflix','Paramount+','FOX One','Streaming TBD'];document.getElementById('legend').innerHTML=order.map(s=>{const x=SERVICE_META[s];return `<div class="legend-item"><span class="service-icon ${x.cls}">${x.icon}</span>${s}</div>`}).join('')}
 function renderHeader(){if(viewMode==='team'){const full=TEAM_NAMES[team];const nickname=full.split(' ').slice(-1)[0];document.documentElement.style.setProperty('--accent',TEAM_COLORS[team]);document.getElementById('eyebrow').textContent=`${full} · 2026 Regular Season`;document.getElementById('title').textContent=`${nickname} Streaming Calendar`;document.title=`2026 ${full} Streaming Calendar`;}else{document.documentElement.style.setProperty('--accent','#1f4f83');document.getElementById('eyebrow').textContent=`${division} · 4 teams · 2026 Regular Season`;document.getElementById('title').textContent=`${division} Streaming Calendar`;document.title=`2026 ${division} Streaming Calendar`;}}
 function populateSelection(){selectionSelect.innerHTML='';if(viewMode==='team'){selectionLabel.textContent='Team';Object.entries(TEAM_NAMES).forEach(([code,name])=>{const o=document.createElement('option');o.value=code;o.textContent=name;o.selected=code===team;selectionSelect.appendChild(o)});}else{selectionLabel.textContent='Division';Object.keys(DIVISIONS).forEach(name=>{const o=document.createElement('option');o.value=name;o.textContent=name;o.selected=name===division;selectionSelect.appendChild(o)});}}
-function renderFlex(){const list=document.getElementById('flexList');const flex=selectionGames().filter(g=>g.flex);const scope=viewMode==='team'?TEAM_NAMES[team]:division;document.getElementById('flexHeading').textContent=`Flex / date TBD · ${scope}`;if(!flex.length){list.innerHTML='<div class="empty-flex">No currently designated date/TBD games for this selection.</div>';return}list.innerHTML=flex.map(g=>`<div class="flex-card"><b>Week ${g.week} · ${opponentLabel(g)}</b><div>Date/time or streaming assignment has not yet been finalized. Current placeholder: ${g.date} · ${g.time} · ${g.service}.</div></div>`).join('')}
-function render(){closeSlate();closeGameDetail();renderHeader();const {y,m,label:lbl}=months[idx];label.textContent=lbl;cal.innerHTML='';const first=new Date(y,m,1),start=first.getDay(),days=new Date(y,m+1,0).getDate(),prevDays=new Date(y,m,0).getDate();const cells=Math.ceil((start+days)/7)*7;const byDate={};selectionGames().filter(g=>!g.flex).forEach(g=>{(byDate[g.date]||(byDate[g.date]=[])).push(g)});const allGameCounts={};GAMES.forEach(g=>{allGameCounts[g.date]=(allGameCounts[g.date]||0)+1});const bye=byeInfo();
- for(let i=0;i<cells;i++){const cell=document.createElement('div');cell.className='day';let d,cy=y,cm=m,out=false;if(i<start){d=prevDays-start+i+1;cm=m-1;if(cm<0){cm=11;cy--}out=true}else if(i>=start+days){d=i-(start+days)+1;cm=m+1;if(cm>11){cm=0;cy++}out=true}else d=i-start+1;if(out)cell.classList.add('out');const key=iso(cy,cm,d),games=(byDate[key]||[]).sort((a,b)=>a.time.localeCompare(b.time)),isBye=bye.dates.has(key);if(isBye)cell.classList.add('bye-day');if(games.length)cell.classList.add('game-day');const gameCount=allGameCounts[key]||0;const gameCountLabel=gameCount?`${gameCount} game${gameCount===1?'':'s'}`:'';cell.innerHTML=`<div class="day-head"><div class="date">${d}</div>${gameCount?`<button type="button" class="game-count" aria-label="Show ${gameCount} game${gameCount===1?'':'s'} scheduled on ${key}">${gameCountLabel}</button>`:''}</div>`;if(gameCount){const countBtn=cell.querySelector('.game-count');countBtn.onclick=(e)=>{e.stopPropagation();if(selectedSlateDate===key){closeSlate()}else{openSlate(key,countBtn)}}}if(games.length){const useCompact=viewMode==='division'&&games.length>1;const stack=document.createElement('div');stack.className='games-stack'+(useCompact?' division-compact':(games.length>1?' multi':''));games.forEach(g=>{const meta=SERVICE_META[g.service]||SERVICE_META['Streaming TBD'];const box=document.createElement('div');box.className='game';box.setAttribute('role','button');box.setAttribute('tabindex','0');box.setAttribute('aria-label',`View details for ${TEAM_NAMES[g.away]} at ${TEAM_NAMES[g.home]}`);if(useCompact){const cds=displayService(g);if(gameHasMyStarter(g))box.classList.add('has-mine');box.title=`${TEAM_NAMES[g.away]} at ${TEAM_NAMES[g.home]} · ${g.time} ET · ${cds.service}`;box.innerHTML=`<div class="watch"><span class="service-icon ${cds.meta.cls}" title="${cds.service}">${cds.meta.icon}</span><span class="compact-matchup">${g.away} @ ${g.home}</span></div>${coverageStripe(g)}`;}else{const ds=displayService(g);if(gameHasMyStarter(g))box.classList.add('has-mine');box.innerHTML=`<div class="matchup">${opponentLabel(g)}</div><div class="time">W${g.week} · ${g.time} ET</div><div class="watch"><span class="service-icon ${ds.meta.cls}">${ds.meta.icon}</span><span class="service-name" title="${ds.service}">${ds.service}</span></div>${coverageBadge(g)}`;}const open=()=>openGameDetail(g,box);box.onclick=e=>{e.stopPropagation();open();};box.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};stack.appendChild(box)});cell.appendChild(stack)}else if(isBye){const tag=document.createElement('div');tag.className='bye-tag';tag.textContent=`Bye · W${bye.week}`;cell.appendChild(tag)}cal.appendChild(cell)}renderTabs();renderFlex();document.getElementById('prev').disabled=idx===0;document.getElementById('next').disabled=idx===months.length-1;}
+function renderFlex(){const list=document.getElementById('flexList');const flex=selectionGames().filter(g=>g.flex);const scope=viewMode==='team'?TEAM_NAMES[team]:division;document.getElementById('flexHeading').textContent=`Flex / date TBD · ${scope}`;if(!flex.length){list.innerHTML='<div class="empty-flex">No currently designated date/TBD games for this selection.</div>';return}list.innerHTML=flex.map(g=>`<div class="flex-card"><b>Week ${g.week} · ${opponentLabel(g)}</b><div>Date/time or streaming assignment has not yet been finalized. Current placeholder: ${g.date} · ${gameTimeLabel(g)} · ${g.service}.</div></div>`).join('')}
+function render(){closeSlate();closeGameDetail();renderHeader();const {y,m,label:lbl}=months[idx];label.textContent=lbl;cal.innerHTML='';const first=new Date(y,m,1),start=first.getDay(),days=new Date(y,m+1,0).getDate(),prevDays=new Date(y,m,0).getDate();const cells=Math.ceil((start+days)/7)*7;const byDate={};selectionGames().filter(g=>!g.flex).forEach(g=>{const k=gameLocalDate(g);(byDate[k]||(byDate[k]=[])).push(g)});const allGameCounts={};GAMES.forEach(g=>{const k=gameLocalDate(g);allGameCounts[k]=(allGameCounts[k]||0)+1});const bye=byeInfo();
+ for(let i=0;i<cells;i++){const cell=document.createElement('div');cell.className='day';let d,cy=y,cm=m,out=false;if(i<start){d=prevDays-start+i+1;cm=m-1;if(cm<0){cm=11;cy--}out=true}else if(i>=start+days){d=i-(start+days)+1;cm=m+1;if(cm>11){cm=0;cy++}out=true}else d=i-start+1;if(out)cell.classList.add('out');const key=iso(cy,cm,d),games=(byDate[key]||[]).sort(compareKickoff),isBye=bye.dates.has(key);if(isBye)cell.classList.add('bye-day');if(games.length)cell.classList.add('game-day');const gameCount=allGameCounts[key]||0;const gameCountLabel=gameCount?`${gameCount} game${gameCount===1?'':'s'}`:'';cell.innerHTML=`<div class="day-head"><div class="date">${d}</div>${gameCount?`<button type="button" class="game-count" aria-label="Show ${gameCount} game${gameCount===1?'':'s'} scheduled on ${key}">${gameCountLabel}</button>`:''}</div>`;if(gameCount){const countBtn=cell.querySelector('.game-count');countBtn.onclick=(e)=>{e.stopPropagation();if(selectedSlateDate===key){closeSlate()}else{openSlate(key,countBtn)}}}if(games.length){const useCompact=viewMode==='division'&&games.length>1;const stack=document.createElement('div');stack.className='games-stack'+(useCompact?' division-compact':(games.length>1?' multi':''));games.forEach(g=>{const meta=SERVICE_META[g.service]||SERVICE_META['Streaming TBD'];const box=document.createElement('div');box.className='game';box.setAttribute('role','button');box.setAttribute('tabindex','0');box.setAttribute('aria-label',`View details for ${TEAM_NAMES[g.away]} at ${TEAM_NAMES[g.home]}`);if(useCompact){const cds=displayService(g);if(gameHasMyStarter(g))box.classList.add('has-mine');box.title=`${TEAM_NAMES[g.away]} at ${TEAM_NAMES[g.home]} · ${gameTimeLabel(g)} · ${cds.service}`;box.innerHTML=`<div class="watch"><span class="service-icon ${cds.meta.cls}" title="${cds.service}">${cds.meta.icon}</span><span class="compact-matchup">${g.away} @ ${g.home}</span></div>${coverageStripe(g)}`;}else{const ds=displayService(g);if(gameHasMyStarter(g))box.classList.add('has-mine');box.innerHTML=`<div class="matchup">${opponentLabel(g)}</div><div class="time">W${g.week} · ${gameTimeLabel(g)}</div><div class="watch"><span class="service-icon ${ds.meta.cls}">${ds.meta.icon}</span><span class="service-name" title="${ds.service}">${ds.service}</span></div>${coverageBadge(g)}`;}const open=()=>openGameDetail(g,box);box.onclick=e=>{e.stopPropagation();open();};box.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};stack.appendChild(box)});cell.appendChild(stack)}else if(isBye){const tag=document.createElement('div');tag.className='bye-tag';tag.textContent=`Bye · W${bye.week}`;cell.appendChild(tag)}cal.appendChild(cell)}renderTabs();renderFlex();document.getElementById('prev').disabled=idx===0;document.getElementById('next').disabled=idx===months.length-1;}
 document.getElementById('prev').onclick=()=>{if(idx>0){idx--;render()}};document.getElementById('next').onclick=()=>{if(idx<months.length-1){idx++;render()}};document.getElementById('viewMode').addEventListener('change',e=>{viewMode=e.target.value;idx=0;populateSelection();render()});selectionSelect.addEventListener('change',e=>{if(viewMode==='team')team=e.target.value;else division=e.target.value;idx=0;render()});setViewingZip.onclick=()=>applyViewingZip(viewingZip.value);viewingZip.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();applyViewingZip(viewingZip.value)}});viewingZip.addEventListener('input',()=>{viewingZip.value=viewingZip.value.replace(/\D/g,'').slice(0,5)});// Delegated so the handler survives detail-panel re-renders.
 document.addEventListener('click',e=>{
   if(e.target.id==='themeToggle'||(e.target.closest&&e.target.closest('#themeToggle'))){cycleTheme();return;}
@@ -1524,7 +1632,7 @@ document.addEventListener('keydown',e=>{
   const m=e.target.closest('[data-map-game]');
   if(m){e.preventDefault();const g=GAMES[Number(m.dataset.mapGame)];if(g)openCoverageModal(g);}
 });
-initTheme();populateSelection();renderLegend();render();updateCoverageCopy();updateRosterPick();updateFantasyTab();initViewingLocation();
+initTheme();populateSelection();renderLegend();render();updateCoverageCopy();updateTimezoneNote();updateRosterPick();updateFantasyTab();initViewingLocation();
 </script>
 <div class="fr-drawer" id="frDrawer" aria-hidden="true"><div class="fr-body" id="frBody" role="region" aria-label="Fantasy roster"></div><button type="button" class="fr-tab" id="frTab" aria-controls="frDrawer" aria-expanded="false"><span class="fr-tab-txt">Fantasy roster</span><span class="fr-tab-badge" id="frTabBadge"></span></button></div>
 <div class="cov-modal" id="covModal" role="dialog" aria-modal="true" aria-label="Coverage map"><div class="cov-modal-inner" id="covModalInner"></div></div>
