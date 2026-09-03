@@ -245,7 +245,7 @@
 
   /* Players eligible for a slot, ranked by projection, excluding anyone
      already placed in a different slot. */
-  function candidatesFor(slotId, query, limit, side) {
+  function candidatesFor(slotId, query, limit, side, week) {
     const st = S(side || activeSide);
     const slot = SLOTS.find(s => s.id === slotId);
     if (!slot) return [];
@@ -263,7 +263,21 @@
       if (k && !norm(p.name).includes(k)) continue;
       hits.push(p);
     }
-    hits.sort((a, b) => (Number(b.projected_points) || 0) - (Number(a.projected_points) || 0));
+    // Rank by the week being edited, not by whatever week allPlayers() happens
+    // to dedupe to, so the number shown here matches the drawer.
+    const val = p => {
+      if (week == null) return Number(p.projected_points) || 0;
+      const e = weekEntry(p.name, week);
+      return e ? Number(e.projected_points) || 0 : 0;
+    };
+    hits.sort((a, b) => val(b) - val(a));
+    if (week != null) {
+      // Surface the week's own projection so callers render a consistent value.
+      for (const p of hits) {
+        const e = weekEntry(p.name, week);
+        p.week_points = e ? Number(e.projected_points) || 0 : 0;
+      }
+    }
     return limit ? hits.slice(0, limit) : hits;
   }
 
