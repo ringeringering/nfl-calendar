@@ -66,7 +66,7 @@
   /* The detail panel is a fixed ~300px column, too narrow to read individual
      markets, so the map opens full-size in an overlay on click. */
   .cov-map-svg{cursor:zoom-in}
-  .cov-map-hint{font-size:8px;font-weight:900;color:#8290a3;text-transform:uppercase;letter-spacing:.04em;margin-top:3px}
+  .cov-map-hint{font-size:8px;font-weight:900;color:#5f6b7d;text-transform:uppercase;letter-spacing:.04em;margin-top:3px}
   .cov-modal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;background:rgba(12,24,40,.55);padding:24px}
   .cov-modal.open{display:flex}
   .cov-modal-inner{background:#fff;border-radius:18px;box-shadow:var(--shadow);padding:16px;max-width:min(1000px,94vw);max-height:92vh;overflow:auto;position:relative}
@@ -111,7 +111,7 @@
   /* Starting-lineup grid: away | slot | home, one row per lineup slot, so the
      same slot can be compared straight across between the two teams. */
   .fl-grid{display:grid;grid-template-columns:1fr 34px 1fr;gap:3px 5px;margin-top:10px;align-items:stretch}
-  .fl-head{font-size:8px;font-weight:950;color:#8290a3;text-transform:uppercase;letter-spacing:.06em;padding:0 2px 2px;display:flex;align-items:flex-end}
+  .fl-head{font-size:8px;font-weight:950;color:#5f6b7d;text-transform:uppercase;letter-spacing:.06em;padding:0 2px 2px;display:flex;align-items:flex-end}
   .fl-head.away{justify-content:flex-start}
   .fl-head.home{justify-content:flex-end}
   .fl-head.mid{justify-content:center}
@@ -122,7 +122,7 @@
   .fl-name{font-size:10.5px;font-weight:900;color:#12233f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;line-height:1.25}
   .fl-meta{display:flex;align-items:center;gap:4px;font-size:8px;font-weight:850;color:#6b7889;min-width:0}
   .fl-cell.home .fl-meta{justify-content:flex-end}
-  .fl-rank{color:#8290a3;font-variant-numeric:tabular-nums}
+  .fl-rank{color:#5f6b7d;font-variant-numeric:tabular-nums}
   .fl-pts{font-size:11.5px;font-weight:950;color:#12233f;font-variant-numeric:tabular-nums;line-height:1.1}
   /* Injury dot rather than a word: the grid has no room for a status chip. */
   .fl-inj{width:5px;height:5px;border-radius:50%;flex:0 0 auto}
@@ -135,12 +135,12 @@
   .fl-total{font-size:9px;font-weight:950;color:#33425b;font-variant-numeric:tabular-nums}
   /* Bench: same three-column rhythm, visually recessed so the starters read
      as the primary block. */
-  .fl-sub{font-size:8px;font-weight:950;color:#8290a3;text-transform:uppercase;letter-spacing:.06em;margin-top:11px;padding-bottom:1px;border-top:1px solid #e8ecf2;padding-top:8px}
+  .fl-sub{font-size:8px;font-weight:950;color:#5f6b7d;text-transform:uppercase;letter-spacing:.06em;margin-top:11px;padding-bottom:1px;border-top:1px solid #e8ecf2;padding-top:8px}
   .fl-grid.bench{margin-top:4px;gap:2px 5px}
   .fl-grid.bench .fl-cell{padding:4px 7px;background:#fdfefe}
   .fl-grid.bench .fl-name{font-size:9.5px;font-weight:850;color:#3d4c63}
   .fl-grid.bench .fl-pts{font-size:10px;font-weight:900;color:#4a5a72}
-  .fl-slot.bench{background:#f4f6f9;color:#93a0b1;font-size:8px}
+  .fl-slot.bench{background:#f4f6f9;color:#606c7d;font-size:8px}
   /* My-roster marking + editor */
   .fl-cell.mine{border-color:#b9d4f2;background:#f2f8ff;box-shadow:inset 2px 0 0 #2a78d6}
   .fl-cell.home.mine{box-shadow:inset -2px 0 0 #2a78d6}
@@ -157,7 +157,7 @@
   .roster-msg.ok{color:#1c6b3a}
   .roster-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px;padding-top:9px;border-top:1px solid #e8ecf2}
   .roster-clear{border:0;background:none;color:#b4443e;font-size:9.5px;font-weight:900;cursor:pointer;text-transform:uppercase;letter-spacing:.04em}
-  .roster-note{font-size:9px;font-weight:800;color:#8290a3;line-height:1.35}
+  .roster-note{font-size:9px;font-weight:800;color:#5f6b7d;line-height:1.35}
   /* Roster setup: choose an import path, then the chosen flow */
   .rs-choice{display:grid;gap:8px;margin-top:12px}
   .rs-opt{display:flex;align-items:flex-start;gap:10px;border:1px solid #dde4ee;border-radius:12px;background:#fbfcfe;padding:11px 12px;cursor:pointer;text-align:left;font:inherit;width:100%}
@@ -168,14 +168,14 @@
   .rs-opt .tx{display:block}
   .rs-opt .tt{display:block;font-size:12px;font-weight:950;color:#12233f}
   .rs-opt .dd{display:block;font-size:10px;font-weight:800;color:#6b7889;margin-top:3px;line-height:1.4}
-  .rs-back{border:0;background:none;color:#6b7889;font-size:9.5px;font-weight:900;cursor:pointer;text-transform:uppercase;letter-spacing:.04em;padding:0;margin-top:2px}
+  .rs-back{border:0;background:none;color:#55627a;font-size:11px;font-weight:900;cursor:pointer;text-transform:uppercase;letter-spacing:.04em;padding:6px 2px;min-height:24px;margin-top:2px}
   .rs-back:hover{color:#25405f}
   .rs-form{margin-top:12px;display:grid;gap:8px}
   .rs-row{display:grid;grid-template-columns:1fr;gap:5px}
   .rs-lab{font-size:9px;font-weight:950;color:#6b7889;text-transform:uppercase;letter-spacing:.05em}
   .rs-in{border:1px solid #dde4ee;border-radius:9px;padding:8px 10px;font:inherit;font-size:12px;font-weight:800;color:#12233f;outline:0}
   .rs-in:focus{border-color:#2a78d6}
-  .rs-hint{font-size:9.5px;font-weight:800;color:#8290a3;line-height:1.4}
+  .rs-hint{font-size:9.5px;font-weight:800;color:#5f6b7d;line-height:1.4}
   .rs-go{border:0;background:#2a78d6;color:#fff;border-radius:9px;padding:9px 12px;font-size:11.5px;font-weight:950;cursor:pointer}
   .rs-go:disabled{opacity:.55;cursor:default}
   .rs-teams{display:grid;gap:5px;margin-top:4px;max-height:260px;overflow-y:auto}
@@ -185,7 +185,7 @@
   .rs-team .tc{font-size:9px;font-weight:900;color:#6b7889}
   /* Slot-based roster editor: a lineup card whose rows open a picker */
   .rq{display:grid;gap:3px;margin-top:11px}
-  .rq-sec{font-size:8px;font-weight:950;color:#8290a3;text-transform:uppercase;letter-spacing:.06em;margin-top:9px}
+  .rq-sec{font-size:8px;font-weight:950;color:#5f6b7d;text-transform:uppercase;letter-spacing:.06em;margin-top:9px}
   .rq-sec:first-child{margin-top:0}
   .rq-row{display:grid;grid-template-columns:46px 1fr auto;gap:8px;align-items:center;border:1px solid #e1e7ef;border-radius:10px;background:#fbfcfe;padding:7px 9px;cursor:pointer;font:inherit;text-align:left;width:100%}
   .rq-row:hover{border-color:#b9cbe2;background:#f5f9ff}
@@ -195,10 +195,10 @@
   .rq-row.filled .rq-slot{background:#e3eefb;color:#1a4f8f}
   .rq-body{min-width:0}
   .rq-name{font-size:11.5px;font-weight:900;color:#12233f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .rq-name.empty{color:#a9b3c1;font-weight:800}
+  .rq-name.empty{color:#6c7684;font-weight:800}
   .rq-sub{font-size:8.5px;font-weight:850;color:#6b7889;margin-top:1px;display:flex;align-items:center;gap:4px}
   .rq-pts{font-size:11px;font-weight:950;color:#4a5a72;font-variant-numeric:tabular-nums}
-  .rq-x{border:0;background:none;color:#a9b3c1;font-size:15px;font-weight:900;cursor:pointer;line-height:1;padding:0 2px}
+  .rq-x{border:0;background:none;color:#6c7684;font-size:15px;font-weight:900;cursor:pointer;line-height:1;padding:0 2px}
   .rq-x:hover{color:#c8453f}
   /* Picker panel that opens under the clicked slot */
   .rq-pick{border:1px solid #2a78d6;border-radius:10px;background:#fff;padding:8px;margin-top:-1px}
@@ -210,14 +210,14 @@
   .rq-opt .op{font-size:8.5px;font-weight:950;color:#6b7889;min-width:42px}
   .rq-opt .on{font-size:11px;font-weight:850;color:#23344f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
   .rq-opt .ov{font-size:10px;font-weight:900;color:#4a5a72;font-variant-numeric:tabular-nums}
-  .rq-none{font-size:10px;font-weight:800;color:#8290a3;padding:7px}
+  .rq-none{font-size:10px;font-weight:800;color:#5f6b7d;padding:7px}
   .rq-total{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;padding-top:8px;border-top:1px solid #e8ecf2;font-size:9.5px;font-weight:900;color:#33425b}
   /* Which roster the editor is editing */
   .rq-sides{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:10px}
   .rq-side{border:1px solid #dde4ee;border-radius:9px;background:#fbfcfe;padding:7px 9px;font:inherit;cursor:pointer;text-align:left}
   .rq-side:hover{border-color:#b9cbe2}
   .rq-side.on{border-color:#2a78d6;background:#f2f8ff}
-  .rq-side .sl{display:block;font-size:8px;font-weight:950;color:#8290a3;text-transform:uppercase;letter-spacing:.05em}
+  .rq-side .sl{display:block;font-size:8px;font-weight:950;color:#5f6b7d;text-transform:uppercase;letter-spacing:.05em}
   .rq-side.on .sl{color:#2a78d6}
   .rq-side .sv{display:block;font-size:11px;font-weight:900;color:#12233f;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .rq-name-in{width:100%;box-sizing:border-box;border:1px solid #dde4ee;border-radius:8px;padding:6px 9px;font:inherit;font-size:11px;font-weight:850;color:#12233f;outline:0;margin-top:8px}
@@ -231,15 +231,15 @@
   .h2h-pts{font-size:17px;font-weight:950;color:#33425b;font-variant-numeric:tabular-nums;line-height:1}
   .h2h-pts.r{text-align:right}
   .h2h-pts.win{color:#1c6b3a}
-  .h2h-vs{font-size:8px;font-weight:950;color:#a9b3c1;text-transform:uppercase}
+  .h2h-vs{font-size:8px;font-weight:950;color:#6c7684;text-transform:uppercase}
   .h2h-row{display:grid;grid-template-columns:1fr 40px 1fr;gap:5px;align-items:center;padding:3px 0;border-top:1px solid #f1f4f8}
   .h2h-cell{min-width:0;font-size:9.5px;font-weight:850;color:#3d4c63;display:flex;align-items:baseline;gap:4px}
   .h2h-cell.r{justify-content:flex-end;text-align:right}
   .h2h-nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .h2h-v{font-size:9.5px;font-weight:950;color:#4a5a72;font-variant-numeric:tabular-nums;flex:0 0 auto}
   .h2h-v.win{color:#1c6b3a}
-  .h2h-slot{font-size:7.5px;font-weight:950;color:#93a0b1;text-align:center;text-transform:uppercase;letter-spacing:.03em}
-  .h2h-empty{font-size:9.5px;font-weight:800;color:#8290a3;line-height:1.4}
+  .h2h-slot{font-size:7.5px;font-weight:950;color:#606c7d;text-align:center;text-transform:uppercase;letter-spacing:.03em}
+  .h2h-empty{font-size:9.5px;font-weight:800;color:#5f6b7d;line-height:1.4}
   /* Fantasy roster drawer: hidden off-canvas at the left edge with a visible
      tab. Sits above the calendar panels (z 30-32) but below the modal (60), so
      the ESPN import and slot editor can still open over it. */
@@ -306,7 +306,7 @@
   .fr-btn.primary{background:#2a78d6;border-color:#2a78d6;color:#fff}
   .fr-btn.primary:hover{background:#2569bc}
   .fr-empty{font-size:11px;font-weight:800;color:#6b7889;line-height:1.5;margin-top:12px}
-  .fr-sec{font-size:8px;font-weight:950;color:#8290a3;text-transform:uppercase;letter-spacing:.06em;
+  .fr-sec{font-size:8px;font-weight:950;color:#5f6b7d;text-transform:uppercase;letter-spacing:.06em;
     margin-top:14px;padding-top:9px;border-top:1px solid #e8ecf2}
   /* Player rows inside the drawer */
   .fr-row{display:grid;grid-template-columns:38px 1fr auto;gap:7px;align-items:center;
@@ -317,7 +317,7 @@
   .fr-nm{font-size:11px;font-weight:900;color:#12233f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .fr-meta{font-size:8.5px;font-weight:850;color:#6b7889;margin-top:1px;display:flex;align-items:center;gap:4px}
   .fr-pts{font-size:11px;font-weight:950;color:#4a5a72;font-variant-numeric:tabular-nums}
-  .fr-gm{font-size:8px;font-weight:900;color:#8290a3}
+  .fr-gm{font-size:8px;font-weight:900;color:#5f6b7d}
   .fr-gm.fr-local{color:#1c6b3a}
   .fr-gm.fr-ticket{color:#8a5a12}
   .fr-total{display:flex;align-items:center;justify-content:space-between;margin-top:9px;padding-top:8px;
@@ -328,7 +328,7 @@
   .fr-vs-head{font-size:8px;font-weight:950;color:#6b7889;text-transform:uppercase;letter-spacing:.05em;
     padding-bottom:2px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .fr-vs-head.r{text-align:right}
-  .fr-vs-head.mid{text-align:center;color:#a9b3c1}
+  .fr-vs-head.mid{text-align:center;color:#6c7684}
   .fr-vs-slot{display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:950;
     color:#5b6a80;background:#eef2f7;border-radius:5px}
   .fr-vs-cell{border:1px solid #e1e7ef;border-radius:8px;background:#fbfcfe;padding:4px 6px;min-width:0;
@@ -339,11 +339,17 @@
   .fr-vs-cell.win{border-color:#c3e3cf;background:#f4fbf6}
   .fr-vs-nm{font-size:10px;font-weight:900;color:#12233f;white-space:nowrap;overflow:hidden;
     text-overflow:ellipsis;max-width:100%;line-height:1.2}
-  .fr-vs-sub{font-size:7.5px;font-weight:850;color:#8290a3;white-space:nowrap;overflow:hidden;
+  .fr-vs-sub{font-size:7.5px;font-weight:850;color:#5f6b7d;white-space:nowrap;overflow:hidden;
     text-overflow:ellipsis;max-width:100%}
   .fr-vs-sub .g{font-weight:900}
   .fr-vs-sub .g.fr-local{color:#1c6b3a}
   .fr-vs-sub .g.fr-ticket{color:#8a5a12}
+  /* Text token beside the colour so local-vs-Sunday-Ticket is never carried by
+     hue alone (WCAG 1.4.1). Mirrors the .cov badge pattern used elsewhere. */
+  .fr-tok{display:inline-block;margin-left:3px;padding:0 3px;border-radius:3px;
+    font-size:11px;font-weight:900;letter-spacing:.02em;vertical-align:baseline}
+  .fr-tok-local{background:#e3f6ea;color:#155c31}
+  .fr-tok-st{background:#fdf1dc;color:#7a4e0c}
   .fr-vs-pt{font-size:10px;font-weight:950;color:#4a5a72;font-variant-numeric:tabular-nums;line-height:1.1}
   .fr-vs-pt.win{color:#1c6b3a}
   @media (max-width:560px){
@@ -352,8 +358,8 @@
     .fr-tab{padding:12px 6px}
     .fr-tab-txt{font-size:9px}
   }
-  @media (max-width:980px){.fl-name{font-size:10px}.fl-grid{grid-template-columns:1fr 30px 1fr}}.fantasy-team-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}.fantasy-team-name{font-size:11px;font-weight:950;color:#1a2d49}.fantasy-team-side{font-size:8px;font-weight:900;color:#8290a3;text-transform:uppercase;letter-spacing:.07em}
-  .fantasy-player{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;border:1px solid #e1e7ef;border-radius:11px;padding:8px 9px;background:#fbfcfe;margin-top:6px}.fantasy-player-main{min-width:0}.fantasy-player-name{font-size:11px;font-weight:950;color:#1b2d49;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.fantasy-player-meta{display:flex;align-items:center;gap:5px;margin-top:3px;font-size:8.5px;color:#748197}.fantasy-pos{font-weight:950;color:#536176}.fantasy-rank{font-weight:900;color:#46607f}.fantasy-injury{display:inline-flex;align-items:center;border-radius:999px;padding:2px 5px;background:#eef2f7;color:#59677a;font-size:7.5px;font-weight:950;text-transform:uppercase}.fantasy-injury.active{background:#fff1df;color:#925b00}.fantasy-points{text-align:right}.fantasy-points-value{font-size:15px;font-weight:950;color:#16345d}.fantasy-points-label{font-size:7px;font-weight:900;color:#8a96a6;text-transform:uppercase;letter-spacing:.06em}
+  @media (max-width:980px){.fl-name{font-size:10px}.fl-grid{grid-template-columns:1fr 30px 1fr}}.fantasy-team-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}.fantasy-team-name{font-size:11px;font-weight:950;color:#1a2d49}.fantasy-team-side{font-size:8px;font-weight:900;color:#5f6b7d;text-transform:uppercase;letter-spacing:.07em}
+  .fantasy-player{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;border:1px solid #e1e7ef;border-radius:11px;padding:8px 9px;background:#fbfcfe;margin-top:6px}.fantasy-player-main{min-width:0}.fantasy-player-name{font-size:11px;font-weight:950;color:#1b2d49;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.fantasy-player-meta{display:flex;align-items:center;gap:5px;margin-top:3px;font-size:8.5px;color:#5a6478}.fantasy-pos{font-weight:950;color:#536176}.fantasy-rank{font-weight:900;color:#46607f}.fantasy-injury{display:inline-flex;align-items:center;border-radius:999px;padding:2px 5px;background:#eef2f7;color:#59677a;font-size:7.5px;font-weight:950;text-transform:uppercase}.fantasy-injury.active{background:#fff1df;color:#925b00}.fantasy-points{text-align:right}.fantasy-points-value{font-size:15px;font-weight:950;color:#16345d}.fantasy-points-label{font-size:7px;font-weight:900;color:#8a96a6;text-transform:uppercase;letter-spacing:.06em}
   .fantasy-empty{border:1px dashed #d4dce7;border-radius:12px;padding:13px;background:#fafbfd;color:#6f7d91;font-size:10px;line-height:1.45}.fantasy-source{margin-top:10px;font-size:8.5px;color:#8a95a5;line-height:1.35}
   .detail-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding-bottom:11px;border-bottom:1px solid var(--line)}
   .detail-kicker{font-size:9px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:#7b8799}
@@ -364,7 +370,7 @@
   .detail-matchup{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;background:#f7f9fc;border:1px solid #e0e6ef;border-radius:13px;padding:11px}
   .odds-section{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}.odds-section-title{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}.odds-heading{font-size:11px;font-weight:950;color:#263852;text-transform:uppercase;letter-spacing:.07em}.odds-source{font-size:8px;font-weight:850;color:#8a96a7}.odds-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.odds-card{border:1px solid #dfe6ef;border-radius:11px;padding:9px;background:#f9fbfe}.odds-card.wide{grid-column:1/-1}.odds-label{font-size:8px;font-weight:950;color:#8190a4;text-transform:uppercase;letter-spacing:.08em}.odds-main{font-size:13px;font-weight:950;color:#1d304b;margin-top:3px;line-height:1.25}.odds-sub{font-size:9px;color:#6e7c91;margin-top:3px;line-height:1.35}.odds-team-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:4px;font-size:10px}.odds-team-row b{color:#21344f}.odds-price{font-weight:950;color:#172a44;white-space:nowrap}.odds-empty{border:1px dashed #cfd8e5;border-radius:11px;padding:11px;background:#fafbfd;font-size:10px;color:#6d7b90;line-height:1.45}.odds-fresh{display:inline-flex;align-items:center;gap:4px;border-radius:999px;background:#eef5ff;color:#285b96;padding:4px 7px;font-size:8px;font-weight:900}
   .detail-team{text-align:center;min-width:0}.detail-team-code{font-size:18px;font-weight:950;color:#142640}.detail-team-name{font-size:9px;color:#728096;margin-top:2px;line-height:1.2}.detail-at{font-size:10px;font-weight:950;color:#8a95a5;text-transform:uppercase}
-  .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.detail-field{border:1px solid #e2e7ef;border-radius:11px;padding:9px;background:#fff}.detail-field.wide{grid-column:1/-1}.detail-label{font-size:8px;font-weight:950;color:#8290a3;text-transform:uppercase;letter-spacing:.08em}.detail-value{font-size:11px;font-weight:850;color:#23344f;margin-top:3px;line-height:1.3}.detail-watch{display:flex;align-items:center;gap:8px;margin-top:4px}.detail-watch .service-icon{width:auto;min-width:30px}.detail-status{display:inline-flex;align-items:center;border-radius:999px;padding:4px 7px;background:#eef2f7;color:#536176;font-size:9px;font-weight:900}
+  .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.detail-field{border:1px solid #e2e7ef;border-radius:11px;padding:9px;background:#fff}.detail-field.wide{grid-column:1/-1}.detail-label{font-size:8px;font-weight:950;color:#5f6b7d;text-transform:uppercase;letter-spacing:.08em}.detail-value{font-size:11px;font-weight:850;color:#23344f;margin-top:3px;line-height:1.3}.detail-watch{display:flex;align-items:center;gap:8px;margin-top:4px}.detail-watch .service-icon{width:auto;min-width:30px}.detail-status{display:inline-flex;align-items:center;border-radius:999px;padding:4px 7px;background:#eef2f7;color:#536176;font-size:9px;font-weight:900}
   .game{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s}
   .game:hover,.game:focus-visible{border-color:var(--accent);box-shadow:0 0 0 2px rgba(31,79,131,.14),0 4px 12px rgba(21,44,77,.08);outline:none}
   .game.detail-active{border-color:var(--accent);box-shadow:0 0 0 2px rgba(31,79,131,.22)}
@@ -380,10 +386,10 @@
   .dow div{padding:12px;text-align:center;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:900;color:#63718a}
   .grid{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:126px}
   .day{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:9px 9px 6px;position:relative;min-width:0;background:#fff;box-sizing:border-box;overflow:hidden;display:flex;flex-direction:column}
-  .day:nth-child(7n){border-right:0} .day.out{background:#fafbfd;color:#a8b0be}
+  .day:nth-child(7n){border-right:0} .day.out{background:#fafbfd;color:#6b7382}
   .day-head{display:flex;align-items:center;gap:6px;width:100%;min-width:0;flex:0 0 auto}
   .date{font-size:12px;font-weight:900;width:27px;height:27px;display:flex;align-items:center;justify-content:center;border-radius:8px;flex:0 0 auto}
-  .game-count{appearance:none;border:0;background:transparent;box-shadow:none;border-radius:6px;padding:3px 5px;margin:0;font-size:8px;line-height:1;font-weight:900;color:#5d6d84;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px;cursor:pointer;transition:background .15s,color .15s,transform .15s}
+  .game-count{appearance:none;border:0;background:transparent;box-shadow:none;border-radius:6px;padding:6px 6px;min-height:24px;display:inline-flex;align-items:center;margin:0;font-size:8px;line-height:1;font-weight:900;color:#5d6d84;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px;cursor:pointer;transition:background .15s,color .15s,transform .15s}
   .game-count:hover,.game-count:focus-visible{background:#eaf1fb;color:var(--accent);outline:2px solid rgba(0,53,148,.14);outline-offset:1px;transform:none}
   .game-count::after{content:' ›';font-size:9px;text-decoration:none}
   .game-count.active{background:var(--accent);color:#fff;text-decoration:none;outline:none}
@@ -407,7 +413,7 @@
   .watch{display:flex;align-items:center;gap:6px;margin-top:auto;padding-top:5px;min-width:0}
   .service-icon{flex:0 0 auto;min-width:30px;height:24px;padding:0 6px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;font-weight:950;font-size:9px;letter-spacing:-.02em;color:#fff}
   .service-name{font-size:10px;font-weight:900;color:#33425b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .netflix{background:#e50914} .espn{background:#d71920} .peacock{background:#111} .ticket{background:#1261a8} .prime{background:#00a8e1} .fox{background:#173d8f} .paramount{background:#0064ff} .tbd{background:#6d7788}
+  .netflix{background:#e50914} .espn{background:#d71920} .peacock{background:#111} .ticket{background:#1261a8} .prime{background:#0b6d92} .fox{background:#173d8f} .paramount{background:#0064ff} .tbd{background:#6d7788}
   .below{display:grid;grid-template-columns:1.3fr .9fr;gap:18px;margin-top:18px}
   .panel{background:#fff;border:1px solid var(--line);border-radius:17px;padding:17px 18px;box-shadow:0 9px 26px rgba(16,33,58,.07)}
   .panel h2{font-size:14px;margin:0 0 12px} .legend{display:flex;gap:10px 14px;flex-wrap:wrap}
@@ -415,7 +421,7 @@
   .flex-list{display:grid;gap:9px} .flex-card{border:1px solid var(--line);border-radius:12px;padding:10px 11px;background:#fafbfd}
   .flex-card b{font-size:12px} .flex-card div{font-size:10px;color:#718096;margin-top:3px;line-height:1.35}
   .empty-flex{font-size:11px;color:#718096;line-height:1.4}
-  .note{font-size:10px;color:#748197;line-height:1.45;margin-top:11px} .footer{text-align:center;color:#7d8898;font-size:10px;margin-top:18px}
+  .note{font-size:10px;color:#5a6478;line-height:1.45;margin-top:11px} .footer{text-align:center;color:#5b6779;font-size:10px;margin-top:18px}
   @media (max-width:1850px) and (min-width:981px){.daily-slate{position:fixed;right:auto!important;left:18px!important;top:96px;width:290px;max-height:calc(100vh - 120px)}.game-detail{position:fixed;left:auto!important;right:18px!important;top:96px;width:430px;max-height:calc(100vh - 120px)}}
   @media (max-width:980px){.daily-slate{position:fixed;left:12px!important;right:12px!important;top:auto;bottom:12px;width:auto;max-height:min(70vh,560px);border-radius:15px;z-index:60}.game-detail{position:fixed;left:12px!important;right:12px!important;top:auto;bottom:12px;width:auto;max-height:min(46vh,380px);border-radius:15px;z-index:61}}
   @media (max-width:820px){.app{margin-top:18px;padding:0 10px 30px}.hero{padding:22px 20px;border-radius:18px}h1{font-size:27px}.grid{grid-auto-rows:126px}.day{padding:6px}.games-stack{margin-top:5px}.game{padding:6px}.date{width:25px;height:25px}.game-count{font-size:7px}.service-name{display:none}.below{grid-template-columns:1fr}.dow div{font-size:9px;padding:9px 2px}.matchup{font-size:10px;line-height:1.18}.time{font-size:9px;margin-top:2px}.watch{padding-top:4px}.toolbar{justify-content:center}.season-tabs{justify-content:center}}
@@ -752,7 +758,7 @@ function fantasyInjClass(p){
   return 'q';
 }
 function fantasyCell(p,side,better){
-  if(!p)return `<div class="fl-cell ${side} empty"><div class="fl-name" style="color:#a9b3c1">&mdash;</div></div>`;
+  if(!p)return `<div class="fl-cell ${side} empty"><div class="fl-name" style="color:#6c7684">&mdash;</div></div>`;
   const pts=p.projected_points==null?'&mdash;':Number(p.projected_points).toFixed(1);
   const rank=p.position_rank||p.rank||'';
   const status=(p.injury_status||p.status||'Healthy');
@@ -760,7 +766,7 @@ function fantasyCell(p,side,better){
   return `<div class="fl-cell ${side}${better?' better':''}${own.cls}">`
     +`<div class="fl-name" title="${p.name} &middot; ${p.position} &middot; ${status}${own.tip}">${p.name}</div>`
     +`<div class="fl-meta">${own.dot}`
-    +`<span class="fl-inj ${fantasyInjClass(p)}" title="${status}"></span>`
+    +`<span class="fl-inj ${fantasyInjClass(p)}" role="img" aria-label="${status}" title="${status}"></span>`
     +`<span class="fl-rank">${rank}</span></div>`
     +`<div class="fl-pts">${pts}</div></div>`;
 }
@@ -768,14 +774,14 @@ function fantasyCell(p,side,better){
 // same position, so the slot column shows the position instead of a slot name
 // and no better/worse highlight is applied.
 function fantasyBenchCell(p,side){
-  if(!p)return `<div class="fl-cell ${side} empty"><div class="fl-name" style="color:#a9b3c1">&mdash;</div></div>`;
+  if(!p)return `<div class="fl-cell ${side} empty"><div class="fl-name" style="color:#6c7684">&mdash;</div></div>`;
   const pts=Number(p.projected_points||0).toFixed(1);
   const status=(p.injury_status||p.status||'Healthy');
   const own=rosterOwner(p);
   return `<div class="fl-cell ${side} bench${own.cls}">`
     +`<div class="fl-name" title="${p.name} &middot; ${p.position} &middot; ${status}${own.tip}">${p.name}</div>`
     +`<div class="fl-meta">${own.dot}`
-    +`<span class="fl-inj ${fantasyInjClass(p)}" title="${status}"></span>`
+    +`<span class="fl-inj ${fantasyInjClass(p)}" role="img" aria-label="${status}" title="${status}"></span>`
     +`<span class="fl-rank">${p.position} &middot; ${p.position_rank||p.rank||''}</span></div>`
     +`<div class="fl-pts">${pts}</div></div>`;
 }
@@ -838,10 +844,10 @@ function rosterOwner(p){
   const R=MR();
   if(!R)return {cls:'',dot:'',tip:''};
   if(R.has(p,'mine'))
-    return {cls:' mine',dot:'<span class="fl-mine-dot" title="On your roster"></span>',
+    return {cls:' mine',dot:'<span class="fl-mine-dot" role="img" aria-label="On your roster" title="On your roster"></span>',
             tip:' &middot; on your roster'};
   if(R.has(p,'opp'))
-    return {cls:' theirs',dot:'<span class="fl-theirs-dot" title="On the opponent roster"></span>',
+    return {cls:' theirs',dot:'<span class="fl-theirs-dot" role="img" aria-label="On the opponent roster" title="On the opponent roster"></span>',
             tip:' &middot; on the opponent roster'};
   return {cls:'',dot:'',tip:''};
 }
@@ -919,7 +925,7 @@ function frLineupMarkup(week){
   const oppNm=R.nameFor('opp')||'Opponent';
   const cell=(nm,week,side,otherVal)=>{
     if(!nm)return `<div class="fr-vs-cell${side==='r'?' r':''} empty">`
-      +`<div class="fr-vs-nm" style="color:#a9b3c1">&mdash;</div></div>`;
+      +`<div class="fr-vs-nm" style="color:#6c7684">&mdash;</div></div>`;
     const base=R.resolve(nm), p=R.weekEntry(nm,week);
     const val=p?Number(p.projected_points)||0:0;
     const g=base?frGameFor(base,week):null;
@@ -927,12 +933,18 @@ function frLineupMarkup(week){
     if(!g){sub='<span class="g">Bye</span>';}
     else{
       const away=g.away===(base&&base.team);
-      let cls='',txt=away?'@ '+g.home:'vs '+g.away;
+      let cls='',txt=away?'@ '+g.home:'vs '+g.away,tok='';
       if(viewingMarket&&window.NFL_LOCAL_COVERAGE){
         const c=window.NFL_LOCAL_COVERAGE.resolve(viewingMarket.dma_code,g,GAMES);
-        if(c){cls=c.isLocal?' fr-local':(c.band==='unlikely'?' fr-ticket':'');}
+        if(c){
+          cls=c.isLocal?' fr-local':(c.band==='unlikely'?' fr-ticket':'');
+          // A visible token, not colour alone: the distinction has to survive
+          // greyscale, CVD and a 7.5px render.
+          tok=c.isLocal?'<span class="fr-tok fr-tok-local">LOCAL</span>'
+             :(c.band==='unlikely'?'<span class="fr-tok fr-tok-st">ST</span>':'');
+        }
       }
-      sub=`<span class="g${cls}">${txt}</span>`;
+      sub=`<span class="g${cls}">${txt}</span>${tok}`;
     }
     const win=otherVal!=null&&val>otherVal;
     return `<div class="fr-vs-cell${side==='r'?' r':''}${p?'':' bye'}${win?' win':''}">`
@@ -1278,7 +1290,11 @@ function openFantasyDetail(g){if(selectedGame)openGameDetail(selectedGame,null);
 function closeFantasyDetail(){}
 function gameDateLabel(g){const d=new Date(g.date+'T12:00:00');return d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});}
 function closeGameDetail(){selectedGame=null;gameDetail.classList.remove('open');gameDetail.innerHTML='';closeFantasyDetail();document.querySelectorAll('.game.detail-active').forEach(x=>x.classList.remove('detail-active'));}
-function openGameDetail(g,trigger){selectedGame=g;document.querySelectorAll('.game.detail-active').forEach(x=>x.classList.remove('detail-active'));if(trigger)trigger.classList.add('detail-active');const meta=SERVICE_META[g.service]||SERVICE_META['Streaming TBD'];const detailService=displayService(g);const locationText=g.neutral?(g.location||'Neutral site'):'Not separately listed';const status=g.flex?'Flex / assignment TBD':'Scheduled';gameDetail.innerHTML=`<div class="detail-head"><div><div class="detail-kicker">Game details</div><div class="detail-title">${mascotName(g.away)} ${g.neutral?'vs':'at'} ${mascotName(g.home)}</div></div><button class="detail-close" id="detailClose" aria-label="Close game details">×</button></div><div class="detail-body"><div class="detail-matchup"><div class="detail-team"><div class="detail-team-code">${g.away}</div><div class="detail-team-name">${TEAM_NAMES[g.away]}</div></div><div class="detail-at">${g.neutral?'vs':'at'}</div><div class="detail-team"><div class="detail-team-code">${g.home}</div><div class="detail-team-name">${TEAM_NAMES[g.home]}</div></div></div><div class="detail-grid"><div class="detail-field"><div class="detail-label">Week</div><div class="detail-value">Week ${g.week}</div></div><div class="detail-field"><div class="detail-label">Status</div><div class="detail-value"><span class="detail-status">${status}</span></div></div><div class="detail-field wide"><div class="detail-label">Date</div><div class="detail-value">${gameDateLabel(g)}</div></div><div class="detail-field"><div class="detail-label">Kickoff</div><div class="detail-value">${g.time}${g.time==='TBD'?'':' ET'}</div></div><div class="detail-field"><div class="detail-label">Location</div><div class="detail-value">${locationText}</div></div><div class="detail-field wide"><div class="detail-label">Watch service</div><div class="detail-value detail-watch"><span class="service-icon ${detailService.meta.cls}">${detailService.meta.icon}</span><span>${detailService.service}</span></div></div><div class="detail-field wide"><div class="detail-label">Broadcast / network</div><div class="detail-value">${g.broadcast}</div></div>${coverageDetail(g)}${coverageMapMarkup(g)}${winnerMapMarkup(g)}</div>${oddsMarkup(g)}${fantasyMarkup(g)}</div>`;gameDetail.classList.add('open');document.getElementById('detailClose').onclick=closeGameDetail;}
+function openGameDetail(g,trigger){selectedGame=g;document.querySelectorAll('.game.detail-active').forEach(x=>x.classList.remove('detail-active'));if(trigger)trigger.classList.add('detail-active');const meta=SERVICE_META[g.service]||SERVICE_META['Streaming TBD'];const detailService=displayService(g);const locationText=g.neutral?(g.location||'Neutral site'):'Not separately listed';const status=g.flex?'Flex / assignment TBD':'Scheduled';gameDetail.innerHTML=`<div class="detail-head"><div><div class="detail-kicker">Game details</div><div class="detail-title">${mascotName(g.away)} ${g.neutral?'vs':'at'} ${mascotName(g.home)}</div></div><button class="detail-close" id="detailClose" aria-label="Close game details">×</button></div><div class="detail-body"><div class="detail-matchup"><div class="detail-team"><div class="detail-team-code">${g.away}</div><div class="detail-team-name">${TEAM_NAMES[g.away]}</div></div><div class="detail-at">${g.neutral?'vs':'at'}</div><div class="detail-team"><div class="detail-team-code">${g.home}</div><div class="detail-team-name">${TEAM_NAMES[g.home]}</div></div></div><div class="detail-grid"><div class="detail-field"><div class="detail-label">Week</div><div class="detail-value">Week ${g.week}</div></div><div class="detail-field"><div class="detail-label">Status</div><div class="detail-value"><span class="detail-status">${status}</span></div></div><div class="detail-field wide"><div class="detail-label">Date</div><div class="detail-value">${gameDateLabel(g)}</div></div><div class="detail-field"><div class="detail-label">Kickoff</div><div class="detail-value">${g.time}${g.time==='TBD'?'':' ET'}</div></div><div class="detail-field"><div class="detail-label">Location</div><div class="detail-value">${locationText}</div></div><div class="detail-field wide"><div class="detail-label">Watch service</div><div class="detail-value detail-watch"><span class="service-icon ${detailService.meta.cls}">${detailService.meta.icon}</span><span>${detailService.service}</span></div></div><div class="detail-field wide"><div class="detail-label">Broadcast / network</div><div class="detail-value">${g.broadcast}</div></div>${coverageDetail(g)}${coverageMapMarkup(g)}${winnerMapMarkup(g)}</div>${oddsMarkup(g)}${fantasyMarkup(g)}</div>`;gameDetail.classList.add('open');
+  // Move focus into the panel so keyboard and screen-reader users are told it
+  // opened; aria-live alone does not move the caret.
+  const _t=gameDetail.querySelector('.detail-title');
+  if(_t){_t.setAttribute('tabindex','-1');_t.focus({preventScroll:true});}document.getElementById('detailClose').onclick=closeGameDetail;}
 function iso(y,m,d){return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`}
 function selectedTeams(){return viewMode==='team'?[team]:DIVISIONS[division]}
 function selectionGames(){const teams=new Set(selectedTeams());return GAMES.filter(g=>teams.has(g.away)||teams.has(g.home))}
@@ -1337,7 +1353,17 @@ document.addEventListener('click',e=>{
   if(modal&&modal.classList.contains('open')&&e.target===modal){closeRosterModal();closeCoverageModal();}
 });
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){closeRosterModal();closeCoverageModal();return;}
+  if(e.key==='Escape'){
+    // Innermost first: a modal, then the drawer, then the panels. Previously
+    // only the modals closed, so Escape left the slate and detail panels open.
+    const modalOpen=document.getElementById('covModal')&&document.getElementById('covModal').classList.contains('open');
+    if(modalOpen){closeRosterModal();closeCoverageModal();return;}
+    const drawer=document.getElementById('frDrawer');
+    if(drawer&&drawer.classList.contains('open')){toggleFantasyDrawer(false);return;}
+    if(selectedGame){closeGameDetail();return;}
+    if(selectedSlateDate){closeSlate();return;}
+    return;
+  }
   if(e.key!=='Enter'&&e.key!==' ')return;
   if(!e.target.closest)return;
   const w=e.target.closest('[data-winmap-game]');
