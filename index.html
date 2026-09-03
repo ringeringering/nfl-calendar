@@ -482,8 +482,8 @@
   .game-day .date{background:var(--accent);color:var(--surface)}
   .game-day .game-count{color:var(--muted)}
   .bye-day{background:var(--line-soft)!important;color:var(--muted)}
-  .bye-day.out{background:var(--line-soft)!important;color:var(--muted-2)}
-  .bye-day .date{background:var(--muted-2);color:var(--muted)}
+  .bye-day.out{background:var(--line-soft)!important;color:var(--muted-2)}.bye-day.out .date{color:var(--ink-3)}
+  .bye-day .date{background:var(--surface);color:var(--ink);border:1px solid var(--line-strong)}
   .bye-tag{margin-top:auto;align-self:flex-start;background:var(--muted);color:var(--surface);border-radius:999px;padding:4px 7px;font-size:11px;font-weight:900;letter-spacing:.08em;line-height:1;text-transform:uppercase}
   .games-stack{margin-top:6px;display:flex;flex-direction:column;gap:4px;flex:1;min-height:0;overflow:hidden}
   .game{border-radius:12px;border:1px solid var(--line);background:linear-gradient(180deg,var(--surface),var(--surface-2));padding:7px;box-shadow:0 4px 12px rgba(21,44,77,.06);overflow:hidden;box-sizing:border-box;width:100%;max-width:100%;min-width:0;flex:1;min-height:0;display:flex;flex-direction:column}
@@ -544,17 +544,17 @@
   <div class="footer">2026 regular-season schedule. Network and streaming assignments remain subject to NFL flex changes.</div>
 </div>
 <button type="button" class="theme-fab" id="themeToggle" aria-live="polite" title="Theme"><span class="theme-ic" id="themeIc" aria-hidden="true"></span><span id="themeLabel">Auto</span></button>
-<script src="odds-data.js?v=21"></script>
-<script src="fantasy-data.js?v=21"></script>
-<script src="local-market-data.js?v=21"></script>
-<script src="zip-timezones.js?v=21"></script>
-<script src="local-time.js?v=21"></script>
-<script src="my-roster.js?v=21"></script>
-<script src="dma-assignments.js?v=21"></script>
-<script src="dma-model.js?v=21"></script>
-<script src="dma-geometry.js?v=21"></script>
-<script src="local-coverage.js?v=21"></script>
-<script src="coverage-map.js?v=21"></script>
+<script src="odds-data.js?v=22"></script>
+<script src="fantasy-data.js?v=22"></script>
+<script src="local-market-data.js?v=22"></script>
+<script src="zip-timezones.js?v=22"></script>
+<script src="local-time.js?v=22"></script>
+<script src="my-roster.js?v=22"></script>
+<script src="dma-assignments.js?v=22"></script>
+<script src="dma-model.js?v=22"></script>
+<script src="dma-geometry.js?v=22"></script>
+<script src="local-coverage.js?v=22"></script>
+<script src="coverage-map.js?v=22"></script>
 <script>
 const TEAM_NAMES={"ARI":"Arizona Cardinals","ATL":"Atlanta Falcons","BAL":"Baltimore Ravens","BUF":"Buffalo Bills","CAR":"Carolina Panthers","CHI":"Chicago Bears","CIN":"Cincinnati Bengals","CLE":"Cleveland Browns","DAL":"Dallas Cowboys","DEN":"Denver Broncos","DET":"Detroit Lions","GB":"Green Bay Packers","HOU":"Houston Texans","IND":"Indianapolis Colts","JAX":"Jacksonville Jaguars","KC":"Kansas City Chiefs","LV":"Las Vegas Raiders","LAC":"Los Angeles Chargers","LAR":"Los Angeles Rams","MIA":"Miami Dolphins","MIN":"Minnesota Vikings","NE":"New England Patriots","NO":"New Orleans Saints","NYG":"New York Giants","NYJ":"New York Jets","PHI":"Philadelphia Eagles","PIT":"Pittsburgh Steelers","SF":"San Francisco 49ers","SEA":"Seattle Seahawks","TB":"Tampa Bay Buccaneers","TEN":"Tennessee Titans","WAS":"Washington Commanders"};
 const TEAM_COLORS={"ARI":"#97233F","ATL":"#A71930","BAL":"#241773","BUF":"#00338D","CAR":"#0085CA","CHI":"#0B162A","CIN":"#FB4F14","CLE":"#311D00","DAL":"#003594","DEN":"#FB4F14","DET":"#0076B6","GB":"#203731","HOU":"#03202F","IND":"#002C5F","JAX":"#006778","KC":"#E31837","LV":"#000000","LAC":"#0080C6","LAR":"#003594","MIA":"#008E97","MIN":"#4F2683","NE":"#002244","NO":"#D3BC8D","NYG":"#0B2265","NYJ":"#125740","PHI":"#004C54","PIT":"#FFB612","SF":"#AA0000","SEA":"#002244","TB":"#D50A0A","TEN":"#0C2340","WAS":"#5A1414"};
