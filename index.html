@@ -241,7 +241,7 @@
      follows effort. */
   .rs-opt-primary{border-color:var(--brand);background:var(--surface-accent)}
   .rs-opt-primary:hover{border-color:var(--brand-strong);background:var(--surface-accent)}
-  .rs-opt .ic{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:var(--surface);flex:0 0 auto;background:var(--brand)}
+  .rs-opt .ic{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#ffffff;flex:0 0 auto;background:var(--brand)}
   .rs-opt .ic.manual{background:var(--ink-3)}
   .rs-opt .tx{min-width:0}
   .rs-opt .tx{display:block}
@@ -726,6 +726,25 @@
     .rs-lab{min-height:44px;display:flex;align-items:center}
   }
 
+
+  /* ---- Sleeper import ----------------------------------------------------- */
+  /* Sleeper's brand mark; fixed white ink because the tile colour is fixed too
+     (the same trap that made the Peacock chip invisible in dark mode). */
+  .rs-opt .ic-sleeper{background:#1c1e22;color:#ffffff}
+  :root[data-theme="dark"] .rs-opt .ic-sleeper{background:#2a2d33}
+  /* Which side an imported roster lands on. */
+  .rs-side-pick{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:10px 0 6px;padding:8px 10px;background:var(--surface-3);
+    border:1px solid var(--line);border-radius:10px}
+  .rs-side{display:inline-flex;align-items:center;gap:6px;font-size:13px;
+    font-weight:900;color:var(--ink-2);cursor:pointer}
+  .rs-side input{accent-color:var(--brand);width:17px;height:17px;margin:0}
+  @media (pointer:coarse){
+    .rs-side{min-height:44px}
+    .rs-side input{width:20px;height:20px}
+    .rs-side-pick{gap:14px}
+  }
+
 </style>
 </head>
 <body>
@@ -756,17 +775,18 @@
 </div>
 <div class="sheet-scrim" id="sheetScrim" aria-hidden="true"></div>
 <button type="button" class="theme-fab" id="themeToggle" aria-live="polite" title="Theme"><span class="theme-ic" id="themeIc" aria-hidden="true"></span><span id="themeLabel">Auto</span></button>
-<script src="odds-data.js?v=40"></script>
-<script src="fantasy-data.js?v=40"></script>
-<script src="local-market-data.js?v=40"></script>
-<script src="zip-timezones.js?v=40"></script>
-<script src="local-time.js?v=40"></script>
-<script src="my-roster.js?v=40"></script>
-<script src="dma-assignments.js?v=40"></script>
-<script src="dma-model.js?v=40"></script>
-<script src="dma-geometry.js?v=40"></script>
-<script src="local-coverage.js?v=40"></script>
-<script src="coverage-map.js?v=40"></script>
+<script src="odds-data.js?v=42"></script>
+<script src="fantasy-data.js?v=42"></script>
+<script src="local-market-data.js?v=42"></script>
+<script src="zip-timezones.js?v=42"></script>
+<script src="local-time.js?v=42"></script>
+<script src="sleeper-ids.js?v=42"></script>
+<script src="my-roster.js?v=42"></script>
+<script src="dma-assignments.js?v=42"></script>
+<script src="dma-model.js?v=42"></script>
+<script src="dma-geometry.js?v=42"></script>
+<script src="local-coverage.js?v=42"></script>
+<script src="coverage-map.js?v=42"></script>
 <script>
 const TEAM_NAMES={"ARI":"Arizona Cardinals","ATL":"Atlanta Falcons","BAL":"Baltimore Ravens","BUF":"Buffalo Bills","CAR":"Carolina Panthers","CHI":"Chicago Bears","CIN":"Cincinnati Bengals","CLE":"Cleveland Browns","DAL":"Dallas Cowboys","DEN":"Denver Broncos","DET":"Detroit Lions","GB":"Green Bay Packers","HOU":"Houston Texans","IND":"Indianapolis Colts","JAX":"Jacksonville Jaguars","KC":"Kansas City Chiefs","LV":"Las Vegas Raiders","LAC":"Los Angeles Chargers","LAR":"Los Angeles Rams","MIA":"Miami Dolphins","MIN":"Minnesota Vikings","NE":"New England Patriots","NO":"New Orleans Saints","NYG":"New York Giants","NYJ":"New York Jets","PHI":"Philadelphia Eagles","PIT":"Pittsburgh Steelers","SF":"San Francisco 49ers","SEA":"Seattle Seahawks","TB":"Tampa Bay Buccaneers","TEN":"Tennessee Titans","WAS":"Washington Commanders"};
 const TEAM_COLORS={"ARI":"#97233F","ATL":"#A71930","BAL":"#241773","BUF":"#00338D","CAR":"#0085CA","CHI":"#0B162A","CIN":"#FB4F14","CLE":"#311D00","DAL":"#003594","DEN":"#FB4F14","DET":"#0076B6","GB":"#203731","HOU":"#03202F","IND":"#002C5F","JAX":"#006778","KC":"#E31837","LV":"#000000","LAC":"#0080C6","LAR":"#003594","MIA":"#008E97","MIN":"#4F2683","NE":"#002244","NO":"#D3BC8D","NYG":"#0B2265","NYJ":"#125740","PHI":"#004C54","PIT":"#FFB612","SF":"#AA0000","SEA":"#002244","TB":"#D50A0A","TEN":"#0C2340","WAS":"#5A1414"};
@@ -1411,7 +1431,7 @@ function renderFantasyDrawer(){
     +`<select id="frWeekSel">${weeks.map(w=>`<option value="${w}"${w===frWeek?' selected':''}>Week ${w}</option>`).join('')}</select></div>`;
   html+=`<div class="fr-actions">`
     +`<button type="button" class="fr-btn primary" id="frEdit">${mineN?'Edit rosters':'Add roster'}</button>`
-    +`<button type="button" class="fr-btn" id="frImport">Import from ESPN</button></div>`;
+    +`<button type="button" class="fr-btn" id="frImport">Import roster</button></div>`;
 
   if(!mineN){
     html+=`<div class="fr-empty">Add your fantasy roster to see your lineup for any week here, `
@@ -1428,7 +1448,7 @@ function renderFantasyDrawer(){
     if(R&&R.size===0&&typeof openRosterSetup==='function')openRosterSetup();
     else openRosterModal();
   };
-  document.getElementById('frImport').onclick=openRosterEspn;
+  document.getElementById('frImport').onclick=openRosterSetup;
   const sel=document.getElementById('frWeekSel');
   if(sel)sel.onchange=()=>{frWeek=Number(sel.value);renderFantasyDrawer();};
   updateFantasyTab();
@@ -1522,7 +1542,8 @@ function openRosterSetup(){
     +`<div class="cov-modal-sub">${has?`${R.size} player${R.size>1?'s':''} on your team`:'No roster yet'}`
     +`${oppN?` &middot; ${oppN} on the opponent`:''} &middot; stored in this browser only</div>`
     +`<div class="rs-choice">`
-    +`<button type="button" class="rs-opt rs-opt-primary" id="rsEspn"><span class="ic">E</span><span class="tx">`
+    +`<button type="button" class="rs-opt rs-opt-primary" id="rsSleeper"><span class="ic ic-sleeper">S</span><span class="tx"><b>Import from Sleeper</b><i>Just your username &mdash; works with private leagues</i></span></button>`
+    +`<button type="button" class="rs-opt" id="rsEspn"><span class="ic">E</span><span class="tx">`
     +`<span class="tt">Import from ESPN</span>`
     +`<span class="dd">Enter your league ID and pick your team. Works for public leagues; ESPN keeps private leagues hidden.</span>`
     +`</span></button>`
@@ -1533,10 +1554,112 @@ function openRosterSetup(){
     +(has?`<div class="roster-foot"><div class="roster-note">Clearing removes the saved roster from this browser.</div>`
       +`<button class="roster-clear" id="rosterClear">Clear all</button></div>`:'');
   document.getElementById('rosterClose').onclick=closeRosterModal;
+  document.getElementById('rsSleeper').onclick=openRosterSleeper;
   document.getElementById('rsEspn').onclick=openRosterEspn;
   document.getElementById('rsManual').onclick=openRosterModal;
   const cl=document.getElementById('rosterClear');
   if(cl)cl.onclick=()=>{if(confirm('Remove all players from your roster?')){MR().clear();rosterRefresh();closeRosterModal();}};
+}
+/* Sleeper import: username -> league -> team.
+
+   Three steps rather than ESPN's two, because a Sleeper user can be in several
+   leagues and the username alone does not identify one. Nothing is stored
+   except the resulting roster; the username is not persisted. */
+function openRosterSleeper(){
+  const inner=rosterShellOpen(); const R=MR(); if(!inner||!R)return;
+  inner.innerHTML=`<button class="cov-modal-close" id="rosterClose" aria-label="Close">&times;</button>`
+    +`<div class="cov-modal-title">Import from Sleeper</div>`
+    +`<div class="cov-modal-sub">Public and private leagues both work &middot; nothing is sent anywhere except Sleeper</div>`
+    +`<button type="button" class="rs-back" id="rsBack">&larr; Back</button>`
+    +`<div class="rs-form">`
+    +`<div class="rs-row"><label class="rs-lab" for="rsUser">Sleeper username</label>`
+    +`<input class="rs-in" id="rsUser" type="text" autocomplete="username"`
+    +` autocapitalize="none" spellcheck="false" placeholder="e.g. yourname"></div>`
+    +`<div class="rs-hint">The username you sign in to Sleeper with. You can also paste your profile link.</div>`
+    +`<button class="rs-go" id="rsFind">Find my leagues</button></div>`
+    +`<div class="roster-msg" id="rosterMsg"></div><div id="rsTeams"></div>`;
+  document.getElementById('rosterClose').onclick=closeRosterModal;
+  document.getElementById('rsBack').onclick=openRosterSetup;
+  const go=document.getElementById('rsFind'),inp=document.getElementById('rsUser');
+  inp.focus();
+  inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();go.click();}});
+
+  go.onclick=async()=>{
+    const msg=document.getElementById('rosterMsg'),box=document.getElementById('rsTeams');
+    box.innerHTML=''; msg.className='roster-msg'; msg.textContent='Contacting Sleeper…';
+    go.disabled=true;
+    try{
+      const info=await MR().sleeperLeagues(inp.value);
+      // One league: skip straight to picking a team.
+      if(info.leagues.length===1){
+        msg.className='roster-msg ok';
+        msg.textContent=`${info.displayName} — ${info.leagues[0].name}. Pick your team:`;
+        await sleeperShowTeams(info.leagues[0],box,msg);
+      }else{
+        msg.className='roster-msg ok';
+        msg.textContent=`${info.displayName} is in ${info.leagues.length} leagues. Pick one:`;
+        box.innerHTML=`<div class="rs-teams">`+info.leagues.map((l,i)=>
+          `<button type="button" class="rs-team" data-lg="${i}">`
+          +`<span class="tn">${l.name}</span>`
+          +`<span class="tc">${l.teams} teams</span></button>`).join('')+`</div>`;
+        [...box.querySelectorAll('.rs-team')].forEach(b=>b.onclick=async()=>{
+          const lg=info.leagues[Number(b.dataset.lg)];
+          msg.className='roster-msg'; msg.textContent=`Loading ${lg.name}…`;
+          await sleeperShowTeams(lg,box,msg);
+        });
+      }
+    }catch(err){
+      msg.className='roster-msg err'; msg.textContent=err.message; box.innerHTML='';
+    }finally{go.disabled=false;}
+  };
+}
+/* Team picker for one Sleeper league, with an explicit choice of which side
+   the roster lands on so an opponent can be imported for the head-to-head. */
+async function sleeperShowTeams(league,box,msg){
+  try{
+    const teams=await MR().sleeperTeams(league.id);
+    // Which lineup slots does this league actually use? Leagues without a
+    // kicker or defence are common on Sleeper, and this app always shows both,
+    // so say so rather than leaving a mystery gap.
+    const used=new Set((league.positions||[]).map(p=>String(p).toUpperCase()));
+    const missing=[];
+    if(!used.has('K'))missing.push('kicker');
+    if(!used.has('DEF')&&!used.has('D/ST'))missing.push('defence');
+    box.innerHTML=`<div class="rs-side-pick">`
+      +`<span class="rs-lab">Import as</span>`
+      +`<label class="rs-side"><input type="radio" name="rsSide" value="mine" checked> My team</label>`
+      +`<label class="rs-side"><input type="radio" name="rsSide" value="opp"> Opponent</label>`
+      +`</div>`
+      +(missing.length?`<div class="rs-hint">${league.name} does not use a `
+        +`${missing.join(' or ')} slot, so ${missing.length>1?'those rows':'that row'} `
+        +`will stay empty.</div>`:'')
+      +`<div class="rs-teams">`+teams.map(t=>
+        `<button type="button" class="rs-team" data-roster="${t.rosterId}"`
+        +` data-name="${String(t.name).replace(/"/g,'&quot;')}">`
+        +`<span class="tn">${t.name}</span>`
+        +`<span class="tc">${t.owner||''}</span></button>`).join('')+`</div>`;
+    [...box.querySelectorAll('.rs-team')].forEach(b=>b.onclick=async()=>{
+      const side=(box.querySelector('input[name="rsSide"]:checked')||{}).value||'mine';
+      msg.className='roster-msg'; msg.textContent=`Importing ${b.dataset.name}…`;
+      try{
+        const res=await MR().importSleeperRoster(
+          league.id,b.dataset.roster,b.dataset.name,side);
+        rosterRefresh(); updateRosterPick();
+        msg.className='roster-msg ok';
+        let txt=`Imported ${res.added} players as `
+          +`${side==='opp'?'the opponent':'my team'}.`;
+        if(res.unmatched.length){
+          txt+=` ${res.unmatched.length} not in the projections feed: `
+            +res.unmatched.slice(0,3).join(', ')
+            +(res.unmatched.length>3?'…':'')+'.';
+        }
+        msg.textContent=txt;
+        setTimeout(openRosterModal,1100);
+      }catch(err){msg.className='roster-msg err';msg.textContent=err.message;}
+    });
+  }catch(err){
+    msg.className='roster-msg err'; msg.textContent=err.message;
+  }
 }
 function openRosterEspn(){
   const inner=rosterShellOpen(); const R=MR(); if(!inner||!R)return;

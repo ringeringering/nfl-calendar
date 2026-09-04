@@ -508,12 +508,158 @@
     return { added: st.roster.length, unmatched };
   }
 
+  /* ---- Sleeper import ------------------------------------------------------
+
+     Sleeper's read API needs no authentication and sends
+     Access-Control-Allow-Origin: *, so this runs entirely in the browser. Two
+     things make it a better fit than the ESPN path above:
+
+       - it takes a USERNAME, not a league id dug out of a URL, and
+       - private leagues are readable, which is the ESPN blocker.
+
+     Rosters come back as numeric player ids. Sleeper's own id dictionary is
+     ~14 MB, so tools/build_sleeper_ids.py ships a 32 KB trimmed map instead
+     (window.NFL_SLEEPER_IDS: id -> [name, position, team]). */
+  const SLEEPER = 'https://api.sleeper.app/v1';
+
+  function sleeperIds() {
+    return (typeof window !== 'undefined' && window.NFL_SLEEPER_IDS) || null;
+  }
+  /* The season Sleeper is currently serving. Falls back to the ESPN helper's
+     answer if the state call fails, so a network blip does not block import. */
+  async function sleeperSeason() {
+    try {
+      const r = await fetch(`${SLEEPER}/state/nfl`, { credentials: 'omit' });
+      if (r.ok) {
+        const s = await r.json();
+        const yr = Number(s && (s.league_season || s.season));
+        if (yr) return yr;
+      }
+    } catch (e) { /* fall through */ }
+    return espnSeason();
+  }
+
+  function cleanUsername(input) {
+    const s = String(input || '').trim();
+    // Accept a pasted profile URL as well as a bare username.
+    const m = /sleeper\.(?:app|com)\/(?:@|user\/)?([A-Za-z0-9_.-]+)/i.exec(s);
+    return (m ? m[1] : s).replace(/^@/, '').trim();
+  }
+
+  /* username -> that user's leagues for the season. */
+  async function sleeperLeagues(usernameInput, season) {
+    const username = cleanUsername(usernameInput);
+    if (!username) throw new Error('Enter your Sleeper username.');
+    const yr = season || await sleeperSeason();
+    let ur;
+    try {
+      ur = await fetch(`${SLEEPER}/user/${encodeURIComponent(username)}`,
+        { credentials: 'omit' });
+    } catch (e) {
+      throw new Error('Could not reach Sleeper. Check your connection.');
+    }
+    if (ur.status === 404) {
+      throw new Error(`No Sleeper user called "${username}". Usernames are `
+        + 'case-insensitive but must match exactly otherwise.');
+    }
+    if (!ur.ok) throw new Error(`Sleeper returned ${ur.status}. Try again later.`);
+    const user = await ur.json();
+    if (!user || !user.user_id) throw new Error(`No Sleeper user called "${username}".`);
+
+    const lr = await fetch(`${SLEEPER}/user/${user.user_id}/leagues/nfl/${yr}`,
+      { credentials: 'omit' });
+    if (!lr.ok) throw new Error(`Sleeper returned ${lr.status} listing leagues.`);
+    const leagues = await lr.json();
+    if (!leagues || !leagues.length) {
+      throw new Error(`${user.display_name || username} has no ${yr} NFL leagues on `
+        + 'Sleeper. Check the season.');
+    }
+    return {
+      userId: user.user_id,
+      displayName: user.display_name || username,
+      season: yr,
+      leagues: leagues.map(l => ({
+        id: l.league_id,
+        name: l.name || `League ${l.league_id}`,
+        teams: l.total_rosters || 0,
+        positions: l.roster_positions || [],
+      })),
+    };
+  }
+
+  /* All teams in a league, with the requesting user's own team flagged so the
+     UI can offer it first. */
+  async function sleeperTeams(leagueId) {
+    const [rr, ur] = await Promise.all([
+      fetch(`${SLEEPER}/league/${leagueId}/rosters`, { credentials: 'omit' }),
+      fetch(`${SLEEPER}/league/${leagueId}/users`, { credentials: 'omit' }),
+    ]);
+    if (!rr.ok) throw new Error(`Sleeper returned ${rr.status} fetching rosters.`);
+    const rosters = await rr.json();
+    const users = ur.ok ? await ur.json() : [];
+    const byId = {};
+    for (const u of users) byId[u.user_id] = u;
+    return (rosters || []).map(r => {
+      const u = byId[r.owner_id] || {};
+      const meta = u.metadata || {};
+      return {
+        rosterId: r.roster_id,
+        ownerId: r.owner_id,
+        name: meta.team_name || u.display_name || `Roster ${r.roster_id}`,
+        owner: u.display_name || '',
+        starters: (r.starters || []).filter(x => x && x !== '0'),
+        players: (r.players || []).filter(x => x && x !== '0'),
+      };
+    });
+  }
+
+  /* Import one Sleeper roster into a side ('mine' or 'opp').
+
+     Starters are placed first so the lineup mirrors how the roster is actually
+     set in Sleeper; the rest fill the bench. Returns the same shape as the
+     ESPN importer, plus `unknownIds` for ids missing from the trimmed map. */
+  async function importSleeperRoster(leagueId, rosterId, label, side) {
+    const map = sleeperIds();
+    if (!map) throw new Error('The Sleeper player list has not loaded. Reload and try again.');
+    const teams = await sleeperTeams(leagueId);
+    const team = teams.find(t => String(t.rosterId) === String(rosterId));
+    if (!team) throw new Error('That roster is no longer in the league.');
+    if (!team.players.length) throw new Error('That roster has no players.');
+
+    // Starters first, then everyone else, preserving Sleeper's own order.
+    const ordered = team.starters
+      .concat(team.players.filter(p => team.starters.indexOf(p) === -1));
+
+    const names = [], unmatched = [], unknownIds = [];
+    for (const pid of ordered) {
+      const entry = map[String(pid)];
+      if (!entry) { unknownIds.push(String(pid)); continue; }
+      const known = resolve(entry[0]);
+      // Keep the projections feed's own spelling so later matching is exact.
+      if (known) { if (names.indexOf(known.name) === -1) names.push(known.name); }
+      else unmatched.push(entry[0]);
+    }
+    if (!names.length) {
+      throw new Error("None of that roster's players are in the projections feed.");
+    }
+    const target = (side === 'opp') ? 'opp' : (side || activeSide);
+    const st = S(target);
+    st.roster = names.slice(0, MAX_PLAYERS);
+    st.slots = autoAssign(st.roster);
+    syncFromSlots(target);
+    st.teamName = String(label || team.name || '').slice(0, 40);
+    save(target);
+    return { added: st.roster.length, unmatched, unknownIds };
+  }
+
   load();
 
   window.NFL_MY_ROSTER = {
     load, save, add, remove, clear, has, resolve, suggest,
     playersForWeek, playersForGame, onChange,
     parseLeagueId, fetchLeagueTeams, importTeam, espnSeason,
+    sleeperLeagues, sleeperTeams, importSleeperRoster, sleeperSeason,
+    cleanUsername,
     SLOTS, SIDES, setSlot, candidatesFor, autoAssign, matchup, weekEntry,
     // Which side the editor is working on.
     get side() { return activeSide; },
