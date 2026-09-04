@@ -142,7 +142,7 @@
      markets, so the map opens full-size in an overlay on click. */
   .cov-map-svg{cursor:zoom-in}
   .cov-map-hint{font-size:11px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-top:3px}
-  .cov-modal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;background:rgba(12,24,40,.55);padding:24px}
+  .cov-modal{position:fixed;inset:0;z-index:90;display:none;align-items:center;justify-content:center;background:rgba(12,24,40,.55);padding:24px}
   .cov-modal.open{display:flex}
   .cov-modal-inner{background:var(--surface);border-radius:18px;box-shadow:var(--shadow);padding:16px;max-width:min(1000px,94vw);max-height:92vh;overflow:auto;position:relative}
   .cov-modal-inner .cov-map-svg{cursor:default;max-height:none}
@@ -361,7 +361,7 @@
      (see openSlate/toggleFantasyDrawer). Width here is generous since it has
      the gutter to itself. */
   @media (min-width:981px) and (max-width:1850px){ .fr-drawer{--fr-w:min(420px,42vw)} }
-  .fr-tab{align-self:center;pointer-events:auto;border:0;border-radius:0 11px 11px 0;background:var(--ink);color:var(--surface);
+  .fr-tab{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:29;pointer-events:auto;border:0;border-radius:0 11px 11px 0;background:var(--ink);color:var(--surface);
     padding:14px 7px;cursor:pointer;box-shadow:3px 0 14px rgba(0,0,0,.18);display:flex;flex-direction:column;
     align-items:center;gap:7px}
   .fr-tab:hover{background:var(--ink-2)}
@@ -680,9 +680,10 @@
       -webkit-overflow-scrolling:touch;padding:12px 14px 24px}
     /* The tab sits above the sheet's own surface, on the right edge where a
        thumb reaches, and stops sliding with the panel. */
-    .fr-tab{position:fixed;right:0;left:auto;top:auto;bottom:96px;
-      border-radius:10px 0 0 10px;z-index:71;transform:none}
-    .fr-drawer.open .fr-tab{display:none}
+    /* Right edge, above the theme button, where a thumb reaches. */
+    .fr-tab{right:0;left:auto;top:auto;bottom:104px;transform:none;
+      border-radius:10px 0 0 10px;z-index:66}
+    .fr-drawer.open~.fr-tab{display:none}
   }
 
   /* ---- 5. Hover-only affordances need a tap path ------------------------- */
@@ -695,6 +696,34 @@
       display:block;margin-top:6px;font-size:11px;font-weight:900;
       letter-spacing:.02em;color:var(--muted);text-transform:none}
     .cov-map-caption .cov-hint-desktop{display:none}
+  }
+
+
+  /* ---- Roster modal on a phone ------------------------------------------
+     The roster editor is the only way to set up a fantasy team, so it has to
+     work at 393px. Keyed to width for layout and pointer for control sizing,
+     same split as the rest of the phone work. */
+  @media (max-width:820px){
+    .cov-modal{padding:0;align-items:flex-end}
+    .cov-modal-inner{max-width:100%;width:100%;max-height:92dvh;
+      border-radius:18px 18px 0 0;padding:14px 14px 20px}
+    /* The subtitle had no right padding, so it ran under the close button. */
+    .cov-modal-title{padding-right:52px;font-size:17px}
+    .cov-modal-sub{padding-right:52px;font-size:12.5px;line-height:1.35}
+    /* Roster rows: full width, stacked, comfortable to tap. */
+    .rs-teams{grid-template-columns:1fr 1fr;gap:8px}
+    .rs-form{grid-template-columns:1fr}
+    .rs-row{gap:8px}
+    .rs-choice{padding:14px}
+  }
+  @media (pointer:coarse){
+    .cov-modal-close{width:44px;height:44px;font-size:20px;top:10px;right:10px}
+    /* 16px prevents iOS Safari from zooming the page on focus, which otherwise
+       leaves the viewport scrolled sideways with no way back. */
+    .rs-in,.cov-modal input[type="text"],.cov-modal input:not([type]){
+      min-height:44px;font-size:16px;padding:11px 12px}
+    .rs-go,.rs-back,.rs-opt,.rs-team{min-height:44px}
+    .rs-lab{min-height:44px;display:flex;align-items:center}
   }
 
 </style>
@@ -727,17 +756,17 @@
 </div>
 <div class="sheet-scrim" id="sheetScrim" aria-hidden="true"></div>
 <button type="button" class="theme-fab" id="themeToggle" aria-live="polite" title="Theme"><span class="theme-ic" id="themeIc" aria-hidden="true"></span><span id="themeLabel">Auto</span></button>
-<script src="odds-data.js?v=37"></script>
-<script src="fantasy-data.js?v=37"></script>
-<script src="local-market-data.js?v=37"></script>
-<script src="zip-timezones.js?v=37"></script>
-<script src="local-time.js?v=37"></script>
-<script src="my-roster.js?v=37"></script>
-<script src="dma-assignments.js?v=37"></script>
-<script src="dma-model.js?v=37"></script>
-<script src="dma-geometry.js?v=37"></script>
-<script src="local-coverage.js?v=37"></script>
-<script src="coverage-map.js?v=37"></script>
+<script src="odds-data.js?v=40"></script>
+<script src="fantasy-data.js?v=40"></script>
+<script src="local-market-data.js?v=40"></script>
+<script src="zip-timezones.js?v=40"></script>
+<script src="local-time.js?v=40"></script>
+<script src="my-roster.js?v=40"></script>
+<script src="dma-assignments.js?v=40"></script>
+<script src="dma-model.js?v=40"></script>
+<script src="dma-geometry.js?v=40"></script>
+<script src="local-coverage.js?v=40"></script>
+<script src="coverage-map.js?v=40"></script>
 <script>
 const TEAM_NAMES={"ARI":"Arizona Cardinals","ATL":"Atlanta Falcons","BAL":"Baltimore Ravens","BUF":"Buffalo Bills","CAR":"Carolina Panthers","CHI":"Chicago Bears","CIN":"Cincinnati Bengals","CLE":"Cleveland Browns","DAL":"Dallas Cowboys","DEN":"Denver Broncos","DET":"Detroit Lions","GB":"Green Bay Packers","HOU":"Houston Texans","IND":"Indianapolis Colts","JAX":"Jacksonville Jaguars","KC":"Kansas City Chiefs","LV":"Las Vegas Raiders","LAC":"Los Angeles Chargers","LAR":"Los Angeles Rams","MIA":"Miami Dolphins","MIN":"Minnesota Vikings","NE":"New England Patriots","NO":"New Orleans Saints","NYG":"New York Giants","NYJ":"New York Jets","PHI":"Philadelphia Eagles","PIT":"Pittsburgh Steelers","SF":"San Francisco 49ers","SEA":"Seattle Seahawks","TB":"Tampa Bay Buccaneers","TEN":"Tennessee Titans","WAS":"Washington Commanders"};
 const TEAM_COLORS={"ARI":"#97233F","ATL":"#A71930","BAL":"#241773","BUF":"#00338D","CAR":"#0085CA","CHI":"#0B162A","CIN":"#FB4F14","CLE":"#311D00","DAL":"#003594","DEN":"#FB4F14","DET":"#0076B6","GB":"#203731","HOU":"#03202F","IND":"#002C5F","JAX":"#006778","KC":"#E31837","LV":"#000000","LAC":"#0080C6","LAR":"#003594","MIA":"#008E97","MIN":"#4F2683","NE":"#002244","NO":"#D3BC8D","NYG":"#0B2265","NYJ":"#125740","PHI":"#004C54","PIT":"#FFB612","SF":"#AA0000","SEA":"#002244","TB":"#D50A0A","TEN":"#0C2340","WAS":"#5A1414"};
@@ -1392,7 +1421,13 @@ function renderFantasyDrawer(){
   }
   box.innerHTML=html;
   document.getElementById('frClose').onclick=()=>toggleFantasyDrawer(false);
-  document.getElementById('frEdit').onclick=openRosterModal;
+  document.getElementById('frEdit').onclick=()=>{
+    // No roster yet -> offer ESPN import vs manual. Existing roster ->
+    // go straight to editing it, which is what 'Edit rosters' implies.
+    const R=MR();
+    if(R&&R.size===0&&typeof openRosterSetup==='function')openRosterSetup();
+    else openRosterModal();
+  };
   document.getElementById('frImport').onclick=openRosterEspn;
   const sel=document.getElementById('frWeekSel');
   if(sel)sel.onchange=()=>{frWeek=Number(sel.value);renderFantasyDrawer();};
@@ -2068,6 +2103,10 @@ if(window.matchMedia){
 }
 initTheme();populateSelection();renderLegend();render();updateCoverageCopy();updateTimezoneNote();updateRosterPick();updateFantasyTab();initViewingLocation();
 </script>
-<div class="fr-drawer" id="frDrawer" aria-hidden="true"><div class="fr-body" id="frBody" role="region" aria-label="Fantasy roster"></div><button type="button" class="fr-tab" id="frTab" aria-controls="frDrawer" aria-expanded="false"><span class="fr-tab-txt">Fantasy roster</span><span class="fr-tab-badge" id="frTabBadge"></span></button></div>
+<div class="fr-drawer" id="frDrawer" aria-hidden="true"><div class="fr-body" id="frBody" role="region" aria-label="Fantasy roster"></div></div>
+<!-- The tab lives OUTSIDE the drawer: the drawer is transformed when
+     closed on phones, and a transformed ancestor becomes the containing
+     block for position:fixed children, which put the tab off-screen. -->
+<button type="button" class="fr-tab" id="frTab" aria-controls="frDrawer" aria-expanded="false"><span class="fr-tab-txt">Fantasy roster</span><span class="fr-tab-badge" id="frTabBadge"></span></button>
 <div class="cov-modal" id="covModal" role="dialog" aria-modal="true" aria-label="Coverage map"><div class="cov-modal-inner" id="covModalInner"></div></div>
 </body></html>
