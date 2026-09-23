@@ -1,10 +1,10 @@
 {
-  "fetched_at": "2026-09-22T15:31:38.013798+00:00",
+  "fetched_at": "2026-09-23T15:27:18.280255+00:00",
   "source": "The Odds API",
   "method": "median consensus across US books",
   "quota": {
-    "x-requests-remaining": "434",
-    "x-requests-used": "66",
+    "x-requests-remaining": "431",
+    "x-requests-used": "69",
     "x-requests-last": "3"
   },
   "games": [
@@ -14,22 +14,22 @@
       "away": "ATL",
       "home": "GB",
       "spread": {
-        "away_point": 6.5,
+        "away_point": 5.5,
         "away_price": -110,
-        "home_point": -6.5,
+        "home_point": -5.5,
         "home_price": -110
       },
       "total": {
-        "point": 44.5,
+        "point": 43,
         "over_price": -110,
         "under_price": -110
       },
       "moneyline": {
-        "away": 230,
-        "home": -280
+        "away": 220,
+        "home": -265
       },
       "books_count": 9,
-      "last_update": "2026-09-22T15:31:16Z"
+      "last_update": "2026-09-23T15:27:13Z"
     },
     {
       "event_id": "b225458a282e140c44c45651255f2f6c",
@@ -37,22 +37,22 @@
       "away": "LAC",
       "home": "BUF",
       "spread": {
-        "away_point": 7,
-        "away_price": -110,
-        "home_point": -7,
-        "home_price": -110
+        "away_point": 7.5,
+        "away_price": -115,
+        "home_point": -7.5,
+        "home_price": -105
       },
       "total": {
-        "point": 50.5,
-        "over_price": -105,
-        "under_price": -113
+        "point": 50,
+        "over_price": -110,
+        "under_price": -110
       },
       "moneyline": {
-        "away": 270,
-        "home": -340
+        "away": 278,
+        "home": -350
       },
       "books_count": 9,
-      "last_update": "2026-09-22T15:31:16Z"
+      "last_update": "2026-09-23T15:27:13Z"
     },
     {
       "event_id": "613b8cd3a5fab58f7be4e3fd6f76223e",
@@ -61,21 +61,21 @@
       "home": "CLE",
       "spread": {
         "away_point": -3,
-        "away_price": -102,
+        "away_price": -110,
         "home_point": 3,
-        "home_price": -114
+        "home_price": -110
       },
       "total": {
         "point": 42,
         "over_price": -112,
-        "under_price": -109
+        "under_price": -108
       },
       "moneyline": {
         "away": -150,
-        "home": 125
+        "home": 129
       },
       "books_count": 9,
-      "last_update": "2026-09-22T15:31:16Z"
+      "last_update": "2026-09-23T15:27:13Z"
     },
     {
       "event_id": "71123be049587b6facce3a20c53e5d09",
@@ -84,7 +84,7 @@
       "home": "PIT",
       "spread": {
         "away_point": -3.5,
-        "away_price": -110,
+        "away_price": -108,
         "home_point": 3.5,
         "home_price": -110
       },
@@ -94,11 +94,11 @@
         "under_price": -110
       },
       "moneyline": {
-        "away": -185,
-        "home": 159
+        "away": -190,
+        "home": 160
       },
       "books_count": 9,
-      "last_update": "2026-09-22T15:31:16Z"
+      "last_update": "2026-09-23T15:27:13Z"
     },
     {
       "event_id": "07f552badfa8a565d1be22123713e4da",
@@ -112,8 +112,8 @@
         "home_price": -115
       },
       "total": {
-        "point": 48,
-        "over_price": -108,
+        "point": 47.5,
+        "over_price": -110,
         "under_price": -110
       },
       "moneyline": {
@@ -121,7 +121,7 @@
         "home": -300
       },
       "books_count": 9,
-      "last_update": "2026-09-22T15:31:16Z"
+      "last_update": "2026-09-23T15:27:13Z"
     },
     {
       "event_id": "17a730b7d399feeab6a78c30767c29d2",
@@ -129,22 +129,22 @@
       "away": "HOU",
       "home": "IND",
       "spread": {
-        "away_point": -2.5,
-        "away_price": -115,
-        "home_point": 2.5,
-        "home_price": -105
+        "away_point": -3,
+        "away_price": -102,
+        "home_point": 3,
+        "home_price": -114
       },
       "total": {
-        "point": 43.5,
+        "point": 42.5,
         "over_price": -110,
         "under_price": -110
       },
       "moneyline": {
-        "away": -145,
+        "away": -150,
         "home": 125
       },
       "books_count": 9,
-      "last_update": "2026-09-22T15:31:16Z"
+      "last_update": "2026-09-23T15:27:13Z"
     },
     {
       "event_id": "1f3cfd315a24d1a7dd5859a8e6b88e18",
@@ -153,9 +153,9 @@
       "home": "JAX",
       "spread": {
         "away_point": 3,
-        "away_price": -110,
+        "away_price": -112,
         "home_point": -3,
-        "home_price": -110
+        "home_price": -106
       },
       "total": {
         "point": 45.5,
@@ -163,11 +163,11 @@
         "under_price": -110
       },
       "moneyline": {
-        "away": 137,
+        "away": 132,
         "home": -158
       },
       "books_count": 9,
-      "last_update": "2026-09-22T15:31:16Z"
+      "last_update": "2026-09-23T15:27:13Z"
     },
     {
       "event_id": "0339a0e41bcee12820eb3e64bb5fadb4",
@@ -186,11 +186,11 @@
         "under_price": -110
       },
       "moneyline": {
-        "away": -770,
-        "home": 534
+        "away": -752,
+        "home": 530
       },
       "books_count": 9,
-      "last_update": "2026-09-22T15:31:16Z"
+      "last_update": "2026-09-23T15:27:13Z"
     },
     {
       "event_id": "555afd4a27aaa392662881cffa8f2eef",
@@ -199,21 +199,21 @@
       "home": "NYG",
       "spread": {
         "away_point": 3,
-        "away_price": -110,
+        "away_price": -118,
         "home_point": -3,
-        "home_price": -110
+        "home_price": -101
       },
       "total": {
-        "point": 40.5,
+        "point": 39.5,
         "over_price": -110,
         "under_price": -110
       },
       "moneyline": {
-        "away": 138,
-        "home": -160
+        "away": 125,
+        "home": -145
       },
       "books_count": 9,
-      "last_update": "2026-09-22T15:31:16Z"
+      "last_update": "2026-09-23T15:27:13Z"
     },
     {
       "event_id": "2a529c108305ffa049d8b6cfdbaa4d36",
@@ -222,9 +222,9 @@
       "home": "WAS",
       "spread": {
         "away_point": -7,
-        "away_price": -108,
+        "away_price": -110,
         "home_point": 7,
-        "home_price": -112
+        "home_price": -110
       },
       "total": {
         "point": 40,
@@ -232,11 +232,11 @@
         "under_price": -110
       },
       "moneyline": {
-        "away": -305,
-        "home": 250
+        "away": -320,
+        "home": 260
       },
       "books_count": 9,
-      "last_update": "2026-09-22T15:31:16Z"
+      "last_update": "2026-09-23T15:27:13Z"
     },
     {
       "event_id": "9d2b09e0f9b6dd5ce0d985894f4f98fa",
@@ -247,7 +247,7 @@
         "away_point": 8.5,
         "away_price": -110,
         "home_point": -8.5,
-        "home_price": -108
+        "home_price": -105
       },
       "total": {
         "point": 48,
@@ -259,7 +259,7 @@
         "home": -441
       },
       "books_count": 9,
-      "last_update": "2026-09-22T15:31:16Z"
+      "last_update": "2026-09-23T15:27:13Z"
     },
     {
       "event_id": "f1724dead3eab61546033032fc782375",
@@ -278,11 +278,11 @@
         "under_price": -108
       },
       "moneyline": {
-        "away": -125,
-        "home": 104
+        "away": -122,
+        "home": 103
       },
       "books_count": 9,
-      "last_update": "2026-09-22T15:31:16Z"
+      "last_update": "2026-09-23T15:27:13Z"
     },
     {
       "event_id": "84cfca14efc21363fd605508404cf1ff",
@@ -290,22 +290,22 @@
       "away": "BAL",
       "home": "DAL",
       "spread": {
-        "away_point": -3,
-        "away_price": -108,
-        "home_point": 3,
-        "home_price": -112
+        "away_point": -3.5,
+        "away_price": -105,
+        "home_point": 3.5,
+        "home_price": -115
       },
       "total": {
         "point": 52.5,
         "over_price": -110,
-        "under_price": -108
+        "under_price": -110
       },
       "moneyline": {
-        "away": -155,
-        "home": 130
+        "away": -184,
+        "home": 150
       },
       "books_count": 9,
-      "last_update": "2026-09-22T15:31:16Z"
+      "last_update": "2026-09-23T15:27:13Z"
     },
     {
       "event_id": "2e523fcb0497aa689473e290eb2b97de",
@@ -314,21 +314,21 @@
       "home": "NO",
       "spread": {
         "away_point": 3,
-        "away_price": 100,
+        "away_price": -102,
         "home_point": -3,
         "home_price": -118
       },
       "total": {
         "point": 44,
         "over_price": -110,
-        "under_price": -108
+        "under_price": -110
       },
       "moneyline": {
-        "away": 145,
+        "away": 150,
         "home": -175
       },
       "books_count": 9,
-      "last_update": "2026-09-22T15:31:16Z"
+      "last_update": "2026-09-23T15:27:13Z"
     },
     {
       "event_id": "3bfd8bfb4b8e9a365a0877879b73b16b",
@@ -337,21 +337,21 @@
       "home": "DEN",
       "spread": {
         "away_point": -2.5,
-        "away_price": -110,
+        "away_price": -114,
         "home_point": 2.5,
-        "home_price": -107
+        "home_price": -105
       },
       "total": {
-        "point": 45.5,
+        "point": 45,
         "over_price": -110,
         "under_price": -110
       },
       "moneyline": {
-        "away": -135,
-        "home": 110
+        "away": -145,
+        "home": 120
       },
       "books_count": 9,
-      "last_update": "2026-09-22T15:31:16Z"
+      "last_update": "2026-09-23T15:27:13Z"
     },
     {
       "event_id": "47dc7baa254659f3beb2ed2b38c207b6",
@@ -359,10 +359,332 @@
       "away": "PHI",
       "home": "CHI",
       "spread": {
-        "away_point": -3,
-        "away_price": -111,
-        "home_point": 3,
+        "away_point": -4.5,
+        "away_price": -110,
+        "home_point": 4.5,
+        "home_price": -108
+      },
+      "total": {
+        "point": 41,
+        "over_price": -110,
+        "under_price": -110
+      },
+      "moneyline": {
+        "away": -230,
+        "home": 192
+      },
+      "books_count": 9,
+      "last_update": "2026-09-23T15:27:13Z"
+    },
+    {
+      "event_id": "d55cb69fed50a09170560b5b75d8de86",
+      "commence_time": "2026-10-02T00:15:00Z",
+      "away": "PIT",
+      "home": "CLE",
+      "spread": {
+        "away_point": -2.5,
+        "away_price": -110,
+        "home_point": 2.5,
+        "home_price": -110
+      },
+      "total": {
+        "point": 37.5,
+        "over_price": -110,
+        "under_price": -110
+      },
+      "moneyline": {
+        "away": -140.5,
+        "home": 118.5
+      },
+      "books_count": 7,
+      "last_update": "2026-09-23T15:27:13Z"
+    },
+    {
+      "event_id": "c9d8ed8aa4889486eaf10a630138ede0",
+      "commence_time": "2026-10-04T13:30:00Z",
+      "away": "IND",
+      "home": "WAS",
+      "spread": {
+        "away_point": -4.5,
+        "away_price": -110,
+        "home_point": 4.5,
         "home_price": -109
+      },
+      "total": {
+        "point": 46,
+        "over_price": -110,
+        "under_price": -110
+      },
+      "moneyline": {
+        "away": -225,
+        "home": 180
+      },
+      "books_count": 6,
+      "last_update": "2026-09-23T15:26:53Z"
+    },
+    {
+      "event_id": "664e6bda5721dc63be16bcf7d962a436",
+      "commence_time": "2026-10-04T17:00:00Z",
+      "away": "ARI",
+      "home": "NYG",
+      "spread": {
+        "away_point": 2.5,
+        "away_price": -107.5,
+        "home_point": -2.5,
+        "home_price": -112.5
+      },
+      "total": {
+        "point": 43.5,
+        "over_price": -111,
+        "under_price": -109.5
+      },
+      "moneyline": {
+        "away": 117,
+        "home": -141
+      },
+      "books_count": 4,
+      "last_update": "2026-09-23T15:26:53Z"
+    },
+    {
+      "event_id": "f01589b0e7e6dd4f4ac1220a1db81f53",
+      "commence_time": "2026-10-04T17:00:00Z",
+      "away": "TEN",
+      "home": "BAL",
+      "spread": {
+        "away_point": 10.5,
+        "away_price": -110,
+        "home_point": -10.5,
+        "home_price": -110
+      },
+      "total": {
+        "point": 44.75,
+        "over_price": -110,
+        "under_price": -110
+      },
+      "moneyline": {
+        "away": 460,
+        "home": -670
+      },
+      "books_count": 6,
+      "last_update": "2026-09-23T15:26:53Z"
+    },
+    {
+      "event_id": "573cc0ef39631a4f6673ec843a8bedd4",
+      "commence_time": "2026-10-04T17:00:00Z",
+      "away": "NE",
+      "home": "BUF",
+      "spread": {
+        "away_point": 5.5,
+        "away_price": -109.5,
+        "home_point": -5.5,
+        "home_price": -110
+      },
+      "total": {
+        "point": 50,
+        "over_price": -110,
+        "under_price": -110
+      },
+      "moneyline": {
+        "away": 210,
+        "home": -260
+      },
+      "books_count": 6,
+      "last_update": "2026-09-23T15:26:53Z"
+    },
+    {
+      "event_id": "164e6eb68f31bac190381903c3cccd31",
+      "commence_time": "2026-10-04T17:00:00Z",
+      "away": "NYJ",
+      "home": "CHI",
+      "spread": {
+        "away_point": 3,
+        "away_price": -107.5,
+        "home_point": -3,
+        "home_price": -110
+      },
+      "total": {
+        "point": 43.25,
+        "over_price": -110,
+        "under_price": -110
+      },
+      "moneyline": {
+        "away": 150,
+        "home": -182
+      },
+      "books_count": 6,
+      "last_update": "2026-09-23T15:26:53Z"
+    },
+    {
+      "event_id": "2ea94ddf20f66432b9024fe2e2eaba5f",
+      "commence_time": "2026-10-04T17:00:00Z",
+      "away": "JAX",
+      "home": "CIN",
+      "spread": {
+        "away_point": 2.5,
+        "away_price": -105,
+        "home_point": -2.5,
+        "home_price": -115
+      },
+      "total": {
+        "point": 50.5,
+        "over_price": -110,
+        "under_price": -108.5
+      },
+      "moneyline": {
+        "away": 125,
+        "home": -152
+      },
+      "books_count": 6,
+      "last_update": "2026-09-23T15:26:53Z"
+    },
+    {
+      "event_id": "daf55e2df5341c007fee5a0fc5bbc2d4",
+      "commence_time": "2026-10-04T17:00:00Z",
+      "away": "DAL",
+      "home": "HOU",
+      "spread": {
+        "away_point": 3,
+        "away_price": -110,
+        "home_point": -3,
+        "home_price": -107.5
+      },
+      "total": {
+        "point": 47.5,
+        "over_price": -110,
+        "under_price": -110
+      },
+      "moneyline": {
+        "away": 125,
+        "home": -152
+      },
+      "books_count": 6,
+      "last_update": "2026-09-23T15:26:53Z"
+    },
+    {
+      "event_id": "99a9bae4dc0dc2590496bd3102b211f2",
+      "commence_time": "2026-10-04T17:00:00Z",
+      "away": "GB",
+      "home": "TB",
+      "spread": {
+        "away_point": -1.5,
+        "away_price": -105,
+        "home_point": 1.5,
+        "home_price": -115
+      },
+      "total": {
+        "point": 46,
+        "over_price": -110,
+        "under_price": -110
+      },
+      "moneyline": {
+        "away": -119,
+        "home": -102.5
+      },
+      "books_count": 7,
+      "last_update": "2026-09-23T15:27:13Z"
+    },
+    {
+      "event_id": "1b4f2e60ce83fa1d63a5dff83769d27c",
+      "commence_time": "2026-10-04T17:00:00Z",
+      "away": "LAR",
+      "home": "PHI",
+      "spread": {
+        "away_point": -2.5,
+        "away_price": -114.5,
+        "home_point": 2.5,
+        "home_price": -4
+      },
+      "total": {
+        "point": 46,
+        "over_price": -110,
+        "under_price": -110
+      },
+      "moneyline": {
+        "away": -143,
+        "home": 114
+      },
+      "books_count": 6,
+      "last_update": "2026-09-23T15:26:53Z"
+    },
+    {
+      "event_id": "c327223d76a3b7b0db8c6c104442f44b",
+      "commence_time": "2026-10-04T20:05:00Z",
+      "away": "MIA",
+      "home": "MIN",
+      "spread": {
+        "away_point": 10.5,
+        "away_price": -110,
+        "home_point": -10.5,
+        "home_price": -109
+      },
+      "total": {
+        "point": 42.5,
+        "over_price": -110,
+        "under_price": -110
+      },
+      "moneyline": {
+        "away": 440,
+        "home": -625
+      },
+      "books_count": 6,
+      "last_update": "2026-09-23T15:26:53Z"
+    },
+    {
+      "event_id": "a7e7efb75a9792ac63480ae6328dca18",
+      "commence_time": "2026-10-04T20:25:00Z",
+      "away": "DEN",
+      "home": "SF",
+      "spread": {
+        "away_point": 3.5,
+        "away_price": -105.5,
+        "home_point": -3.5,
+        "home_price": -112
+      },
+      "total": {
+        "point": 46,
+        "over_price": -110,
+        "under_price": -110
+      },
+      "moneyline": {
+        "away": 170,
+        "home": -205
+      },
+      "books_count": 6,
+      "last_update": "2026-09-23T15:26:53Z"
+    },
+    {
+      "event_id": "e0cbd266dcf997089203a1b33ba0333d",
+      "commence_time": "2026-10-04T20:25:00Z",
+      "away": "KC",
+      "home": "LV",
+      "spread": {
+        "away_point": -5.5,
+        "away_price": -110,
+        "home_point": 5.5,
+        "home_price": -110
+      },
+      "total": {
+        "point": 45.75,
+        "over_price": -110,
+        "under_price": -110
+      },
+      "moneyline": {
+        "away": -250,
+        "home": 200
+      },
+      "books_count": 6,
+      "last_update": "2026-09-23T15:26:53Z"
+    },
+    {
+      "event_id": "96d2373cda647873b971f268482bced0",
+      "commence_time": "2026-10-04T20:25:00Z",
+      "away": "LAC",
+      "home": "SEA",
+      "spread": {
+        "away_point": 6.5,
+        "away_price": -108,
+        "home_point": -6.5,
+        "home_price": -110
       },
       "total": {
         "point": 43.5,
@@ -370,11 +692,57 @@
         "under_price": -110
       },
       "moneyline": {
-        "away": -175,
-        "home": 146
+        "away": 255,
+        "home": -335
       },
-      "books_count": 9,
-      "last_update": "2026-09-22T15:31:16Z"
+      "books_count": 6,
+      "last_update": "2026-09-23T15:26:53Z"
+    },
+    {
+      "event_id": "a73a76599a4f3422803e57bd8f61b626",
+      "commence_time": "2026-10-05T00:20:00Z",
+      "away": "DET",
+      "home": "CAR",
+      "spread": {
+        "away_point": -2.5,
+        "away_price": -107,
+        "home_point": 2.5,
+        "home_price": -110
+      },
+      "total": {
+        "point": 49.5,
+        "over_price": -110,
+        "under_price": -110
+      },
+      "moneyline": {
+        "away": -150,
+        "home": 126.5
+      },
+      "books_count": 7,
+      "last_update": "2026-09-23T15:27:13Z"
+    },
+    {
+      "event_id": "8bd90781e17e6d97df3941063cedae1e",
+      "commence_time": "2026-10-06T00:15:00Z",
+      "away": "ATL",
+      "home": "NO",
+      "spread": {
+        "away_point": 3.5,
+        "away_price": -110,
+        "home_point": -3.5,
+        "home_price": -110
+      },
+      "total": {
+        "point": 45.5,
+        "over_price": -110,
+        "under_price": -110
+      },
+      "moneyline": {
+        "away": 155,
+        "home": -190
+      },
+      "books_count": 6,
+      "last_update": "2026-09-23T15:26:53Z"
     }
   ]
 }
